@@ -1,0 +1,33 @@
+{
+  "name": "xebia-deployit",
+  "author": "wianvos",
+  "description": "",
+  "license": "",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "version": "0.0.1",
+  "checksums": {
+    "Modulefile": "0921ed5e56ae52d8c4e7e4f77abc21f0",
+    "README.markdown": "05f3587a7ffdce5aea101faf2a4b8d6e",
+    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
+    "files/misc/functions.sh": "beec3e5c5d387bf26bc9151cd5828424",
+    "files/sources/deployit-3.8.5-cli.zip": "9af2330201fc674a8c5107f5cc022433",
+    "files/sources/deployit-3.8.5-server.zip": "19f6a9e574465ecda3ff2904d8bd9931",
+    "manifests/config.pp": "165c9be7120e0312b0e67ee0007f7adb",
+    "manifests/download.pp": "6a20ef5a9138cd72327eb98db1829508",
+    "manifests/download/nexus_install.pp": "84fbdd8d2d271b513d5da3d18e3cee7b",
+    "manifests/download/puppetfiles.pp": "d4f1725e81cc5dd4b98901710ae5cb05",
+    "manifests/init.pp": "a30b525f7461f6986ebb310f5d93d9ac",
+    "manifests/install.pp": "6f771bd6df40d4d7e8877980317dea22",
+    "manifests/prereq.pp": "f9ef42a94d99295640df78cbbbaac169",
+    "manifests/service.pp": "5b85806446cb48389d26b942fac82a28",
+    "manifests/users.pp": "4c419864a367b8339eca5a81a0b88811",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
+    "templates/deployit.conf.erb": "c56df0816f696c08d8adadf9cd009f45",
+    "templates/deployit_initd.erb": "1c594f94eaa5bdb24157225f23689101",
+    "tests/init.pp": "d96f91c6491ae2580ba138db6f2282f1"
+  },
+  "dependencies": []
+}
