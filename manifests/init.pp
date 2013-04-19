@@ -16,8 +16,7 @@ class deployit(
   $deployit_homedir = "/opt/deployit",
   $deployit_version = "3.8.5",
   $deployit_admin = "admin",
-  $deployit_password = "xebia123",
-  $deployit_password_hash = '{b64}aU+tg3VDM813zCQVXfYsOg\=\=',
+  $deployit_password = "xebia1234",
   $deployit_http_port = "4516",
   $deployit_jcr_repository_path = 'repository',
   $deployit_ssl = false,
@@ -52,6 +51,8 @@ class deployit(
   class{deployit::download: } ->
   class{deployit::install: } ->
   class{deployit::config: } ~>
-  class{deployit::service: }
+  class{deployit::service: } ->
+  class{deployit::development: } ->
+  Class["deployit"]
   
 }

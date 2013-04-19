@@ -1,0 +1,1 @@
+wget --http-user="admin" --http-password="admin" http://localhost:4516/deployit/repository/query?type=overthere.SshHost

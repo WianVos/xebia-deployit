@@ -9,8 +9,7 @@ class deployit::install (
   $install_cli_zipfile    = $deployit::install_cli_zipfile) {
   # # flow control
 
-  Exec["unpack server file", "unpack cli file"] -> File["/etc/deployit", "/var/log/deployit"] -> File["init functions", "init script"
-    ] 
+  Exec["unpack server file", "unpack cli file"] -> File["/etc/deployit", "/var/log/deployit"] -> File["init script"] 
 
   # # resource defaults
 
@@ -57,13 +56,13 @@ class deployit::install (
   }
 
   # init.d setup
-  file { "init functions":
-    source => "puppet:///modules/deployit/misc/functions.sh",
-    path   => "/etc/init.d/functions",
-    owner  => root,
-    group  => root,
-    mode   => 700,
-  }
+#  file { "init functions":
+#    source => "puppet:///modules/deployit/misc/functions.sh",
+#    path   => "/etc/init.d/functions",
+#    owner  => root,
+#    group  => root,
+#    mode   => 700,
+#  }
 
   file { "init script":
     content => template("deployit/deployit_initd.erb"),

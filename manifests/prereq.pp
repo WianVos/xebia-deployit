@@ -10,7 +10,9 @@ class deployit::prereq(
   
   ## variable setting
   case $osfamily {
-    'RedHat' :  { $xtra_packages = ["unzip","java-1.6.0-openjdk"] }
+    'RedHat' :  { $xtra_packages = ["unzip","java-1.6.0-openjdk","rubygems"]
+                  $xtra_gems = ["xml-simple","rest-client"]
+    }
     'Debian' : { $xtra_packages = ["unzip"] }
     default : { $xtra_packages = ['unzip'] }
   }
@@ -19,7 +21,8 @@ class deployit::prereq(
   File["$tmpdir"] ->
   File["${deployit_basedir}","${deployit_basedir}/server","${deployit_basedir}/cli"] ->
   File["basedir to homedir"] ->
-  Package[$xtra_packages] 
+  Package[$xtra_packages] -> 
+  Package[$xtra_gems] 
  
   ## resource defaults
   File{
@@ -46,5 +49,6 @@ class deployit::prereq(
   }
   # packages
   package{$xtra_packages: }
+  package{$xtra_gems: provider => gem }
   
 }
