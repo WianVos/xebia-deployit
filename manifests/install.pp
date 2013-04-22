@@ -9,7 +9,7 @@ class deployit::install (
   $install_cli_zipfile    = $deployit::install_cli_zipfile) {
   # # flow control
 
-  Exec["unpack server file", "unpack cli file"] -> File["/etc/deployit", "/var/log/deployit"] -> File["init script"] 
+  Exec["unpack server file", "unpack cli file"] -> File["/etc/deployit", "/var/log/deployit"] -> File["init script"]
 
   # # resource defaults
 
@@ -20,8 +20,8 @@ class deployit::install (
   }
 
   Exec {
-    cwd  => "${tmpdir}",
-    user => "${deployit_user}",
+    cwd       => "${tmpdir}",
+    user      => "${deployit_user}",
     logoutput => true
   }
 
@@ -29,46 +29,35 @@ class deployit::install (
 
 
   # # exec
-  # unzip server
-  exec { "unpack server file":
-    command => "/usr/bin/unzip ${tmpdir}/${install_server_zipfile}; /bin/cp -rp ${tmpdir}/deployit-${deployit_version}-server/* ${deployit_basedir}/server/",
-    creates => "${deployit_basedir}/server/bin"
-  }
+  # unzip server and cli packages
+  exec {
+    "unpack server file":
+      command => "/usr/bin/unzip ${tmpdir}/${install_server_zipfile}; /bin/cp -rp ${tmpdir}/deployit-${deployit_version}-server/* ${deployit_basedir}/server/",
+      creates => "${deployit_basedir}/server/bin";
 
-  # unzip cli
-  exec { "unpack cli file":
-    command => "/usr/bin/unzip ${tmpdir}/${install_cli_zipfile}; /bin/cp -rp ${tmpdir}/deployit-${deployit_version}-cli/* ${deployit_basedir}/cli/",
-    creates => "${deployit_basedir}/cli/bin"
+    "unpack cli file":
+      command => "/usr/bin/unzip ${tmpdir}/${install_cli_zipfile}; /bin/cp -rp ${tmpdir}/deployit-${deployit_version}-cli/* ${deployit_basedir}/cli/",
+      creates => "${deployit_basedir}/cli/bin"
   }
-
- 
 
   # # files
   # convenience links
-  file { "/etc/deployit":
-    ensure => link,
-    target => "${deployit_homedir}/server/conf"
-  }
+  file {
+    "/etc/deployit":
+      ensure => link,
+      target => "${deployit_homedir}/server/conf";
 
-  file { "/var/log/deployit":
-    ensure => link,
-    target => "${deployit_homedir}/server/log"
-  }
+    "/var/log/deployit":
+      ensure => link,
+      target => "${deployit_homedir}/server/log";
 
-  # init.d setup
-#  file { "init functions":
-#    source => "puppet:///modules/deployit/misc/functions.sh",
-#    path   => "/etc/init.d/functions",
-#    owner  => root,
-#    group  => root,
-#    mode   => 700,
-#  }
-
-  file { "init script":
-    content => template("deployit/deployit_initd.erb"),
-    path    => "/etc/init.d/deployit",
-    owner   => root,
-    group   => root,
-    mode    => 700,
+    "init script":
+      content => template("deployit/deployit_initd.erb"),
+      path    => "/etc/init.d/deployit",
+      owner   => root,
+      group   => root,
+      mode    => 700;
+      
+     
   }
 }

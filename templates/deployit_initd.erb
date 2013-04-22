@@ -19,7 +19,7 @@ RUNNINGUSER="<%= scope.lookupvar('deployit::deployit_user') %>"
 PROG="deployit"
 PIDFILE="/var/run/deployit.pid"
 DEPLOYIT_HOME="<%= scope.lookupvar('deployit::deployit_homedir') %>/server"
-DEPLOYIT_PASS="<%= scope.lookupvar('deployit::deployit_password') %>"
+#DEPLOYIT_PASS="<%= scope.lookupvar('deployit::deployit_password') %>"
 
 PID=$(ps -fu $RUNNINGUSER|grep $PROG |awk '{print $2}')
 if [ "$PID" != "" ]
@@ -55,7 +55,7 @@ start() {
 		echo
 		exit 1
 	else
-		su - $RUNNINGUSER -c "${DEPLOYIT_HOME}/bin/server.sh -repository-keystore-password ${DEPLOYIT_PASS} >/dev/null &"
+		su - $RUNNINGUSER -c "${DEPLOYIT_HOME}/bin/server.sh  >/dev/null &"
 
 
         	PID=$(ps -fu $RUNNINGUSER|grep deployit|awk '{print $2}')

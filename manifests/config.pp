@@ -16,15 +16,8 @@ class deployit::config (
   $deployit_password_b64 = encode_b64("${deployit_password}")
 
   # flow control
-  File["${deployit_homedir}/server/conf/deployit.conf"] -> Exec["init deployit"] ->
-  Ini_setting['deployit http port', 
-  'deployit jcr repository path', 
-  'deployit threads min', 
-  'deployit ssl', 
-  'deployit http bind address',
-  'deployit http context root',
-  'deployit threads max',
-  'deployit importable packages path']
+  File["${deployit_homedir}/server/conf/deployit.conf", "install plugins"] -> Ini_setting['deployit http port', 'deployit jcr repository path', 'deployit threads min', 'deployit ssl', 'deployit http bind address', 'deployit http context root', 'deployit threads max', 'deployit importable packages path'
+    ] -> Exec["init deployit"]
 
   # resource default settings
   File {
@@ -45,56 +38,58 @@ class deployit::config (
   #  file { "${deployit_homedir}/server/conf/deployit.conf": content => inline_template("<% server_conf_options.sort_by {|key,
   #  value| key}.each do |key, value| %><%= key %>=<%= value %> \n<% end %>"
   #    ) }
-  file { "${deployit_homedir}/server/conf/deployit.conf":
-    content => template("deployit/deployit.conf.erb"),
-    replace => false
+  file {
+    "${deployit_homedir}/server/conf/deployit.conf":
+    ;
+
+    "install plugins":
+      source       => "puppet:///modules/deployit/plugins/",
+      sourceselect => all,
+      recurse      => remote,
+      path         => "${deployit_homedir}/server/plugins"
   }
 
   exec { "init deployit":
     creates   => "${deployit_homedir}/server/repository",
-    command   => "${deployit_homedir}/server/bin/server.sh -setup -reinitialize -force -repository-keystore-password ${deployit_password}",
+    command   => "${deployit_homedir}/server/bin/server.sh -setup -reinitialize -force -setup-defaults ${deployit_homedir}/server/conf/deployit.conf",
     logoutput => true,
     user      => $deployit_user
   }
 
-  ini_setting { 'deployit http port':
-    setting => 'http.port',
-    value   => "${deployit_http_port}"
-  }
+  ini_setting {
+    'deployit http port':
+      setting => 'http.port',
+      value   => "${deployit_http_port}";
 
-  ini_setting { 'deployit jcr repository path':
-    setting => 'jcr.repository.path',
-    value   => "${deployit_jcr_repository_path}"
-  }
+    'deployit jcr repository path':
+      setting => 'jcr.repository.path',
+      value   => "${deployit_jcr_repository_path}";
 
-  ini_setting { 'deployit threads min':
-    setting => "threads.min",
-    value   => "${deployit_threads_min}"
-  }
+    'deployit threads min':
+      setting => "threads.min",
+      value   => "${deployit_threads_min}";
 
-  ini_setting { 'deployit ssl':
-    setting => 'ssl',
-    value   => "${deployit_ssl}"
-  }
+    'deployit ssl':
+      setting => 'ssl',
+      value   => "${deployit_ssl}";
 
-  ini_setting { 'deployit http bind address':
-    setting => 'http.bind.address',
-    value   => "${deployit_http_bind_address}"
-  }
+    'deployit http bind address':
+      setting => 'http.bind.address',
+      value   => "${deployit_http_bind_address}";
 
-  ini_setting { 'deployit http context root':
-    setting => 'http.context.root',
-    value   => "${deployit_http_context_root}"
-  }
+    'deployit http context root':
+      setting => 'http.context.root',
+      value   => "${deployit_http_context_root}";
 
-  ini_setting { 'deployit threads max':
-    setting => "threads.max",
-    value   => $deployit_threads_max
-  }
+    'deployit threads max':
+      setting => "threads.max",
+      value   => $deployit_threads_max;
 
-  ini_setting { 'deployit importable packages path':
-    setting => 'importable.packages.path',
-    value   => $deployit_importable_packages_path
+    'deployit importable packages path':
+      setting => 'importable.packages.path',
+      value   => $deployit_importable_packages_path;
   }
-
+  # 'deployit password':
+  #      setting => 'admin.password',
+  #      value   => $deployit_password;
 }

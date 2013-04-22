@@ -5,7 +5,6 @@ class deployit::download::puppetfiles (
   $tmpdir                 = $deployit::tmpdir,
   $install_server_zipfile = $deployit::install_server_zipfile,
   $install_cli_zipfile    = $deployit::install_cli_zipfile) {
-  
   # resource defaults
   File {
     ensure => present,
@@ -16,8 +15,12 @@ class deployit::download::puppetfiles (
 
   # resources
 
-  file { "${tmpdir}/${install_server_zipfile}": source => "puppet:///modules/deployit/sources/${install_server_zipfile}" }
+  file {
+    "${tmpdir}/${install_server_zipfile}":
+      source => "puppet:///modules/deployit/sources/${install_server_zipfile}";
 
-  file { "${tmpdir}/${install_cli_zipfile}": source => "puppet:///modules/deployit/sources/${install_cli_zipfile}" }
+    "${tmpdir}/${install_cli_zipfile}":
+      source => "puppet:///modules/deployit/sources/${install_cli_zipfile}"
+  }
 
 }
