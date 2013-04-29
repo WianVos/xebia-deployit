@@ -79,6 +79,10 @@ class Ci
       return clean_property_hash(new_props)
    end
    
+   def modify_ci_prop(id,key,value)
+       props[key] = value
+       xml 
+   end
    private
    
    def add_directory(id)

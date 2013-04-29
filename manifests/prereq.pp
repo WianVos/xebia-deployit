@@ -11,7 +11,6 @@ class deployit::prereq (
   case $osfamily {
     'RedHat' : {
       $xtra_packages = ["unzip", "java-1.6.0-openjdk"]
-      $xtra_gems = ["xml-simple", "rest-client", "mime-types"]
     }
     'Debian' : {
       $xtra_packages = ["unzip"]
@@ -23,11 +22,9 @@ class deployit::prereq (
   # # flow control
 
   File["$tmpdir"] -> File["${deployit_basedir}", "${deployit_basedir}/server", "${deployit_basedir}/cli"] -> File["basedir to homedir"
-    ] -> Package[$xtra_packages] -> Package[$xtra_gems]
+    ] -> Package[$xtra_packages] 
 
-  if $::pe_version != nil {
-    Package[$xtra_packages] -> File["pe gem link"] -> Package[$xtra_gems]
-  }
+  
 
   # # resource defaults
   File {
@@ -55,19 +52,14 @@ class deployit::prereq (
     target => "${deployit_basedir}"
   }
 
-  file { "pe gem link":
-    ensure => link,
-    path   => "/usr/sbin/gem",
-    target => "/opt/puppet/bin/gem"
-  }
+  
 
   # packages
   package {
     $xtra_packages:
     ;
 
-    $xtra_gems:
-      provider => gem
+    
   }
 
 }

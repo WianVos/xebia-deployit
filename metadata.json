@@ -20,13 +20,15 @@
     "files/plugins/jetty-plugin-0.6.jar": "f366a8ae463a46665a78a4065dd05e94",
     "files/sources/deployit-3.8.5-cli.zip": "9af2330201fc674a8c5107f5cc022433",
     "files/sources/deployit-3.8.5-server.zip": "19f6a9e574465ecda3ff2904d8bd9931",
-    "lib/puppet/deployit_util/ci.rb": "0572cabf428f24880a6e160dc76b6664",
+    "lib/puppet/deployit_util/ci.rb": "697fb04548db1c5243c100fc42694bcb",
     "lib/puppet/feature/restclient.rb": "9f097ad93c392b06e43e99120e897708",
     "lib/puppet/parser/functions/encode_b64.rb": "1b5608dc7b16df54089a77dda6d0ebc9",
     "lib/puppet/provider/deployit_ci/ruby.rb": "093d546faf0157dee889867a6cdac251",
+    "lib/puppet/provider/general_ci.rb": "c607d41639c2c3302dc2725263618ad5",
     "lib/puppet/provider/ini_setting/ruby.rb": "6f528a4f961da1a6dbf352be1a062df6",
     "lib/puppet/provider/ini_subsetting/ruby.rb": "99991c9d3ccf54c2aa1fcacf491d0cfc",
     "lib/puppet/type/deployit_ci.rb": "d7f716aef0c2cc5c8f04cf5ba572162f",
+    "lib/puppet/type/deployit_overthere_ssh_host.rb": "6c8e2647b8c288e7d1edf68f3b9247b7",
     "lib/puppet/type/ini_setting.rb": "afcd3f28b946b08db1b48fb189e6d8cf",
     "lib/puppet/type/ini_subsetting.rb": "b4e6a659f461bcd274dcdf1b1c39db65",
     "lib/puppet/util/external_iterator.rb": "69ad1eb930ca6d8d6b6faea343b4a22e",
@@ -37,10 +39,11 @@
     "manifests/development.pp": "9c6adb287db0cd2b80b82df4085e809a",
     "manifests/download.pp": "1ced0efa470b52608e3e83621ddaedb7",
     "manifests/download/puppetfiles.pp": "f00784731f6956d6f3ab66ab32a6b054",
-    "manifests/init.pp": "2dadcc994018a8a953f2ef432ba89896",
+    "manifests/init.pp": "9f9265f2865ed96272d8b40a14dcad73",
     "manifests/install.pp": "28bfa4e4e5843c5d5b9956a2073d4b9a",
     "manifests/post_install.pp": "44ad580511c0d9d7c75910e07fcab5d7",
-    "manifests/prereq.pp": "2f5303548b01c8ed739836e56c4d537e",
+    "manifests/prereq.pp": "fa7c384b8ab97cc1b0f2dd548d38dc82",
+    "manifests/provider_prereq.pp": "01ac35c5abc110592473302d6b2663f2",
     "manifests/service.pp": "5b85806446cb48389d26b942fac82a28",
     "manifests/users.pp": "4c419864a367b8339eca5a81a0b88811",
     "notes": "61dcd18db3eb0fca3a1ec9c8923a04ed",
@@ -106,6 +109,59 @@
         }
       ],
       "name": "deployit_ci"
+    },
+    {
+      "parameters": [
+        {
+          "name": "id",
+          "doc": "deployit ci id (full path required)"
+        },
+        {
+          "name": "type",
+          "doc": "provider type"
+        },
+        {
+          "name": "username",
+          "doc": "a valid deployit user"
+        },
+        {
+          "name": "password",
+          "doc": "the password for the deployit user"
+        },
+        {
+          "name": "host",
+          "doc": "address of the deployit server"
+        },
+        {
+          "name": "port",
+          "doc": "port to reach the deployit server on"
+        },
+        {
+          "name": "protocol",
+          "doc": "protocol to use in communication to the deployit host"
+        }
+      ],
+      "properties": [
+        {
+          "name": "connectionType"
+        },
+        {
+          "name": "os"
+        },
+        {
+          "name": "username"
+        },
+        {
+          "name": "password"
+        },
+        {
+          "name": "port"
+        },
+        {
+          "name": "address"
+        }
+      ],
+      "name": "deployit_overthere_ssh_host"
     },
     {
       "parameters": [
