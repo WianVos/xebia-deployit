@@ -56,8 +56,6 @@ class deployit::install (
       path    => "/etc/init.d/deployit",
       owner   => root,
       group   => root,
-      mode    => 700;
-      
-     
+      mode    => 700;  
   }
 }

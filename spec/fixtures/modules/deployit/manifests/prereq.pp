@@ -10,8 +10,8 @@ class deployit::prereq (
   # # variable setting
   case $osfamily {
     'RedHat' : {
-      $xtra_packages = ["unzip", "java-1.6.0-openjdk", "rubygems"]
-      $xtra_gems = ["xml-simple", "rest-client"]
+      $xtra_packages = ["unzip", "java-1.6.0-openjdk"]
+      $xtra_gems = ["xml-simple", "rest-client", "mime-types"]
     }
     'Debian' : {
       $xtra_packages = ["unzip"]
@@ -24,6 +24,10 @@ class deployit::prereq (
 
   File["$tmpdir"] -> File["${deployit_basedir}", "${deployit_basedir}/server", "${deployit_basedir}/cli"] -> File["basedir to homedir"
     ] -> Package[$xtra_packages] -> Package[$xtra_gems]
+
+  if $::pe_version != nil {
+    Package[$xtra_packages] -> File["pe gem link"] -> Package[$xtra_gems]
+  }
 
   # # resource defaults
   File {
@@ -41,20 +45,20 @@ class deployit::prereq (
   # files
 
 
-  file {
-    "${tmpdir}":
-    ;
+  file { "${tmpdir}": }
 
-    [
-      "${deployit_basedir}",
-      "${deployit_basedir}/server",
-      "${deployit_basedir}/cli"]:
-    ;
+  file { ["${deployit_basedir}", "${deployit_basedir}/server", "${deployit_basedir}/cli"]: }
 
-    "basedir to homedir":
-      ensure => link,
-      path   => "${deployit_homedir}",
-      target => "${deployit_basedir}"
+  file { "basedir to homedir":
+    ensure => link,
+    path   => "${deployit_homedir}",
+    target => "${deployit_basedir}"
+  }
+
+  file { "pe gem link":
+    ensure => link,
+    path   => "/usr/sbin/gem",
+    target => "/opt/puppet/bin/gem"
   }
 
   # packages

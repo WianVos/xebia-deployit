@@ -1,0 +1,1 @@
+Puppet.features.add(:restclient, :libs => ['xmlsimple', 'rest_client', 'mime-types'])

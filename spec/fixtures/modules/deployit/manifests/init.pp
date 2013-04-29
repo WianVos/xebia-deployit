@@ -27,7 +27,8 @@ class deployit(
   $deployit_importable_packages_path = "importablePackages",
   $tmpdir = "/var/tmp",
   $install_source = "puppetfiles",
-  $development = true
+  $development = true,
+  $load_ci = true
   
 ) {
 
@@ -61,4 +62,5 @@ class deployit(
   Class["deployit"]
   
   if $development == true {Class["deployit::service"] -> class{deployit::development: } -> Class["deployit"]}
+  if $load_ci == true {Class["deployit::service"] -> class{deployit::post_install:} -> Class["deployit"]}
 }
