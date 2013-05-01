@@ -1,6 +1,6 @@
 require File.expand_path('../../general_restclient.rb', __FILE__)
 
-Puppet::Type.type(:deployit_jetty_server).provide(:restclient, :parent => Puppet::Provider::General_restclient) do
+Puppet::Type.type(:deployit_core_directory).provide(:restclient, :parent => Puppet::Provider::General_restclient) do
 
   #  confine :feature => :restclient
   def initialize(value)
@@ -13,23 +13,22 @@ Puppet::Type.type(:deployit_jetty_server).provide(:restclient, :parent => Puppet
   end
 
   def self.deployit_type
-    "jetty.Server"
+    "core.Directory"
   end
 
   def self.properties
-    ["home"]
   end
 
   def self.parent
-    ["overthere.SshHost"]
+    ["internal.Root"]
   end
 
   def self.hash_properties
-    ["envVars"]
+  
   end
 
   def self.array_properties
-    ["tags"]
+    
   end
 
 end

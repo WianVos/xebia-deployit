@@ -1,14 +1,9 @@
 require 'rubygems'
 require 'pathname'
 
-# copied in ruby libs
-#require 'xml-simple'
 require 'restclient' if Puppet.features.restclient?
-
 require 'xmlsimple' if Puppet.features.restclient?
 
-#require File.expand_path('../lib/xmlsimple.rb', __FILE__)
-#require File.expand_path('../lib/rest_client.rb', __FILE__)
 
 module Puppet
   module Deployit_util
@@ -39,33 +34,18 @@ module Puppet
       # add_ci creates a ci in the deployit inventory. We will take care of creating the undelying directory's but not other types because the get more complicated
       # these can be added from puppet itself by using the normal resource classes
       def add_ci(id, type, props={}, parent = ["core.Directory", "internal.Root"])
-        p id
-        p type
-        p props
-        p parent
         
-        # if where adding a directory .. just add it without looking at the parents
-        if type == "core.Directory"
-          add_directory(Pathname.new(id).dirname) unless parent_exists?(id)
-        else
+        
 
-          # if where adding something else do the valid parent check
-          add_directory(Pathname.new(id).dirname) unless parent_exists?(id) or parent.include? "core.Directory"
+         
+          
 
-          if parent != nil
-
-            # if the ci is created on top of an illegal parent type .. let's go bonckers
-            p parent_correct?(id,parent)
-            return "invalid parent type for #{id}" unless parent_correct?(id,parent)
-          end
-        end
-
+        # if the ci is created on top of an illegal parent type .. let's go bonckers
+       return "invalid parent type for #{id}" unless parent_correct?(id,parent)
         # create the xml body
         xml = to_deployit_xml(type, props, id)
-        p xml
         # push the xml to the correct xml
         response = RestClient.post "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
-        p response
         # return our success
         return "succes"
 
@@ -93,7 +73,6 @@ module Puppet
         new_props = get_ci(id).merge(props)
 
         xml = to_deployit_xml(type, new_props, id)
-
         response = RestClient.put "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
 
       end
@@ -150,7 +129,6 @@ module Puppet
         props.delete('id') if props.has_key?('id')
         props.delete('token') if props.has_key?('token')
         props.delete('host') if props.has_key?('host')
-        
         xml = XmlSimple.xml_out(props, :RootName => type ,:AttrPrefix => true )
 
       end

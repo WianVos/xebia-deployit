@@ -9,8 +9,8 @@ Puppet::Type.type(:deployit_overthere_ssh_host).provide(:restclient, :parent => 
     @deployit_type = self.class.deployit_type
     @properties = self.class.properties
     @parent = self.class.parent
-    @array_properties = self.class.simple_array_properties
-
+    @array_properties = self.class.array_properties
+    @hash_properties = self.class.hash_properties
   end
   
   
@@ -26,11 +26,11 @@ Puppet::Type.type(:deployit_overthere_ssh_host).provide(:restclient, :parent => 
     ["internal.Root", "core.Directory"] 
   end
 
-  def self.complex_tags
-     ["envvars"]
+  def self.hash_properties
+     ["envVars"]
    end
    
-   def self.simple_array_properties
+   def self.array_properties
      ["tags"]
    end
 end

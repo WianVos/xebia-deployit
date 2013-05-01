@@ -7,48 +7,53 @@ class Puppet::Provider::General_restclient < Puppet::Provider
     super(value)
     @deployit_type = self.class.deployit_type
     @properties = self.class.properties
-    @array_properties = self.class.simple_array_properties
+    @array_properties = self.class.array_properties
+    @hash_properties = self.class.hash_properties
     @parent = self.class.parent
 
-    @properties.each do | prop |
-      downcase_prop = prop.downcase
-      #use instance eval to dynamicly add code to the class ..
-      instance_eval %Q{
+    unless @properties == nil
 
-                           # add a method with the name #{prop}
-                            def #{downcase_prop}
+      @properties.each do | prop |
+        downcase_prop = prop.downcase
+        #use instance eval to dynamicly add code to the class ..
+        instance_eval %Q{
 
-                              # get the property from the property hash
-                              result = nil
-                              if @property_hash.has_key?("#{prop}")
-                                result = @property_hash["#{prop}"]
-                              end
-                              # check if the result is not nil
+        # add a method with the name #{prop}
+        def #{downcase_prop}
+        # get the property from the property hash
+         result = nil
+         if @property_hash.has_key?("#{prop}")
+           result = @property_hash["#{prop}"]
+         end
+        # check if the result is not nil
 
-                              unless result == nil
-                                #results are returned as arrays this doesn't work for puppet so let's cut them down to size if needed
-                                result = result.first unless result.length > 1
+         unless result == nil
+        #results are returned as arrays this doesn't work for puppet so let's cut them down to size if needed
+         result = result.first unless result.length > 1
 
-                               return result
+        return result
+       end
 
-                              end
-
-                              # and return the fruit of our labor
-                              return result
-                            end
-
-                            # add setter method
-                            def #{downcase_prop}=(value)
-                              # add the value to the hash in the correct place
-                              @property_hash["#{prop}"] = value
-                            end
-                           }
-
+     # and return the fruit of our labor
+     return result
     end
-    @array_properties.each do |aprop|
-      downcase_aprop = aprop.downcase
 
-      instance_eval %Q{def #{downcase_aprop}
+    # add setter method
+    def #{downcase_prop}=(value)
+     # add the value to the hash in the correct place
+     @property_hash["#{prop}"] = value
+    end
+    }
+
+      end
+    end
+    
+    # and again for the array properties if there there
+    unless @array_properties == nil
+      @array_properties.each do |aprop|
+        downcase_aprop = aprop.downcase
+
+        instance_eval %Q{def #{downcase_aprop}
         result = nil
         if @property_hash.has_key?("#{aprop}")
           result = @property_hash["#{aprop}"].first['value']
@@ -62,33 +67,91 @@ class Puppet::Provider::General_restclient < Puppet::Provider
       end
 
       def #{downcase_aprop}=(value)
-        p value
         @property_hash["#{aprop}"] = {'values' => value }
 
       end
-  }
+    }
+      end
+    end
+    # .... hash properties.
+    unless @hash_properties == nil
+
+      @hash_properties.each do |hprop|
+        downcase_hprop = hprop.downcase
+
+        instance_eval %Q{
+      def #{downcase_hprop}
+       result = {}
+
+       if  @property_hash.has_key?("#{hprop}")
+
+           @property_hash["#{hprop}"].first['entry'].each {|d| result["\#{d['key']}"] = d['content']} if @property_hash["#{hprop}"].first.has_key?('entry')
+
+              end
+              return result
+
+       end
+       def #{downcase_hprop}=(value)
+             @property_hash['#{hprop}'] = [{ 'entry' => []}]
+             value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
+
+       end
+
+    }
+
+      end
     end
   end
 
+  
   def exists?
-    p "exists"
 
     get_props_hash
 
     @property_hash["exists"] == true
+
   end
 
+  # the create method gets called when a type has ensure set to present but the resource is not available on the remote system
+  
   def create
-    @properties.each do |p|
+  
+    # we have three catagories of properties that need to be added to the properties hash
+    # loop over the regular properties and add the values to the property hash ready for flushing  
+    if @properties != nil
+      @properties.each do |p|
 
-      @property_hash["#{p}"] = resource["#{p}".downcase.to_sym] unless resource["#{p}".downcase.to_sym] == nil
+        @property_hash["#{p}"] = resource["#{p}".downcase.to_sym] unless resource["#{p}".downcase.to_sym] == nil
 
+      end
     end
-
+    
+    # do the same for hash properties 
+    # instead of just adding them to the hash we have to send them to the meta created method using the ruby send method
+    # btw we need to downcase the properties name
+    if @hash_properties != nil
+      @hash_properties.each do |hp|
+        dhp = hp.downcase
+       send("#{dhp}=",resource["#{dhp}".to_sym])
+      end
+    end
+    
+    # and again for array properties
+    if @array_properties != nil
+      @array_properties.each do |ap|
+        dap = ap.downcase
+        send("#{dap}=",resource["#{dap}".to_sym])
+      end
+    end
+    
+    # set the ensure property to present
+    # we are creating ... you know.
     @property_hash["ensure"] = "present"
+      
   end
 
   def destroy
+    # hoeray for flushing .. the only thing we need to do here is set ensure to absent
     @property_hash["ensure"] = "absent"
   end
 
@@ -109,7 +172,6 @@ class Puppet::Provider::General_restclient < Puppet::Provider
       # if it does exist
       # get the ci's property's into a hash
       @property_hash = c.get_ci_hash(resource[:id])
-      p @property_hash
       @property_hash["ensure"] = "present"
       @property_hash["exists"] = true
 

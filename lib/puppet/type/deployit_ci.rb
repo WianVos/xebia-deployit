@@ -80,14 +80,12 @@ Puppet::Type.newtype(:deployit_ci) do
     end
 
     def should_to_s(newvalue)
-      p "should_to_s"
       # Newvalue is an array, but we're only interested in first record.
       newvalue = newvalue.first
       newvalue.inspect
     end
 
     def is_to_s(currentvalue)
-      p "is_to_s"
       currentvalue.inspect
     end
   end

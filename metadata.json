@@ -21,18 +21,20 @@
     "files/plugins/jetty-plugin-0.6.jar": "f366a8ae463a46665a78a4065dd05e94",
     "files/sources/deployit-3.8.5-cli.zip": "9af2330201fc674a8c5107f5cc022433",
     "files/sources/deployit-3.8.5-server.zip": "19f6a9e574465ecda3ff2904d8bd9931",
-    "lib/puppet/deployit_util/ci.rb": "425b23b325880460e392fd2f5ebbb41b",
+    "lib/puppet/deployit_util/ci.rb": "b8ea01c2150aba894f92b16c31753b56",
     "lib/puppet/feature/restclient.rb": "9f097ad93c392b06e43e99120e897708",
     "lib/puppet/parser/functions/encode_b64.rb": "1b5608dc7b16df54089a77dda6d0ebc9",
     "lib/puppet/provider/deployit_ci/ruby.rb": "093d546faf0157dee889867a6cdac251",
-    "lib/puppet/provider/deployit_jetty_server/restclient.rb": "1d254dcc929e83c1713d9450fa1f98db",
-    "lib/puppet/provider/deployit_overthere_ssh_host/restclient.rb": "e611f53101fa5cb7102e9be43c06b7e6",
-    "lib/puppet/provider/general_restclient.rb": "a2c2aa9a32528c899b6d16c6b63e8a65",
+    "lib/puppet/provider/deployit_core_directory/restclient.rb": "ac4bdf62c81418301642fd6d48a30aac",
+    "lib/puppet/provider/deployit_jetty_server/restclient.rb": "98330d14b0de62e8d72a378fbecd13b4",
+    "lib/puppet/provider/deployit_overthere_ssh_host/restclient.rb": "89d5ef7275c9becbeff16fb972553c67",
+    "lib/puppet/provider/general_restclient.rb": "03a206e4cb5ddb930964268c2d9245d0",
     "lib/puppet/provider/ini_setting/ruby.rb": "6f528a4f961da1a6dbf352be1a062df6",
     "lib/puppet/provider/ini_subsetting/ruby.rb": "99991c9d3ccf54c2aa1fcacf491d0cfc",
-    "lib/puppet/type/deployit_ci.rb": "d7f716aef0c2cc5c8f04cf5ba572162f",
-    "lib/puppet/type/deployit_jetty_server.rb": "b6519ca8d3303626d286153a529d8187",
-    "lib/puppet/type/deployit_overthere_ssh_host.rb": "c6ed77e5ecbe1fff66c1b3bf027c7bcf",
+    "lib/puppet/type/deployit_ci.rb": "62a0ba4a923eba4ad5e616dd3ef00a45",
+    "lib/puppet/type/deployit_core_directory.rb": "cacee1ac1bd11298cb05a9e634419049",
+    "lib/puppet/type/deployit_jetty_server.rb": "3fe596763fe002d36dbb20f63eecb147",
+    "lib/puppet/type/deployit_overthere_ssh_host.rb": "ad0a8bf9a69ca75e2c79e20a773289a9",
     "lib/puppet/type/ini_setting.rb": "afcd3f28b946b08db1b48fb189e6d8cf",
     "lib/puppet/type/ini_subsetting.rb": "b4e6a659f461bcd274dcdf1b1c39db65",
     "lib/puppet/util/external_iterator.rb": "69ad1eb930ca6d8d6b6faea343b4a22e",
@@ -45,7 +47,7 @@
     "manifests/download/puppetfiles.pp": "f00784731f6956d6f3ab66ab32a6b054",
     "manifests/init.pp": "9f9265f2865ed96272d8b40a14dcad73",
     "manifests/install.pp": "28bfa4e4e5843c5d5b9956a2073d4b9a",
-    "manifests/post_install.pp": "beed1daea2453a7caac43e7154b9cd6f",
+    "manifests/post_install.pp": "6ceacdbb71152b0309440cc82584607a",
     "manifests/prereq.pp": "fa7c384b8ab97cc1b0f2dd548d38dc82",
     "manifests/provider_prereq.pp": "01ac35c5abc110592473302d6b2663f2",
     "manifests/service.pp": "5b85806446cb48389d26b942fac82a28",
@@ -141,6 +143,40 @@
           "doc": "protocol to use in communication to the deployit host"
         }
       ],
+      "providers": [
+        {
+          "name": "restclient"
+        }
+      ],
+      "name": "deployit_core_directory"
+    },
+    {
+      "parameters": [
+        {
+          "name": "id",
+          "doc": "deployit ci id (full path required)"
+        },
+        {
+          "name": "deployit_username",
+          "doc": "a valid deployit user"
+        },
+        {
+          "name": "deployit_password",
+          "doc": "the password for the deployit user"
+        },
+        {
+          "name": "deployit_host",
+          "doc": "address of the deployit server"
+        },
+        {
+          "name": "deployit_port",
+          "doc": "port to reach the deployit server on"
+        },
+        {
+          "name": "deployit_protocol",
+          "doc": "protocol to use in communication to the deployit host"
+        }
+      ],
       "properties": [
         {
           "name": "home"
@@ -149,7 +185,8 @@
           "name": "tags"
         },
         {
-          "name": "envvars"
+          "name": "envvars",
+          "doc": "a hash of valid propertys to be sent to deployit"
         }
       ],
       "providers": [

@@ -75,6 +75,6 @@ Puppet::Type.newtype(:deployit_overthere_ssh_host) do
   newproperty(:address) do
     defaultto('localhost')
   end
-  newproperty(:tags) do    
+  newproperty(:tags, :array_matching => :all) do    
   end
 end
