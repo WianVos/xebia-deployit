@@ -52,4 +52,7 @@ class deployit::post_install (
       "password"      => "{b64}ieRQpq8U6N4EymG4biwNOA=="
     }
   }
+  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty3":
+    os => "UNIX"
+  }
 }

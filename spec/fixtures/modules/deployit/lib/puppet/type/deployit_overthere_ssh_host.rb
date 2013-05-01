@@ -29,32 +29,29 @@ Puppet::Type.newtype(:deployit_overthere_ssh_host) do
 
   # general properties
 
-  newparam(:type) do
-    desc 'provider type'
+ 
 
-  end
-
-  newparam(:username) do
+  newparam(:deployit_username) do
     desc 'a valid deployit user'
-
+    defaultto('admin')
   end
 
-  newparam(:password) do
+  newparam(:deployit_password) do
     desc 'the password for the deployit user'
-
+    defaultto('admin')
   end
 
-  newparam(:host) do
+  newparam(:deployit_host) do
     desc 'address of the deployit server'
     defaultto('localhost')
   end
 
-  newparam(:port) do
+  newparam(:deployit_port) do
     desc 'port to reach the deployit server on'
     defaultto('4516')
   end
 
-  newparam(:protocol) do
+  newparam(:deployit_protocol) do
     desc 'protocol to use in communication to the deployit host'
     defaultto('http')
   end
@@ -77,5 +74,7 @@ Puppet::Type.newtype(:deployit_overthere_ssh_host) do
   end
   newproperty(:address) do
     defaultto('localhost')
+  end
+  newproperty(:tags) do    
   end
 end

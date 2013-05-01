@@ -43,6 +43,7 @@ class Ci
       end
       
       xml = to_deployit_xml(type, props, id) 
+      p xml
       response = RestClient.post "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
         
    end
@@ -78,6 +79,10 @@ class Ci
       new_props = get_ci(id)
       return clean_property_hash(new_props)
    end
+  def get_ci_hash(id)
+        new_props = get_ci(id)
+        return new_props
+     end
    
    def modify_ci_prop(id,key,value)
        props[key] = value
