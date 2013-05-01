@@ -55,4 +55,24 @@ class deployit::post_install (
   deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty3":
     os => "UNIX"
   }
+  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty4":
+    os => "UNIX"
+  }
+  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty5":
+    os => "UNIX"
+  }
+  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty6":
+    os => "UNIX"
+  }
+  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty11":
+    os => "UNIX"
+  }
+  deployit_jetty_server{"Infrastructure/Test1/TestJetty11/server4":
+    tags => ["test", "test2"],
+    home => '/opt/jetty2'
+  }
+  deployit_jetty_server{"Infrastructure/Test1/TestJetty11/server1":
+    tags => ["test", "test2","test3"],
+    home => '/opt/jetty1'
+  }
 }
