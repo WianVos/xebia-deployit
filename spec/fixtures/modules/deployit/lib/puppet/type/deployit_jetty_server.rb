@@ -58,35 +58,53 @@ Puppet::Type.newtype(:deployit_jetty_server) do
   newproperty(:home) do
     defaultto('/opt/jetty')
   end
-  newproperty(:tags, :array_matching => :all) do
+
+  newproperty(:tags, :array_matching => :all ) do
+    def insync?(is)
+
+      # Comparison of Array's
+      # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
+      return false unless is.class == Array and should.class == Array
+
+      # now lets compare the two and see is a modify is needed
+      # haven't quite worked out yet what to do with extra values in the is hash
+      @should.each do |k|
+
+        # if is[k] is not equal to should[k] the insync? should return false
+        return false unless is.include?(k)
+
+      end
+      return false unless is.length == @should.length
+      true
+    end
 
   end
-  
+
   # this is a somewhat nifty construction
   # for this to work properly array_matching should be set to all
   newproperty(:envvars , :array_matching => :all) do
-    
+
     desc 'a hash of valid propertys to be sent to deployit'
-    
+
     # validate that where actually sending a hash
     validate do |value|
       raise ArgumentError, "Puppet::Type::deployit_jetty_server: envvars must be a hash." unless value.is_a? Hash
     end
-    
+
     #overwrite the default insync? method completely
     def insync?(is)
       # @should is an Array. see lib/puppet/type.rb insync?
       # the hash where interested in is in the first field of the @should array
-      # this holds the hash we assigend to envvars 
+      # this holds the hash we assigend to envvars
       should = @should.first
       # Comparison of hashes
       # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
       return false unless is.class == Hash and should.class == Hash
-      
+
       # now lets compare the two and see is a modify is needed
       # haven't quite worked out yet what to do with extra values in the is hash
       should.each do |k,v|
-        
+
         # if is[k] is not equal to should[k] the insync? should return false
         return false unless is[k].to_s == should[k].to_s
 

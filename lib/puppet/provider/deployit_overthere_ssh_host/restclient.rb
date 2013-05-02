@@ -27,7 +27,7 @@ Puppet::Type.type(:deployit_overthere_ssh_host).provide(:restclient, :parent => 
   end
 
   def self.hash_properties
-     ["envVars"]
+     nil
    end
    
    def self.array_properties

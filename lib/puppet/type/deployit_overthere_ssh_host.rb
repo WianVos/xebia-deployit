@@ -29,8 +29,6 @@ Puppet::Type.newtype(:deployit_overthere_ssh_host) do
 
   # general properties
 
- 
-
   newparam(:deployit_username) do
     desc 'a valid deployit user'
     defaultto('admin')
@@ -75,6 +73,25 @@ Puppet::Type.newtype(:deployit_overthere_ssh_host) do
   newproperty(:address) do
     defaultto('localhost')
   end
-  newproperty(:tags, :array_matching => :all) do    
+  
+  newproperty(:tags, :array_matching => :all) do
+    def insync?(is)
+
+      # Comparison of Array's
+      # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
+      return false unless is.class == Array and should.class == Array
+
+      # now lets compare the two and see is a modify is needed
+      # haven't quite worked out yet what to do with extra values in the is hash
+      @should.each do |k|
+
+        # if is[k] is not equal to should[k] the insync? should return false
+        return false unless is.include?(k)
+
+      end
+      return false unless is.length == @should.length
+      true
+    end
+
   end
 end

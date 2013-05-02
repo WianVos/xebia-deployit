@@ -125,12 +125,21 @@ module Puppet
         props['id'] = id unless id == nil
         props['@id'] = props['id'] if props.has_key?('id')
         props['@token'] = props['token'] if props.has_key?('token')
-
+        
+        # if the hash contains envvars than we should mangle the hash a little bit
+        # to properly translate to a valid xml that deployit understands the key should be named @key and not key
+        if props.has_key?('envVars') == true and props['envVars'].first['entry'].first.has_key?('key')
+          result = {}
+          p props['envVars'].first['entry']
+          props['envVars'].first['entry'].each {|d| result[d['key']] = d['content']} if props['envVars'].first.has_key?('entry')
+          props['envVars'] = [{ 'entry' => []}]
+          result.each {|key, value| props['envVars'].first['entry'] << { "content" => value,  "@key" => key } }
+        end  
+        
         props.delete('id') if props.has_key?('id')
         props.delete('token') if props.has_key?('token')
         props.delete('host') if props.has_key?('host')
         xml = XmlSimple.xml_out(props, :RootName => type ,:AttrPrefix => true )
-
       end
 
       def clean_property_hash(props)

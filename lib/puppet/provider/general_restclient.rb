@@ -47,7 +47,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
       end
     end
-    
+
     # and again for the array properties if there there
     unless @array_properties == nil
       @array_properties.each do |aprop|
@@ -62,7 +62,6 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
         end
         # check if the result is not nil
-
         return result
       end
 
@@ -103,7 +102,6 @@ class Puppet::Provider::General_restclient < Puppet::Provider
     end
   end
 
-  
   def exists?
 
     get_props_hash
@@ -113,11 +111,11 @@ class Puppet::Provider::General_restclient < Puppet::Provider
   end
 
   # the create method gets called when a type has ensure set to present but the resource is not available on the remote system
-  
+
   def create
-  
+
     # we have three catagories of properties that need to be added to the properties hash
-    # loop over the regular properties and add the values to the property hash ready for flushing  
+    # loop over the regular properties and add the values to the property hash ready for flushing
     if @properties != nil
       @properties.each do |p|
 
@@ -125,29 +123,29 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
       end
     end
-    
-    # do the same for hash properties 
+
+    # do the same for hash properties
     # instead of just adding them to the hash we have to send them to the meta created method using the ruby send method
     # btw we need to downcase the properties name
     if @hash_properties != nil
       @hash_properties.each do |hp|
         dhp = hp.downcase
-       send("#{dhp}=",resource["#{dhp}".to_sym])
+        send("#{dhp}=",resource["#{dhp}".to_sym]) unless resource["#{dhp}".to_sym] == nil
       end
     end
-    
+
     # and again for array properties
     if @array_properties != nil
       @array_properties.each do |ap|
         dap = ap.downcase
-        send("#{dap}=",resource["#{dap}".to_sym])
+        send("#{dap}=",resource["#{dap}".to_sym]) unless resource["#{dap}".to_sym] == nil
       end
     end
-    
+
     # set the ensure property to present
     # we are creating ... you know.
     @property_hash["ensure"] = "present"
-      
+
   end
 
   def destroy
