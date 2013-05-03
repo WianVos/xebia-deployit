@@ -8,7 +8,8 @@ class deployit::users (
   # input validation
 
   # resources
-
+  
+  # create the deployit needed user and group
   group { $deployit_group: ensure => present, }
 
   user { $deployit_user:

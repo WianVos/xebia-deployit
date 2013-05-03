@@ -1,9 +1,8 @@
-require File.expand_path('../../deployit_util/ci.rb', __FILE__) 
+require File.expand_path('../../deployit_util/ci.rb', __FILE__)
 
 class Puppet::Provider::General_restclient < Puppet::Provider
 
   confine :feature => :restclient
-  
   def initialize(value={})
     super(value)
     @deployit_type = self.class.deployit_type
@@ -21,31 +20,35 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
         # add a method with the name #{prop}
         def #{downcase_prop}
-        # get the property from the property hash
+
+         # get the property from the property hash
+
          result = nil
+
          if @property_hash.has_key?("#{prop}")
            result = @property_hash["#{prop}"]
          end
-        # check if the result is not nil
+         # check if the result is not nil
 
          unless result == nil
-        #results are returned as arrays this doesn't work for puppet so let's cut them down to size if needed
+
+         #results are returned as arrays this doesn't work for puppet so let's cut them down to size if needed
          result = result.first unless result.length > 1
 
+         return result
+        end
+
+        # and return the fruit of our labor
         return result
        end
 
-     # and return the fruit of our labor
-     return result
-    end
+       # add setter method
+       def #{downcase_prop}=(value)
 
-    # add setter method
-    def #{downcase_prop}=(value)
-     # add the value to the hash in the correct place
-     @property_hash["#{prop}"] = value
-    end
-    }
-
+       # add the value to the hash in the correct place
+        @property_hash["#{prop}"] = value
+       end
+      }
       end
     end
 
@@ -54,25 +57,26 @@ class Puppet::Provider::General_restclient < Puppet::Provider
       @array_properties.each do |aprop|
         downcase_aprop = aprop.downcase
 
-        instance_eval %Q{def #{downcase_aprop}
-        result = nil
-        if @property_hash.has_key?("#{aprop}")
+        instance_eval %Q{
+        def #{downcase_aprop}
+         result = nil
+         if @property_hash.has_key?("#{aprop}")
           result = @property_hash["#{aprop}"].first['value']
 
           result.shift if result != nil and result.first.is_a?(Hash)
 
+         end
+         # check if the result is not nil
+         return result
         end
-        # check if the result is not nil
-        return result
-      end
 
-      def #{downcase_aprop}=(value)
-        @property_hash["#{aprop}"] = {'values' => value }
-
-      end
-    }
+        def #{downcase_aprop}=(value)
+         @property_hash["#{aprop}"] = {'values' => value }
+        end
+       }
       end
     end
+
     # .... hash properties.
     unless @hash_properties == nil
 
@@ -80,25 +84,24 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         downcase_hprop = hprop.downcase
 
         instance_eval %Q{
-      def #{downcase_hprop}
-       result = {}
+        def #{downcase_hprop}
 
-       if  @property_hash.has_key?("#{hprop}")
+         result = {}
+
+         if  @property_hash.has_key?("#{hprop}")
 
            @property_hash["#{hprop}"].first['entry'].each {|d| result["\#{d['key']}"] = d['content']} if @property_hash["#{hprop}"].first.has_key?('entry')
 
-              end
-              return result
+         end
+         return result
 
-       end
-       def #{downcase_hprop}=(value)
-             @property_hash['#{hprop}'] = [{ 'entry' => []}]
-             value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
+        end
+        def #{downcase_hprop}=(value)
+         @property_hash['#{hprop}'] = [{ 'entry' => []}]
+         value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
+        end
 
-       end
-
-    }
-
+        }
       end
     end
   end
