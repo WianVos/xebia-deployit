@@ -25,6 +25,11 @@ Puppet::Type.newtype(:deployit_jetty_server) do
   # name var
   newparam(:id, :namevar => true) do
     desc 'deployit ci id (full path required)'
+
+    validate do |value|
+      fail("invalid id") unless value =~ /^(Infrastructure)/
+    end
+
   end
 
   # general properties (default deployit stuff)
@@ -122,5 +127,19 @@ Puppet::Type.newtype(:deployit_jetty_server) do
       currentvalue.inspect
     end
   end
+
+  # loop over the array of types we want to autorequire ... all of them :-)
+  ["deployit_core_directory","deployit_overthere_ssh_host"].each {|c|
+    autorequire(c.to_sym) do
+      requires = []
+      catalog.resources.each {|d|
+
+        if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+          requires << d.name
+        end
+      }
+      requires
+    end
+  }
 
 end

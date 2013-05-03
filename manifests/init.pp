@@ -29,7 +29,8 @@ class deployit (
   $install_source       = "puppetfiles",
   $development          = true,
   $load_ci              = true,
-  $is_server            = true) {
+  $is_server            = true,
+  $test                 = true) {
   # input validation
 
   case $install_source {
@@ -65,5 +66,12 @@ class deployit (
 
   if $load_ci == true {
     Class["deployit::service"] -> class { deployit::post_install: } -> Class["deployit"]
+  }
+  
+  if $test == true {
+    case $is_server {
+      true : {Class["deployit::service"]-> class{deployit::test::server:} -> Class["deployit"]}
+      false: {Class["deployit::provider_prereq"]-> class{deployit::test::agent:} -> Class["deployit"]}
+    }
   }
 }

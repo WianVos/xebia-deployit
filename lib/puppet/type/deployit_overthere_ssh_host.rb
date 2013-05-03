@@ -59,7 +59,11 @@ Puppet::Type.newtype(:deployit_overthere_ssh_host) do
     defaultto('SUDO')
   end
   newproperty(:os) do
+    
     defaultto('UNIX')
+    
+    newvalue('UNIX')
+    newvalue('WINDOWS')
   end
   newproperty(:username) do
     defaultto('dummy')
@@ -73,7 +77,7 @@ Puppet::Type.newtype(:deployit_overthere_ssh_host) do
   newproperty(:address) do
     defaultto('localhost')
   end
-  
+
   newproperty(:tags, :array_matching => :all) do
     def insync?(is)
 
@@ -94,4 +98,19 @@ Puppet::Type.newtype(:deployit_overthere_ssh_host) do
     end
 
   end
+  
+  # ad a couple of autorequires (one in this case)
+  ["deployit_core_directory"].each {|c|
+    autorequire(c.to_sym) do
+      requires = []
+      catalog.resources.each {|d|
+        if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+          requires << d.name
+        end
+      }
+      
+      requires
+    end
+  }
+
 end

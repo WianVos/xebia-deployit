@@ -25,6 +25,10 @@ Puppet::Type.newtype(:deployit_core_directory) do
   # name var
   newparam(:id, :namevar => true) do
     desc 'deployit ci id (full path required)'
+    
+    validate do |value|
+          fail("invalid id") unless value =~ /^(Infrastructure|Environments)/
+     end
   end
 
   # general properties (default deployit stuff)
@@ -54,6 +58,6 @@ Puppet::Type.newtype(:deployit_core_directory) do
     defaultto('http')
   end
   # property's
-
+  
   
 end

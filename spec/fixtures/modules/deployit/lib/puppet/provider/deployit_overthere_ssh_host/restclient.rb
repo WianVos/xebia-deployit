@@ -25,7 +25,9 @@ Puppet::Type.type(:deployit_overthere_ssh_host).provide(:restclient, :parent => 
   def self.parent
     ["internal.Root", "core.Directory"] 
   end
-
+  def self.autorequires
+    ["deployit_core_directory"]
+  end
   def self.hash_properties
      nil
    end

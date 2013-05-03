@@ -33,13 +33,8 @@ module Puppet
 
       # add_ci creates a ci in the deployit inventory. We will take care of creating the undelying directory's but not other types because the get more complicated
       # these can be added from puppet itself by using the normal resource classes
-      def add_ci(id, type, props={}, parent = ["core.Directory", "internal.Root"])
+      def add_ci(id, type, props={}, parent = ["core.Directory", "internal.Root"])  
         
-        
-
-         
-          
-
         # if the ci is created on top of an illegal parent type .. let's go bonckers
        return "invalid parent type for #{id}" unless parent_correct?(id,parent)
         # create the xml body

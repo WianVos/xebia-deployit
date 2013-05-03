@@ -1,8 +1,9 @@
-require File.expand_path('../../deployit_util/ci.rb', __FILE__)
+require File.expand_path('../../deployit_util/ci.rb', __FILE__)  if Puppet.features.restclient?
 
 class Puppet::Provider::General_restclient < Puppet::Provider
 
   confine :feature => :restclient
+  
   def initialize(value={})
     super(value)
     @deployit_type = self.class.deployit_type
