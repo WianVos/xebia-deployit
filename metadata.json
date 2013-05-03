@@ -28,6 +28,7 @@
     "lib/puppet/provider/deployit_core_directory/restclient.rb": "ac4bdf62c81418301642fd6d48a30aac",
     "lib/puppet/provider/deployit_jetty_server/restclient.rb": "48dd113d13135e3c8e28a67a6a90a226",
     "lib/puppet/provider/deployit_overthere_ssh_host/restclient.rb": "8de25561dd1b3ca5e46c43b8915f0ad3",
+    "lib/puppet/provider/deployit_udm_dictionary/restclient.rb": "d4daf95d90d6239c34644503fcf82b23",
     "lib/puppet/provider/general_restclient.rb": "930afd405a30b85f4a7eec14875c5c66",
     "lib/puppet/provider/ini_setting/ruby.rb": "6f528a4f961da1a6dbf352be1a062df6",
     "lib/puppet/provider/ini_subsetting/ruby.rb": "99991c9d3ccf54c2aa1fcacf491d0cfc",
@@ -35,6 +36,7 @@
     "lib/puppet/type/deployit_core_directory.rb": "8dd5e908d80fcd82be9ba2beff2ab411",
     "lib/puppet/type/deployit_jetty_server.rb": "1304348c6027ba1dc3f0614dcd7f1dcd",
     "lib/puppet/type/deployit_overthere_ssh_host.rb": "6c18e1177c84580583899a6e15e4b57c",
+    "lib/puppet/type/deployit_udm_dictionary.rb": "e57d6cde684cf75a9b009b21e2aaff82",
     "lib/puppet/type/ini_setting.rb": "afcd3f28b946b08db1b48fb189e6d8cf",
     "lib/puppet/type/ini_subsetting.rb": "b4e6a659f461bcd274dcdf1b1c39db65",
     "lib/puppet/util/external_iterator.rb": "69ad1eb930ca6d8d6b6faea343b4a22e",
@@ -51,7 +53,7 @@
     "manifests/prereq.pp": "bb544f5f61d7b2c68fa7f5c424af5b77",
     "manifests/provider_prereq.pp": "1937c818c87510ce9ae338faeb76cd1b",
     "manifests/service.pp": "6e922192f6363061b22f0f9c3ba87af2",
-    "manifests/test/agent.pp": "a1de55e00ce35810d8fefe5d4e2c77ee",
+    "manifests/test/agent.pp": "b6320d0ba38888bd0be5e8ea82e2caae",
     "manifests/test/server.pp": "09bbfad2d43a3653fbd7cd0c9201f9dc",
     "manifests/users.pp": "14d797578964fb0575702f1abef8cc16",
     "notes": "61dcd18db3eb0fca3a1ec9c8923a04ed",
@@ -253,6 +255,46 @@
         }
       ],
       "name": "deployit_overthere_ssh_host"
+    },
+    {
+      "parameters": [
+        {
+          "name": "id",
+          "doc": "deployit ci id (full path required)"
+        },
+        {
+          "name": "deployit_username",
+          "doc": "a valid deployit user"
+        },
+        {
+          "name": "deployit_password",
+          "doc": "the password for the deployit user"
+        },
+        {
+          "name": "deployit_host",
+          "doc": "address of the deployit server"
+        },
+        {
+          "name": "deployit_port",
+          "doc": "port to reach the deployit server on"
+        },
+        {
+          "name": "deployit_protocol",
+          "doc": "protocol to use in communication to the deployit host"
+        }
+      ],
+      "properties": [
+        {
+          "name": "entries",
+          "doc": "a hash of valid propertys to be sent to deployit"
+        }
+      ],
+      "providers": [
+        {
+          "name": "restclient"
+        }
+      ],
+      "name": "deployit_udm_dictionary"
     },
     {
       "parameters": [
