@@ -35,26 +35,20 @@ class deployit::config (
 
   # resources
 
-  #  file { "${deployit_homedir}/server/conf/deployit.conf": content => inline_template("<% server_conf_options.sort_by {|key,
-  #  value| key}.each do |key, value| %><%= key %>=<%= value %> \n<% end %>"
-  #    ) }
-  file {
-    "${deployit_homedir}/server/conf/deployit.conf":
-    ;
+  # this touches the file so that the later ini_settings resources have something to chew on
+  file { "${deployit_homedir}/server/conf/deployit.conf": }
 
-    "install plugins":
-      source       => "puppet:///modules/deployit/plugins/",
-      sourceselect => all,
-      recurse      => remote,
-      path         => "${deployit_homedir}/server/plugins"
+  file { "install plugins":
+    source       => "puppet:///modules/deployit/plugins/",
+    sourceselect => all,
+    recurse      => remote,
+    path         => "${deployit_homedir}/server/plugins"
   }
 
-  exec { "init deployit":
-    creates   => "${deployit_homedir}/server/repository",
-    command   => "${deployit_homedir}/server/bin/server.sh -setup -reinitialize -force -setup-defaults ${deployit_homedir}/server/conf/deployit.conf",
-    logoutput => true,
-    user      => $deployit_user
-  }
+  # ini setting sets a specific variable in a stanza file .
+  # this type and providers is stolen
+  # but is incorporated in this package
+  # we only need to use this because deployit can't keep it's nasty paws out of it's own config file
 
   ini_setting { 'deployit http port':
     setting => 'http.port',
@@ -95,7 +89,18 @@ class deployit::config (
     setting => 'importable.packages.path',
     value   => $deployit_importable_packages_path
   }
+
+  # 'deployit password':
+  #      setting => 'admin.password',
+  #      value   => $deployit_password;
+
+  # this exec .. o how i hate exec's .. is needed for deployit to initialize it's jcr repository
+  # further more i'd like to state that the way it's configuration files are handled by deployit is absolute crap
+  exec { "init deployit":
+    creates   => "${deployit_homedir}/server/repository",
+    command   => "${deployit_homedir}/server/bin/server.sh -setup -reinitialize -force -setup-defaults ${deployit_homedir}/server/conf/deployit.conf",
+    logoutput => true,
+    user      => $deployit_user
+  }
 }
-# 'deployit password':
-#      setting => 'admin.password',
-#      value   => $deployit_password;
+

@@ -20,7 +20,7 @@ class deployit (
   $deployit_http_port   = "4516",
   $deployit_jcr_repository_path      = 'repository',
   $deployit_ssl         = false,
-  $deployit_http_bind_address        = '0.0.0.0',
+  $deployit_http_bind_address        = '192.168.111.20',
   $deployit_http_context_root        = '/',
   $deployit_threads_max = '32',
   $deployit_threads_min = '4',
@@ -29,22 +29,24 @@ class deployit (
   $install_source       = "puppetfiles",
   $development          = true,
   $load_ci              = true,
-  $is_server            = true,
+  $server               = false, 
   $test                 = true) {
   # input validation
 
+  # handle the install_source parameter
   case $install_source {
     'puppetfiles' : { }
     default       : { fail("${install_source} not a valid installation source") }
   }
 
+  # handle the development parameter
   case $development {
     true, false : { }
     default     : { fail("${development} not a valid value for parameter development") }
   }
 
   # variables
-
+  # the version dependant stuff is set here
   $server_zipfile = "deployit-${deployit_version}-server.zip"
   $cli_zipfile = "deployit-${deployit_version}-cli.zip"
   $deployit_basedir = "${deployit_homedir}_${deployit_version}"
@@ -54,22 +56,23 @@ class deployit (
   # normal flow
   class { deployit::provider_prereq:
   } -> Class["deployit"]
-
-  if $is_server == true {
+  
+  # if server == true we do a lot of stuff . 
+  if $server == true {
     Class["Deployit::Provider_prereq"] -> class { deployit::users: } -> class { deployit::prereq: } -> class { deployit::download: } 
     -> class { deployit::install: } -> class { deployit::config: } ~> class { deployit::service: } -> Class["deployit"]
   }
+  
+  # if development == true we do a lott less
 
   if $development == true {
-    Class["deployit::service"] -> class { deployit::development: } -> Class["deployit"]
+    Class["deployit::provider_prereq"] -> class { deployit::development: } -> Class["deployit"]
   }
 
-  if $load_ci == true {
-    Class["deployit::service"] -> class { deployit::post_install: } -> Class["deployit"]
-  }
-  
+  # this will be removed before the 1.0 version 
+  # because we lack a decent application server module but have to test the type's and providers .. 
   if $test == true {
-    case $is_server {
+    case $server {
       true : {Class["deployit::service"]-> class{deployit::test::server:} -> Class["deployit"]}
       false: {Class["deployit::provider_prereq"]-> class{deployit::test::agent:} -> Class["deployit"]}
     }

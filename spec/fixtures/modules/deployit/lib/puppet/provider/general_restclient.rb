@@ -1,4 +1,4 @@
-require File.expand_path('../../deployit_util/ci.rb', __FILE__)  if Puppet.features.restclient?
+require File.expand_path('../../deployit_util/ci.rb', __FILE__) 
 
 class Puppet::Provider::General_restclient < Puppet::Provider
 

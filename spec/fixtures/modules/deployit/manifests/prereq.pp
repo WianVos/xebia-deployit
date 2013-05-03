@@ -8,23 +8,19 @@ class deployit::prereq (
   # # input validation
 
   # # variable setting
+
+  # we need some xtra packages depending on the os family
+  # TODO: Add ubuntu
   case $osfamily {
-    'RedHat' : {
-      $xtra_packages = ["unzip", "java-1.6.0-openjdk"]
-    }
-    'Debian' : {
-      $xtra_packages = ["unzip"]
-    }
-    default  : {
-      $xtra_packages = ['unzip']
-    }
+    'RedHat' : { $xtra_packages = ["unzip", "java-1.6.0-openjdk"] }
+    'Debian' : { $xtra_packages = ["unzip"] }
+    default  : { $xtra_packages = ['unzip'] }
   }
+
   # # flow control
 
   File["$tmpdir"] -> File["${deployit_basedir}", "${deployit_basedir}/server", "${deployit_basedir}/cli"] -> File["basedir to homedir"
-    ] -> Package[$xtra_packages] 
-
-  
+    ] -> Package[$xtra_packages]
 
   # # resource defaults
   File {
@@ -41,25 +37,23 @@ class deployit::prereq (
 
   # files
 
-
+  # create a temporary directory where the installation files will be places
   file { "${tmpdir}": }
 
+  # create the deployit basedir and /server and /cli
+  # the installation will go here ..
   file { ["${deployit_basedir}", "${deployit_basedir}/server", "${deployit_basedir}/cli"]: }
 
+  # link the basedir to the homedir.
+  # so /opt/deployit_3.8.5 will link to /opt/deployit
   file { "basedir to homedir":
     ensure => link,
     path   => "${deployit_homedir}",
     target => "${deployit_basedir}"
   }
 
-  
-
   # packages
-  package {
-    $xtra_packages:
-    ;
-
-    
-  }
+  # installs the xtra packages derived from the case statement earlier
+  package { $xtra_packages: }
 
 }

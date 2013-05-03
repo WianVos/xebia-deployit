@@ -65,16 +65,16 @@ Puppet::Type.newtype(:deployit_ci) do
     validate do |value|
       raise ArgumentError, "Puppet::Type::deployit_ci: property must be a hash." unless value.is_a? Hash
     end
-
+    # hack 101 .. overwriting the puppet::type insync method for the purpose of matching a hash
     def insync?(is)
       # @should is an Array. see lib/puppet/type.rb insync?
       should = @should.first
       # Comparison of hashes
       return false unless is.class == Hash and should.class == Hash
       should.each do |k,v|
-       
+
         return false unless is[k].to_s == should[k].to_s
-        
+
       end
       true
     end

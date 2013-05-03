@@ -2,7 +2,7 @@ require 'rubygems'
 require 'pathname'
 
 require 'restclient' if Puppet.features.restclient?
-require 'xmlsimple' if Puppet.features.restclient?
+require 'xmlsimple'  if Puppet.features.restclient?
 
 
 module Puppet
