@@ -2,8 +2,22 @@ class deployit::test::server(
   $deployit_admin             = "admin",
   $deployit_password          = "admin",
   $deployit_http_port         = "4516",
-  $deployit_http_bind_address = '192.168.111.20',) {
+  $deployit_http_server_address = '192.168.111.20',) {
   
+  # resource defaults
+  Deployit_core_directory {
+    deployit_host => $deployit_http_server_address }
+
+  Deployit_overthere_ssh_host {
+    deployit_host => $deployit_http_server_address }
+
+  Deployit_jetty_server {
+    deployit_host => $deployit_http_server_address }
+
+  Deployit_udm_dictionary {
+    deployit_host => $deployit_http_server_address }
+
+  # actual resources
 
   deployit_core_directory{"Infrastructure/Test1":
   	 } 
