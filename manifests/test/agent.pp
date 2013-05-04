@@ -3,6 +3,8 @@ class deployit::test::agent (
   $deployit_password          = "admin",
   $deployit_http_port         = "4516",
   $deployit_http_bind_address = '192.168.111.20',) {
+    
+  # resource defaults
   Deployit_core_directory {
     deployit_host => $deployit_http_bind_address }
 
@@ -15,6 +17,9 @@ class deployit::test::agent (
   Deployit_udm_dictionary {
     deployit_host => $deployit_http_bind_address }
 
+  # actual resources
+  # no flow controll needed they will autorequire there needed parents
+  
   deployit_core_directory { "Infrastructure/test": }
 
   deployit_core_directory { "Environments/test": }

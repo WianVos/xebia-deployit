@@ -1,8 +1,16 @@
-# Class: deployit
+### Class: deployit
+# This puppet module can do one of two things
+# it installs Xebialabs deployit for you 
+# on top of that has a number of resources that will enable you 
+# to add configuration items to deployit from anywhere in your infrastructure by using the deployit rest interface
 #
-# This module manages the installation of deployit
+# Versioning
+# this module is tested for 
+# Centos 6.4 & Deployit 3.8.5
+# 
+# 
 #
-# Parameters: none
+## Parameters: none
 #
 # Actions:
 #
