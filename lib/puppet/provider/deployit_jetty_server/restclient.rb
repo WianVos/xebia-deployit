@@ -34,5 +34,7 @@ Puppet::Type.type(:deployit_jetty_server).provide(:restclient, :parent => Puppet
   def self.array_properties
     ["tags"]
   end
-
+  def self.ci_array_properties
+      nil
+  end
 end

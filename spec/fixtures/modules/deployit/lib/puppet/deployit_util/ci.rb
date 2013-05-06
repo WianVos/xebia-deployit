@@ -8,23 +8,26 @@ require 'xmlsimple'  if Puppet.features.restclient?
 module Puppet
   module Deployit_util
     class Ci
-      def initialize(username,password,protocol="http",host="localhost",port="4516")
+      def initialize(username,password,protocol="http",host="localhost",port="4516",url_prefix="/deployit/repository")
         @username = username
         @password = password
         @protocol = protocol
         @host = host
         @port = port
 
-        @url_prefix = "/deployit/repository"
+        @url_prefix = url_prefix
         @base_url="#{@protocol}://#{@username}:#{@password}@#{@host}:#{@port}#{@url_prefix}"
 
       end
 
+      # get the ci and its properties
+      # returns a hash with the key value pairs
       def get_ci(id)
         xml = RestClient.get "#{@base_url}/ci/#{id}", {:accept => :xml, :content_type => :xml}
         return XmlSimple.xml_in(xml)
       end
 
+      # does the ci exits ? True if it does .. false if it doesn't
       def ci_exists?(id)
         xml = RestClient.get "#{@base_url}/exists/#{id}", {:accept => :xml, :content_type => :xml }
         return true if XmlSimple.xml_in(xml) == "true"
@@ -45,7 +48,8 @@ module Puppet
         return "succes"
 
       end
-
+      
+      # delete the ci
       def delete_ci(id)
         response = RestClient.delete "#{@base_url}/ci/#{id}"
       end
@@ -136,6 +140,13 @@ module Puppet
           p result
           props["members"] = [{'ci' => [] }]
           result.each {|v| props['members'].first['ci'] << { "@ref" => v } }
+        end
+        if props.has_key?('dictionaries') == true and props['dictionaries'].first['ci'].first.has_key?('ref')
+          result = []
+          props["dictionaries"].first["ci"].each {|ci| result << ci['ref'] }
+          p result
+          props["dictionaries"] = [{'ci' => [] }]
+          result.each {|v| props['dictionaries'].first['ci'] << { "@ref" => v } }
         end
         
         props.delete('id') if props.has_key?('id')

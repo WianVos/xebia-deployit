@@ -11,6 +11,9 @@
     "Modulefile": "0921ed5e56ae52d8c4e7e4f77abc21f0",
     "README.markdown": "4afe9f22037501642be4d748fd60110d",
     "Rakefile": "2b4a713d91f2cf2d7a3f3948548ebe27",
+    "bin/genres/Gemfile": "98ade4225a6b1d248efb95e585546bf5",
+    "bin/genres/Gemfile.lock": "82121eaefc6f1b236e8d2eb12292e15e",
+    "bin/genres/gemres.rb": "c2d448655b836746670420cd64f821dd",
     "files/development/ci.rb": "5844cda02323af81887c0960844df0ac",
     "files/development/restdep.rb": "2c268d60cd7af7cf88fc7004c8cf166d",
     "files/development/testII.rb": "8d760a29a42c611b4958c4c949a4efb0",
@@ -21,16 +24,16 @@
     "files/plugins/jetty-plugin-0.6.jar": "f366a8ae463a46665a78a4065dd05e94",
     "files/sources/deployit-3.8.5-cli.zip": "9af2330201fc674a8c5107f5cc022433",
     "files/sources/deployit-3.8.5-server.zip": "19f6a9e574465ecda3ff2904d8bd9931",
-    "lib/puppet/deployit_util/ci.rb": "e818cbd8afaaf11041f052357a559da6",
+    "lib/puppet/deployit_util/ci.rb": "2936f718188a4656f55cf40a11fceb29",
     "lib/puppet/feature/restclient.rb": "9f097ad93c392b06e43e99120e897708",
     "lib/puppet/parser/functions/encode_b64.rb": "1b5608dc7b16df54089a77dda6d0ebc9",
     "lib/puppet/provider/deployit_ci/ruby.rb": "093d546faf0157dee889867a6cdac251",
-    "lib/puppet/provider/deployit_core_directory/restclient.rb": "ac4bdf62c81418301642fd6d48a30aac",
-    "lib/puppet/provider/deployit_jetty_server/restclient.rb": "48dd113d13135e3c8e28a67a6a90a226",
-    "lib/puppet/provider/deployit_overthere_ssh_host/restclient.rb": "8de25561dd1b3ca5e46c43b8915f0ad3",
-    "lib/puppet/provider/deployit_udm_dictionary/restclient.rb": "d4daf95d90d6239c34644503fcf82b23",
-    "lib/puppet/provider/deployit_udm_environment/restclient.rb": "dbb531014b97346af062bf58e112f200",
-    "lib/puppet/provider/general_restclient.rb": "930afd405a30b85f4a7eec14875c5c66",
+    "lib/puppet/provider/deployit_core_directory/restclient.rb": "5ca670167422ae4c760b110f998cdccd",
+    "lib/puppet/provider/deployit_jetty_server/restclient.rb": "6a16a1000118f4f00504bcbd429208ab",
+    "lib/puppet/provider/deployit_overthere_ssh_host/restclient.rb": "65aee7ca799723dea4f8d8d94d88f8ec",
+    "lib/puppet/provider/deployit_udm_dictionary/restclient.rb": "04aa85f335cc2687df7ca5a541008892",
+    "lib/puppet/provider/deployit_udm_environment/restclient.rb": "5cb4eab3704e5ecaef69da82bae001e4",
+    "lib/puppet/provider/general_restclient.rb": "dc15989718f5130cd95ef9ad1a11543f",
     "lib/puppet/provider/ini_setting/ruby.rb": "6f528a4f961da1a6dbf352be1a062df6",
     "lib/puppet/provider/ini_subsetting/ruby.rb": "99991c9d3ccf54c2aa1fcacf491d0cfc",
     "lib/puppet/type/deployit_ci.rb": "3505bd06e0ce70a29b8eb1bd90eddea6",
@@ -38,7 +41,7 @@
     "lib/puppet/type/deployit_jetty_server.rb": "1304348c6027ba1dc3f0614dcd7f1dcd",
     "lib/puppet/type/deployit_overthere_ssh_host.rb": "6c18e1177c84580583899a6e15e4b57c",
     "lib/puppet/type/deployit_udm_dictionary.rb": "740492bf63bbba53084be14ade3f3d02",
-    "lib/puppet/type/deployit_udm_environment.rb": "26bf3dd7519ef2c46a873903473087c3",
+    "lib/puppet/type/deployit_udm_environment.rb": "9aa29575d88cd5d2c63b45fd1478fa02",
     "lib/puppet/type/ini_setting.rb": "afcd3f28b946b08db1b48fb189e6d8cf",
     "lib/puppet/type/ini_subsetting.rb": "b4e6a659f461bcd274dcdf1b1c39db65",
     "lib/puppet/util/external_iterator.rb": "69ad1eb930ca6d8d6b6faea343b4a22e",
@@ -55,7 +58,7 @@
     "manifests/prereq.pp": "bb544f5f61d7b2c68fa7f5c424af5b77",
     "manifests/provider_prereq.pp": "1937c818c87510ce9ae338faeb76cd1b",
     "manifests/service.pp": "6e922192f6363061b22f0f9c3ba87af2",
-    "manifests/test/agent.pp": "94d14f8ad85f5518d14424fe19f82259",
+    "manifests/test/agent.pp": "65a51d452d9a10ffd40d54248d4caefc",
     "manifests/test/server.pp": "0ca2e199b5cf3ab9ace9914515f85555",
     "manifests/users.pp": "14d797578964fb0575702f1abef8cc16",
     "notes": "61dcd18db3eb0fca3a1ec9c8923a04ed",
@@ -328,6 +331,9 @@
       "properties": [
         {
           "name": "members"
+        },
+        {
+          "name": "dictionaries"
         }
       ],
       "providers": [

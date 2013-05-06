@@ -88,11 +88,39 @@ Puppet::Type.newtype(:deployit_udm_environment) do
         end
     end
 
+  newproperty(:dictionaries, :array_matching => :all ) do
+        def insync?(is)
+    
+          # Comparison of Array's
+          # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
+          return false unless is.class == Array and should.class == Array
+    
+          # now lets compare the two and see is a modify is needed
+          # haven't quite worked out yet what to do with extra values in the is hash
+          @should.each do |k|
+    
+            # if is[k] is not equal to should[k] the insync? should return false
+            return false unless is.include?(k)
+    
+          end
+          return false unless is.length == @should.length
+          true
+        end
+    
+      def should_to_s(newvalue)
+            # Newvalue is an array, but we're only interested in first record.
+            newvalue.inspect
+          end
+      
+          def is_to_s(currentvalue)
+            currentvalue.inspect
+          end
+      end
     
   
   
   # autorequire all the deployit_core_directory resources 
-  ["deployit_core_directory"].each {|c|
+  ["deployit_core_directory","deployit_udm_dictionary","deployit_jetty_server"].each {|c|
     autorequire(c.to_sym) do
       requires = []
       catalog.resources.each {|d|
@@ -105,4 +133,16 @@ Puppet::Type.newtype(:deployit_udm_environment) do
     end
   }
   
+#  
+#      autorequire(c.to_sym) do
+#        requires = []
+#        catalog.resources.each {|d|
+#          if (d.class.to_s =~ /deployit/ )
+#            requires << d.name
+#          end
+#        }
+#  
+#        requires
+#      end
+    
 end

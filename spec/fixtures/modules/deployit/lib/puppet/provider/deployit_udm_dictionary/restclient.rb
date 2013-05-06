@@ -34,5 +34,7 @@ Puppet::Type.type(:deployit_udm_dictionary).provide(:restclient, :parent => Pupp
   def self.array_properties
     nil  
   end
-
+  def self.ci_array_properties
+      nil
+    end
 end

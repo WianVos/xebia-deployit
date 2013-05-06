@@ -1,16 +1,45 @@
 require File.expand_path('../../deployit_util/ci.rb', __FILE__)
 
+#This is the parent provider for all other deployit providers
+#Most of the work that needs to be done for a provider is repetative so a parent provider that holds most of the code made sense
+#
+# This provider follows the get -> modify -> flush paradigm.
+# during the default exits? call the property hash gets instantiated
+# all other methods modify this hash when needed
+# finally puppet will call the flush method which wil hand the property_hash back to the machine
+
 class Puppet::Provider::General_restclient < Puppet::Provider
 
+  # this provider is confined to the :restclient feature
   confine :feature => :restclient
+  # initialize is the first method getting called so
+  # it sets the global variables that are needed to connect to the deployit server
   def initialize(value={})
+
     super(value)
+
+    # to make life a little easier and make it easier to add new provider/type constructions i've used a little meta programming
+    # the following varialbes are derived from class methods of the inheriting providers
+    # the contence of these values is used to dynamicly add a couple of methods to the provider that take care of most of the work
+
+    # the type of the deployit ci being charmed
     @deployit_type = self.class.deployit_type
+
+    #hashes, array's and strings need to be dealt with separetly due the the manor in wich simplexml presents them to the system.
+
+    # the simple string properties for the ci
     @properties = self.class.properties
+    # array properties needed by the ci
     @array_properties = self.class.array_properties
+    # hash properties needed by the ci
     @hash_properties = self.class.hash_properties
+    # ci array properties 
+    @ci_array_properties = self.class.ci_array_properties 
+    
+    # allowed parrents for this ci
     @parent = self.class.parent
 
+    # unless properties is set to nil add the following getter and setter methods to the namespace for each property
     unless @properties == nil
 
       @properties.each do | prop |
@@ -104,12 +133,43 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         }
       end
     end
+    # ... ci array
+    # this differs from a normal array because deployit for some reason wants the xml to look different from a normal array
+    unless @ci_array_properties == nil
+
+      @ci_array_properties.each do |ciprop|
+        downcase_ciprop = ciprop.downcase
+
+        instance_eval %Q{def #{downcase_ciprop}
+
+          result = []
+          unless @property_hash["#{ciprop}"].first["ci"] == nil
+            @property_hash["#{ciprop}"].first["ci"].each do |ci|
+              result << ci["ref"]
+            end
+          end
+          return result
+        end
+
+        def #{downcase_ciprop}=(value)
+          @property_hash['#{ciprop}'] = [{ 'ci' => []}]
+          value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "@ref" => v } }
+        end
+       }
+      end
+    end
+
   end
 
+  # the exists method is the fist method being called when puppet try's to solve the type/provider
+  # because fo the fact that not all type values are available (only the name)  during initialization of the provider i'm forced to get the property hash here
+  #
   def exists?
 
+    # get the property hash here
     get_props_hash
 
+    # if the exists value is set to true return true for the exists method. All other returned values are considerd failure by puppet
     @property_hash["exists"] == true
 
   end
@@ -121,8 +181,11 @@ class Puppet::Provider::General_restclient < Puppet::Provider
     # we have three catagories of properties that need to be added to the properties hash
     # loop over the regular properties and add the values to the property hash ready for flushing
     if @properties != nil
-      @properties.each do |p|
 
+      @properties.each do |p|
+        # fill the property hash with the values from the resource hash
+        # it is important to note that the keys are in the resource hash in symbol form
+        # but we need them in their string form
         @property_hash["#{p}"] = resource["#{p}".downcase.to_sym] unless resource["#{p}".downcase.to_sym] == nil
 
       end
@@ -132,6 +195,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
     # instead of just adding them to the hash we have to send them to the meta created method using the ruby send method
     # btw we need to downcase the properties name
     if @hash_properties != nil
+      # property names colllected from deployit are returned in camel case but we need them in snake case because puppet doesn't tolerate capitals in property names
       @hash_properties.each do |hp|
         dhp = hp.downcase
         send("#{dhp}=",resource["#{dhp}".to_sym]) unless resource["#{dhp}".to_sym] == nil
@@ -140,12 +204,22 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
     # and again for array properties
     if @array_properties != nil
+
+      # property names colllected from deployit are returned in camel case but we need them in snake case because puppet doesn't tolerate capitals in property names
       @array_properties.each do |ap|
         dap = ap.downcase
         send("#{dap}=",resource["#{dap}".to_sym]) unless resource["#{dap}".to_sym] == nil
       end
     end
 
+    if @ci_array_properties != nil
+    
+          # property names colllected from deployit are returned in camel case but we need them in snake case because puppet doesn't tolerate capitals in property names
+          @ci_array_properties.each do |cap|
+            dcap = cap.downcase
+            send("#{dcap}=",resource["#{dcap}".to_sym]) unless resource["#{cap}".to_sym] == nil
+          end
+        end
     # set the ensure property to present
     # we are creating ... you know.
     @property_hash["ensure"] = "present"

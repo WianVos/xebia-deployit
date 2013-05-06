@@ -1,7 +1,6 @@
 require File.expand_path('../../general_restclient.rb', __FILE__)
 
 Puppet::Type.type(:deployit_core_directory).provide(:restclient, :parent => Puppet::Provider::General_restclient) do
-
   #  confine :feature => :restclient
   def initialize(value)
     super(value)
@@ -24,11 +23,15 @@ Puppet::Type.type(:deployit_core_directory).provide(:restclient, :parent => Pupp
   end
 
   def self.hash_properties
-  
+
   end
 
   def self.array_properties
-    
+
+  end
+
+  def self.ci_array_properties
+    nil
   end
 
 end

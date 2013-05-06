@@ -9,6 +9,8 @@ Puppet::Type.type(:deployit_udm_environment).provide(:restclient, :parent => Pup
     @parent = self.class.parent
     @hash_properties = self.class.hash_properties
     @array_properties = self.class.array_properties
+    @ci_array_properties = self.class.ci_array_properties
+
   end
 
   def self.deployit_type
@@ -28,31 +30,32 @@ Puppet::Type.type(:deployit_udm_environment).provide(:restclient, :parent => Pup
   end
 
   def self.hash_properties
-   nil
+    nil
   end
 
   def self.array_properties
-    nil  
-  end
-  def self.ci_array_properties
-    ["members"]
+    nil
   end
 
-  def members
-    result = []
+  def self.ci_array_properties
+    ["members","dictionaries"]
+  end
+
+#  def members
 #    p @property_hash
-#    p @property_hash["members"]
-#    p @property_hash["members"].first["ci"]
-    @property_hash["members"].first["ci"].each do |ci|
-      result << ci["ref"]
-    end
-    return result   
-  end
-  
-  def members=(value)
-    @property_hash['members'] = [{ 'ci' => []}]
-    value.each {|v| @property_hash['members'].first['ci'] << { "@ref" => v } }
-    p @property_hash
-      
-  end
+#
+#    result = []
+#    unless @property_hash["members"].first["ci"] == nil
+#      @property_hash["members"].first["ci"].each do |ci|
+#        result << ci["ref"]
+#      end
+#    end
+#    return result
+#  end
+#
+#  def members=(value)
+#    @property_hash['members'] = [{ 'ci' => []}]
+#    value.each {|v| @property_hash['members'].first['ci'] << { "@ref" => v } }
+#    p @property_hash
+#  end
 end
