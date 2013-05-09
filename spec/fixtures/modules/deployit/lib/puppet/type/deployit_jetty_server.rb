@@ -1,3 +1,5 @@
+require 'pathname'
+
 Puppet::Type.newtype(:deployit_jetty_server) do
 
   desc 'adds a jetty.server ci to a remote deployit server'
@@ -128,18 +130,19 @@ Puppet::Type.newtype(:deployit_jetty_server) do
     end
   end
 
-  # loop over the array of types we want to autorequire ... all of them :-)
-  ["deployit_core_directory","deployit_overthere_ssh_host"].each {|c|
-    autorequire(c.to_sym) do
-      requires = []
-      catalog.resources.each {|d|
-
-        if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
-          requires << d.name
-        end
-      }
-      requires
-    end
-  }
+   #loop over the array of types we want to autorequire ... all of them :-)
+    ["deployit_core_directory","deployit_overthere_ssh_host"].each {|c|
+      autorequire(c.to_sym) do
+        requires = []
+        catalog.resources.each {|d|
+  
+          if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+            requires << d.name
+          end
+        }
+        requires
+      end
+    }
+    
 
 end

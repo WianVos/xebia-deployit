@@ -8,11 +8,11 @@ class deployit::test::agent (
   # resource defaults
   Deployit_core_directory {
     deployit_host => $deployit_http_server_address,
-    ensure => $ensure }
+    ensure => $ensure } 
 
   Deployit_overthere_ssh_host {
     deployit_host => $deployit_http_server_address,
-    ensure => $ensure }
+    ensure => $ensure } 
 
   Deployit_jetty_server {
     deployit_host => $deployit_http_server_address,
@@ -20,7 +20,7 @@ class deployit::test::agent (
 
   Deployit_udm_dictionary {
     deployit_host => $deployit_http_server_address,
-    ensure => $ensure }
+    ensure => $ensure } 
   Deployit_udm_environment {
     deployit_host => $deployit_http_server_address,
     ensure => $ensure }

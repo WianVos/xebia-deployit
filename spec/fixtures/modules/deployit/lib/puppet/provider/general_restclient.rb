@@ -235,7 +235,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
     # initialize the global property_hash
     @property_hash = {}
-
+    
     # initialize the ensure property with the present value
     # if the destroy method gets called it will change to absent
 
