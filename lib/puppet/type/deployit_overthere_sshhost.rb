@@ -1,10 +1,10 @@
-Puppet::Type.newtype(:deployit_overthere_ssh_host) do
+Puppet::Type.newtype(:deployit_overthere_sshhost) do
 
-  desc 'adds a overthere_ssh_host to a remote deployit server'
+  desc 'adds a overthere_sshhost to a remote deployit server'
 
   ensurable do
 
-    desc 'deployit overthere_ssh_host resource state'
+    desc 'deployit overthere_sshhost resource state'
 
     defaultto(:present)
 

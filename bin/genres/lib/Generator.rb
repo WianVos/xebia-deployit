@@ -25,5 +25,21 @@ module Genres
       end
     end
 
+    def do2
+      x = Genres::DeployitMetaXml.new(file=@file,selector=@selector)
+      x.get_types_list.each do |r|
+
+        lparents = x.get_parents(r)
+        lstrings = x.get_properties(r,"STRING")
+        larrays = x.get_property_names(r,"SET_OF_STRING")
+        lhashes = x.get_property_names(r,"MAP_STRING_STRING")
+        lcia = x.get_property_names(r, "LIST_OF_CI").concat x.get_property_names(r, "SET_OF_CI")
+        rt = ResourceType.new(r,parents=lparents,string_props=lstrings,array_props=larrays.concat(lcia),hash_props=lhashes)
+        rt.write_file()
+        pt = ResourceProvider.new(deployit_resource=r,parents=lparents,string_props=lstrings,array_props=larrays,hash_props=lhashes,ci_array_props=lcia)
+        pt.write_file
+      end
+
+    end
   end
 end

@@ -10,7 +10,7 @@ class deployit::test::agent (
     deployit_host => $deployit_http_server_address,
     ensure => $ensure } 
 
-  Deployit_overthere_ssh_host {
+  Deployit_overthere_sshhost {
     deployit_host => $deployit_http_server_address,
     ensure => $ensure } 
 
@@ -24,6 +24,10 @@ class deployit::test::agent (
   Deployit_udm_environment {
     deployit_host => $deployit_http_server_address,
     ensure => $ensure }
+  Deployit_jetty_db2datasource {
+    deployit_host => $deployit_http_server_address,
+    ensure => $ensure
+  }
  
   # actual resources
   # no flow controll needed they will autorequire there needed parents
@@ -32,7 +36,7 @@ class deployit::test::agent (
 
   deployit_core_directory { "Environments/test": }
 
-  deployit_overthere_ssh_host { "Infrastructure/test/${::operatingsystem}_${::hostname}": }
+  deployit_overthere_sshhost { "Infrastructure/test/${::operatingsystem}_${::hostname}": }
 
   deployit_jetty_server { "Infrastructure/test/${::operatingsystem}_${::hostname}/server1":
     tags    => [$::operatingsystem, $::virtual],
@@ -59,5 +63,17 @@ class deployit::test::agent (
     members => ["Infrastructure/test/${::operatingsystem}_${::hostname}","Infrastructure/test/${::operatingsystem}_${::hostname}/server1" ],
     dictionaries => ["Environments/test/${::hostname}","Environments/test/${::hostname}1"]
   }
-
+  deployit_jetty_db2datasource{"Infrastructure/test/${::operatingsystem}_${::hostname}/server1/test1":
+    servername => "test.localhost",
+    user => 'admin',
+    jndiname => 'jdbc://tst1/',
+    portnumber => '4444',
+    databasename => 'test1',
+    password => 'test'
+  }
+  deployit_jetty_mqqueue{"Infrastructure/test/${::operatingsystem}_${::hostname}/server1/mq1":
+    deployit_host => $deployit_http_server_address,
+    jndiname => "mq://mq1",
+    basequeuename => "tstmq1"
+  }
 }

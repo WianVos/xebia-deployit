@@ -183,6 +183,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
     if @properties != nil
 
       @properties.each do |p|
+        
         # fill the property hash with the values from the resource hash
         # it is important to note that the keys are in the resource hash in symbol form
         # but we need them in their string form

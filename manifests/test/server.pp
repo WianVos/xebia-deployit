@@ -8,7 +8,7 @@ class deployit::test::server(
   Deployit_core_directory {
     deployit_host => $deployit_http_server_address }
 
-  Deployit_overthere_ssh_host {
+  Deployit_overthere_sshhost {
     deployit_host => $deployit_http_server_address }
 
   Deployit_jetty_server {
@@ -22,22 +22,22 @@ class deployit::test::server(
   deployit_core_directory{"Infrastructure/Test1":
   	 } 
   
-  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty3":
+  deployit_overthere_sshhost{"Infrastructure/Test1/TestJetty3":
     os => "UNIX",
     tags => ["test", "test2","test3"]
   }  
-  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty4":
+  deployit_overthere_sshhost{"Infrastructure/Test1/TestJetty4":
     os => "UNIX",
     tags => ["test", "test2","test3"]
   } 
-  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty5":
+  deployit_overthere_sshhost{"Infrastructure/Test1/TestJetty5":
     os => "UNIX",
     tags => ["test", "test2","test3"]
   } 
-  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty6":
+  deployit_overthere_sshhost{"Infrastructure/Test1/TestJetty6":
     os => "UNIX"
   } 
-  deployit_overthere_ssh_host{"Infrastructure/Test1/TestJetty11":
+  deployit_overthere_sshhost{"Infrastructure/Test1/TestJetty11":
     os => "UNIX"
   } 
   deployit_jetty_server{"Infrastructure/Test1/TestJetty11/server4":
@@ -64,7 +64,7 @@ class deployit::test::server(
   }
   
   deployit_core_directory{"Infrastructure/Benito":} ->
-  deployit_overthere_ssh_host{"Infrastructure/Benito/${hostname}":
+  deployit_overthere_sshhost{"Infrastructure/Benito/${hostname}":
     os => "UNIX"
   } 
   deployit_jetty_server{"Infrastructure/Benito/${hostname}/server1":

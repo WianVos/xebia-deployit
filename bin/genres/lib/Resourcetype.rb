@@ -7,10 +7,10 @@ require 'xmlsimple'
 module Genres
   class ResourceType
     include ERB::Util
-    def initialize(deployit_resource,parents=nil,string_props=nil,array_props=nil,hash_props=nil,ci_array_props=nil,basedir="/tmp/output/")
+    def initialize(deployit_resource,parents=nil,string_props=nil,array_props=nil,hash_props=nil,ci_array_props=nil,basedir="/etc/puppetlabs/puppet/modules/deployit")
 
       @puppet_resource_name = "deployit_" + deployit_resource.downcase.gsub('.','_')
-      @target_dir = "#{basedir}/lib/type"
+      @target_dir = "#{basedir}/lib/type/generated"
       @target_file = "#{@target_dir}/#{@puppet_resource_name}.rb"
       @deployit_resource = deployit_resource
       @string_props = string_props
@@ -39,7 +39,7 @@ module Genres
     def write_document()
       resultstring = ""
       resultstring << ERB.new(header()).result(binding)
-      @string_props.each  {|prop| resultstring <<  ERB.new(string_property(name=prop)).result(binding) } unless @string_props == nil
+      @string_props.each  {|prop| resultstring <<  ERB.new(string_property(prop)).result(binding) } unless @string_props == nil
       @array_props.each  {|prop| resultstring <<  ERB.new(array_property(name=prop)).result(binding) } unless @array_props == nil
       @hash_props.each {|prop| resultstring <<  ERB.new(hash_property(name=prop)).result(binding) } unless @hash_props == nil
       @ci_array_props.each {|prop| resultstring <<  ERB.new(array_property(name=prop)).result(binding) } unless @ci_array_props == nil
@@ -52,6 +52,7 @@ module Genres
       %{Puppet::Type.newtype(:<%= @puppet_resource_name %> ) do
 
       # this type is generated with genres.rb
+      # generated for deployit 3.8.5
 
       desc 'adds a <%= @puppet_resource_name %> ci to a remote deployit server'
 
@@ -113,11 +114,35 @@ module Genres
     }
     end
 
-    def string_property(name)
-      %{
-      newproperty(:<%= name.downcase %>) do
+    def string_property(prop)
+      p prop
+      if prop.class == Array
+        %{
+      newproperty(:<%= prop.first.to_s.downcase %>) do
+        <% if prop.last.has_key? 'label' %> 
+          desc '<%= prop.last['label'] %>'
+        <%end%>
+        <% if prop.last.has_key? 'default' %> 
+          defaultto ('<%= prop.last['default'] %>') 
+        <%end%>
+        <% if prop.last['required'] == 'true' and  prop.last.has_key?('default') == false %>
+          defaultto('unset')
+        <% end %>   
+        <% if prop.last['required'] == 'true' %> 
+          validate do |value|
+            unless value != 'unset'
+              fail('<%= prop.first.to_s.downcase %> needs to be set')
+            end
+          end
+        <% end %>
       end
     }
+      else
+        %{
+        newproperty(:<%= prop.downcase %>) do
+             end
+        }
+      end
     end
 
     def array_property(name)

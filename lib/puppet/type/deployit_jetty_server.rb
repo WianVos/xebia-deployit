@@ -131,7 +131,7 @@ Puppet::Type.newtype(:deployit_jetty_server) do
   end
 
    #loop over the array of types we want to autorequire ... all of them :-)
-    ["deployit_core_directory","deployit_overthere_ssh_host"].each {|c|
+    ["deployit_core_directory","deployit_overthere_sshhost"].each {|c|
       autorequire(c.to_sym) do
         requires = []
         catalog.resources.each {|d|

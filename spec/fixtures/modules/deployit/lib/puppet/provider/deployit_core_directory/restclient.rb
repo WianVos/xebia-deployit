@@ -1,7 +1,7 @@
 require File.expand_path('../../general_restclient.rb', __FILE__)
 
 Puppet::Type.type(:deployit_core_directory).provide(:restclient, :parent => Puppet::Provider::General_restclient) do
-  #  confine :feature => :restclient
+  confine :feature => :restclient
   def initialize(value)
     super(value)
     @deployit_type = self.class.deployit_type

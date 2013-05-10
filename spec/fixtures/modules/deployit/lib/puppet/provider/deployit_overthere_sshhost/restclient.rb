@@ -1,6 +1,6 @@
 require File.expand_path('../../general_restclient.rb', __FILE__)
 
-Puppet::Type.type(:deployit_overthere_ssh_host).provide(:restclient, :parent => Puppet::Provider::General_restclient) do
+Puppet::Type.type(:deployit_overthere_sshhost).provide(:restclient, :parent => Puppet::Provider::General_restclient) do
 
   #  confine :feature => :restclient
   def initialize(value)
