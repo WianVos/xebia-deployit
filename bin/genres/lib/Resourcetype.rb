@@ -10,7 +10,7 @@ module Genres
     def initialize(deployit_resource,parents=nil,string_props=nil,array_props=nil,hash_props=nil,ci_array_props=nil,basedir="/etc/puppetlabs/puppet/modules/deployit")
 
       @puppet_resource_name = "deployit_" + deployit_resource.downcase.gsub('.','_')
-      @target_dir = "#{basedir}/lib/type/generated"
+      @target_dir = "#{basedir}/lib/puppet/type/generated"
       @target_file = "#{@target_dir}/#{@puppet_resource_name}.rb"
       @deployit_resource = deployit_resource
       @string_props = string_props

@@ -6,6 +6,7 @@ class deployit::test::agent (
   $ensure                       = "present") {
     
   # resource defaults
+  
   Deployit_core_directory {
     deployit_host => $deployit_http_server_address,
     ensure => $ensure } 
@@ -31,6 +32,10 @@ class deployit::test::agent (
  
   # actual resources
   # no flow controll needed they will autorequire there needed parents
+  deployit_check_connection{"deployit central":
+    host => "192.168.111.20",
+    port => 4516
+  } ->
   
   deployit_core_directory { "Infrastructure/test": }
 
@@ -69,11 +74,20 @@ class deployit::test::agent (
     jndiname => 'jdbc://tst1/',
     portnumber => '4444',
     databasename => 'test1',
-    password => 'test'
+    password => '{b64}5LUBx/qD45pCHyLc13o8Sw=='
+  }
+  deployit_jetty_db2datasource{"Infrastructure/test/${::operatingsystem}_${::hostname}/server1/db1":
+    servername => "test.localhost",
+    user => 'admin',
+    jndiname => 'jdbc://tst1/',
+    portnumber => '4444',
+    databasename => 'test1',
+    password => '{b64}5LUBx/qD45pCHyLc13o8Sw=='
   }
   deployit_jetty_mqqueue{"Infrastructure/test/${::operatingsystem}_${::hostname}/server1/mq1":
     deployit_host => $deployit_http_server_address,
     jndiname => "mq://mq1",
     basequeuename => "tstmq1"
   }
+  
 }
