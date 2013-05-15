@@ -61,18 +61,18 @@ Puppet::Type.newtype(:deployit_wls_jmsfilepersistentstorespec ) do
         defaultto('http')
       end
     
-      newproperty(:directory) do
+      newproperty(:restarttarget) do
          
-          desc 'Directory'
+          desc 'Restart Target'
         
         
            
         
       end
     
-      newproperty(:restarttarget) do
+      newproperty(:directory) do
          
-          desc 'Restart Target'
+          desc 'Directory'
         
         
            
@@ -119,6 +119,20 @@ Puppet::Type.newtype(:deployit_wls_jmsfilepersistentstorespec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

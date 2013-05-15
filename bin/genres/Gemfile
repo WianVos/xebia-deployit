@@ -1,4 +1,5 @@
 source 'http://rubygems.org/'
 
 gem 'xml-simple'
-
+gem 'rest-client'
+gem 'mime-types'

@@ -61,15 +61,6 @@ Puppet::Type.newtype(:deployit_was_sibtopic ) do
         defaultto('http')
       end
     
-      newproperty(:busname) do
-         
-          desc 'Bus Name'
-        
-        
-           
-        
-      end
-    
       newproperty(:topicname) do
          
           desc 'Topic name'
@@ -84,6 +75,15 @@ Puppet::Type.newtype(:deployit_was_sibtopic ) do
               fail('topicname needs to be set')
             end
           end
+        
+      end
+    
+      newproperty(:busname) do
+         
+          desc 'Bus Name'
+        
+        
+           
         
       end
     
@@ -106,7 +106,7 @@ Puppet::Type.newtype(:deployit_was_sibtopic ) do
     
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

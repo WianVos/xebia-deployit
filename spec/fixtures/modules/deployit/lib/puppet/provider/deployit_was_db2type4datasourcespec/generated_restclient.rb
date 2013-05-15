@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_was_db2type4datasourcespec).provide(:generated_restc
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_was_db2type4datasourcespec).provide(:generated_restc
 
     def self.properties
     
-      [  "portNumber",  "username",  "datasourceHelperClassname",  "serverName",  "description",  "ConnectionPool_connectionTimeout",  "password",  "ConnectionPool_maxConnections",  "ConnectionPool_minConnections",  "jdbcProvider",  "databaseName",  "jndiName",  ]
+      [  "ConnectionPool_connectionTimeout",  "jdbcProvider",  "password",  "jndiName",  "datasourceHelperClassname",  "ConnectionPool_minConnections",  "portNumber",  "serverName",  "username",  "ConnectionPool_maxConnections",  "description",  "databaseName",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

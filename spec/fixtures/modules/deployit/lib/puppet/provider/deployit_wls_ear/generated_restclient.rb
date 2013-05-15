@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_ear).provide(:generated_restclient, :parent => P
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_ear).provide(:generated_restclient, :parent => P
 
     def self.properties
     
-      [  "stageMode",  "versioned",  "retireTimeout",  "excludeFileNamesRegex",  "block",  "automaticVersioning",  "redeploymentStrategy",  "deploymentOrder",  "versionIdentifier",  "stagingDirectory",  ]
+      [  "stagingDirectory",  "automaticVersioning",  "versioned",  "retireTimeout",  "deploymentOrder",  "excludeFileNamesRegex",  "stageMode",  "redeploymentStrategy",  "versionIdentifier",  "block",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

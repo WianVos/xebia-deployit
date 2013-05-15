@@ -61,6 +61,15 @@ Puppet::Type.newtype(:deployit_file_deployedfile ) do
         defaultto('http')
       end
     
+      newproperty(:targetfilename) do
+         
+          desc 'Target File Name'
+        
+        
+           
+        
+      end
+    
       newproperty(:targetpath) do
          
           desc 'Target Path'
@@ -75,15 +84,6 @@ Puppet::Type.newtype(:deployit_file_deployedfile ) do
               fail('targetpath needs to be set')
             end
           end
-        
-      end
-    
-      newproperty(:targetfilename) do
-         
-          desc 'Target File Name'
-        
-        
-           
         
       end
     
@@ -130,7 +130,7 @@ Puppet::Type.newtype(:deployit_file_deployedfile ) do
         
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_overthere_host",  "deployit_overthere_ssh_host",  "deployit_overthere_cifs_host", ].each {|c|
+      [ "deployit_overthere_host",  "deployit_core_directory",  "deployit_overthere_sshhost",  "deployit_overthere_cifshost", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

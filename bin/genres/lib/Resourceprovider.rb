@@ -6,10 +6,10 @@ require 'xmlsimple'
 
 module Genres
   class ResourceProvider
-    def initialize(deployit_resource,parents=nil,string_props=nil,array_props=nil,hash_props=nil,ci_array_props=nil,basedir="/etc/puppetlabs/puppet/modules/deployit")
+    def initialize(deployit_resource,parents=nil,string_props=nil,array_props=nil,hash_props=nil,ci_array_props=nil,basedir="../../")
       @deployit_resource = deployit_resource
       @puppet_resource_name = "deployit_" + deployit_resource.downcase.gsub('.','_')
-      @target_dir = "#{basedir}/lib/puppet/provider/generated/#{@puppet_resource_name}"
+      @target_dir = "#{basedir}/lib/puppet/provider/#{@puppet_resource_name}"
       @target_file = "#{@target_dir}/generated_restclient.rb"
       @deployit_resource = deployit_resource
       @string_props = string_props.keys unless string_props == nil
@@ -50,7 +50,6 @@ Puppet::Type.type(:<%= @puppet_resource_name %>).provide(:generated_restclient, 
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)

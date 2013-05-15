@@ -61,6 +61,24 @@ Puppet::Type.newtype(:deployit_was_jdbcprovider ) do
         defaultto('http')
       end
     
+      newproperty(:implementationclassname) do
+         
+          desc 'Implementation class name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:nativepath) do
+         
+          desc 'Native Library Path'
+        
+        
+           
+        
+      end
+    
       newproperty(:classpath) do
          
           desc 'Class path'
@@ -78,15 +96,6 @@ Puppet::Type.newtype(:deployit_was_jdbcprovider ) do
         
       end
     
-      newproperty(:providertype) do
-         
-          desc ' Provider type'
-        
-        
-           
-        
-      end
-    
       newproperty(:description) do
          
           desc 'Description'
@@ -96,18 +105,9 @@ Puppet::Type.newtype(:deployit_was_jdbcprovider ) do
         
       end
     
-      newproperty(:nativepath) do
+      newproperty(:providertype) do
          
-          desc 'Native Library Path'
-        
-        
-           
-        
-      end
-    
-      newproperty(:implementationclassname) do
-         
-          desc 'Implementation class name'
+          desc ' Provider type'
         
         
            
@@ -116,7 +116,7 @@ Puppet::Type.newtype(:deployit_was_jdbcprovider ) do
     
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

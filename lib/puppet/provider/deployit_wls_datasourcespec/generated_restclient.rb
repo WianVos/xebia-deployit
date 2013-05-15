@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_datasourcespec).provide(:generated_restclient, :
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_datasourcespec).provide(:generated_restclient, :
 
     def self.properties
     
-      [  "JDBCConnectionPoolParams_InitialCapacity",  "username",  "url",  "restartTarget",  "password",  "JDBCConnectionPoolParams_MaxCapacity",  "driverName",  "jndiNames",  "JDBCConnectionPoolParams_CapacityIncrement",  "targetRestartPolicy",  ]
+      [  "restartTarget",  "password",  "JDBCConnectionPoolParams_InitialCapacity",  "jndiNames",  "driverName",  "url",  "JDBCConnectionPoolParams_MaxCapacity",  "targetRestartPolicy",  "username",  "JDBCConnectionPoolParams_CapacityIncrement",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

@@ -1862,7 +1862,7 @@
       <property-descriptor name="jumpstation" fqn="overthere.SshJumpstation.jumpstation" label="Jumpstation" kind="CI" description="Jumpstation that should be used to reach this host" category="Advanced" asContainment="false" inspection="false" required="false" requiredInspection="false" password="false" transient="false" size="MEDIUM">
         <referencedType>overthere.Jumpstation</referencedType>
       </property-descriptor>
-      <property-descriptor name="os" fqn="overthere.SshJumpstation.os" label="Os" kind="ENUM" description="Os" category="Common" asContainment="false" inspection="false" required="true" requiredInspection="false" password="false" transient="true" size="MEDIUM" hidden="true" default="UNIX">
+      <property-descriptor name="os" fqn="overthere.SshJumpstation.os" label="Os" kind="ENUM" description="Os" category="Common" asContainment="false" inspection="false" required="true" requiredInspection="false" password="false" transient="true" size="MEDIUM" hidden="tr" default="UNIX">
         <enumValues>
           <string>WINDOWS</string>
           <string>UNIX</string>

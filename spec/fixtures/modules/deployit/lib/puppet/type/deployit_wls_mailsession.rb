@@ -78,6 +78,23 @@ Puppet::Type.newtype(:deployit_wls_mailsession ) do
         
       end
     
+      newproperty(:targetrestartpolicy) do
+         
+          desc 'Target Restart Policy'
+        
+         
+          defaultto ('RESTART') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('targetrestartpolicy needs to be set')
+            end
+          end
+        
+      end
+    
       newproperty(:javamailproperties , :array_matching => :all) do
 
           desc 'a hash of valid propertys to be sent to deployit'
@@ -121,7 +138,7 @@ Puppet::Type.newtype(:deployit_wls_mailsession ) do
         
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_wls_wlscontainer", ].each {|c|
+      [ "deployit_wls_wlscontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

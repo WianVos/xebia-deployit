@@ -61,27 +61,9 @@ Puppet::Type.newtype(:deployit_was_oraclejdbcproviderspec ) do
         defaultto('http')
       end
     
-      newproperty(:classpath) do
+      newproperty(:implementationclassname) do
          
-          desc 'Class path'
-        
-        
-           
-        
-      end
-    
-      newproperty(:providertype) do
-         
-          desc ' Provider type'
-        
-        
-           
-        
-      end
-    
-      newproperty(:description) do
-         
-          desc 'Description'
+          desc 'Implementation class name'
         
         
            
@@ -97,6 +79,24 @@ Puppet::Type.newtype(:deployit_was_oraclejdbcproviderspec ) do
         
       end
     
+      newproperty(:nativepath) do
+         
+          desc 'Native Library Path'
+        
+        
+           
+        
+      end
+    
+      newproperty(:classpath) do
+         
+          desc 'Class path'
+        
+        
+           
+        
+      end
+    
       newproperty(:xa) do
          
           desc 'Implementation type'
@@ -106,18 +106,18 @@ Puppet::Type.newtype(:deployit_was_oraclejdbcproviderspec ) do
         
       end
     
-      newproperty(:implementationclassname) do
+      newproperty(:description) do
          
-          desc 'Implementation class name'
+          desc 'Description'
         
         
            
         
       end
     
-      newproperty(:nativepath) do
+      newproperty(:providertype) do
          
-          desc 'Native Library Path'
+          desc ' Provider type'
         
         
            
@@ -146,6 +146,20 @@ Puppet::Type.newtype(:deployit_was_oraclejdbcproviderspec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

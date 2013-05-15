@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_jmsfilepersistentstorespec).provide(:generated_r
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_jmsfilepersistentstorespec).provide(:generated_r
 
     def self.properties
     
-      [  "directory",  "restartTarget",  "targetRestartPolicy",  "synchronousWritePolicy",  ]
+      [  "restartTarget",  "directory",  "targetRestartPolicy",  "synchronousWritePolicy",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

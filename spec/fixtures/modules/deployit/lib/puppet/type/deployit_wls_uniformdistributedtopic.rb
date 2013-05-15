@@ -61,32 +61,6 @@ Puppet::Type.newtype(:deployit_wls_uniformdistributedtopic ) do
         defaultto('http')
       end
     
-      newproperty(:jmsmodulename) do
-         
-          desc 'Jms Module Name'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('jmsmodulename needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:subdeploymentname) do
-         
-          desc 'Sub Deployment Name'
-        
-        
-           
-        
-      end
-    
       newproperty(:jndiname) do
          
           desc 'Jndi Name'
@@ -104,9 +78,35 @@ Puppet::Type.newtype(:deployit_wls_uniformdistributedtopic ) do
         
       end
     
+      newproperty(:subdeploymentname) do
+         
+          desc 'Sub Deployment Name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:jmsmodulename) do
+         
+          desc 'Jms Module Name'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('jmsmodulename needs to be set')
+            end
+          end
+        
+      end
+    
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_wls_jmstarget", ].each {|c|
+      [ "deployit_wls_jmstarget",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

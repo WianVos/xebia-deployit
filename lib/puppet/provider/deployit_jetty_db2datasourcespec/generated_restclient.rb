@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_jetty_db2datasourcespec).provide(:generated_restclie
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_jetty_db2datasourcespec).provide(:generated_restclie
 
     def self.properties
     
-      [  "minIdle",  "initialSize",  "user",  "password",  "maxIdle",  "maxActive",  "defaultAutoCommit",  "jndiName",  "maxWait",  "defaultTransactionIsolation",  "portnumber",  "servername",  "databasename",  ]
+      [  "password",  "maxIdle",  "maxWait",  "jndiName",  "maxActive",  "portnumber",  "user",  "servername",  "defaultAutoCommit",  "initialSize",  "databasename",  "defaultTransactionIsolation",  "minIdle",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

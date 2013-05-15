@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_www_deployedapacheconffile).provide(:generated_restc
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -28,13 +27,13 @@ Puppet::Type.type(:deployit_www_deployedapacheconffile).provide(:generated_restc
 
     def self.parent
     
-      [  "www.ApacheHttpdServer",  ]
+      [  "www.ApacheHttpdServer",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_www_apachehttpdserver",  ]
+      [  "deployit_www_apachehttpdserver",  "deployit_core_directory",  ]
     
 
     end

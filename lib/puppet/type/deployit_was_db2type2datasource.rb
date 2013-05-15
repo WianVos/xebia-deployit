@@ -61,66 +61,6 @@ Puppet::Type.newtype(:deployit_was_db2type2datasource ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
-         
-          desc 'Username'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('username needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:datasourcehelperclassname) do
-         
-          desc 'Datasource Helper Classname'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('datasourcehelperclassname needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:description) do
-         
-          desc 'Description'
-        
-        
-           
-        
-      end
-    
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('password needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:jdbcprovider) do
          
           desc 'Jdbc Provider'
@@ -138,9 +78,9 @@ Puppet::Type.newtype(:deployit_was_db2type2datasource ) do
         
       end
     
-      newproperty(:databasename) do
+      newproperty(:password) do
          
-          desc 'Database Name'
+          desc 'Password'
         
         
         
@@ -149,7 +89,7 @@ Puppet::Type.newtype(:deployit_was_db2type2datasource ) do
          
           validate do |value|
             unless value != 'unset'
-              fail('databasename needs to be set')
+              fail('password needs to be set')
             end
           end
         
@@ -172,9 +112,69 @@ Puppet::Type.newtype(:deployit_was_db2type2datasource ) do
         
       end
     
+      newproperty(:datasourcehelperclassname) do
+         
+          desc 'Datasource Helper Classname'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('datasourcehelperclassname needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Username'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('username needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:description) do
+         
+          desc 'Description'
+        
+        
+           
+        
+      end
+    
+      newproperty(:databasename) do
+         
+          desc 'Database Name'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('databasename needs to be set')
+            end
+          end
+        
+      end
+    
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

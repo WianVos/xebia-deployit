@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_was_sibtopicspacedestination).provide(:generated_res
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -28,13 +27,13 @@ Puppet::Type.type(:deployit_was_sibtopicspacedestination).provide(:generated_res
 
     def self.parent
     
-      [  "was.Cell",  ]
+      [  "was.Cell",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_was_cell",  ]
+      [  "deployit_was_cell",  "deployit_core_directory",  ]
     
 
     end

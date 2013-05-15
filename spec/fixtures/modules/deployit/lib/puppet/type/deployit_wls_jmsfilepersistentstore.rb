@@ -78,6 +78,23 @@ Puppet::Type.newtype(:deployit_wls_jmsfilepersistentstore ) do
         
       end
     
+      newproperty(:targetrestartpolicy) do
+         
+          desc 'Target Restart Policy'
+        
+         
+          defaultto ('RESTART') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('targetrestartpolicy needs to be set')
+            end
+          end
+        
+      end
+    
       newproperty(:synchronouswritepolicy) do
          
           desc 'Synchronous Write Policy'
@@ -97,7 +114,7 @@ Puppet::Type.newtype(:deployit_wls_jmsfilepersistentstore ) do
     
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_wls_jmsserver", ].each {|c|
+      [ "deployit_wls_jmsserver",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

@@ -61,36 +61,18 @@ Puppet::Type.newtype(:deployit_jetty_mqqueueconnectionfactoryspec ) do
         defaultto('http')
       end
     
+      newproperty(:jndiname) do
+         
+          desc 'Jndi Name'
+        
+        
+           
+        
+      end
+    
       newproperty(:hostname) do
          
           desc 'Host Name'
-        
-        
-           
-        
-      end
-    
-      newproperty(:channel) do
-         
-          desc 'Channel'
-        
-        
-           
-        
-      end
-    
-      newproperty(:queuemanager) do
-         
-          desc 'Queue Manager'
-        
-        
-           
-        
-      end
-    
-      newproperty(:ccdturl) do
-         
-          desc 'C C D T U R L'
         
         
            
@@ -106,9 +88,27 @@ Puppet::Type.newtype(:deployit_jetty_mqqueueconnectionfactoryspec ) do
         
       end
     
-      newproperty(:jndiname) do
+      newproperty(:ccdturl) do
          
-          desc 'Jndi Name'
+          desc 'C C D T U R L'
+        
+        
+           
+        
+      end
+    
+      newproperty(:queuemanager) do
+         
+          desc 'Queue Manager'
+        
+        
+           
+        
+      end
+    
+      newproperty(:channel) do
+         
+          desc 'Channel'
         
         
            
@@ -178,6 +178,20 @@ Puppet::Type.newtype(:deployit_jetty_mqqueueconnectionfactoryspec ) do
         end
         
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -61,18 +61,18 @@ Puppet::Type.newtype(:deployit_was_jaasaliasspec ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
+      newproperty(:password) do
          
-          desc 'Username'
+          desc 'Password'
         
         
            
         
       end
     
-      newproperty(:password) do
+      newproperty(:username) do
          
-          desc 'Password'
+          desc 'Username'
         
         
            
@@ -101,6 +101,20 @@ Puppet::Type.newtype(:deployit_was_jaasaliasspec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

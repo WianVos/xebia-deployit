@@ -61,18 +61,18 @@ Puppet::Type.newtype(:deployit_was_sibtopicspec ) do
         defaultto('http')
       end
     
-      newproperty(:busname) do
+      newproperty(:topicname) do
          
-          desc 'Bus Name'
+          desc 'Topic name'
         
         
            
         
       end
     
-      newproperty(:topicname) do
+      newproperty(:busname) do
          
-          desc 'Topic name'
+          desc 'Bus Name'
         
         
            
@@ -110,6 +110,20 @@ Puppet::Type.newtype(:deployit_was_sibtopicspec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -61,6 +61,15 @@ Puppet::Type.newtype(:deployit_wls_deployedfolder ) do
         defaultto('http')
       end
     
+      newproperty(:targetfile) do
+         
+          desc 'Target File'
+        
+        
+           
+        
+      end
+    
       newproperty(:targetdirectory) do
          
           desc 'Target Directory'
@@ -78,12 +87,20 @@ Puppet::Type.newtype(:deployit_wls_deployedfolder ) do
         
       end
     
-      newproperty(:targetfile) do
+      newproperty(:targetrestartpolicy) do
          
-          desc 'Target File'
+          desc 'Target Restart Policy'
         
+         
+          defaultto ('RESTART') 
         
            
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('targetrestartpolicy needs to be set')
+            end
+          end
         
       end
     
@@ -130,7 +147,7 @@ Puppet::Type.newtype(:deployit_wls_deployedfolder ) do
         
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_wls_wlscontainer", ].each {|c|
+      [ "deployit_wls_wlscontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

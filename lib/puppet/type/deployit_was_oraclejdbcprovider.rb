@@ -61,45 +61,6 @@ Puppet::Type.newtype(:deployit_was_oraclejdbcprovider ) do
         defaultto('http')
       end
     
-      newproperty(:classpath) do
-         
-          desc 'Class path'
-        
-         
-          defaultto ('${ORACLE_JDBC_DRIVER_PATH}/ojdbc6.jar') 
-        
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('classpath needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:providertype) do
-         
-          desc ' Provider type'
-        
-         
-          defaultto ('Oracle JDBC Driver') 
-        
-           
-        
-      end
-    
-      newproperty(:description) do
-         
-          desc 'Description'
-        
-         
-          defaultto ('Oracle JDBC Driver') 
-        
-           
-        
-      end
-    
       newproperty(:implementationclassname) do
          
           desc 'Implementation class name'
@@ -120,9 +81,48 @@ Puppet::Type.newtype(:deployit_was_oraclejdbcprovider ) do
         
       end
     
+      newproperty(:classpath) do
+         
+          desc 'Class path'
+        
+         
+          defaultto ('${ORACLE_JDBC_DRIVER_PATH}/ojdbc6.jar') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('classpath needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:description) do
+         
+          desc 'Description'
+        
+         
+          defaultto ('Oracle JDBC Driver') 
+        
+           
+        
+      end
+    
+      newproperty(:providertype) do
+         
+          desc ' Provider type'
+        
+         
+          defaultto ('Oracle JDBC Driver') 
+        
+           
+        
+      end
+    
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

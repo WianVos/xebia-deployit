@@ -70,18 +70,18 @@ Puppet::Type.newtype(:deployit_wls_mailsessionspec ) do
         
       end
     
-      newproperty(:targetrestartpolicy) do
+      newproperty(:jndiname) do
          
-          desc 'Target Restart Policy'
+          desc 'Jndi Name'
         
         
            
         
       end
     
-      newproperty(:jndiname) do
+      newproperty(:targetrestartpolicy) do
          
-          desc 'Jndi Name'
+          desc 'Target Restart Policy'
         
         
            
@@ -151,6 +151,20 @@ Puppet::Type.newtype(:deployit_wls_mailsessionspec ) do
         end
         
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

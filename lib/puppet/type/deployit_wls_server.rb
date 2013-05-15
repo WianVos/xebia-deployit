@@ -143,7 +143,7 @@ Puppet::Type.newtype(:deployit_wls_server ) do
         
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_overthere_host",  "deployit_overthere_ssh_host",  "deployit_overthere_cifs_host", ].each {|c|
+      [ "deployit_core_directory",  "deployit_overthere_host",  "deployit_overthere_sshhost",  "deployit_overthere_cifshost", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

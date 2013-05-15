@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_filepersistentstore).provide(:generated_restclie
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_filepersistentstore).provide(:generated_restclie
 
     def self.properties
     
-      [  "directory",  "synchronousWritePolicy",  ]
+      [  "directory",  "targetRestartPolicy",  "synchronousWritePolicy",  ]
     
     end
 
     def self.parent
     
-      [  "wls.Server",  ]
+      [  "wls.Server",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_wls_server",  ]
+      [  "deployit_wls_server",  "deployit_core_directory",  ]
     
 
     end

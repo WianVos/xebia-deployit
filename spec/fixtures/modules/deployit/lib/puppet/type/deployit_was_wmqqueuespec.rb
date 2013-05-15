@@ -61,18 +61,18 @@ Puppet::Type.newtype(:deployit_was_wmqqueuespec ) do
         defaultto('http')
       end
     
-      newproperty(:basequeuename) do
+      newproperty(:jndiname) do
          
-          desc 'Base Queue Name'
+          desc 'Jndi Name'
         
         
            
         
       end
     
-      newproperty(:jndiname) do
+      newproperty(:basequeuename) do
          
-          desc 'Jndi Name'
+          desc 'Base Queue Name'
         
         
            
@@ -101,6 +101,20 @@ Puppet::Type.newtype(:deployit_was_wmqqueuespec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -63,7 +63,7 @@ Puppet::Type.newtype(:deployit_www_apacheconffragment ) do
     
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_www_apachehttpdserver", ].each {|c|
+      [ "deployit_www_apachehttpdserver",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

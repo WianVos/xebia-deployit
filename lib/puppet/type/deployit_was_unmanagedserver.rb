@@ -61,23 +61,6 @@ Puppet::Type.newtype(:deployit_was_unmanagedserver ) do
         defaultto('http')
       end
     
-      newproperty(:nodename) do
-         
-          desc 'WebSphere node name'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('nodename needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:cellname) do
          
           desc 'WebSphere cell name'
@@ -95,21 +78,29 @@ Puppet::Type.newtype(:deployit_was_unmanagedserver ) do
         
       end
     
-      newproperty(:username) do
-         
-          desc 'Administrative username'
-        
-        
-           
-        
-      end
-    
       newproperty(:password) do
          
           desc 'Administrative password'
         
         
            
+        
+      end
+    
+      newproperty(:version) do
+         
+          desc 'WAS version'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('version needs to be set')
+            end
+          end
         
       end
     
@@ -125,6 +116,32 @@ Puppet::Type.newtype(:deployit_was_unmanagedserver ) do
           validate do |value|
             unless value != 'unset'
               fail('washome needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Administrative username'
+        
+        
+           
+        
+      end
+    
+      newproperty(:nodename) do
+         
+          desc 'WebSphere node name'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('nodename needs to be set')
             end
           end
         
@@ -174,7 +191,7 @@ Puppet::Type.newtype(:deployit_was_unmanagedserver ) do
   
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_overthere_host",  "deployit_overthere_ssh_host",  "deployit_overthere_cifs_host", ].each {|c|
+      [ "deployit_core_directory",  "deployit_overthere_host",  "deployit_overthere_sshhost",  "deployit_overthere_cifshost", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

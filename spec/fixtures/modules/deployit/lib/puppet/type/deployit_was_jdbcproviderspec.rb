@@ -61,6 +61,33 @@ Puppet::Type.newtype(:deployit_was_jdbcproviderspec ) do
         defaultto('http')
       end
     
+      newproperty(:implementationclassname) do
+         
+          desc 'Implementation class name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:isolatedclassloader) do
+         
+          desc 'Isolate this resource provider '
+        
+        
+           
+        
+      end
+    
+      newproperty(:nativepath) do
+         
+          desc 'Native Library Path'
+        
+        
+           
+        
+      end
+    
       newproperty(:classpath) do
          
           desc 'Class path'
@@ -79,24 +106,6 @@ Puppet::Type.newtype(:deployit_was_jdbcproviderspec ) do
         
       end
     
-      newproperty(:providertype) do
-         
-          desc ' Provider type'
-        
-        
-           
-        
-      end
-    
-      newproperty(:isolatedclassloader) do
-         
-          desc 'Isolate this resource provider '
-        
-        
-           
-        
-      end
-    
       newproperty(:description) do
          
           desc 'Description'
@@ -106,18 +115,9 @@ Puppet::Type.newtype(:deployit_was_jdbcproviderspec ) do
         
       end
     
-      newproperty(:nativepath) do
+      newproperty(:providertype) do
          
-          desc 'Native Library Path'
-        
-        
-           
-        
-      end
-    
-      newproperty(:implementationclassname) do
-         
-          desc 'Implementation class name'
+          desc ' Provider type'
         
         
            
@@ -146,6 +146,20 @@ Puppet::Type.newtype(:deployit_was_jdbcproviderspec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

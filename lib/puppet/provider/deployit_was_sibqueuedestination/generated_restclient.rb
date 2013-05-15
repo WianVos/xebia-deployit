@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_was_sibqueuedestination).provide(:generated_restclie
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -28,13 +27,13 @@ Puppet::Type.type(:deployit_was_sibqueuedestination).provide(:generated_restclie
 
     def self.parent
     
-      [  "was.WasAppContainer",  ]
+      [  "was.WasAppContainer",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_was_wasappcontainer",  ]
+      [  "deployit_was_wasappcontainer",  "deployit_core_directory",  ]
     
 
     end

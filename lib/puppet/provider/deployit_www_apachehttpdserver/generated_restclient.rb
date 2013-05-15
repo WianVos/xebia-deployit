@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_www_apachehttpdserver).provide(:generated_restclient
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_www_apachehttpdserver).provide(:generated_restclient
 
     def self.properties
     
-      [  "configurationFragmentDirectory",  "startCommand",  "restartCommand",  "defaultDocumentRoot",  "stopCommand",  ]
+      [  "configurationFragmentDirectory",  "startCommand",  "stopCommand",  "defaultDocumentRoot",  "restartCommand",  ]
     
     end
 
     def self.parent
     
-      [  "overthere.Host",  "overthere.Ssh_Host",  "overthere.Cifs_Host",  ]
+      [  "core.Directory",  "overthere.Host",  "overthere.SshHost",  "overthere.CifsHost",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_overthere_host",  "deployit_overthere_ssh_host",  "deployit_overthere_cifs_host",  ]
+      [  "deployit_core_directory",  "deployit_overthere_host",  "deployit_overthere_sshhost",  "deployit_overthere_cifshost",  ]
     
 
     end

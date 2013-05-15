@@ -41,7 +41,11 @@ class deployit::test::agent (
 
   deployit_core_directory { "Environments/test": }
 
-  deployit_overthere_sshhost { "Infrastructure/test/${::operatingsystem}_${::hostname}": }
+  deployit_overthere_sshhost { "Infrastructure/test/${::operatingsystem}_${::hostname}":
+    address => $::hostname,
+    username => "root",
+    os => "UNIX"
+  }
 
   deployit_jetty_server { "Infrastructure/test/${::operatingsystem}_${::hostname}/server1":
     tags    => [$::operatingsystem, $::virtual],

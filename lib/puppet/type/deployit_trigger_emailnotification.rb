@@ -61,18 +61,9 @@ Puppet::Type.newtype(:deployit_trigger_emailnotification ) do
         defaultto('http')
       end
     
-      newproperty(:body) do
+      newproperty(:bodytemplatepath) do
          
-          desc 'Body'
-        
-        
-           
-        
-      end
-    
-      newproperty(:fromaddress) do
-         
-          desc 'From Address'
+          desc 'Body Template Path'
         
         
            
@@ -96,9 +87,18 @@ Puppet::Type.newtype(:deployit_trigger_emailnotification ) do
         
       end
     
-      newproperty(:bodytemplatepath) do
+      newproperty(:fromaddress) do
          
-          desc 'Body Template Path'
+          desc 'From Address'
+        
+        
+           
+        
+      end
+    
+      newproperty(:body) do
+         
+          desc 'Body'
         
         
            
@@ -106,6 +106,20 @@ Puppet::Type.newtype(:deployit_trigger_emailnotification ) do
       end
     
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

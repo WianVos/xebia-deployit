@@ -70,15 +70,6 @@ Puppet::Type.newtype(:deployit_was_sibqueue ) do
         
       end
     
-      newproperty(:description) do
-         
-          desc 'Description'
-        
-        
-           
-        
-      end
-    
       newproperty(:deliverymode) do
          
           desc 'Delivery Mode'
@@ -93,15 +84,6 @@ Puppet::Type.newtype(:deployit_was_sibqueue ) do
               fail('deliverymode needs to be set')
             end
           end
-        
-      end
-    
-      newproperty(:timetolive) do
-         
-          desc 'Time To Live'
-        
-        
-           
         
       end
     
@@ -122,9 +104,27 @@ Puppet::Type.newtype(:deployit_was_sibqueue ) do
         
       end
     
+      newproperty(:timetolive) do
+         
+          desc 'Time To Live'
+        
+        
+           
+        
+      end
+    
+      newproperty(:description) do
+         
+          desc 'Description'
+        
+        
+           
+        
+      end
+    
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

@@ -70,6 +70,23 @@ Puppet::Type.newtype(:deployit_overthere_localhost ) do
         
       end
     
+      newproperty(:os) do
+         
+          desc 'Operating system'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('os needs to be set')
+            end
+          end
+        
+      end
+    
       newproperty(:tags , :array_matching => :all) do
         def insync?(is)
 
@@ -92,6 +109,20 @@ Puppet::Type.newtype(:deployit_overthere_localhost ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

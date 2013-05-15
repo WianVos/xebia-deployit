@@ -97,7 +97,7 @@ Puppet::Type.newtype(:deployit_was_sibqueueconnectionfactory ) do
     
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_topic).provide(:generated_restclient, :parent =>
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_topic).provide(:generated_restclient, :parent =>
 
     def self.properties
     
-      [  "jmsModuleName",  "subDeploymentName",  "jndiName",  ]
+      [  "jndiName",  "subDeploymentName",  "jmsModuleName",  ]
     
     end
 
     def self.parent
     
-      [  "wls.JmsServer",  ]
+      [  "wls.JmsServer",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_wls_jmsserver",  ]
+      [  "deployit_wls_jmsserver",  "deployit_core_directory",  ]
     
 
     end

@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_connectionfactoryspec).provide(:generated_restcl
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_connectionfactoryspec).provide(:generated_restcl
 
     def self.properties
     
-      [  "TransactionParams_XAConnectionFactoryEnabled",  "jmsModuleName",  "subDeploymentName",  "LoadBalancingParams_ServerAffinityEnabled",  "jndiName",  ]
+      [  "jndiName",  "subDeploymentName",  "TransactionParams_XAConnectionFactoryEnabled",  "jmsModuleName",  "LoadBalancingParams_ServerAffinityEnabled",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

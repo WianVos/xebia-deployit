@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_jetty_securityrolemapping).provide(:generated_restcl
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -28,13 +27,13 @@ Puppet::Type.type(:deployit_jetty_securityrolemapping).provide(:generated_restcl
 
     def self.parent
     
-      [  "jetty.Server",  ]
+      [  "jetty.Server",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_jetty_server",  ]
+      [  "deployit_jetty_server",  "deployit_core_directory",  ]
     
 
     end

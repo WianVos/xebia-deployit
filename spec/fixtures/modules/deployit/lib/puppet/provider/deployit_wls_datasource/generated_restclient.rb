@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_datasource).provide(:generated_restclient, :pare
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_datasource).provide(:generated_restclient, :pare
 
     def self.properties
     
-      [  "username",  "url",  "password",  "driverName",  "jndiNames",  ]
+      [  "password",  "jndiNames",  "driverName",  "url",  "targetRestartPolicy",  "username",  ]
     
     end
 
     def self.parent
     
-      [  "wls.WlsContainer",  ]
+      [  "wls.WlsContainer",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_wls_wlscontainer",  ]
+      [  "deployit_wls_wlscontainer",  "deployit_core_directory",  ]
     
 
     end

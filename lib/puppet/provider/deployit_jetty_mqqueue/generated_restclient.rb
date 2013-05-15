@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_jetty_mqqueue).provide(:generated_restclient, :paren
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_jetty_mqqueue).provide(:generated_restclient, :paren
 
     def self.properties
     
-      [  "baseQueueName",  "baseQueueManagerName",  "jndiName",  ]
+      [  "jndiName",  "baseQueueName",  "baseQueueManagerName",  ]
     
     end
 
     def self.parent
     
-      [  "jetty.Server",  ]
+      [  "jetty.Server",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_jetty_server",  ]
+      [  "deployit_jetty_server",  "deployit_core_directory",  ]
     
 
     end

@@ -61,6 +61,74 @@ Puppet::Type.newtype(:deployit_was_oracledatasource ) do
         defaultto('http')
       end
     
+      newproperty(:jdbcprovider) do
+         
+          desc 'Jdbc Provider'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('jdbcprovider needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:password) do
+         
+          desc 'Password'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('password needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:jndiname) do
+         
+          desc 'Jndi Name'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('jndiname needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:url) do
+         
+          desc 'JDBC URL'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('url needs to be set')
+            end
+          end
+        
+      end
+    
       newproperty(:datasourcehelperclassname) do
          
           desc 'Datasource Helper Classname'
@@ -104,77 +172,9 @@ Puppet::Type.newtype(:deployit_was_oracledatasource ) do
         
       end
     
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('password needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:url) do
-         
-          desc 'JDBC URL'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('url needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:jdbcprovider) do
-         
-          desc 'Jdbc Provider'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('jdbcprovider needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:jndiname) do
-         
-          desc 'Jndi Name'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('jndiname needs to be set')
-            end
-          end
-        
-      end
-    
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

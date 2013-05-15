@@ -61,32 +61,6 @@ Puppet::Type.newtype(:deployit_wls_domain ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
-         
-          desc 'Administrative username'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('username needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:wlstpath) do
-         
-          desc 'WLST path'
-        
-        
-           
-        
-      end
-    
       newproperty(:domainhome) do
          
           desc 'WebLogic domain home'
@@ -113,6 +87,40 @@ Puppet::Type.newtype(:deployit_wls_domain ) do
         
       end
     
+      newproperty(:protocol) do
+         
+          desc 'Administrative server protocol'
+        
+         
+          defaultto ('t3') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('protocol needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:version) do
+         
+          desc 'Version'
+        
+         
+          defaultto ('WEBLOGIC_10') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('version needs to be set')
+            end
+          end
+        
+      end
+    
       newproperty(:adminservername) do
          
           desc 'Admin Server Name'
@@ -125,6 +133,23 @@ Puppet::Type.newtype(:deployit_wls_domain ) do
           validate do |value|
             unless value != 'unset'
               fail('adminservername needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:startmode) do
+         
+          desc 'Start Mode'
+        
+         
+          defaultto ('NodeManager') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('startmode needs to be set')
             end
           end
         
@@ -147,28 +172,33 @@ Puppet::Type.newtype(:deployit_wls_domain ) do
         
       end
     
-      newproperty(:tags , :array_matching => :all) do
-        def insync?(is)
-
-          # Comparison of Array's
-          # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
-          return false unless is.class == Array and should.class == Array
-
-          # now lets compare the two and see is a modify is needed
-          # haven't quite worked out yet what to do with extra values in the is hash
-          @should.each do |k|
-
-            # if is[k] is not equal to should[k] the insync? should return false
-            return false unless is.include?(k)
-
-          end
-          return false unless is.length == @should.length
-          true
-        end
-
+      newproperty(:wlstpath) do
+         
+          desc 'WLST path'
+        
+        
+           
+        
       end
-  
-      newproperty(:servers , :array_matching => :all) do
+    
+      newproperty(:username) do
+         
+          desc 'Administrative username'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('username needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:tags , :array_matching => :all) do
         def insync?(is)
 
           # Comparison of Array's
@@ -210,9 +240,30 @@ Puppet::Type.newtype(:deployit_wls_domain ) do
 
       end
   
+      newproperty(:servers , :array_matching => :all) do
+        def insync?(is)
+
+          # Comparison of Array's
+          # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
+          return false unless is.class == Array and should.class == Array
+
+          # now lets compare the two and see is a modify is needed
+          # haven't quite worked out yet what to do with extra values in the is hash
+          @should.each do |k|
+
+            # if is[k] is not equal to should[k] the insync? should return false
+            return false unless is.include?(k)
+
+          end
+          return false unless is.length == @should.length
+          true
+        end
+
+      end
+  
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_overthere_host",  "deployit_overthere_ssh_host",  "deployit_overthere_cifs_host", ].each {|c|
+      [ "deployit_core_directory",  "deployit_overthere_host",  "deployit_overthere_sshhost",  "deployit_overthere_cifshost", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

@@ -61,6 +61,24 @@ Puppet::Type.newtype(:deployit_wls_connectionfactoryspec ) do
         defaultto('http')
       end
     
+      newproperty(:jndiname) do
+         
+          desc 'Jndi Name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:subdeploymentname) do
+         
+          desc 'Sub Deployment Name'
+        
+        
+           
+        
+      end
+    
       newproperty(:transactionparams_xaconnectionfactoryenabled) do
          
           desc 'XAConnectionFactoryEnabled'
@@ -79,27 +97,9 @@ Puppet::Type.newtype(:deployit_wls_connectionfactoryspec ) do
         
       end
     
-      newproperty(:subdeploymentname) do
-         
-          desc 'Sub Deployment Name'
-        
-        
-           
-        
-      end
-    
       newproperty(:loadbalancingparams_serveraffinityenabled) do
          
           desc 'ServerAffinityEnabled'
-        
-        
-           
-        
-      end
-    
-      newproperty(:jndiname) do
-         
-          desc 'Jndi Name'
         
         
            
@@ -128,6 +128,20 @@ Puppet::Type.newtype(:deployit_wls_connectionfactoryspec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -61,32 +61,6 @@ Puppet::Type.newtype(:deployit_overthere_sshjumpstation ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
-         
-          desc 'Username'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('username needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-           
-        
-      end
-    
       newproperty(:address) do
          
           desc 'Address'
@@ -104,9 +78,9 @@ Puppet::Type.newtype(:deployit_overthere_sshjumpstation ) do
         
       end
     
-      newproperty(:privatekeyfile) do
+      newproperty(:password) do
          
-          desc 'Private Key File'
+          desc 'Password'
         
         
            
@@ -119,6 +93,49 @@ Puppet::Type.newtype(:deployit_overthere_sshjumpstation ) do
         
         
            
+        
+      end
+    
+      newproperty(:privatekeyfile) do
+         
+          desc 'Private Key File'
+        
+        
+           
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Username'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('username needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:os) do
+         
+          desc 'Os'
+        
+         
+          defaultto ('UNIX') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('os needs to be set')
+            end
+          end
         
       end
     
@@ -144,6 +161,20 @@ Puppet::Type.newtype(:deployit_overthere_sshjumpstation ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -61,40 +61,6 @@ Puppet::Type.newtype(:deployit_wls_datasource ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
-         
-          desc 'Username'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('username needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:url) do
-         
-          desc 'Url'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('url needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:password) do
          
           desc 'Password'
@@ -107,6 +73,23 @@ Puppet::Type.newtype(:deployit_wls_datasource ) do
           validate do |value|
             unless value != 'unset'
               fail('password needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:jndinames) do
+         
+          desc 'Jndi Names'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('jndinames needs to be set')
             end
           end
         
@@ -129,9 +112,9 @@ Puppet::Type.newtype(:deployit_wls_datasource ) do
         
       end
     
-      newproperty(:jndinames) do
+      newproperty(:url) do
          
-          desc 'Jndi Names'
+          desc 'Url'
         
         
         
@@ -140,7 +123,41 @@ Puppet::Type.newtype(:deployit_wls_datasource ) do
          
           validate do |value|
             unless value != 'unset'
-              fail('jndinames needs to be set')
+              fail('url needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:targetrestartpolicy) do
+         
+          desc 'Target Restart Policy'
+        
+         
+          defaultto ('RESTART') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('targetrestartpolicy needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Username'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('username needs to be set')
             end
           end
         
@@ -189,7 +206,7 @@ Puppet::Type.newtype(:deployit_wls_datasource ) do
         
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_wls_wlscontainer", ].each {|c|
+      [ "deployit_wls_wlscontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

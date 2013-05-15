@@ -61,9 +61,36 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
         defaultto('http')
       end
     
-      newproperty(:defaultautocommit) do
+      newproperty(:password) do
          
-          desc 'Default Auto Commit'
+          desc 'Password'
+        
+        
+           
+        
+      end
+    
+      newproperty(:maxidle) do
+         
+          desc 'Max Idle'
+        
+        
+           
+        
+      end
+    
+      newproperty(:maxwait) do
+         
+          desc 'Max Wait'
+        
+        
+           
+        
+      end
+    
+      newproperty(:jndiname) do
+         
+          desc 'Jndi Name'
         
         
            
@@ -73,6 +100,60 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
       newproperty(:maxactive) do
          
           desc 'Max Active'
+        
+        
+           
+        
+      end
+    
+      newproperty(:portnumber) do
+         
+          desc 'Portnumber'
+        
+        
+           
+        
+      end
+    
+      newproperty(:user) do
+         
+          desc 'User'
+        
+        
+           
+        
+      end
+    
+      newproperty(:servername) do
+         
+          desc 'Servername'
+        
+        
+           
+        
+      end
+    
+      newproperty(:defaultautocommit) do
+         
+          desc 'Default Auto Commit'
+        
+        
+           
+        
+      end
+    
+      newproperty(:initialsize) do
+         
+          desc 'Initial Size'
+        
+        
+           
+        
+      end
+    
+      newproperty(:databasename) do
+         
+          desc 'Databasename'
         
         
            
@@ -91,87 +172,6 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
       newproperty(:minidle) do
          
           desc 'Min Idle'
-        
-        
-           
-        
-      end
-    
-      newproperty(:servername) do
-         
-          desc 'Servername'
-        
-        
-           
-        
-      end
-    
-      newproperty(:initialsize) do
-         
-          desc 'Initial Size'
-        
-        
-           
-        
-      end
-    
-      newproperty(:portnumber) do
-         
-          desc 'Portnumber'
-        
-        
-           
-        
-      end
-    
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-           
-        
-      end
-    
-      newproperty(:maxwait) do
-         
-          desc 'Max Wait'
-        
-        
-           
-        
-      end
-    
-      newproperty(:maxidle) do
-         
-          desc 'Max Idle'
-        
-        
-           
-        
-      end
-    
-      newproperty(:user) do
-         
-          desc 'User'
-        
-        
-           
-        
-      end
-    
-      newproperty(:databasename) do
-         
-          desc 'Databasename'
-        
-        
-           
-        
-      end
-    
-      newproperty(:jndiname) do
-         
-          desc 'Jndi Name'
         
         
            
@@ -200,6 +200,20 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

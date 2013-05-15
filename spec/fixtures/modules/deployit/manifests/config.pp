@@ -39,12 +39,13 @@ class deployit::config (
   file { "${deployit_homedir}/server/conf/deployit.conf": }
 
   file { "install plugins":
-    source       => "puppet:///modules/deployit/plugins/",
+    source       => ["puppet:///modules/deployit/plugins/","${deployit_homedir}/server/available-plugins"],
     sourceselect => all,
     recurse      => remote,
     path         => "${deployit_homedir}/server/plugins"
   }
 
+  
   # ini setting sets a specific variable in a stanza file .
   # this type and providers is stolen
   # but is incorporated in this package

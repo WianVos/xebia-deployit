@@ -61,6 +61,60 @@ Puppet::Type.newtype(:deployit_was_oracledatasourcespec ) do
         defaultto('http')
       end
     
+      newproperty(:connectionpool_connectiontimeout) do
+         
+          desc 'Connection pool: timeout'
+        
+        
+           
+        
+      end
+    
+      newproperty(:jdbcprovider) do
+         
+          desc 'Jdbc Provider'
+        
+        
+           
+        
+      end
+    
+      newproperty(:password) do
+         
+          desc 'Password'
+        
+        
+           
+        
+      end
+    
+      newproperty(:jndiname) do
+         
+          desc 'Jndi Name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:url) do
+         
+          desc 'JDBC URL'
+        
+        
+           
+        
+      end
+    
+      newproperty(:connectionpool_minconnections) do
+         
+          desc 'Connection pool: minimum connections'
+        
+        
+           
+        
+      end
+    
       newproperty(:datasourcehelperclassname) do
          
           desc 'Datasource Helper Classname'
@@ -79,42 +133,6 @@ Puppet::Type.newtype(:deployit_was_oracledatasourcespec ) do
         
       end
     
-      newproperty(:description) do
-         
-          desc 'Description'
-        
-        
-           
-        
-      end
-    
-      newproperty(:connectionpool_connectiontimeout) do
-         
-          desc 'Connection pool: timeout'
-        
-        
-           
-        
-      end
-    
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-           
-        
-      end
-    
-      newproperty(:url) do
-         
-          desc 'JDBC URL'
-        
-        
-           
-        
-      end
-    
       newproperty(:connectionpool_maxconnections) do
          
           desc 'Connection pool: maximum connections'
@@ -124,27 +142,9 @@ Puppet::Type.newtype(:deployit_was_oracledatasourcespec ) do
         
       end
     
-      newproperty(:connectionpool_minconnections) do
+      newproperty(:description) do
          
-          desc 'Connection pool: minimum connections'
-        
-        
-           
-        
-      end
-    
-      newproperty(:jdbcprovider) do
-         
-          desc 'Jdbc Provider'
-        
-        
-           
-        
-      end
-    
-      newproperty(:jndiname) do
-         
-          desc 'Jndi Name'
+          desc 'Description'
         
         
            
@@ -173,6 +173,20 @@ Puppet::Type.newtype(:deployit_was_oracledatasourcespec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_deployedfolder).provide(:generated_restclient, :
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_deployedfolder).provide(:generated_restclient, :
 
     def self.properties
     
-      [  "targetDirectory",  "targetFile",  ]
+      [  "targetFile",  "targetDirectory",  "targetRestartPolicy",  ]
     
     end
 
     def self.parent
     
-      [  "wls.WlsContainer",  ]
+      [  "wls.WlsContainer",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_wls_wlscontainer",  ]
+      [  "deployit_wls_wlscontainer",  "deployit_core_directory",  ]
     
 
     end

@@ -61,23 +61,6 @@ Puppet::Type.newtype(:deployit_was_jaasalias ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
-         
-          desc 'Username'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('username needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:password) do
          
           desc 'Password'
@@ -95,9 +78,26 @@ Puppet::Type.newtype(:deployit_was_jaasalias ) do
         
       end
     
+      newproperty(:username) do
+         
+          desc 'Username'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('username needs to be set')
+            end
+          end
+        
+      end
+    
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

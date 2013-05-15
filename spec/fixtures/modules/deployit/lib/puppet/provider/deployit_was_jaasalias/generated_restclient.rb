@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_was_jaasalias).provide(:generated_restclient, :paren
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_was_jaasalias).provide(:generated_restclient, :paren
 
     def self.properties
     
-      [  "username",  "password",  ]
+      [  "password",  "username",  ]
     
     end
 
     def self.parent
     
-      [  "was.WasContainer",  ]
+      [  "was.WasContainer",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_was_wascontainer",  ]
+      [  "deployit_was_wascontainer",  "deployit_core_directory",  ]
     
 
     end

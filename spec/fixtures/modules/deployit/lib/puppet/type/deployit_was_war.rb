@@ -61,6 +61,15 @@ Puppet::Type.newtype(:deployit_was_war ) do
         defaultto('http')
       end
     
+      newproperty(:precompilejsps) do
+         
+          desc 'Pre Compile Jsps'
+        
+        
+           
+        
+      end
+    
       newproperty(:startingweight) do
          
           desc 'Starting Weight'
@@ -82,15 +91,6 @@ Puppet::Type.newtype(:deployit_was_war ) do
       newproperty(:contextroot) do
          
           desc 'Context Root'
-        
-        
-           
-        
-      end
-    
-      newproperty(:precompilejsps) do
-         
-          desc 'Pre Compile Jsps'
         
         
            
@@ -181,6 +181,20 @@ Puppet::Type.newtype(:deployit_was_war ) do
         end
         
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

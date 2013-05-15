@@ -11,14 +11,14 @@
     "Modulefile": "0921ed5e56ae52d8c4e7e4f77abc21f0",
     "README.markdown": "4afe9f22037501642be4d748fd60110d",
     "Rakefile": "2b4a713d91f2cf2d7a3f3948548ebe27",
-    "bin/genres/Gemfile": "98ade4225a6b1d248efb95e585546bf5",
-    "bin/genres/Gemfile.lock": "82121eaefc6f1b236e8d2eb12292e15e",
-    "bin/genres/genres2.rb": "708d1f7679ce08653533d6f7dfe20b7e",
-    "bin/genres/lib/DeployitMetaXml.rb": "3725f1ba147f247e799db3ee87b04f52",
-    "bin/genres/lib/Generator.rb": "c82747ceb52ce146a5450be23304d9c0",
-    "bin/genres/lib/Resourceprovider.rb": "0ec2a2a228959ab67b8ed29871782f1b",
-    "bin/genres/lib/Resourcetype.rb": "777a2fabf521396274357befe76911dc",
-    "bin/genres/rest.xml": "3c5330d601c6ba50f2752d31328db180",
+    "bin/genres/Gemfile": "4b9402bd98e71ab5d4ff26ccd06e6b7f",
+    "bin/genres/Gemfile.lock": "426ad9597652d95ffe01d5fb8ad30d7d",
+    "bin/genres/genres2.rb": "f86cc4587c1bd06c377b8b64c542e125",
+    "bin/genres/lib/DeployitMetaXml.rb": "bf0cf51995ab9c57f2c6a072e797334b",
+    "bin/genres/lib/Generator.rb": "fd3a193c75eb19354181ce541f5433d6",
+    "bin/genres/lib/Resourceprovider.rb": "6c0cb3a16e585894d9771eb2c0b74ec6",
+    "bin/genres/lib/Resourcetype.rb": "e5efea58a3f120ee17422a558984bb19",
+    "bin/genres/rest.xml": "617a6ee82bf749f1c00d7b78334fbc2e",
     "files/development/ci.rb": "5844cda02323af81887c0960844df0ac",
     "files/development/restdep.rb": "2c268d60cd7af7cf88fc7004c8cf166d",
     "files/development/testII.rb": "8d760a29a42c611b4958c4c949a4efb0",
@@ -31,293 +31,320 @@
     "files/plugins/wls-plugin-3.8.2.jar": "47953da546f09cbd8b95ebd459e76eb1",
     "files/sources/deployit-3.8.5-cli.zip": "9af2330201fc674a8c5107f5cc022433",
     "files/sources/deployit-3.8.5-server.zip": "19f6a9e574465ecda3ff2904d8bd9931",
-    "lib/puppet/deployit_util/ci.rb": "2936f718188a4656f55cf40a11fceb29",
+    "lib/puppet/deployit_util/ci.rb": "ac09e2b8e0a6be158ed0ea63ea051ca3",
     "lib/puppet/feature/restclient.rb": "9f097ad93c392b06e43e99120e897708",
     "lib/puppet/parser/functions/encode_b64.rb": "1b5608dc7b16df54089a77dda6d0ebc9",
     "lib/puppet/provider/deployit_check_connection/port_check.rb": "12b118749b803da53cda5672a04edd9f",
     "lib/puppet/provider/deployit_ci/ruby.rb": "093d546faf0157dee889867a6cdac251",
-    "lib/puppet/provider/deployit_cmd_command/generated_restclient.rb": "0ab33ea54827edd988c089649aaf7185",
+    "lib/puppet/provider/deployit_cmd_command/generated_restclient.rb": "54e1f6bd6680e2d9fa9227b42ec7777e",
+    "lib/puppet/provider/deployit_cmd_deployedcommand/generated_restclient.rb": "109ab255e615305e2c7789c28377c4f1",
     "lib/puppet/provider/deployit_core_directory/restclient.rb": "3c001d43454669463483670c37b147bb",
-    "lib/puppet/provider/deployit_jetty_db2datasource/generated_restclient.rb": "c8ec3e1409d2a5559e65878954ac4637",
-    "lib/puppet/provider/deployit_jetty_db2datasourcespec/generated_restclient.rb": "c9f8ead158c190b28f51eaea894f1a0e",
-    "lib/puppet/provider/deployit_jetty_mqqueue/generated_restclient.rb": "d590220c4227e2e9b40bb49156f8db41",
-    "lib/puppet/provider/deployit_jetty_mqqueueconnectionfactoryspec/generated_restclient.rb": "0a642ef7138ef7416b9c9de678076faa",
-    "lib/puppet/provider/deployit_jetty_mqqueuespec/generated_restclient.rb": "26c00a83aaef5e39ba3837f599d7a23c",
-    "lib/puppet/provider/deployit_jetty_securityrolemapping/generated_restclient.rb": "613ce4377b4bb968b338f71dba6bb677",
-    "lib/puppet/provider/deployit_jetty_securityrolemappingspec/generated_restclient.rb": "a65fad6df14e576d499e3b3727bfbf66",
-    "lib/puppet/provider/deployit_jetty_server/restclient.rb": "6a16a1000118f4f00504bcbd429208ab",
-    "lib/puppet/provider/deployit_jetty_war/generated_restclient.rb": "2924a9313ec782b0d9bb4d1416f5e601",
-    "lib/puppet/provider/deployit_jetty_warmodule/generated_restclient.rb": "dbf8de1d68ad63da0029ce0f2a2f73dc",
-    "lib/puppet/provider/deployit_jetty_webspheremqqueueconnectionfactory/generated_restclient.rb": "e19a73844922abbc892238d58bb7745e",
-    "lib/puppet/provider/deployit_overthere_cifshost/generated_restclient.rb": "e226f2c9e96d27a6f9bd16b45c3e4861",
-    "lib/puppet/provider/deployit_overthere_localhost/generated_restclient.rb": "3e491429f6bd04e98939800042d10e8e",
-    "lib/puppet/provider/deployit_overthere_sshhost/restclient.rb": "81ea35173f8bb05f0314c66a58d4db53",
-    "lib/puppet/provider/deployit_overthere_sshjumpstation/generated_restclient.rb": "7c1b679704482038d5ca9b33be1f1248",
-    "lib/puppet/provider/deployit_trigger_emailnotification/generated_restclient.rb": "694ad3eedaeca1d8c50cefb0f34684e4",
-    "lib/puppet/provider/deployit_trigger_steptrigger/generated_restclient.rb": "edd7936cd3d41381319ab650e1adc621",
-    "lib/puppet/provider/deployit_trigger_tasktrigger/generated_restclient.rb": "9dc8ddeda27bceb7eccc44497b6f348f",
+    "lib/puppet/provider/deployit_file_archive/generated_restclient.rb": "8ee19b584449c4500da010fb2a074f16",
+    "lib/puppet/provider/deployit_file_deployedarchive/generated_restclient.rb": "3a652ace6a31a480d2bdfd1fac6658be",
+    "lib/puppet/provider/deployit_file_deployedfile/generated_restclient.rb": "503cb0b5dcdfa4d6808102864746ceab",
+    "lib/puppet/provider/deployit_file_deployedfolder/generated_restclient.rb": "ecb250ab65f8ac58a61bdc486c72c4a6",
+    "lib/puppet/provider/deployit_file_file/generated_restclient.rb": "e3ddff792e2b633a12e685e91a5f29aa",
+    "lib/puppet/provider/deployit_file_folder/generated_restclient.rb": "a488bfe9c9ed6a54f086f8b018ae4f11",
+    "lib/puppet/provider/deployit_jee_datasourcespec/generated_restclient.rb": "e71b21a2cdf4318c27d229e0f426e545",
+    "lib/puppet/provider/deployit_jee_ear/generated_restclient.rb": "ee93182955e71bc6c887d549ed5d1b8b",
+    "lib/puppet/provider/deployit_jee_ejbjar/generated_restclient.rb": "3c173d2d0c5fea517dac8f1e9bf88b90",
+    "lib/puppet/provider/deployit_jee_mailsessionspec/generated_restclient.rb": "e64e94a2d3e66b32f8a8eefe3fed22ca",
+    "lib/puppet/provider/deployit_jee_queueconnectionfactoryspec/generated_restclient.rb": "92c41887c703ce5eea2888cf2e55a3fd",
+    "lib/puppet/provider/deployit_jee_queuespec/generated_restclient.rb": "e080ddd8fa9b4e604b3f5442b2501a8c",
+    "lib/puppet/provider/deployit_jee_topicconnectionfactoryspec/generated_restclient.rb": "15b56e60a8a23286b29f235fe416afa1",
+    "lib/puppet/provider/deployit_jee_topicspec/generated_restclient.rb": "e222fa385ab87f359ad265a49074a5df",
+    "lib/puppet/provider/deployit_jee_war/generated_restclient.rb": "59535f0a7b460d002d09ee43890b015d",
+    "lib/puppet/provider/deployit_jetty_db2datasource/generated_restclient.rb": "cff625f14d016d63032968e488e8e086",
+    "lib/puppet/provider/deployit_jetty_db2datasourcespec/generated_restclient.rb": "dfd90451c541a97f127d825a503bf7ec",
+    "lib/puppet/provider/deployit_jetty_mqqueue/generated_restclient.rb": "2c4148332c8ac24fe61d765d600e37ee",
+    "lib/puppet/provider/deployit_jetty_mqqueueconnectionfactoryspec/generated_restclient.rb": "7ffec4369a79e89ed2f724d4502100ef",
+    "lib/puppet/provider/deployit_jetty_mqqueuespec/generated_restclient.rb": "1119885cbdc1ff580d4d38af83e3ac67",
+    "lib/puppet/provider/deployit_jetty_securityrolemapping/generated_restclient.rb": "0d85b9043de644e3ec4974cfd6351ac3",
+    "lib/puppet/provider/deployit_jetty_securityrolemappingspec/generated_restclient.rb": "f676e09d2ec0a5d332665fca74e700c8",
+    "lib/puppet/provider/deployit_jetty_server/generated_restclient.rb": "135b11cf923ff8025a42d99d45dfedf8",
+    "lib/puppet/provider/deployit_jetty_war/generated_restclient.rb": "493650d55e5a094cf378cc7579120a08",
+    "lib/puppet/provider/deployit_jetty_warmodule/generated_restclient.rb": "37691896bc1c0a58c5d5870677a5b280",
+    "lib/puppet/provider/deployit_jetty_webspheremqqueueconnectionfactory/generated_restclient.rb": "47abaa020480d831e50f96e5f691582c",
+    "lib/puppet/provider/deployit_overthere_cifshost/generated_restclient.rb": "c7e76c906311dd14109efb3cf0acfa06",
+    "lib/puppet/provider/deployit_overthere_localhost/generated_restclient.rb": "11c5b8a2db05047609c46eb63e7b7a91",
+    "lib/puppet/provider/deployit_overthere_sshhost/generated_restclient.rb": "f467658f7797bb7601b1c996f40e4ffd",
+    "lib/puppet/provider/deployit_overthere_sshjumpstation/generated_restclient.rb": "f3fea98a21e1bb7ece45d2a8dab871c2",
+    "lib/puppet/provider/deployit_trigger_emailnotification/generated_restclient.rb": "82d36fee5365829b12a14cd5fb929fa6",
+    "lib/puppet/provider/deployit_trigger_steptrigger/generated_restclient.rb": "1ce6f750c9ad59ca1bbd8e9d09d6eaab",
+    "lib/puppet/provider/deployit_trigger_tasktrigger/generated_restclient.rb": "dd9028c7dd3e4008c74063952ad76d57",
     "lib/puppet/provider/deployit_udm_dictionary/restclient.rb": "04aa85f335cc2687df7ca5a541008892",
     "lib/puppet/provider/deployit_udm_environment/restclient.rb": "5cb4eab3704e5ecaef69da82bae001e4",
-    "lib/puppet/provider/deployit_was_cluster/generated_restclient.rb": "9be6af79e6ac990c8061e6ab2bf63341",
-    "lib/puppet/provider/deployit_was_db2type2datasource/generated_restclient.rb": "cb6d404e875e35f427904e1ae9405021",
-    "lib/puppet/provider/deployit_was_db2type2datasourcespec/generated_restclient.rb": "69f345ca9349377efab731dd7ec60035",
-    "lib/puppet/provider/deployit_was_db2type4datasource/generated_restclient.rb": "b3022feaca7fc970c278072dc8e447a5",
-    "lib/puppet/provider/deployit_was_db2type4datasourcespec/generated_restclient.rb": "dbe00214335724bd668db8c06ac52603",
-    "lib/puppet/provider/deployit_was_deploymentmanager/generated_restclient.rb": "05e4584771ba3de55ec69609f4838f50",
-    "lib/puppet/provider/deployit_was_ear/generated_restclient.rb": "4d0854e286f32cc28a5f369b8dfb1b6e",
-    "lib/puppet/provider/deployit_was_earmodule/generated_restclient.rb": "92057dab3d93ba864f599d0077368963",
-    "lib/puppet/provider/deployit_was_ejbjar/generated_restclient.rb": "8e2fe6653d2f67d8be4ba9e5fb31eb6d",
-    "lib/puppet/provider/deployit_was_ejbmodule/generated_restclient.rb": "6b713da2ca06f2a8397b5999d02bc46e",
-    "lib/puppet/provider/deployit_was_jaasalias/generated_restclient.rb": "a89e387156bead2e67f832bc4bb234d9",
-    "lib/puppet/provider/deployit_was_jaasaliasspec/generated_restclient.rb": "85c96ea1353d6759b1eeb33fad933c2d",
-    "lib/puppet/provider/deployit_was_jdbcprovider/generated_restclient.rb": "bc136beb78869d01f853587ad9ae838e",
-    "lib/puppet/provider/deployit_was_jdbcproviderspec/generated_restclient.rb": "b767433cdf8199385db2f0ab23ac4565",
-    "lib/puppet/provider/deployit_was_managedserver/generated_restclient.rb": "43c36e4b65679bbda738e103cb9350b5",
-    "lib/puppet/provider/deployit_was_managedwebserver/generated_restclient.rb": "5372a44bde09aa59e86ac434d773af46",
-    "lib/puppet/provider/deployit_was_nodeagent/generated_restclient.rb": "e443cb451d47114eaa3602f1813f5c7d",
-    "lib/puppet/provider/deployit_was_oracledatasource/generated_restclient.rb": "4d03bfca966be69df08b71ac4216dca1",
-    "lib/puppet/provider/deployit_was_oracledatasourcespec/generated_restclient.rb": "ee622a92dec97670731b6026c2ab28f2",
-    "lib/puppet/provider/deployit_was_oraclejdbcprovider/generated_restclient.rb": "9a03b38c18e70caba816f168479104bb",
-    "lib/puppet/provider/deployit_was_oraclejdbcproviderspec/generated_restclient.rb": "12067cbefdc79f6bb8a59ad42af38519",
-    "lib/puppet/provider/deployit_was_oraclexajdbcprovider/generated_restclient.rb": "925ef0483a8b3e67b0809b7aee013b03",
-    "lib/puppet/provider/deployit_was_oraclexajdbcproviderspec/generated_restclient.rb": "5c6697322853cd151ca29ca00e3a5b0c",
-    "lib/puppet/provider/deployit_was_sharedlibrary/generated_restclient.rb": "d8235a03be6b35acbc58f9bd41a5bfa3",
-    "lib/puppet/provider/deployit_was_sharedlibraryspec/generated_restclient.rb": "b4a09c22ab01ba1ffbc86800e0d9ca75",
-    "lib/puppet/provider/deployit_was_sibqueue/generated_restclient.rb": "72a11163f89caa3cc2bf7366ce0f00ca",
-    "lib/puppet/provider/deployit_was_sibqueueconnectionfactory/generated_restclient.rb": "19e751c79df2346f432657f463872894",
-    "lib/puppet/provider/deployit_was_sibqueueconnectionfactoryspec/generated_restclient.rb": "4c6e19a85e331212c056f42e660c1dcc",
-    "lib/puppet/provider/deployit_was_sibqueuedestination/generated_restclient.rb": "3457fdc05330a796fc0ec5f84f5d5dfd",
-    "lib/puppet/provider/deployit_was_sibqueuedestinationspec/generated_restclient.rb": "c4177c517c3adc967a6ff284c045e256",
-    "lib/puppet/provider/deployit_was_sibqueuespec/generated_restclient.rb": "245d5f537ba6fbb9270e8ba4bccb7241",
-    "lib/puppet/provider/deployit_was_sibtopic/generated_restclient.rb": "5b7ece2628137d08c6347d1a640a62a1",
-    "lib/puppet/provider/deployit_was_sibtopicconnectionfactory/generated_restclient.rb": "5af4965440cef6651bfdd334b48ea26d",
-    "lib/puppet/provider/deployit_was_sibtopicconnectionfactoryspec/generated_restclient.rb": "d6f70ad6c861d012e686b7f2aa2fb770",
-    "lib/puppet/provider/deployit_was_sibtopicspacedestination/generated_restclient.rb": "9868ebd7bda3d1a4ce00878721ca704f",
-    "lib/puppet/provider/deployit_was_sibtopicspacedestinationspec/generated_restclient.rb": "e07fc8d3fa25c6f770503ecb9ee5b4d3",
-    "lib/puppet/provider/deployit_was_sibtopicspec/generated_restclient.rb": "fa1355bbfb3686967b46bac594a550ed",
-    "lib/puppet/provider/deployit_was_unmanagedserver/generated_restclient.rb": "5109eb33d64c82da7a56425321c81928",
-    "lib/puppet/provider/deployit_was_v5defaultqueue/generated_restclient.rb": "ab3e97a87e5f8a5e25089a8de12f0bca",
-    "lib/puppet/provider/deployit_was_v5defaultqueueconnectionfactory/generated_restclient.rb": "dbe81707507b701093984f6e87b0e8ef",
-    "lib/puppet/provider/deployit_was_v5defaultqueueconnectionfactoryspec/generated_restclient.rb": "9a6be6826fe95f0630ec592286bc1f91",
-    "lib/puppet/provider/deployit_was_v5defaultqueuespec/generated_restclient.rb": "fdd8242196c2b1b673ae6ee463208d95",
-    "lib/puppet/provider/deployit_was_v5defaulttopic/generated_restclient.rb": "eb1221d7aabd20e6624174ccd15580fa",
-    "lib/puppet/provider/deployit_was_v5defaulttopicconnectionfactory/generated_restclient.rb": "8c511d121b85657a0e538829c1e1e6c8",
-    "lib/puppet/provider/deployit_was_v5defaulttopicconnectionfactoryspec/generated_restclient.rb": "eaa2ceda7075f12fa5f7d7e7c4cb352f",
-    "lib/puppet/provider/deployit_was_v5defaulttopicspec/generated_restclient.rb": "5c56df928486140ee6895c1001c87dd3",
-    "lib/puppet/provider/deployit_was_virtualhost/generated_restclient.rb": "972da5fe3021bad3beeebe9e0b9489eb",
-    "lib/puppet/provider/deployit_was_virtualhostspec/generated_restclient.rb": "46e946dcb4cd471758c0e54fd88bec5e",
-    "lib/puppet/provider/deployit_was_war/generated_restclient.rb": "1c31352fe4dc7f35c46f1171028b424c",
-    "lib/puppet/provider/deployit_was_warmodule/generated_restclient.rb": "612760ffd661ec1aeeef56b4e7358e9f",
-    "lib/puppet/provider/deployit_was_wmqqueue/generated_restclient.rb": "e83395c826b201f20268a50a19580f63",
-    "lib/puppet/provider/deployit_was_wmqqueueconnectionfactory/generated_restclient.rb": "6a891f44bb8fc40c48c8d1a05596dfa1",
-    "lib/puppet/provider/deployit_was_wmqqueueconnectionfactoryspec/generated_restclient.rb": "62738b9dab9296e5d6f7880977eaef13",
-    "lib/puppet/provider/deployit_was_wmqqueuespec/generated_restclient.rb": "4d3f71fb7d6bd48f1a3754f0384e1877",
-    "lib/puppet/provider/deployit_was_wmqtopic/generated_restclient.rb": "ba4795cf2c62ce81506b135ec1f2e3bd",
-    "lib/puppet/provider/deployit_was_wmqtopicconnectionfactory/generated_restclient.rb": "c6421f8727d29b548345ccafb3612c66",
-    "lib/puppet/provider/deployit_was_wmqtopicconnectionfactoryspec/generated_restclient.rb": "e720071b2cd9c76733d72207972b73c2",
-    "lib/puppet/provider/deployit_was_wmqtopicspec/generated_restclient.rb": "c0891eee6318bbd92d5582254f8820a1",
-    "lib/puppet/provider/deployit_wls_cluster/generated_restclient.rb": "5ec3154d213863530ec4378d24540d3b",
-    "lib/puppet/provider/deployit_wls_connectionfactory/generated_restclient.rb": "6aeaa68c6f5d963e02e93eb42fc926c0",
-    "lib/puppet/provider/deployit_wls_connectionfactoryspec/generated_restclient.rb": "859d89c60c81e18beded9dbf9582e950",
-    "lib/puppet/provider/deployit_wls_datasource/generated_restclient.rb": "091ed8b15c70bdb174325625e8bc74f5",
-    "lib/puppet/provider/deployit_wls_datasourcespec/generated_restclient.rb": "92674769ce80102bd7590337cdcbdaad",
-    "lib/puppet/provider/deployit_wls_deployedfile/generated_restclient.rb": "e9d32128814b5e1eeb406fed4f6fd51c",
-    "lib/puppet/provider/deployit_wls_deployedfolder/generated_restclient.rb": "da3f2f7337fac6b7b71ad94a83e57619",
-    "lib/puppet/provider/deployit_wls_domain/generated_restclient.rb": "e0e434856cd68a987d7c9ebb028a54dc",
-    "lib/puppet/provider/deployit_wls_ear/generated_restclient.rb": "31edc2f9ffa0b1714a85e7ed885ff7ff",
-    "lib/puppet/provider/deployit_wls_earmodule/generated_restclient.rb": "55e06b88b91c9bca8be7c92b5ee7b30d",
-    "lib/puppet/provider/deployit_wls_ejbjar/generated_restclient.rb": "943f62673880aef4e59674db30d39117",
-    "lib/puppet/provider/deployit_wls_ejbjarmodule/generated_restclient.rb": "a967f44697b74f801d452041115dadb3",
-    "lib/puppet/provider/deployit_wls_file/generated_restclient.rb": "805ec790642ff91f71a2668e79d4830e",
-    "lib/puppet/provider/deployit_wls_filepersistentstore/generated_restclient.rb": "01b51ebd7e5963abf4b45d751920d2d8",
-    "lib/puppet/provider/deployit_wls_filepersistentstorespec/generated_restclient.rb": "07e451eca983bf876584395ceda2aead",
-    "lib/puppet/provider/deployit_wls_folder/generated_restclient.rb": "11401b1c3eea56a096a347e979703611",
-    "lib/puppet/provider/deployit_wls_jmsfilepersistentstore/generated_restclient.rb": "e0d72a8937f72dbdf2f9d1af7eb11b2e",
-    "lib/puppet/provider/deployit_wls_jmsfilepersistentstorespec/generated_restclient.rb": "fa2f84e568058c6c5a8ea2bb750de779",
-    "lib/puppet/provider/deployit_wls_jmsjdbcpersistentstore/generated_restclient.rb": "733255864e4332e980eb668db4b7104e",
-    "lib/puppet/provider/deployit_wls_jmsjdbcpersistentstorespec/generated_restclient.rb": "3b4dfb0d06323b350f0d9668a86c9580",
-    "lib/puppet/provider/deployit_wls_jmspersistentstorespec/generated_restclient.rb": "6336435e87a37cb8a8bdde3a8612312c",
-    "lib/puppet/provider/deployit_wls_jmsserver/generated_restclient.rb": "ae300056b1b0452fa06b9817e3896995",
-    "lib/puppet/provider/deployit_wls_mailsession/generated_restclient.rb": "c8229589d65c5892e7017e97326e2209",
-    "lib/puppet/provider/deployit_wls_mailsessionspec/generated_restclient.rb": "85f15f29fadc6505eede5a7cc924d202",
-    "lib/puppet/provider/deployit_wls_persistentstorespec/generated_restclient.rb": "9a5b002f882285e915b1bded6cb557b1",
-    "lib/puppet/provider/deployit_wls_queue/generated_restclient.rb": "01a1619f777c07782b93d1f578c10d4f",
-    "lib/puppet/provider/deployit_wls_queuespec/generated_restclient.rb": "a9f2b3b16ac0e177c312fd246c2b5cb8",
-    "lib/puppet/provider/deployit_wls_server/generated_restclient.rb": "4b7dab6c54cb38bca1889a909359d6f0",
-    "lib/puppet/provider/deployit_wls_sharedlibrarywar/generated_restclient.rb": "71761c426dc2df6a7f243e6f7953ae50",
-    "lib/puppet/provider/deployit_wls_sharedlibrarywarmodule/generated_restclient.rb": "4e2adea6bfd8f76ce82aa1a1df90ccc6",
-    "lib/puppet/provider/deployit_wls_topic/generated_restclient.rb": "07eab637c67e28f6d045dad0225d0cff",
-    "lib/puppet/provider/deployit_wls_topicspec/generated_restclient.rb": "b1196bda444872d2c0b213b7e949527a",
-    "lib/puppet/provider/deployit_wls_uniformdistributedqueue/generated_restclient.rb": "a2c1e45f3ce4dd1f32588ea86dc26f3c",
-    "lib/puppet/provider/deployit_wls_uniformdistributedqueuespec/generated_restclient.rb": "579280ed58a20ecb5d28652743b751fc",
-    "lib/puppet/provider/deployit_wls_uniformdistributedtopic/generated_restclient.rb": "4a06035d373b0cdf95d4a85060be270c",
-    "lib/puppet/provider/deployit_wls_uniformdistributedtopicspec/generated_restclient.rb": "cfca7bb47fa5e2095b04abfa1a990451",
-    "lib/puppet/provider/deployit_wls_war/generated_restclient.rb": "a52e3e603f6aaa0299409a4788cdf211",
-    "lib/puppet/provider/deployit_wls_warmodule/generated_restclient.rb": "420a231f200668d03b30a6c39d28f236",
-    "lib/puppet/provider/deployit_www_apacheconffile/generated_restclient.rb": "bc69ad7ab5e58248c1205dbd745321f9",
-    "lib/puppet/provider/deployit_www_apacheconffragment/generated_restclient.rb": "a583401ae3a839a7f8805ff6d43ee6b2",
-    "lib/puppet/provider/deployit_www_apacheconffragmentspec/generated_restclient.rb": "47771cd747ce428a87abece1332e5d51",
-    "lib/puppet/provider/deployit_www_apachehttpdserver/generated_restclient.rb": "3a3e0ce85b1917369b6a86cb41eff631",
-    "lib/puppet/provider/deployit_www_apachevirtualhost/generated_restclient.rb": "6568dd3fe0f0da19bfab941669b9aadf",
-    "lib/puppet/provider/deployit_www_apachevirtualhostspec/generated_restclient.rb": "9472743c72c5426ecacb82b8c1d3da53",
-    "lib/puppet/provider/deployit_www_deployedapacheconffile/generated_restclient.rb": "50fc549f84c4a425ecb93753cd9e137b",
-    "lib/puppet/provider/deployit_www_publishedwebcontent/generated_restclient.rb": "dfd93fed4af24c261b130b8640cb3a93",
-    "lib/puppet/provider/deployit_www_webcontent/generated_restclient.rb": "44b520a9b89a2354b444ec73adba7a63",
+    "lib/puppet/provider/deployit_was_cluster/generated_restclient.rb": "53e7a615f625f6dc9242729e394ab3a5",
+    "lib/puppet/provider/deployit_was_db2type2datasource/generated_restclient.rb": "7020ab830de7ac1601d4dad36c881f35",
+    "lib/puppet/provider/deployit_was_db2type2datasourcespec/generated_restclient.rb": "28ec977abec6391d41cf6b1b2fd62dab",
+    "lib/puppet/provider/deployit_was_db2type4datasource/generated_restclient.rb": "1b3dc0d2907a047b090ea779a011effd",
+    "lib/puppet/provider/deployit_was_db2type4datasourcespec/generated_restclient.rb": "745506c834cd47d07c6d13a14976c1c5",
+    "lib/puppet/provider/deployit_was_deploymentmanager/generated_restclient.rb": "3d725f7e1cf66e72eed503878961ab23",
+    "lib/puppet/provider/deployit_was_ear/generated_restclient.rb": "45dd45300b99138bfee842d365156f0d",
+    "lib/puppet/provider/deployit_was_earmodule/generated_restclient.rb": "23ad5ef407ccfd49528dc10017577e78",
+    "lib/puppet/provider/deployit_was_ejbjar/generated_restclient.rb": "42b3cee720b6671115d72ea2b355be7e",
+    "lib/puppet/provider/deployit_was_ejbmodule/generated_restclient.rb": "b8936c689db83a2bfc8aa3c653126c21",
+    "lib/puppet/provider/deployit_was_jaasalias/generated_restclient.rb": "48cbcd5f109aef29428bde6a6e1fde7b",
+    "lib/puppet/provider/deployit_was_jaasaliasspec/generated_restclient.rb": "5818bfc4f9892018c6a84cbf55c98797",
+    "lib/puppet/provider/deployit_was_jdbcprovider/generated_restclient.rb": "b384e61f59fe84bd32e8c95b963ac84e",
+    "lib/puppet/provider/deployit_was_jdbcproviderspec/generated_restclient.rb": "074ead542f8e36ed162504fcac146ddc",
+    "lib/puppet/provider/deployit_was_managedserver/generated_restclient.rb": "fbf90db805e85a0bfb3d6f7e772ae176",
+    "lib/puppet/provider/deployit_was_managedwebserver/generated_restclient.rb": "1512a915372b6b0ccdfe854b75b34722",
+    "lib/puppet/provider/deployit_was_nodeagent/generated_restclient.rb": "210c832a5ebbe0eabdf87764ce278b31",
+    "lib/puppet/provider/deployit_was_oracledatasource/generated_restclient.rb": "873ff48f2eea1d779d04eba45d93a7e2",
+    "lib/puppet/provider/deployit_was_oracledatasourcespec/generated_restclient.rb": "0508bdfb91bd21ebd9927f8531acb70e",
+    "lib/puppet/provider/deployit_was_oraclejdbcprovider/generated_restclient.rb": "68528da8bf298b000a5ae52d363acaee",
+    "lib/puppet/provider/deployit_was_oraclejdbcproviderspec/generated_restclient.rb": "00cb47dab90285ff4bc176255acbbe9b",
+    "lib/puppet/provider/deployit_was_oraclexajdbcprovider/generated_restclient.rb": "1462343df8583491f6e3549be8a761af",
+    "lib/puppet/provider/deployit_was_oraclexajdbcproviderspec/generated_restclient.rb": "e7ed8ea443a262ae0a9ef4c3993c9332",
+    "lib/puppet/provider/deployit_was_sharedlibrary/generated_restclient.rb": "94274d12f7171ec25f2428fb1da66e1f",
+    "lib/puppet/provider/deployit_was_sharedlibraryspec/generated_restclient.rb": "e3b45a7f2ebe2f6350d9df7b43897b4c",
+    "lib/puppet/provider/deployit_was_sibqueue/generated_restclient.rb": "22f0da8df41413021d20f4cffac78daa",
+    "lib/puppet/provider/deployit_was_sibqueueconnectionfactory/generated_restclient.rb": "8aa89375cd384c2f5803ea80bd022187",
+    "lib/puppet/provider/deployit_was_sibqueueconnectionfactoryspec/generated_restclient.rb": "0f8a5bcd2631532b32730f3ad2d17ddb",
+    "lib/puppet/provider/deployit_was_sibqueuedestination/generated_restclient.rb": "b7b30609600a541ecb0ba9b1148b6beb",
+    "lib/puppet/provider/deployit_was_sibqueuedestinationspec/generated_restclient.rb": "beba57ce2ac499e39e1bae2be9779c8c",
+    "lib/puppet/provider/deployit_was_sibqueuespec/generated_restclient.rb": "4f15e0f6a92fa049f5d9c4e700e142f6",
+    "lib/puppet/provider/deployit_was_sibtopic/generated_restclient.rb": "a952f4a12d9f72e2bbf98875deed2159",
+    "lib/puppet/provider/deployit_was_sibtopicconnectionfactory/generated_restclient.rb": "3b125a547ecdbb637b9c905848b1fe81",
+    "lib/puppet/provider/deployit_was_sibtopicconnectionfactoryspec/generated_restclient.rb": "c3d5f397ab1416bd6e866f80435f85f3",
+    "lib/puppet/provider/deployit_was_sibtopicspacedestination/generated_restclient.rb": "65a5bf5d6b2a6bf30cf4ab5b487c4782",
+    "lib/puppet/provider/deployit_was_sibtopicspacedestinationspec/generated_restclient.rb": "94a2b64e514025c9339878e15bb70238",
+    "lib/puppet/provider/deployit_was_sibtopicspec/generated_restclient.rb": "9cb39b5055dd322a321689f832b298ee",
+    "lib/puppet/provider/deployit_was_unmanagedserver/generated_restclient.rb": "8f95d3096d57c117bff84c87a1dd3a19",
+    "lib/puppet/provider/deployit_was_v5defaultqueue/generated_restclient.rb": "368fff550b22811de7bffc5e4e40d80d",
+    "lib/puppet/provider/deployit_was_v5defaultqueueconnectionfactory/generated_restclient.rb": "f4c5525a42ff2e7a4cdce78088547508",
+    "lib/puppet/provider/deployit_was_v5defaultqueueconnectionfactoryspec/generated_restclient.rb": "85355669d8f1ed49557bb3cf8f8a4849",
+    "lib/puppet/provider/deployit_was_v5defaultqueuespec/generated_restclient.rb": "0d94236fd847ac435389146ef7b74553",
+    "lib/puppet/provider/deployit_was_v5defaulttopic/generated_restclient.rb": "bfae4b52ddee2239d1b87c08394e1617",
+    "lib/puppet/provider/deployit_was_v5defaulttopicconnectionfactory/generated_restclient.rb": "0043186feb239f5492b072d1edd54f65",
+    "lib/puppet/provider/deployit_was_v5defaulttopicconnectionfactoryspec/generated_restclient.rb": "d6e78c45fd710f809b0e1be47cc501e6",
+    "lib/puppet/provider/deployit_was_v5defaulttopicspec/generated_restclient.rb": "172076b997147796ccf6468d2a4bd485",
+    "lib/puppet/provider/deployit_was_virtualhost/generated_restclient.rb": "d7f9febac97cd8ae1133bfdfb921897b",
+    "lib/puppet/provider/deployit_was_virtualhostspec/generated_restclient.rb": "edd62e041f4ce7b3aee62b8f58d09b10",
+    "lib/puppet/provider/deployit_was_war/generated_restclient.rb": "bf610bb1b3750ba9f1725c9ac3296664",
+    "lib/puppet/provider/deployit_was_warmodule/generated_restclient.rb": "80f6a8a752609b81133705fc83b4f6ed",
+    "lib/puppet/provider/deployit_was_wmqqueue/generated_restclient.rb": "0811191c21d6c53b69f2be42a39b1308",
+    "lib/puppet/provider/deployit_was_wmqqueueconnectionfactory/generated_restclient.rb": "347565a7856336f4c1576bbe0c9a2cbd",
+    "lib/puppet/provider/deployit_was_wmqqueueconnectionfactoryspec/generated_restclient.rb": "2d57600586ca11d2ce660e66efe870ea",
+    "lib/puppet/provider/deployit_was_wmqqueuespec/generated_restclient.rb": "1cbfe2df3b2eacebc74dec49689cdfde",
+    "lib/puppet/provider/deployit_was_wmqtopic/generated_restclient.rb": "aa46da52c2f5af05ed71454bf279f3f7",
+    "lib/puppet/provider/deployit_was_wmqtopicconnectionfactory/generated_restclient.rb": "05f6513aaa0569ae398d73695b0956ba",
+    "lib/puppet/provider/deployit_was_wmqtopicconnectionfactoryspec/generated_restclient.rb": "d8f86616f819e6d13477789d1498ee81",
+    "lib/puppet/provider/deployit_was_wmqtopicspec/generated_restclient.rb": "9aa06b25953991162659016f67a4b544",
+    "lib/puppet/provider/deployit_wls_cluster/generated_restclient.rb": "1a88aa89b3e923b177034de9ff08fe35",
+    "lib/puppet/provider/deployit_wls_connectionfactory/generated_restclient.rb": "0e07c2c44bb9f3f2741e05d34bee96ce",
+    "lib/puppet/provider/deployit_wls_connectionfactoryspec/generated_restclient.rb": "f60f4ece6add8cf2429e4fc146ce4bad",
+    "lib/puppet/provider/deployit_wls_datasource/generated_restclient.rb": "d8383f53788552c59152b36849a6cf91",
+    "lib/puppet/provider/deployit_wls_datasourcespec/generated_restclient.rb": "20152bc41ecd8ea4e4913887f2329868",
+    "lib/puppet/provider/deployit_wls_deployedfile/generated_restclient.rb": "83702fb6647463e657f0301039addc5e",
+    "lib/puppet/provider/deployit_wls_deployedfolder/generated_restclient.rb": "7d308919e3067b10f5550e80f33537d9",
+    "lib/puppet/provider/deployit_wls_domain/generated_restclient.rb": "3addc18b26c69e70724808d880da517e",
+    "lib/puppet/provider/deployit_wls_ear/generated_restclient.rb": "90b404b95db0588c867d376642c2f12b",
+    "lib/puppet/provider/deployit_wls_earmodule/generated_restclient.rb": "4c7da28657d8f24b1b4b08969f1c3a20",
+    "lib/puppet/provider/deployit_wls_ejbjar/generated_restclient.rb": "e89665d6d81ecfb73819a895aac23743",
+    "lib/puppet/provider/deployit_wls_ejbjarmodule/generated_restclient.rb": "884e6a8cdc717240391244be3652ced4",
+    "lib/puppet/provider/deployit_wls_file/generated_restclient.rb": "baf641b888b53cadeac57147c0e2134e",
+    "lib/puppet/provider/deployit_wls_filepersistentstore/generated_restclient.rb": "1f09ed7d4e59a82f140dd238acc4cd81",
+    "lib/puppet/provider/deployit_wls_filepersistentstorespec/generated_restclient.rb": "5115f40ccc800c546f24e9b3ae42c6e6",
+    "lib/puppet/provider/deployit_wls_folder/generated_restclient.rb": "3a8d3d42b57ba9d5747babb3370bac99",
+    "lib/puppet/provider/deployit_wls_jmsfilepersistentstore/generated_restclient.rb": "15cf6f2dd30e648fb4551570fab303fb",
+    "lib/puppet/provider/deployit_wls_jmsfilepersistentstorespec/generated_restclient.rb": "a17cd75aa0d6f6711afb80c71259eb4c",
+    "lib/puppet/provider/deployit_wls_jmsjdbcpersistentstore/generated_restclient.rb": "4217141dab13c4a8940c4e51bf2717c1",
+    "lib/puppet/provider/deployit_wls_jmsjdbcpersistentstorespec/generated_restclient.rb": "a3b5b421c5cee0073972025193371b50",
+    "lib/puppet/provider/deployit_wls_jmspersistentstorespec/generated_restclient.rb": "eb5cbf7226f7de22f1d5aee0ed7f5113",
+    "lib/puppet/provider/deployit_wls_jmsserver/generated_restclient.rb": "e7d4bd80c008348dea6e8f0055ccfd79",
+    "lib/puppet/provider/deployit_wls_mailsession/generated_restclient.rb": "f584fb5773ab2dfd07ec46a6db196ba3",
+    "lib/puppet/provider/deployit_wls_mailsessionspec/generated_restclient.rb": "5b5e3d6e05813dcafb9b0d7287718c11",
+    "lib/puppet/provider/deployit_wls_persistentstorespec/generated_restclient.rb": "a2845d77306aa5998e14a6587a8cabc2",
+    "lib/puppet/provider/deployit_wls_queue/generated_restclient.rb": "fb2a848069983fc705ca7d4a074a549b",
+    "lib/puppet/provider/deployit_wls_queuespec/generated_restclient.rb": "664fa75e76fb8f116d6d10359d4111e2",
+    "lib/puppet/provider/deployit_wls_server/generated_restclient.rb": "82e7cfa554f7622fc3306f51f82c642d",
+    "lib/puppet/provider/deployit_wls_sharedlibrarywar/generated_restclient.rb": "04e29644d2a19b73465d4346100b5979",
+    "lib/puppet/provider/deployit_wls_sharedlibrarywarmodule/generated_restclient.rb": "210729fbff68e8082684a846921af577",
+    "lib/puppet/provider/deployit_wls_topic/generated_restclient.rb": "9f8cbf81d4c8789edba3d9ce1bce806d",
+    "lib/puppet/provider/deployit_wls_topicspec/generated_restclient.rb": "75a215f431101953bb9e59c9dcc82f3f",
+    "lib/puppet/provider/deployit_wls_uniformdistributedqueue/generated_restclient.rb": "e93fb83b53ec2bde713e07c49d5f64ee",
+    "lib/puppet/provider/deployit_wls_uniformdistributedqueuespec/generated_restclient.rb": "cb9e7e38ce88394aae8af37cf541307e",
+    "lib/puppet/provider/deployit_wls_uniformdistributedtopic/generated_restclient.rb": "f07276ed096070b5f62458f0352912e7",
+    "lib/puppet/provider/deployit_wls_uniformdistributedtopicspec/generated_restclient.rb": "e83d642890b90f28b73c57096cf2d43f",
+    "lib/puppet/provider/deployit_wls_war/generated_restclient.rb": "6d3c42e2a3824cc4f9205b89e2b423f9",
+    "lib/puppet/provider/deployit_wls_warmodule/generated_restclient.rb": "e7b66c4d03f5670972d5c64b46dffe08",
+    "lib/puppet/provider/deployit_www_apacheconffile/generated_restclient.rb": "3db77fe2bfa9423d4cdfbc29bb15226f",
+    "lib/puppet/provider/deployit_www_apacheconffragment/generated_restclient.rb": "42d97946c93f6163d598d590c8237ad9",
+    "lib/puppet/provider/deployit_www_apacheconffragmentspec/generated_restclient.rb": "4ff560d53d16089293e8b46ddc1e9676",
+    "lib/puppet/provider/deployit_www_apachehttpdserver/generated_restclient.rb": "2ba73c783e4cb0fb8c2fcc9a38b4da93",
+    "lib/puppet/provider/deployit_www_apachevirtualhost/generated_restclient.rb": "12b887a077aef0ec1494fa688455f4c4",
+    "lib/puppet/provider/deployit_www_apachevirtualhostspec/generated_restclient.rb": "40efd04c3181b4ea06ec8079870d71c6",
+    "lib/puppet/provider/deployit_www_deployedapacheconffile/generated_restclient.rb": "d69aa84d8f05a0dcd52be9182ac81515",
+    "lib/puppet/provider/deployit_www_publishedwebcontent/generated_restclient.rb": "402caf1be14b5c0694220934f7eee9e3",
+    "lib/puppet/provider/deployit_www_webcontent/generated_restclient.rb": "dca681358ec00ae82d32a57472a5b68e",
     "lib/puppet/provider/general_restclient.rb": "be15f1061723c6cbd267d5b4519d41bb",
     "lib/puppet/provider/ini_setting/ruby.rb": "6f528a4f961da1a6dbf352be1a062df6",
     "lib/puppet/provider/ini_subsetting/ruby.rb": "99991c9d3ccf54c2aa1fcacf491d0cfc",
-    "lib/puppet/type/deployit_check_connection.rb": "ade33ade721853bc49b9a97887424e0b",
+    "lib/puppet/type/deployit_check_connection.rb": "c3e13cde085d2001a3244b8857c46f47",
     "lib/puppet/type/deployit_ci.rb": "3505bd06e0ce70a29b8eb1bd90eddea6",
-    "lib/puppet/type/deployit_cmd_command.rb": "55ff7f2c81aca62d0eabbad596cec526",
-    "lib/puppet/type/deployit_cmd_deployedcommand.rb": "9c0bd9a64758aef79a427808ebce3be0",
+    "lib/puppet/type/deployit_cmd_command.rb": "3ba774031b42f45fcda3ba103a986daf",
+    "lib/puppet/type/deployit_cmd_deployedcommand.rb": "118c1c856dff6489f709ef60641f65a4",
     "lib/puppet/type/deployit_core_directory.rb": "8dd5e908d80fcd82be9ba2beff2ab411",
-    "lib/puppet/type/deployit_file_archive.rb": "bfc1e344c1f54fa7b25638d40a19a505",
-    "lib/puppet/type/deployit_file_deployedarchive.rb": "d3893eddc6fc4359a7ae47ee38bac6ff",
-    "lib/puppet/type/deployit_file_deployedfile.rb": "15116e51741a3f5c7509ff2d427d8096",
-    "lib/puppet/type/deployit_file_deployedfolder.rb": "0029017eaac4213c01e523e41107243d",
-    "lib/puppet/type/deployit_file_file.rb": "7491c55349a8c2b5227fdd8ec9de51a9",
-    "lib/puppet/type/deployit_file_folder.rb": "2fb5030c3459878c70bf0bc43591e32b",
-    "lib/puppet/type/deployit_jee_datasourcespec.rb": "5a3c5a486aca05e3ad1763002121c9d7",
-    "lib/puppet/type/deployit_jee_ear.rb": "b6256c36ccfb3008a7294a6e2ad814a1",
-    "lib/puppet/type/deployit_jee_ejbjar.rb": "a468fa53bfb68952a3b9c63c49914818",
-    "lib/puppet/type/deployit_jee_mailsessionspec.rb": "ac60a89f61876da300cd4bc3ba94e6d6",
-    "lib/puppet/type/deployit_jee_queueconnectionfactoryspec.rb": "aec58dddef6ecd33e68393c681d7d72d",
-    "lib/puppet/type/deployit_jee_queuespec.rb": "5f3691c0a454b4106925780ac0766da4",
-    "lib/puppet/type/deployit_jee_topicconnectionfactoryspec.rb": "203746ba66c5cbe1b5d58e0d55c5abbe",
-    "lib/puppet/type/deployit_jee_topicspec.rb": "1a8aeb55b353017a782136a6497da029",
-    "lib/puppet/type/deployit_jee_war.rb": "99d258c75803797eb1663cecff68c2a3",
-    "lib/puppet/type/deployit_jetty_db2datasource.rb": "1b03df97a3bca98379fc6939a67db9b9",
-    "lib/puppet/type/deployit_jetty_db2datasourcespec.rb": "f667d4c8f8f8f1920968049a67e9e652",
-    "lib/puppet/type/deployit_jetty_mqqueue.rb": "6b1d7f5d3e33b8251f298b63082d6db1",
-    "lib/puppet/type/deployit_jetty_mqqueueconnectionfactoryspec.rb": "4a6bb36cc1d02098ad0d68b559ae2bc2",
-    "lib/puppet/type/deployit_jetty_mqqueuespec.rb": "4c94b83e1c5c6e0dacd2f8aac78eeb50",
-    "lib/puppet/type/deployit_jetty_securityrolemapping.rb": "774cf3edf6d6efc5a3af324738231be9",
-    "lib/puppet/type/deployit_jetty_securityrolemappingspec.rb": "502e097708c0c65b6373d7f2d442cb37",
-    "lib/puppet/type/deployit_jetty_server.rb": "eb402b3a5643558531086831631cda80",
-    "lib/puppet/type/deployit_jetty_war.rb": "1f0b905e30e16fdc293d118a5eeb0e25",
-    "lib/puppet/type/deployit_jetty_warmodule.rb": "0e171d23412bc42d15185ac03f28dd55",
-    "lib/puppet/type/deployit_jetty_webspheremqqueueconnectionfactory.rb": "b2fb998a65db7afdfaa00f436471af91",
-    "lib/puppet/type/deployit_overthere_cifshost.rb": "43329c377a4b7640a95a49dafa0f32cc",
-    "lib/puppet/type/deployit_overthere_localhost.rb": "22f14dba1f6d0c34bcf0b8cfecb66e12",
-    "lib/puppet/type/deployit_overthere_sshhost.rb": "d074e733a7407ca1fe78ff14b1f073c8",
-    "lib/puppet/type/deployit_overthere_sshjumpstation.rb": "751b8682e30dc436e5e184444597d741",
-    "lib/puppet/type/deployit_trigger_emailnotification.rb": "fa3e8660afc1512df1e4aeb828205a47",
-    "lib/puppet/type/deployit_trigger_steptrigger.rb": "7e76f3d0f7967cfc53d9a5538cb51f3a",
-    "lib/puppet/type/deployit_trigger_tasktrigger.rb": "d9551de26081da45225a508fbed9ece9",
+    "lib/puppet/type/deployit_file_archive.rb": "baa44bee3f9f727b46eba942c731a7cb",
+    "lib/puppet/type/deployit_file_deployedarchive.rb": "3361bcadd6d291999a7c89607008355f",
+    "lib/puppet/type/deployit_file_deployedfile.rb": "7e02044e16d69965c56918a55b42b7a2",
+    "lib/puppet/type/deployit_file_deployedfolder.rb": "a1ce174d5ffd3928048d51e5e6d536a7",
+    "lib/puppet/type/deployit_file_file.rb": "52e99387fe9e3f2c70fc2ee14dba276b",
+    "lib/puppet/type/deployit_file_folder.rb": "2326e4e31e925a42aa8de04bbdfe1c6f",
+    "lib/puppet/type/deployit_jee_datasourcespec.rb": "bf26d1e592fdceb3150eb521f430a631",
+    "lib/puppet/type/deployit_jee_ear.rb": "8f934e5938d5d48902bc400f773509b6",
+    "lib/puppet/type/deployit_jee_ejbjar.rb": "2955a9130de96930840fce92f0fdab7a",
+    "lib/puppet/type/deployit_jee_mailsessionspec.rb": "ff0cb3ae98c29e205c7c800d4e207be9",
+    "lib/puppet/type/deployit_jee_queueconnectionfactoryspec.rb": "a59c9638078285bbffb2a96cb6b069ba",
+    "lib/puppet/type/deployit_jee_queuespec.rb": "746cf360c3d791ab8bac4d702c515f14",
+    "lib/puppet/type/deployit_jee_topicconnectionfactoryspec.rb": "a79855869a9175b2cecd900e808f2d93",
+    "lib/puppet/type/deployit_jee_topicspec.rb": "7b2e9d7e78068a063928451123219def",
+    "lib/puppet/type/deployit_jee_war.rb": "3c314e6c9af4f332d3d49a448331d284",
+    "lib/puppet/type/deployit_jetty_db2datasource.rb": "a6efd17f84db2f7f50622b5112973bc2",
+    "lib/puppet/type/deployit_jetty_db2datasourcespec.rb": "7c6ab5fe58c0f11f8270c4deb024c8b6",
+    "lib/puppet/type/deployit_jetty_mqqueue.rb": "252841978f86bd83347db795542c84e3",
+    "lib/puppet/type/deployit_jetty_mqqueueconnectionfactoryspec.rb": "e7f55de3efd2534d841fe48750c95c19",
+    "lib/puppet/type/deployit_jetty_mqqueuespec.rb": "c5f4b514daa4127c7e8793c30f6287f1",
+    "lib/puppet/type/deployit_jetty_securityrolemapping.rb": "bbcedd62bcb4d3f9108cfecae09a4913",
+    "lib/puppet/type/deployit_jetty_securityrolemappingspec.rb": "9aed14aa4545f3865be1115373324938",
+    "lib/puppet/type/deployit_jetty_server.rb": "316dd5414d9d9e0e64ec1fecd291d63d",
+    "lib/puppet/type/deployit_jetty_war.rb": "940ab50a4ed1a899ac12f56672b2cd67",
+    "lib/puppet/type/deployit_jetty_warmodule.rb": "f0071da46cd7e2700fa3939bca2575a6",
+    "lib/puppet/type/deployit_jetty_webspheremqqueueconnectionfactory.rb": "f553b9f3ae814fac7a04d3bfb4308308",
+    "lib/puppet/type/deployit_overthere_cifshost.rb": "eb023bf30d4842214e0f901d9d501cac",
+    "lib/puppet/type/deployit_overthere_localhost.rb": "5b659594da4cc58c805855adcf90e70c",
+    "lib/puppet/type/deployit_overthere_sshhost.rb": "039ccc14398fb73040fb2df15eec37aa",
+    "lib/puppet/type/deployit_overthere_sshjumpstation.rb": "1b5c70855c15bebb33cd7096ff47c044",
+    "lib/puppet/type/deployit_trigger_emailnotification.rb": "ff5be581cffb00c3c99229a404efbadd",
+    "lib/puppet/type/deployit_trigger_steptrigger.rb": "4b7912b123f42ed3b033080d14fc20a3",
+    "lib/puppet/type/deployit_trigger_tasktrigger.rb": "9db67428f8d0f98af7ad9f2adacb5cfc",
     "lib/puppet/type/deployit_udm_dictionary.rb": "740492bf63bbba53084be14ade3f3d02",
     "lib/puppet/type/deployit_udm_environment.rb": "9aa29575d88cd5d2c63b45fd1478fa02",
-    "lib/puppet/type/deployit_was_cluster.rb": "229ce3bd3a06e73cf944b364127ae6eb",
-    "lib/puppet/type/deployit_was_db2type2datasource.rb": "5c3da224966994cb5c24b3517ca75c26",
-    "lib/puppet/type/deployit_was_db2type2datasourcespec.rb": "155bd8bdf2057b7fd5f45abe0c4ac1d9",
-    "lib/puppet/type/deployit_was_db2type4datasource.rb": "20f390d3c0ae483b6b7f244832105233",
-    "lib/puppet/type/deployit_was_db2type4datasourcespec.rb": "c2324756933dd3f7b830e293f1564c1e",
-    "lib/puppet/type/deployit_was_deploymentmanager.rb": "26c0693a1f94717be16d11e5c33ee093",
-    "lib/puppet/type/deployit_was_ear.rb": "9e4adbe165892cd794dcd92d75f4086d",
-    "lib/puppet/type/deployit_was_earmodule.rb": "e908bc374f04781b2c087f6276df3865",
-    "lib/puppet/type/deployit_was_ejbjar.rb": "be7b5590fc2a475ff8879d2636e7037c",
-    "lib/puppet/type/deployit_was_ejbmodule.rb": "e7bfc52eb69366d41c93ed3bebd092a1",
-    "lib/puppet/type/deployit_was_jaasalias.rb": "4766525897f4f7b9df0488a942725cba",
-    "lib/puppet/type/deployit_was_jaasaliasspec.rb": "d24acdd2443ba06a01df3af1662fd49e",
-    "lib/puppet/type/deployit_was_jdbcprovider.rb": "d8340f9e874305cc85c3893a44570e2a",
-    "lib/puppet/type/deployit_was_jdbcproviderspec.rb": "fd7a843d1f90303de8bea0035ad8e141",
-    "lib/puppet/type/deployit_was_managedserver.rb": "4eb7767a7ca4911ab546a363c1e6d1eb",
-    "lib/puppet/type/deployit_was_managedwebserver.rb": "2fde5876caba91c33e32586eaa66843a",
-    "lib/puppet/type/deployit_was_nodeagent.rb": "5f7ef3f053b16a7b1179b812fac1d94a",
-    "lib/puppet/type/deployit_was_oracledatasource.rb": "7325c33667de08ccfc3f1e1f624b9b0e",
-    "lib/puppet/type/deployit_was_oracledatasourcespec.rb": "0c0748e58cce5fd91b77446417c26fa0",
-    "lib/puppet/type/deployit_was_oraclejdbcprovider.rb": "2a798ffa5cbf7ec1cb919a95e23fb26f",
-    "lib/puppet/type/deployit_was_oraclejdbcproviderspec.rb": "80cd95da83f2ffe68957e7b51a8199f7",
-    "lib/puppet/type/deployit_was_oraclexajdbcprovider.rb": "c466cf8ae5fbf66b9505b21cd4654f73",
-    "lib/puppet/type/deployit_was_oraclexajdbcproviderspec.rb": "fd00420dfc7299b5f9d1015a21204747",
-    "lib/puppet/type/deployit_was_sharedlibrary.rb": "e6098e4fbc48d5d131b61d25b41caa0f",
-    "lib/puppet/type/deployit_was_sharedlibraryspec.rb": "aeb980471f43651454872c8e1a7bab9f",
-    "lib/puppet/type/deployit_was_sibqueue.rb": "c08769798a4e9575ceb3b37b550df2f8",
-    "lib/puppet/type/deployit_was_sibqueueconnectionfactory.rb": "774d5096f36d31de0d9ee7a4db131db2",
-    "lib/puppet/type/deployit_was_sibqueueconnectionfactoryspec.rb": "b70419347dd67a5823b962659591554e",
-    "lib/puppet/type/deployit_was_sibqueuedestination.rb": "8e4b4cf56378400d564321e81ec03150",
-    "lib/puppet/type/deployit_was_sibqueuedestinationspec.rb": "e0161aefbc133cddb1683f9b2395b2b7",
-    "lib/puppet/type/deployit_was_sibqueuespec.rb": "00d84c3f2b488f8ea3b59b459ca8f97b",
-    "lib/puppet/type/deployit_was_sibtopic.rb": "1edd4aa84d88106f6d25056aa8115b47",
-    "lib/puppet/type/deployit_was_sibtopicconnectionfactory.rb": "69b8f1105ae2acab4714de1e50154e44",
-    "lib/puppet/type/deployit_was_sibtopicconnectionfactoryspec.rb": "3a4d13003b2906244478d469e44a889e",
-    "lib/puppet/type/deployit_was_sibtopicspacedestination.rb": "5f7fcbd0ba5fa8a4139d54f9759a77ed",
-    "lib/puppet/type/deployit_was_sibtopicspacedestinationspec.rb": "aad84a427a78ff2b5ea0f9a1535bbeac",
-    "lib/puppet/type/deployit_was_sibtopicspec.rb": "7bb311e78235e286328f6c29b2d87baf",
-    "lib/puppet/type/deployit_was_unmanagedserver.rb": "3fe2f996b5365870c95292581939e081",
-    "lib/puppet/type/deployit_was_v5defaultqueue.rb": "e2bf440bffa3475829aa6dca3f7c23c3",
-    "lib/puppet/type/deployit_was_v5defaultqueueconnectionfactory.rb": "ffa854e3e469c731735a2f7b787de770",
-    "lib/puppet/type/deployit_was_v5defaultqueueconnectionfactoryspec.rb": "5a4c03c059d28fa90d712aaa17c41b7b",
-    "lib/puppet/type/deployit_was_v5defaultqueuespec.rb": "8560807233b52ccb498469e692da8110",
-    "lib/puppet/type/deployit_was_v5defaulttopic.rb": "f052240ea28d8e65bef6f044ccb7d4b3",
-    "lib/puppet/type/deployit_was_v5defaulttopicconnectionfactory.rb": "f63fb52e40d2df7e65ed986998dc373b",
-    "lib/puppet/type/deployit_was_v5defaulttopicconnectionfactoryspec.rb": "6a33ed831757a73b45d73754d5483b37",
-    "lib/puppet/type/deployit_was_v5defaulttopicspec.rb": "555c3d7cdf979252bf3220725816975a",
-    "lib/puppet/type/deployit_was_virtualhost.rb": "697fd30055992a2117f9ea33aa832f0b",
-    "lib/puppet/type/deployit_was_virtualhostspec.rb": "a422b2e1ea568262ecd129d22ada7044",
-    "lib/puppet/type/deployit_was_war.rb": "733e68759a6729b46e25f1e4d3436556",
-    "lib/puppet/type/deployit_was_warmodule.rb": "157d0d2a19db74bc04ff3e7ddd6f417a",
-    "lib/puppet/type/deployit_was_wmqqueue.rb": "8c908b66504ed3319afdd7c6a5ff86b5",
-    "lib/puppet/type/deployit_was_wmqqueueconnectionfactory.rb": "adbc2acc98991fbb8029e05ed745bc16",
-    "lib/puppet/type/deployit_was_wmqqueueconnectionfactoryspec.rb": "58f8f5aa921706b1b8ed2e0240c9587d",
-    "lib/puppet/type/deployit_was_wmqqueuespec.rb": "78b5535b3bb96eda41690e18aa5fe476",
-    "lib/puppet/type/deployit_was_wmqtopic.rb": "ce8c4e5ef3c8ddb6b133685bdbdc9a3c",
-    "lib/puppet/type/deployit_was_wmqtopicconnectionfactory.rb": "0022243795bd927827a02316f281ed9a",
-    "lib/puppet/type/deployit_was_wmqtopicconnectionfactoryspec.rb": "193bad838f836e1c597d98683c83ce39",
-    "lib/puppet/type/deployit_was_wmqtopicspec.rb": "ebf0e45a583e4c0241ba9ffde4b6b209",
-    "lib/puppet/type/deployit_wls_cluster.rb": "c21f25708f2935790d1dde7acb2757a4",
-    "lib/puppet/type/deployit_wls_connectionfactory.rb": "8160f0c5880f3a0eb2038a9331561371",
-    "lib/puppet/type/deployit_wls_connectionfactoryspec.rb": "5963a52a5276c1ce3e08e278f09afd8d",
-    "lib/puppet/type/deployit_wls_datasource.rb": "c2c678e408802151e9c8f0cbe401ba8c",
-    "lib/puppet/type/deployit_wls_datasourcespec.rb": "387c2a54135b3c7dd4a38e9f2d4c8dfc",
-    "lib/puppet/type/deployit_wls_deployedfile.rb": "b0c38b8dca930e6ed3738b69d50624cb",
-    "lib/puppet/type/deployit_wls_deployedfolder.rb": "f14467caa87aea22221fb2b116677232",
-    "lib/puppet/type/deployit_wls_domain.rb": "f755f39073f153cb0071091be084ee46",
-    "lib/puppet/type/deployit_wls_ear.rb": "4765932e0c4b065cb4c22f681d9b5369",
-    "lib/puppet/type/deployit_wls_earmodule.rb": "bae82bc646f50b5da7ad2b36d05ae88b",
-    "lib/puppet/type/deployit_wls_ejbjar.rb": "8a047faa396ec2823e00facda2407034",
-    "lib/puppet/type/deployit_wls_ejbjarmodule.rb": "574e40052e1cd608c09470d25b87f909",
-    "lib/puppet/type/deployit_wls_file.rb": "a7554d061030b158943fad1f2b8d1a0e",
-    "lib/puppet/type/deployit_wls_filepersistentstore.rb": "7d9942efbf8cf91a2bf16f68e5720aab",
-    "lib/puppet/type/deployit_wls_filepersistentstorespec.rb": "429f11e6c9f8655eacbc454bc31805ce",
-    "lib/puppet/type/deployit_wls_folder.rb": "bf18f251c40e8cdd9e69e612ee02adc9",
-    "lib/puppet/type/deployit_wls_jmsfilepersistentstore.rb": "2430dfa672e5cbd68af56689d14b910a",
-    "lib/puppet/type/deployit_wls_jmsfilepersistentstorespec.rb": "9964275b6261906131997a68944686ba",
-    "lib/puppet/type/deployit_wls_jmsjdbcpersistentstore.rb": "c90c5b765c3caec38ef1a8bf20c1f9ce",
-    "lib/puppet/type/deployit_wls_jmsjdbcpersistentstorespec.rb": "1c2d61fac33e0996e57445dc14ca356e",
-    "lib/puppet/type/deployit_wls_jmspersistentstorespec.rb": "f3ee3b61dae28dd27b92b2d6d9a52cb2",
-    "lib/puppet/type/deployit_wls_jmsserver.rb": "984ab9f20a94ef5cc5e154eaea5da133",
-    "lib/puppet/type/deployit_wls_mailsession.rb": "1c9f2c23fdb6df08a6d6509ac0ea2dbd",
-    "lib/puppet/type/deployit_wls_mailsessionspec.rb": "5a99b80064ed5043b40f6a4aee589184",
-    "lib/puppet/type/deployit_wls_persistentstorespec.rb": "0bf3622367e2c812d68b1d3d0b1d5b09",
-    "lib/puppet/type/deployit_wls_queue.rb": "250522268db28d14ee3fcb65dc6c7285",
-    "lib/puppet/type/deployit_wls_queuespec.rb": "8f217da2c29ab5a3a3bc283a868e5bc7",
-    "lib/puppet/type/deployit_wls_server.rb": "d8dcc2b6ce389999f38d634c764f6d70",
-    "lib/puppet/type/deployit_wls_sharedlibrarywar.rb": "1ff30072287c9cadfe0c5036c8b6a69b",
-    "lib/puppet/type/deployit_wls_sharedlibrarywarmodule.rb": "b241cb570c2a06a115f4f778e56e253a",
-    "lib/puppet/type/deployit_wls_topic.rb": "3dad3b88247947f99711fe487b0c24f2",
-    "lib/puppet/type/deployit_wls_topicspec.rb": "04bb6a52a7f979592ddeb9f97aac738d",
-    "lib/puppet/type/deployit_wls_uniformdistributedqueue.rb": "5d7cfe1fd2b64298d21ce0f290b257ae",
-    "lib/puppet/type/deployit_wls_uniformdistributedqueuespec.rb": "9e4c50a395632679c23b2797e87af987",
-    "lib/puppet/type/deployit_wls_uniformdistributedtopic.rb": "1f8f405e6aca536fa34eef3c8ae2604e",
-    "lib/puppet/type/deployit_wls_uniformdistributedtopicspec.rb": "233c89b086609d2958fc85db08226192",
-    "lib/puppet/type/deployit_wls_war.rb": "d149d8c094b8548c5f3c7be0b9a8d229",
-    "lib/puppet/type/deployit_wls_warmodule.rb": "815f8c6499f2a2a4b9149978a28022ac",
-    "lib/puppet/type/deployit_www_apacheconffile.rb": "7fb5d2cc927d80db040c112feacae70f",
-    "lib/puppet/type/deployit_www_apacheconffragment.rb": "605f5ad2037f26870f0bbc34f8a48574",
-    "lib/puppet/type/deployit_www_apacheconffragmentspec.rb": "aad49c8037aada74bff8864264c7c483",
-    "lib/puppet/type/deployit_www_apachehttpdserver.rb": "96d5ae3b75e3c49433348af74301166d",
-    "lib/puppet/type/deployit_www_apachevirtualhost.rb": "30133efa11e4b5ac28144dbcf46207cc",
-    "lib/puppet/type/deployit_www_apachevirtualhostspec.rb": "6b41efb2686aa28c9c3215de8d589068",
-    "lib/puppet/type/deployit_www_deployedapacheconffile.rb": "3813a87598e7fad83b247de67bbea5ef",
-    "lib/puppet/type/deployit_www_publishedwebcontent.rb": "d6f9c5541950b76c49089f80962ee1f7",
-    "lib/puppet/type/deployit_www_webcontent.rb": "ad2133d523328b48ed2f3d8671acb39b",
+    "lib/puppet/type/deployit_was_cluster.rb": "e2ed220cf114a84d2dd7d0d57d08d189",
+    "lib/puppet/type/deployit_was_db2type2datasource.rb": "86fcb533b780423417b5c4c344215f14",
+    "lib/puppet/type/deployit_was_db2type2datasourcespec.rb": "0f62e1defe23175335acb1ddcc04451d",
+    "lib/puppet/type/deployit_was_db2type4datasource.rb": "b4578cf270a552654a104fa22c55c92a",
+    "lib/puppet/type/deployit_was_db2type4datasourcespec.rb": "245704a59d67a882a9a707a82ae75c25",
+    "lib/puppet/type/deployit_was_deploymentmanager.rb": "0dc2a21506c852e3e6094ddee8cea7ff",
+    "lib/puppet/type/deployit_was_ear.rb": "60492b95ce668af4d732666f9ca31728",
+    "lib/puppet/type/deployit_was_earmodule.rb": "38c097a54571784b9b97cc0bfb223d90",
+    "lib/puppet/type/deployit_was_ejbjar.rb": "436ff3609f71633b1058691506adc9fb",
+    "lib/puppet/type/deployit_was_ejbmodule.rb": "0c470c735b62ff58c6b4875576f14c5a",
+    "lib/puppet/type/deployit_was_jaasalias.rb": "979801cb8c846877da892cb2daa819df",
+    "lib/puppet/type/deployit_was_jaasaliasspec.rb": "dcbe50bd6a0c9bbb345bb0b3bb3f1193",
+    "lib/puppet/type/deployit_was_jdbcprovider.rb": "6ed256c162858c16847e1cf1aae01ee4",
+    "lib/puppet/type/deployit_was_jdbcproviderspec.rb": "d4453fce99506357e778d86c219a6d15",
+    "lib/puppet/type/deployit_was_managedserver.rb": "7361c1f72a171103e0978bc8d7cdf344",
+    "lib/puppet/type/deployit_was_managedwebserver.rb": "181289bbcd1a8a099ad15e5fe26273e0",
+    "lib/puppet/type/deployit_was_nodeagent.rb": "fd8338ecb83edf5877f04e9bfd9135b0",
+    "lib/puppet/type/deployit_was_oracledatasource.rb": "e53a219a527289f3797db1cd0b4d1414",
+    "lib/puppet/type/deployit_was_oracledatasourcespec.rb": "f16368c0811e23ca4bd488e1c8fe3ab0",
+    "lib/puppet/type/deployit_was_oraclejdbcprovider.rb": "c21e1613c797c5c4de5d6cd43cd3389b",
+    "lib/puppet/type/deployit_was_oraclejdbcproviderspec.rb": "4c4bcaba9488b7c75c575bd0f18f30ff",
+    "lib/puppet/type/deployit_was_oraclexajdbcprovider.rb": "96faffba622bbf398be58f00feae1d2f",
+    "lib/puppet/type/deployit_was_oraclexajdbcproviderspec.rb": "eb324c88be5236a116a1e1882b164291",
+    "lib/puppet/type/deployit_was_sharedlibrary.rb": "dbaf464fe4ac5b024bbf623ce48da0e8",
+    "lib/puppet/type/deployit_was_sharedlibraryspec.rb": "e432a54dbed7a15bf9fdd786312fb0ac",
+    "lib/puppet/type/deployit_was_sibqueue.rb": "cf58aab8f71fef9fd44f66707ea5729d",
+    "lib/puppet/type/deployit_was_sibqueueconnectionfactory.rb": "0b6be34968c123d32d0af830a0331de1",
+    "lib/puppet/type/deployit_was_sibqueueconnectionfactoryspec.rb": "904c29037368c98096776c7c7613c681",
+    "lib/puppet/type/deployit_was_sibqueuedestination.rb": "bbf962659c792b56d25b0fae9d0b6ad3",
+    "lib/puppet/type/deployit_was_sibqueuedestinationspec.rb": "54839d0cab424afab83f651216794433",
+    "lib/puppet/type/deployit_was_sibqueuespec.rb": "d2240db08909a89c7a824455243a88ce",
+    "lib/puppet/type/deployit_was_sibtopic.rb": "1d15707877ea3feecd14af84ac26fe8e",
+    "lib/puppet/type/deployit_was_sibtopicconnectionfactory.rb": "66e89940cee230b39527db376c171fc3",
+    "lib/puppet/type/deployit_was_sibtopicconnectionfactoryspec.rb": "64e622560467a84de56e2adf33403ee1",
+    "lib/puppet/type/deployit_was_sibtopicspacedestination.rb": "4df4305b71c925507313347d0f0b9aee",
+    "lib/puppet/type/deployit_was_sibtopicspacedestinationspec.rb": "bf8f783264a4a91da2ccf2b211292057",
+    "lib/puppet/type/deployit_was_sibtopicspec.rb": "b2bf5e60f7034471edafcd75492a79b5",
+    "lib/puppet/type/deployit_was_unmanagedserver.rb": "680bdfca9912991fe8ded8f48ce1efb3",
+    "lib/puppet/type/deployit_was_v5defaultqueue.rb": "5aa02c749d4421c2d2a2b402fc1471a8",
+    "lib/puppet/type/deployit_was_v5defaultqueueconnectionfactory.rb": "82716bd69f34cd06d8a4b16eb49cc49b",
+    "lib/puppet/type/deployit_was_v5defaultqueueconnectionfactoryspec.rb": "a2da312135ea9cfc6f1d2c9bca516f0b",
+    "lib/puppet/type/deployit_was_v5defaultqueuespec.rb": "d1d679a9dd4b36a2bbdc0adc94885cbf",
+    "lib/puppet/type/deployit_was_v5defaulttopic.rb": "90a834d8aac1f30a850038689682afc0",
+    "lib/puppet/type/deployit_was_v5defaulttopicconnectionfactory.rb": "c15b286d9dec09409ad245942cf65a70",
+    "lib/puppet/type/deployit_was_v5defaulttopicconnectionfactoryspec.rb": "93f7bd16581659c789982bcc4f0bd551",
+    "lib/puppet/type/deployit_was_v5defaulttopicspec.rb": "aa06cff6764dc9684cbd75e43e6e66d1",
+    "lib/puppet/type/deployit_was_virtualhost.rb": "c921e7a1b725867e8cefce685b158d50",
+    "lib/puppet/type/deployit_was_virtualhostspec.rb": "b4c7980b91af452043eeeda25be4635e",
+    "lib/puppet/type/deployit_was_war.rb": "b8b8fcb08aef1a784fadd3322e97a14d",
+    "lib/puppet/type/deployit_was_warmodule.rb": "93c1692af91f144da381831fe6f7ace8",
+    "lib/puppet/type/deployit_was_wmqqueue.rb": "fd00f02bf4d50369b4164f1222a0963c",
+    "lib/puppet/type/deployit_was_wmqqueueconnectionfactory.rb": "2bbaa44e44f11d21277ae4fad2b52c1f",
+    "lib/puppet/type/deployit_was_wmqqueueconnectionfactoryspec.rb": "909bc21f543704b82723ddbb7a3a5bb7",
+    "lib/puppet/type/deployit_was_wmqqueuespec.rb": "3ad52fb26bc91032fa7d8244a48ce911",
+    "lib/puppet/type/deployit_was_wmqtopic.rb": "0657daec9772d445a66dca175acb3b38",
+    "lib/puppet/type/deployit_was_wmqtopicconnectionfactory.rb": "41d33c946ec6aa4324d3c10ecbecdba7",
+    "lib/puppet/type/deployit_was_wmqtopicconnectionfactoryspec.rb": "87b03ac2f28ef47a9d77ff59c19d8d5e",
+    "lib/puppet/type/deployit_was_wmqtopicspec.rb": "9a88570a41e0b92b1b51ca28cc6dfe87",
+    "lib/puppet/type/deployit_wls_cluster.rb": "ba2228a329ef638dba0cea070ec7b0ce",
+    "lib/puppet/type/deployit_wls_connectionfactory.rb": "951cb52f15feff863a67b15361c28f5d",
+    "lib/puppet/type/deployit_wls_connectionfactoryspec.rb": "5d059f68e87b2966b2099114dddcb0ee",
+    "lib/puppet/type/deployit_wls_datasource.rb": "e7ab9c8b4d09604fa56a910e67bf64e6",
+    "lib/puppet/type/deployit_wls_datasourcespec.rb": "b9abc6c2a68913d66a216586a4a0b77b",
+    "lib/puppet/type/deployit_wls_deployedfile.rb": "6a9038b5a60c46a8a629221f4ba27e4d",
+    "lib/puppet/type/deployit_wls_deployedfolder.rb": "5ba06d3a58c3be1933555474405322e5",
+    "lib/puppet/type/deployit_wls_domain.rb": "d713d8eb16172b32bb370fbf999d5ebe",
+    "lib/puppet/type/deployit_wls_ear.rb": "48899485729a835f22fb6360ae182e8e",
+    "lib/puppet/type/deployit_wls_earmodule.rb": "a886a6ae263da586698a11429484b4a8",
+    "lib/puppet/type/deployit_wls_ejbjar.rb": "e2ae782b2728c0e00e7a9b631dd39fd3",
+    "lib/puppet/type/deployit_wls_ejbjarmodule.rb": "c7b991a4c69b634d76b156940ba27810",
+    "lib/puppet/type/deployit_wls_file.rb": "db2e6a795618110fa51f37eccb6b5700",
+    "lib/puppet/type/deployit_wls_filepersistentstore.rb": "e9dda7065195f6d13d0fd4ddadd74107",
+    "lib/puppet/type/deployit_wls_filepersistentstorespec.rb": "5f9a754f24aa8fd77442b426be184c63",
+    "lib/puppet/type/deployit_wls_folder.rb": "becfc681feae9588fa9bfd6f64f773b9",
+    "lib/puppet/type/deployit_wls_jmsfilepersistentstore.rb": "7966303ddd7f658f7004ed9b002d2f24",
+    "lib/puppet/type/deployit_wls_jmsfilepersistentstorespec.rb": "9d357fd0dc324338da696c463c1bfa9c",
+    "lib/puppet/type/deployit_wls_jmsjdbcpersistentstore.rb": "be761b9409e965bcf829e51499176bbf",
+    "lib/puppet/type/deployit_wls_jmsjdbcpersistentstorespec.rb": "a368e0488e9ef6ee6c166e7515d7a1a6",
+    "lib/puppet/type/deployit_wls_jmspersistentstorespec.rb": "fde39e49b91048bc3171cf6e154713ae",
+    "lib/puppet/type/deployit_wls_jmsserver.rb": "89d842ea7c12aa99645693a57bbdcc6f",
+    "lib/puppet/type/deployit_wls_mailsession.rb": "665aa1126f7693a7b3c97cfadbb3bed8",
+    "lib/puppet/type/deployit_wls_mailsessionspec.rb": "813ee14afeb7f8fb8722abd5a76ef0ec",
+    "lib/puppet/type/deployit_wls_persistentstorespec.rb": "96535670e5ea8d45a1ffcbceeb50203b",
+    "lib/puppet/type/deployit_wls_queue.rb": "5bf99d10c5cad9bf2d1c29640701c51f",
+    "lib/puppet/type/deployit_wls_queuespec.rb": "2e3a47e1e5af950d8e892f0d49cc8e96",
+    "lib/puppet/type/deployit_wls_server.rb": "abd28397b439263796855b6bbcfeccea",
+    "lib/puppet/type/deployit_wls_sharedlibrarywar.rb": "18f389788acede38497528884f67f68b",
+    "lib/puppet/type/deployit_wls_sharedlibrarywarmodule.rb": "26f7374e0833980bfcfc55c42e9688f3",
+    "lib/puppet/type/deployit_wls_topic.rb": "124c3133bea5944736d6c539e7b3c195",
+    "lib/puppet/type/deployit_wls_topicspec.rb": "45c9d0c3959676db547e0a4ed85eba2f",
+    "lib/puppet/type/deployit_wls_uniformdistributedqueue.rb": "bab6b3c4cd362e55a9fbf772d29724a0",
+    "lib/puppet/type/deployit_wls_uniformdistributedqueuespec.rb": "9d8fa4ed9d068862d793241f0fcbeeb6",
+    "lib/puppet/type/deployit_wls_uniformdistributedtopic.rb": "3679c2f10846c078b381fa9a1ba3e1aa",
+    "lib/puppet/type/deployit_wls_uniformdistributedtopicspec.rb": "4515a91e28cd120981743161b08242e6",
+    "lib/puppet/type/deployit_wls_war.rb": "fdc03143bd148f845e5d0967c7349a86",
+    "lib/puppet/type/deployit_wls_warmodule.rb": "e0cfc16696f425859a28056addc921eb",
+    "lib/puppet/type/deployit_www_apacheconffile.rb": "80607b50ad84ae1908d385bf0ff8d76b",
+    "lib/puppet/type/deployit_www_apacheconffragment.rb": "86b1d4866c83d5e6faf352cd7d1045f2",
+    "lib/puppet/type/deployit_www_apacheconffragmentspec.rb": "f774cc474af9b2d4efc0ee64c3635767",
+    "lib/puppet/type/deployit_www_apachehttpdserver.rb": "24ffbf93febab6137790f4d502ea42e4",
+    "lib/puppet/type/deployit_www_apachevirtualhost.rb": "ec7ee5065065f4b59a7b780c973a9bee",
+    "lib/puppet/type/deployit_www_apachevirtualhostspec.rb": "7091f61c7cea128621bd1c7617e42ea4",
+    "lib/puppet/type/deployit_www_deployedapacheconffile.rb": "e699a62224f2a1318e3b7e263b923c74",
+    "lib/puppet/type/deployit_www_publishedwebcontent.rb": "0d63a1a8dd46fb46d56544a1540f00b8",
+    "lib/puppet/type/deployit_www_webcontent.rb": "552097b214bf4ee894fc688bbbb1f5b0",
+    "lib/puppet/type/generated/deployit_jetty_db2datasource.rb": "45f3d4b6e4392ac59612916903c9d25e",
+    "lib/puppet/type/generated/deployit_jetty_db2datasourcespec.rb": "eea134b0436dbab7a0113d658b584efd",
+    "lib/puppet/type/generated/deployit_jetty_mqqueue.rb": "6b1d7f5d3e33b8251f298b63082d6db1",
+    "lib/puppet/type/generated/deployit_jetty_mqqueueconnectionfactoryspec.rb": "8bd51ee2a1f416f0426ad8607084444d",
+    "lib/puppet/type/generated/deployit_jetty_mqqueuespec.rb": "4c94b83e1c5c6e0dacd2f8aac78eeb50",
+    "lib/puppet/type/generated/deployit_jetty_securityrolemapping.rb": "774cf3edf6d6efc5a3af324738231be9",
+    "lib/puppet/type/generated/deployit_jetty_securityrolemappingspec.rb": "502e097708c0c65b6373d7f2d442cb37",
+    "lib/puppet/type/generated/deployit_jetty_server.rb": "c54c4137e549710ec9207584509428f1",
+    "lib/puppet/type/generated/deployit_jetty_war.rb": "a684fd66008075480443b1b03f85f211",
+    "lib/puppet/type/generated/deployit_jetty_warmodule.rb": "0e171d23412bc42d15185ac03f28dd55",
+    "lib/puppet/type/generated/deployit_jetty_webspheremqqueueconnectionfactory.rb": "ce9575a6e4bcb13cd41a7d65a1e8045f",
     "lib/puppet/type/ini_setting.rb": "afcd3f28b946b08db1b48fb189e6d8cf",
     "lib/puppet/type/ini_subsetting.rb": "b4e6a659f461bcd274dcdf1b1c39db65",
     "lib/puppet/util/external_iterator.rb": "69ad1eb930ca6d8d6b6faea343b4a22e",
     "lib/puppet/util/ini_file.rb": "f4370f87086d1158c41e703ec311eced",
     "lib/puppet/util/ini_file/section.rb": "77757399ed9b9ce352ddcc8b8f9273c4",
     "lib/puppet/util/setting_value.rb": "33b061f011dca850da3e6841ea4e6637",
-    "manifests/config.pp": "cb914f8dcf3d8fbcee24d3f1b58e74eb",
+    "manifests/config.pp": "6056c3edc95479e922db9db163912f6e",
     "manifests/development.pp": "8a928f7551e2d72cf31e72b0b7c45627",
     "manifests/download.pp": "93106d389b58122838ea56a7ade16c0e",
     "manifests/download/puppetfiles.pp": "f00784731f6956d6f3ab66ab32a6b054",
@@ -327,8 +354,8 @@
     "manifests/prereq.pp": "bb544f5f61d7b2c68fa7f5c424af5b77",
     "manifests/provider_prereq.pp": "1937c818c87510ce9ae338faeb76cd1b",
     "manifests/service.pp": "6e922192f6363061b22f0f9c3ba87af2",
-    "manifests/test/agent.pp": "8b80fea3885dde61b5c2d254556256a1",
-    "manifests/test/server.pp": "07f5d695553a9d14b4eaa5845fcd40b2",
+    "manifests/test/agent.pp": "24146530846c52ac4e92b39d354a91cc",
+    "manifests/test/server.pp": "7f15588e47415b92bed2a3f27bf41d52",
     "manifests/users.pp": "14d797578964fb0575702f1abef8cc16",
     "notes": "61dcd18db3eb0fca3a1ec9c8923a04ed",
     "spec/Rakefile": "5970b0ba8f180acc6d122450205ae197",
@@ -500,6 +527,11 @@
           "name": "dependencies"
         }
       ],
+      "providers": [
+        {
+          "name": "generated_restclient"
+        }
+      ],
       "name": "deployit_cmd_deployedcommand"
     },
     {
@@ -565,30 +597,35 @@
       ],
       "properties": [
         {
-          "name": "targetpath",
-          "doc": "Target Path"
-        },
-        {
           "name": "createtargetpath",
           "doc": "Create Target Path"
-        },
-        {
-          "name": "targetpathshared",
-          "doc": "Target Path Shared"
-        },
-        {
-          "name": "excludefilenamesregex",
-          "doc": "Exclude File Names Regex"
         },
         {
           "name": "targetfilename",
           "doc": "Target File Name"
         },
         {
+          "name": "excludefilenamesregex",
+          "doc": "Exclude File Names Regex"
+        },
+        {
+          "name": "targetpath",
+          "doc": "Target Path"
+        },
+        {
+          "name": "targetpathshared",
+          "doc": "Target Path Shared"
+        },
+        {
           "name": "tags"
         },
         {
           "name": "placeholders"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_file_archive"
@@ -622,16 +659,21 @@
       ],
       "properties": [
         {
-          "name": "targetpath",
-          "doc": "Target Path"
-        },
-        {
           "name": "targetfilename",
           "doc": "Target File Name"
         },
         {
+          "name": "targetpath",
+          "doc": "Target Path"
+        },
+        {
           "name": "placeholders",
           "doc": "a hash of valid propertys to be sent to deployit"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_file_deployedarchive"
@@ -665,16 +707,21 @@
       ],
       "properties": [
         {
-          "name": "targetpath",
-          "doc": "Target Path"
-        },
-        {
           "name": "targetfilename",
           "doc": "Target File Name"
         },
         {
+          "name": "targetpath",
+          "doc": "Target Path"
+        },
+        {
           "name": "placeholders",
           "doc": "a hash of valid propertys to be sent to deployit"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_file_deployedfile"
@@ -716,6 +763,11 @@
           "doc": "a hash of valid propertys to be sent to deployit"
         }
       ],
+      "providers": [
+        {
+          "name": "generated_restclient"
+        }
+      ],
       "name": "deployit_file_deployedfolder"
     },
     {
@@ -747,30 +799,35 @@
       ],
       "properties": [
         {
-          "name": "targetpath",
-          "doc": "Target Path"
-        },
-        {
           "name": "createtargetpath",
           "doc": "Create Target Path"
-        },
-        {
-          "name": "targetpathshared",
-          "doc": "Target Path Shared"
-        },
-        {
-          "name": "excludefilenamesregex",
-          "doc": "Exclude File Names Regex"
         },
         {
           "name": "targetfilename",
           "doc": "Target File Name"
         },
         {
+          "name": "excludefilenamesregex",
+          "doc": "Exclude File Names Regex"
+        },
+        {
+          "name": "targetpath",
+          "doc": "Target Path"
+        },
+        {
+          "name": "targetpathshared",
+          "doc": "Target Path Shared"
+        },
+        {
           "name": "tags"
         },
         {
           "name": "placeholders"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_file_file"
@@ -804,30 +861,35 @@
       ],
       "properties": [
         {
-          "name": "targetpath",
-          "doc": "Target Path"
-        },
-        {
           "name": "createtargetpath",
           "doc": "Create Target Path"
-        },
-        {
-          "name": "targetpathshared",
-          "doc": "Target Path Shared"
-        },
-        {
-          "name": "excludefilenamesregex",
-          "doc": "Exclude File Names Regex"
         },
         {
           "name": "targetfilename",
           "doc": "Target File Name"
         },
         {
+          "name": "excludefilenamesregex",
+          "doc": "Exclude File Names Regex"
+        },
+        {
+          "name": "targetpath",
+          "doc": "Target Path"
+        },
+        {
+          "name": "targetpathshared",
+          "doc": "Target Path Shared"
+        },
+        {
           "name": "tags"
         },
         {
           "name": "placeholders"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_file_folder"
@@ -866,6 +928,11 @@
         },
         {
           "name": "tags"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_jee_datasourcespec"
@@ -909,6 +976,11 @@
           "name": "placeholders"
         }
       ],
+      "providers": [
+        {
+          "name": "generated_restclient"
+        }
+      ],
       "name": "deployit_jee_ear"
     },
     {
@@ -950,6 +1022,11 @@
           "name": "placeholders"
         }
       ],
+      "providers": [
+        {
+          "name": "generated_restclient"
+        }
+      ],
       "name": "deployit_jee_ejbjar"
     },
     {
@@ -986,6 +1063,11 @@
         },
         {
           "name": "tags"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_jee_mailsessionspec"
@@ -1026,6 +1108,11 @@
           "name": "tags"
         }
       ],
+      "providers": [
+        {
+          "name": "generated_restclient"
+        }
+      ],
       "name": "deployit_jee_queueconnectionfactoryspec"
     },
     {
@@ -1062,6 +1149,11 @@
         },
         {
           "name": "tags"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_jee_queuespec"
@@ -1102,6 +1194,11 @@
           "name": "tags"
         }
       ],
+      "providers": [
+        {
+          "name": "generated_restclient"
+        }
+      ],
       "name": "deployit_jee_topicconnectionfactoryspec"
     },
     {
@@ -1138,6 +1235,11 @@
         },
         {
           "name": "tags"
+        }
+      ],
+      "providers": [
+        {
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_jee_topicspec"
@@ -1181,6 +1283,11 @@
           "name": "placeholders"
         }
       ],
+      "providers": [
+        {
+          "name": "generated_restclient"
+        }
+      ],
       "name": "deployit_jee_war"
     },
     {
@@ -1212,16 +1319,32 @@
       ],
       "properties": [
         {
+          "name": "password",
+          "doc": "Password"
+        },
+        {
+          "name": "maxidle",
+          "doc": "Max Idle"
+        },
+        {
+          "name": "maxwait",
+          "doc": "Max Wait"
+        },
+        {
+          "name": "jndiname",
+          "doc": "Jndi Name"
+        },
+        {
           "name": "maxactive",
           "doc": "Max Active"
         },
         {
-          "name": "defaulttransactionisolation",
-          "doc": "Default Transaction Isolation"
+          "name": "portnumber",
+          "doc": "Portnumber"
         },
         {
-          "name": "minidle",
-          "doc": "Min Idle"
+          "name": "user",
+          "doc": "User"
         },
         {
           "name": "servername",
@@ -1232,32 +1355,16 @@
           "doc": "Initial Size"
         },
         {
-          "name": "portnumber",
-          "doc": "Portnumber"
-        },
-        {
-          "name": "password",
-          "doc": "Password"
-        },
-        {
-          "name": "maxwait",
-          "doc": "Max Wait"
-        },
-        {
-          "name": "maxidle",
-          "doc": "Max Idle"
-        },
-        {
-          "name": "user",
-          "doc": "User"
-        },
-        {
           "name": "databasename",
           "doc": "Databasename"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "defaulttransactionisolation",
+          "doc": "Default Transaction Isolation"
+        },
+        {
+          "name": "minidle",
+          "doc": "Min Idle"
         }
       ],
       "providers": [
@@ -1296,12 +1403,48 @@
       ],
       "properties": [
         {
-          "name": "defaultautocommit",
-          "doc": "Default Auto Commit"
+          "name": "password",
+          "doc": "Password"
+        },
+        {
+          "name": "maxidle",
+          "doc": "Max Idle"
+        },
+        {
+          "name": "maxwait",
+          "doc": "Max Wait"
+        },
+        {
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "maxactive",
           "doc": "Max Active"
+        },
+        {
+          "name": "portnumber",
+          "doc": "Portnumber"
+        },
+        {
+          "name": "user",
+          "doc": "User"
+        },
+        {
+          "name": "servername",
+          "doc": "Servername"
+        },
+        {
+          "name": "defaultautocommit",
+          "doc": "Default Auto Commit"
+        },
+        {
+          "name": "initialsize",
+          "doc": "Initial Size"
+        },
+        {
+          "name": "databasename",
+          "doc": "Databasename"
         },
         {
           "name": "defaulttransactionisolation",
@@ -1310,42 +1453,6 @@
         {
           "name": "minidle",
           "doc": "Min Idle"
-        },
-        {
-          "name": "servername",
-          "doc": "Servername"
-        },
-        {
-          "name": "initialsize",
-          "doc": "Initial Size"
-        },
-        {
-          "name": "portnumber",
-          "doc": "Portnumber"
-        },
-        {
-          "name": "password",
-          "doc": "Password"
-        },
-        {
-          "name": "maxwait",
-          "doc": "Max Wait"
-        },
-        {
-          "name": "maxidle",
-          "doc": "Max Idle"
-        },
-        {
-          "name": "user",
-          "doc": "User"
-        },
-        {
-          "name": "databasename",
-          "doc": "Databasename"
-        },
-        {
-          "name": "jndiname",
-          "doc": "Jndi Name"
         },
         {
           "name": "tags"
@@ -1387,16 +1494,16 @@
       ],
       "properties": [
         {
-          "name": "basequeuemanagername",
-          "doc": "Base Queue Manager Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "basequeuename",
           "doc": "Base Queue Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "basequeuemanagername",
+          "doc": "Base Queue Manager Name"
         }
       ],
       "providers": [
@@ -1435,28 +1542,28 @@
       ],
       "properties": [
         {
+          "name": "jndiname",
+          "doc": "Jndi Name"
+        },
+        {
           "name": "hostname",
           "doc": "Host Name"
-        },
-        {
-          "name": "channel",
-          "doc": "Channel"
-        },
-        {
-          "name": "queuemanager",
-          "doc": "Queue Manager"
-        },
-        {
-          "name": "ccdturl",
-          "doc": "C C D T U R L"
         },
         {
           "name": "port",
           "doc": "Port"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "ccdturl",
+          "doc": "C C D T U R L"
+        },
+        {
+          "name": "queuemanager",
+          "doc": "Queue Manager"
+        },
+        {
+          "name": "channel",
+          "doc": "Channel"
         },
         {
           "name": "tags"
@@ -1502,16 +1609,16 @@
       ],
       "properties": [
         {
-          "name": "basequeuemanagername",
-          "doc": "Base Queue Manager Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "basequeuename",
           "doc": "Base Queue Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "basequeuemanagername",
+          "doc": "Base Queue Manager Name"
         },
         {
           "name": "tags"
@@ -1611,7 +1718,7 @@
       "parameters": [
         {
           "name": "id",
-          "doc": "deployit ci id (full path required)"
+          "doc": "deployit_jetty_server id (full path required)"
         },
         {
           "name": "deployit_username",
@@ -1636,7 +1743,8 @@
       ],
       "properties": [
         {
-          "name": "home"
+          "name": "home",
+          "doc": "Home"
         },
         {
           "name": "tags"
@@ -1648,7 +1756,7 @@
       ],
       "providers": [
         {
-          "name": "restclient"
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_jetty_server"
@@ -1780,24 +1888,24 @@
       ],
       "properties": [
         {
+          "name": "jndiname",
+          "doc": "Jndi Name"
+        },
+        {
           "name": "hostname",
           "doc": "Host Name"
-        },
-        {
-          "name": "channel",
-          "doc": "Channel"
-        },
-        {
-          "name": "queuemanager",
-          "doc": "Queue Manager"
         },
         {
           "name": "ccdturl",
           "doc": "C C D T U R L"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "queuemanager",
+          "doc": "Queue Manager"
+        },
+        {
+          "name": "channel",
+          "doc": "Channel"
         },
         {
           "name": "customproperties",
@@ -1840,20 +1948,28 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Username"
+          "name": "connectiontype",
+          "doc": "Connection Type"
         },
         {
-          "name": "temporarydirectorypath",
-          "doc": "Temporary Directory Path"
+          "name": "address",
+          "doc": "Address"
         },
         {
           "name": "password",
           "doc": "Password"
         },
         {
-          "name": "address",
-          "doc": "Address"
+          "name": "temporarydirectorypath",
+          "doc": "Temporary Directory Path"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
+        },
+        {
+          "name": "os",
+          "doc": "Operating system"
         },
         {
           "name": "tags"
@@ -1903,6 +2019,10 @@
           "doc": "Temporary Directory Path"
         },
         {
+          "name": "os",
+          "doc": "Operating system"
+        },
+        {
           "name": "tags"
         }
       ],
@@ -1917,7 +2037,7 @@
       "parameters": [
         {
           "name": "id",
-          "doc": "deployit ci id (full path required)"
+          "doc": "deployit_overthere_sshhost id (full path required)"
         },
         {
           "name": "deployit_username",
@@ -1942,22 +2062,40 @@
       ],
       "properties": [
         {
-          "name": "connectionType"
+          "name": "connectiontype",
+          "doc": "Connection Type"
         },
         {
-          "name": "os"
+          "name": "address",
+          "doc": "Address"
         },
         {
-          "name": "username"
+          "name": "password",
+          "doc": "Password"
         },
         {
-          "name": "password"
+          "name": "temporarydirectorypath",
+          "doc": "Temporary Directory Path"
         },
         {
-          "name": "port"
+          "name": "passphrase",
+          "doc": "Passphrase"
         },
         {
-          "name": "address"
+          "name": "privatekeyfile",
+          "doc": "Private Key File"
+        },
+        {
+          "name": "sudousername",
+          "doc": "Sudo username"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
+        },
+        {
+          "name": "os",
+          "doc": "Operating system"
         },
         {
           "name": "tags"
@@ -1965,7 +2103,7 @@
       ],
       "providers": [
         {
-          "name": "restclient"
+          "name": "generated_restclient"
         }
       ],
       "name": "deployit_overthere_sshhost"
@@ -1999,24 +2137,28 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Username"
+          "name": "address",
+          "doc": "Address"
         },
         {
           "name": "password",
           "doc": "Password"
         },
         {
-          "name": "address",
-          "doc": "Address"
+          "name": "passphrase",
+          "doc": "Passphrase"
         },
         {
           "name": "privatekeyfile",
           "doc": "Private Key File"
         },
         {
-          "name": "passphrase",
-          "doc": "Passphrase"
+          "name": "username",
+          "doc": "Username"
+        },
+        {
+          "name": "os",
+          "doc": "Os"
         },
         {
           "name": "tags"
@@ -2058,20 +2200,20 @@
       ],
       "properties": [
         {
-          "name": "body",
-          "doc": "Body"
-        },
-        {
-          "name": "fromaddress",
-          "doc": "From Address"
+          "name": "bodytemplatepath",
+          "doc": "Body Template Path"
         },
         {
           "name": "subject",
           "doc": "Subject"
         },
         {
-          "name": "bodytemplatepath",
-          "doc": "Body Template Path"
+          "name": "fromaddress",
+          "doc": "From Address"
+        },
+        {
+          "name": "body",
+          "doc": "Body"
         }
       ],
       "providers": [
@@ -2109,6 +2251,14 @@
         }
       ],
       "properties": [
+        {
+          "name": "fromstate",
+          "doc": "From State"
+        },
+        {
+          "name": "tostate",
+          "doc": "To State"
+        },
         {
           "name": "actions"
         }
@@ -2148,6 +2298,14 @@
         }
       ],
       "properties": [
+        {
+          "name": "fromstate",
+          "doc": "From State"
+        },
+        {
+          "name": "tostate",
+          "doc": "To State"
+        },
         {
           "name": "actions"
         }
@@ -2312,32 +2470,32 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Username"
-        },
-        {
-          "name": "datasourcehelperclassname",
-          "doc": "Datasource Helper Classname"
-        },
-        {
-          "name": "description",
-          "doc": "Description"
+          "name": "jdbcprovider",
+          "doc": "Jdbc Provider"
         },
         {
           "name": "password",
           "doc": "Password"
         },
         {
-          "name": "jdbcprovider",
-          "doc": "Jdbc Provider"
+          "name": "jndiname",
+          "doc": "Jndi Name"
+        },
+        {
+          "name": "datasourcehelperclassname",
+          "doc": "Datasource Helper Classname"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
+        },
+        {
+          "name": "description",
+          "doc": "Description"
         },
         {
           "name": "databasename",
           "doc": "Database Name"
-        },
-        {
-          "name": "jndiname",
-          "doc": "Jndi Name"
         }
       ],
       "providers": [
@@ -2376,44 +2534,44 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Username"
-        },
-        {
-          "name": "datasourcehelperclassname",
-          "doc": "Datasource Helper Classname"
-        },
-        {
-          "name": "description",
-          "doc": "Description"
-        },
-        {
           "name": "connectionpool_connectiontimeout",
           "doc": "Connection pool: timeout"
-        },
-        {
-          "name": "password",
-          "doc": "Password"
-        },
-        {
-          "name": "connectionpool_maxconnections",
-          "doc": "Connection pool: maximum connections"
-        },
-        {
-          "name": "connectionpool_minconnections",
-          "doc": "Connection pool: minimum connections"
         },
         {
           "name": "jdbcprovider",
           "doc": "Jdbc Provider"
         },
         {
-          "name": "databasename",
-          "doc": "Database Name"
+          "name": "password",
+          "doc": "Password"
         },
         {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "datasourcehelperclassname",
+          "doc": "Datasource Helper Classname"
+        },
+        {
+          "name": "connectionpool_minconnections",
+          "doc": "Connection pool: minimum connections"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
+        },
+        {
+          "name": "connectionpool_maxconnections",
+          "doc": "Connection pool: maximum connections"
+        },
+        {
+          "name": "description",
+          "doc": "Description"
+        },
+        {
+          "name": "databasename",
+          "doc": "Database Name"
         },
         {
           "name": "tags"
@@ -2455,8 +2613,16 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Username"
+          "name": "jdbcprovider",
+          "doc": "Jdbc Provider"
+        },
+        {
+          "name": "password",
+          "doc": "Password"
+        },
+        {
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "datasourcehelperclassname",
@@ -2467,24 +2633,16 @@
           "doc": "Server Name"
         },
         {
+          "name": "username",
+          "doc": "Username"
+        },
+        {
           "name": "description",
           "doc": "Description"
         },
         {
-          "name": "password",
-          "doc": "Password"
-        },
-        {
-          "name": "jdbcprovider",
-          "doc": "Jdbc Provider"
-        },
-        {
           "name": "databasename",
           "doc": "Database Name"
-        },
-        {
-          "name": "jndiname",
-          "doc": "Jndi Name"
         }
       ],
       "providers": [
@@ -2523,52 +2681,52 @@
       ],
       "properties": [
         {
-          "name": "portnumber",
-          "doc": "Port Number"
-        },
-        {
-          "name": "username",
-          "doc": "Username"
-        },
-        {
-          "name": "datasourcehelperclassname",
-          "doc": "Datasource Helper Classname"
-        },
-        {
-          "name": "servername",
-          "doc": "Server Name"
-        },
-        {
-          "name": "description",
-          "doc": "Description"
-        },
-        {
           "name": "connectionpool_connectiontimeout",
           "doc": "Connection pool: timeout"
-        },
-        {
-          "name": "password",
-          "doc": "Password"
-        },
-        {
-          "name": "connectionpool_maxconnections",
-          "doc": "Connection pool: maximum connections"
-        },
-        {
-          "name": "connectionpool_minconnections",
-          "doc": "Connection pool: minimum connections"
         },
         {
           "name": "jdbcprovider",
           "doc": "Jdbc Provider"
         },
         {
-          "name": "databasename",
-          "doc": "Database Name"
+          "name": "password",
+          "doc": "Password"
         },
         {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "datasourcehelperclassname",
+          "doc": "Datasource Helper Classname"
+        },
+        {
+          "name": "connectionpool_minconnections",
+          "doc": "Connection pool: minimum connections"
+        },
+        {
+          "name": "portnumber",
+          "doc": "Port Number"
+        },
+        {
+          "name": "servername",
+          "doc": "Server Name"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
+        },
+        {
+          "name": "connectionpool_maxconnections",
+          "doc": "Connection pool: maximum connections"
+        },
+        {
+          "name": "description",
+          "doc": "Description"
+        },
+        {
+          "name": "databasename",
+          "doc": "Database Name"
         },
         {
           "name": "tags"
@@ -2610,25 +2768,29 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Administrative username"
-        },
-        {
           "name": "password",
           "doc": "Administrative password"
+        },
+        {
+          "name": "version",
+          "doc": "WAS version"
         },
         {
           "name": "washome",
           "doc": "WebSphere Installation Path"
         },
         {
+          "name": "username",
+          "doc": "Administrative username"
+        },
+        {
           "name": "tags"
         },
         {
-          "name": "nodeagents"
+          "name": "clusters"
         },
         {
-          "name": "clusters"
+          "name": "nodeagents"
         }
       ],
       "providers": [
@@ -2667,16 +2829,16 @@
       ],
       "properties": [
         {
+          "name": "precompilejsps",
+          "doc": "Pre Compile Jsps"
+        },
+        {
           "name": "startingweight",
           "doc": "Starting Weight"
         },
         {
           "name": "excludefilenamesregex",
           "doc": "Exclude File Names Regex"
-        },
-        {
-          "name": "precompilejsps",
-          "doc": "Pre Compile Jsps"
         },
         {
           "name": "tags"
@@ -2876,12 +3038,12 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Username"
-        },
-        {
           "name": "password",
           "doc": "Password"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
         }
       ],
       "providers": [
@@ -2920,12 +3082,12 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Username"
-        },
-        {
           "name": "password",
           "doc": "Password"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
         },
         {
           "name": "tags"
@@ -2967,24 +3129,24 @@
       ],
       "properties": [
         {
-          "name": "classpath",
-          "doc": "Class path"
-        },
-        {
-          "name": "providertype",
-          "doc": " Provider type"
-        },
-        {
-          "name": "description",
-          "doc": "Description"
+          "name": "implementationclassname",
+          "doc": "Implementation class name"
         },
         {
           "name": "nativepath",
           "doc": "Native Library Path"
         },
         {
-          "name": "implementationclassname",
-          "doc": "Implementation class name"
+          "name": "classpath",
+          "doc": "Class path"
+        },
+        {
+          "name": "description",
+          "doc": "Description"
+        },
+        {
+          "name": "providertype",
+          "doc": " Provider type"
         }
       ],
       "providers": [
@@ -3023,6 +3185,18 @@
       ],
       "properties": [
         {
+          "name": "implementationclassname",
+          "doc": "Implementation class name"
+        },
+        {
+          "name": "isolatedclassloader",
+          "doc": "Isolate this resource provider "
+        },
+        {
+          "name": "nativepath",
+          "doc": "Native Library Path"
+        },
+        {
           "name": "classpath",
           "doc": "Class path"
         },
@@ -3031,24 +3205,12 @@
           "doc": "Implementation type"
         },
         {
-          "name": "providertype",
-          "doc": " Provider type"
-        },
-        {
-          "name": "isolatedclassloader",
-          "doc": "Isolate this resource provider "
-        },
-        {
           "name": "description",
           "doc": "Description"
         },
         {
-          "name": "nativepath",
-          "doc": "Native Library Path"
-        },
-        {
-          "name": "implementationclassname",
-          "doc": "Implementation class name"
+          "name": "providertype",
+          "doc": " Provider type"
         },
         {
           "name": "tags"
@@ -3208,6 +3370,22 @@
       ],
       "properties": [
         {
+          "name": "jdbcprovider",
+          "doc": "Jdbc Provider"
+        },
+        {
+          "name": "password",
+          "doc": "Password"
+        },
+        {
+          "name": "jndiname",
+          "doc": "Jndi Name"
+        },
+        {
+          "name": "url",
+          "doc": "JDBC URL"
+        },
+        {
           "name": "datasourcehelperclassname",
           "doc": "Datasource Helper Classname"
         },
@@ -3218,22 +3396,6 @@
         {
           "name": "description",
           "doc": "Description"
-        },
-        {
-          "name": "password",
-          "doc": "Password"
-        },
-        {
-          "name": "url",
-          "doc": "JDBC URL"
-        },
-        {
-          "name": "jdbcprovider",
-          "doc": "Jdbc Provider"
-        },
-        {
-          "name": "jndiname",
-          "doc": "Jndi Name"
         }
       ],
       "providers": [
@@ -3272,6 +3434,30 @@
       ],
       "properties": [
         {
+          "name": "connectionpool_connectiontimeout",
+          "doc": "Connection pool: timeout"
+        },
+        {
+          "name": "jdbcprovider",
+          "doc": "Jdbc Provider"
+        },
+        {
+          "name": "password",
+          "doc": "Password"
+        },
+        {
+          "name": "jndiname",
+          "doc": "Jndi Name"
+        },
+        {
+          "name": "url",
+          "doc": "JDBC URL"
+        },
+        {
+          "name": "connectionpool_minconnections",
+          "doc": "Connection pool: minimum connections"
+        },
+        {
           "name": "datasourcehelperclassname",
           "doc": "Datasource Helper Classname"
         },
@@ -3280,36 +3466,12 @@
           "doc": "Username"
         },
         {
-          "name": "description",
-          "doc": "Description"
-        },
-        {
-          "name": "connectionpool_connectiontimeout",
-          "doc": "Connection pool: timeout"
-        },
-        {
-          "name": "password",
-          "doc": "Password"
-        },
-        {
-          "name": "url",
-          "doc": "JDBC URL"
-        },
-        {
           "name": "connectionpool_maxconnections",
           "doc": "Connection pool: maximum connections"
         },
         {
-          "name": "connectionpool_minconnections",
-          "doc": "Connection pool: minimum connections"
-        },
-        {
-          "name": "jdbcprovider",
-          "doc": "Jdbc Provider"
-        },
-        {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "description",
+          "doc": "Description"
         },
         {
           "name": "tags"
@@ -3351,24 +3513,24 @@
       ],
       "properties": [
         {
-          "name": "classpath",
-          "doc": "Class path"
-        },
-        {
-          "name": "providertype",
-          "doc": " Provider type"
-        },
-        {
-          "name": "description",
-          "doc": "Description"
-        },
-        {
           "name": "implementationclassname",
           "doc": "Implementation class name"
         },
         {
           "name": "nativepath",
           "doc": "Native Library Path"
+        },
+        {
+          "name": "classpath",
+          "doc": "Class path"
+        },
+        {
+          "name": "description",
+          "doc": "Description"
+        },
+        {
+          "name": "providertype",
+          "doc": " Provider type"
         }
       ],
       "providers": [
@@ -3407,32 +3569,32 @@
       ],
       "properties": [
         {
-          "name": "classpath",
-          "doc": "Class path"
-        },
-        {
-          "name": "providertype",
-          "doc": " Provider type"
-        },
-        {
-          "name": "description",
-          "doc": "Description"
+          "name": "implementationclassname",
+          "doc": "Implementation class name"
         },
         {
           "name": "isolatedclassloader",
           "doc": "Isolate this resource provider "
         },
         {
+          "name": "nativepath",
+          "doc": "Native Library Path"
+        },
+        {
+          "name": "classpath",
+          "doc": "Class path"
+        },
+        {
           "name": "xa",
           "doc": "Implementation type"
         },
         {
-          "name": "implementationclassname",
-          "doc": "Implementation class name"
+          "name": "description",
+          "doc": "Description"
         },
         {
-          "name": "nativepath",
-          "doc": "Native Library Path"
+          "name": "providertype",
+          "doc": " Provider type"
         },
         {
           "name": "tags"
@@ -3474,24 +3636,24 @@
       ],
       "properties": [
         {
-          "name": "classpath",
-          "doc": "Class path"
-        },
-        {
-          "name": "providertype",
-          "doc": " Provider type"
-        },
-        {
-          "name": "description",
-          "doc": "Description"
-        },
-        {
           "name": "implementationclassname",
           "doc": "Implementation class name"
         },
         {
           "name": "nativepath",
           "doc": "Native Library Path"
+        },
+        {
+          "name": "classpath",
+          "doc": "Class path"
+        },
+        {
+          "name": "description",
+          "doc": "Description"
+        },
+        {
+          "name": "providertype",
+          "doc": " Provider type"
         }
       ],
       "providers": [
@@ -3530,6 +3692,18 @@
       ],
       "properties": [
         {
+          "name": "implementationclassname",
+          "doc": "Implementation class name"
+        },
+        {
+          "name": "isolatedclassloader",
+          "doc": "Isolate this resource provider "
+        },
+        {
+          "name": "nativepath",
+          "doc": "Native Library Path"
+        },
+        {
           "name": "classpath",
           "doc": "Class path"
         },
@@ -3538,24 +3712,12 @@
           "doc": "Implementation type"
         },
         {
-          "name": "providertype",
-          "doc": " Provider type"
-        },
-        {
           "name": "description",
           "doc": "Description"
         },
         {
-          "name": "isolatedclassloader",
-          "doc": "Isolate this resource provider "
-        },
-        {
-          "name": "implementationclassname",
-          "doc": "Implementation class name"
-        },
-        {
-          "name": "nativepath",
-          "doc": "Native Library Path"
+          "name": "providertype",
+          "doc": " Provider type"
         },
         {
           "name": "tags"
@@ -3692,20 +3854,20 @@
           "doc": "Bus Name"
         },
         {
-          "name": "description",
-          "doc": "Description"
-        },
-        {
           "name": "deliverymode",
           "doc": "Delivery Mode"
+        },
+        {
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "timetolive",
           "doc": "Time To Live"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "description",
+          "doc": "Description"
         }
       ],
       "providers": [
@@ -3926,20 +4088,20 @@
           "doc": "Bus Name"
         },
         {
-          "name": "description",
-          "doc": "Description"
-        },
-        {
           "name": "deliverymode",
           "doc": "Delivery Mode"
+        },
+        {
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "timetolive",
           "doc": "Time To Live"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "description",
+          "doc": "Description"
         },
         {
           "name": "tags"
@@ -3981,12 +4143,12 @@
       ],
       "properties": [
         {
-          "name": "busname",
-          "doc": "Bus Name"
-        },
-        {
           "name": "topicname",
           "doc": "Topic name"
+        },
+        {
+          "name": "busname",
+          "doc": "Bus Name"
         },
         {
           "name": "jndiname",
@@ -4207,12 +4369,12 @@
       ],
       "properties": [
         {
-          "name": "busname",
-          "doc": "Bus Name"
-        },
-        {
           "name": "topicname",
           "doc": "Topic name"
+        },
+        {
+          "name": "busname",
+          "doc": "Bus Name"
         },
         {
           "name": "jndiname",
@@ -4258,24 +4420,28 @@
       ],
       "properties": [
         {
-          "name": "nodename",
-          "doc": "WebSphere node name"
-        },
-        {
           "name": "cellname",
           "doc": "WebSphere cell name"
-        },
-        {
-          "name": "username",
-          "doc": "Administrative username"
         },
         {
           "name": "password",
           "doc": "Administrative password"
         },
         {
+          "name": "version",
+          "doc": "WAS version"
+        },
+        {
           "name": "washome",
           "doc": "WebSphere Installation Path"
+        },
+        {
+          "name": "username",
+          "doc": "Administrative username"
+        },
+        {
+          "name": "nodename",
+          "doc": "WebSphere node name"
         },
         {
           "name": "tags"
@@ -4486,12 +4652,12 @@
       ],
       "properties": [
         {
-          "name": "topic",
-          "doc": "Topic"
-        },
-        {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "topic",
+          "doc": "Topic"
         }
       ],
       "providers": [
@@ -4613,12 +4779,12 @@
       ],
       "properties": [
         {
-          "name": "topic",
-          "doc": "Topic"
-        },
-        {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "topic",
+          "doc": "Topic"
         },
         {
           "name": "tags"
@@ -4741,6 +4907,10 @@
       ],
       "properties": [
         {
+          "name": "precompilejsps",
+          "doc": "Pre Compile Jsps"
+        },
+        {
           "name": "startingweight",
           "doc": "Starting Weight"
         },
@@ -4751,10 +4921,6 @@
         {
           "name": "contextroot",
           "doc": "Context Root"
-        },
-        {
-          "name": "precompilejsps",
-          "doc": "Pre Compile Jsps"
         },
         {
           "name": "tags"
@@ -4857,12 +5023,12 @@
       ],
       "properties": [
         {
-          "name": "basequeuename",
-          "doc": "Base Queue Name"
-        },
-        {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "basequeuename",
+          "doc": "Base Queue Name"
         }
       ],
       "providers": [
@@ -4984,12 +5150,12 @@
       ],
       "properties": [
         {
-          "name": "basequeuename",
-          "doc": "Base Queue Name"
-        },
-        {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "basequeuename",
+          "doc": "Base Queue Name"
         },
         {
           "name": "tags"
@@ -5031,12 +5197,12 @@
       ],
       "properties": [
         {
-          "name": "basetopicname",
-          "doc": "Base Topic Name"
-        },
-        {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "basetopicname",
+          "doc": "Base Topic Name"
         }
       ],
       "providers": [
@@ -5158,12 +5324,12 @@
       ],
       "properties": [
         {
-          "name": "basetopicname",
-          "doc": "Base Topic Name"
-        },
-        {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "basetopicname",
+          "doc": "Base Topic Name"
         },
         {
           "name": "tags"
@@ -5247,16 +5413,16 @@
       ],
       "properties": [
         {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
         }
       ],
       "providers": [
@@ -5295,6 +5461,14 @@
       ],
       "properties": [
         {
+          "name": "jndiname",
+          "doc": "Jndi Name"
+        },
+        {
+          "name": "subdeploymentname",
+          "doc": "Sub Deployment Name"
+        },
+        {
           "name": "transactionparams_xaconnectionfactoryenabled",
           "doc": "XAConnectionFactoryEnabled"
         },
@@ -5303,16 +5477,8 @@
           "doc": "Jms Module Name"
         },
         {
-          "name": "subdeploymentname",
-          "doc": "Sub Deployment Name"
-        },
-        {
           "name": "loadbalancingparams_serveraffinityenabled",
           "doc": "ServerAffinityEnabled"
-        },
-        {
-          "name": "jndiname",
-          "doc": "Jndi Name"
         },
         {
           "name": "tags"
@@ -5354,24 +5520,28 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Username"
-        },
-        {
-          "name": "url",
-          "doc": "Url"
-        },
-        {
           "name": "password",
           "doc": "Password"
+        },
+        {
+          "name": "jndinames",
+          "doc": "Jndi Names"
         },
         {
           "name": "drivername",
           "doc": "Driver Name"
         },
         {
-          "name": "jndinames",
-          "doc": "Jndi Names"
+          "name": "url",
+          "doc": "Url"
+        },
+        {
+          "name": "targetrestartpolicy",
+          "doc": "Target Restart Policy"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
         },
         {
           "name": "properties",
@@ -5414,18 +5584,6 @@
       ],
       "properties": [
         {
-          "name": "jdbcconnectionpoolparams_initialcapacity",
-          "doc": "Initial Capacity"
-        },
-        {
-          "name": "username",
-          "doc": "Username"
-        },
-        {
-          "name": "url",
-          "doc": "Url"
-        },
-        {
           "name": "restarttarget",
           "doc": "Restart Target"
         },
@@ -5434,24 +5592,36 @@
           "doc": "Password"
         },
         {
-          "name": "jdbcconnectionpoolparams_maxcapacity",
-          "doc": "Maximum Capacity"
-        },
-        {
-          "name": "drivername",
-          "doc": "Driver Name"
+          "name": "jdbcconnectionpoolparams_initialcapacity",
+          "doc": "Initial Capacity"
         },
         {
           "name": "jndinames",
           "doc": "Jndi Names"
         },
         {
-          "name": "jdbcconnectionpoolparams_capacityincrement",
-          "doc": "Capacity Increment"
+          "name": "drivername",
+          "doc": "Driver Name"
+        },
+        {
+          "name": "url",
+          "doc": "Url"
+        },
+        {
+          "name": "jdbcconnectionpoolparams_maxcapacity",
+          "doc": "Maximum Capacity"
         },
         {
           "name": "targetrestartpolicy",
           "doc": "Target Restart Policy"
+        },
+        {
+          "name": "username",
+          "doc": "Username"
+        },
+        {
+          "name": "jdbcconnectionpoolparams_capacityincrement",
+          "doc": "Capacity Increment"
         },
         {
           "name": "tags"
@@ -5497,12 +5667,16 @@
       ],
       "properties": [
         {
+          "name": "targetfile",
+          "doc": "Target File"
+        },
+        {
           "name": "targetdirectory",
           "doc": "Target Directory"
         },
         {
-          "name": "targetfile",
-          "doc": "Target File"
+          "name": "targetrestartpolicy",
+          "doc": "Target Restart Policy"
         },
         {
           "name": "placeholders",
@@ -5545,12 +5719,16 @@
       ],
       "properties": [
         {
+          "name": "targetfile",
+          "doc": "Target File"
+        },
+        {
           "name": "targetdirectory",
           "doc": "Target Directory"
         },
         {
-          "name": "targetfile",
-          "doc": "Target File"
+          "name": "targetrestartpolicy",
+          "doc": "Target Restart Policy"
         },
         {
           "name": "placeholders",
@@ -5593,14 +5771,6 @@
       ],
       "properties": [
         {
-          "name": "username",
-          "doc": "Administrative username"
-        },
-        {
-          "name": "wlstpath",
-          "doc": "WLST path"
-        },
-        {
           "name": "domainhome",
           "doc": "WebLogic domain home"
         },
@@ -5609,21 +5779,41 @@
           "doc": "Administrative password"
         },
         {
+          "name": "protocol",
+          "doc": "Administrative server protocol"
+        },
+        {
+          "name": "version",
+          "doc": "Version"
+        },
+        {
           "name": "adminservername",
           "doc": "Admin Server Name"
+        },
+        {
+          "name": "startmode",
+          "doc": "Start Mode"
         },
         {
           "name": "wlhome",
           "doc": "WebLogic home"
         },
         {
+          "name": "wlstpath",
+          "doc": "WLST path"
+        },
+        {
+          "name": "username",
+          "doc": "Administrative username"
+        },
+        {
           "name": "tags"
         },
         {
-          "name": "servers"
+          "name": "clusters"
         },
         {
-          "name": "clusters"
+          "name": "servers"
         }
       ],
       "providers": [
@@ -5662,8 +5852,12 @@
       ],
       "properties": [
         {
-          "name": "stagemode",
-          "doc": "Stage Mode"
+          "name": "stagingdirectory",
+          "doc": "Staging Directory"
+        },
+        {
+          "name": "automaticversioning",
+          "doc": "Automatic Versioning"
         },
         {
           "name": "versioned",
@@ -5674,32 +5868,28 @@
           "doc": "Retire Timeout"
         },
         {
+          "name": "deploymentorder",
+          "doc": "Deployment Order"
+        },
+        {
           "name": "excludefilenamesregex",
           "doc": "Exclude File Names Regex"
         },
         {
-          "name": "block",
-          "doc": "Block"
-        },
-        {
-          "name": "automaticversioning",
-          "doc": "Automatic Versioning"
+          "name": "stagemode",
+          "doc": "Stage Mode"
         },
         {
           "name": "redeploymentstrategy",
           "doc": "Redeployment Strategy"
         },
         {
-          "name": "deploymentorder",
-          "doc": "Deployment Order"
-        },
-        {
           "name": "versionidentifier",
           "doc": "Version Identifier"
         },
         {
-          "name": "stagingdirectory",
-          "doc": "Staging Directory"
+          "name": "block",
+          "doc": "Block"
         },
         {
           "name": "tags"
@@ -5744,12 +5934,20 @@
       ],
       "properties": [
         {
-          "name": "versionidentifier",
-          "doc": "Version Identifier"
-        },
-        {
           "name": "stagingdirectory",
           "doc": "Staging Directory"
+        },
+        {
+          "name": "stagemode",
+          "doc": "Stage Mode"
+        },
+        {
+          "name": "redeploymentstrategy",
+          "doc": "Redeployment Strategy"
+        },
+        {
+          "name": "versionidentifier",
+          "doc": "Version Identifier"
         },
         {
           "name": "placeholders",
@@ -5792,8 +5990,12 @@
       ],
       "properties": [
         {
-          "name": "stagemode",
-          "doc": "Stage Mode"
+          "name": "stagingdirectory",
+          "doc": "Staging Directory"
+        },
+        {
+          "name": "automaticversioning",
+          "doc": "Automatic Versioning"
         },
         {
           "name": "versioned",
@@ -5804,32 +6006,28 @@
           "doc": "Retire Timeout"
         },
         {
+          "name": "deploymentorder",
+          "doc": "Deployment Order"
+        },
+        {
           "name": "excludefilenamesregex",
           "doc": "Exclude File Names Regex"
         },
         {
-          "name": "block",
-          "doc": "Block"
-        },
-        {
-          "name": "automaticversioning",
-          "doc": "Automatic Versioning"
+          "name": "stagemode",
+          "doc": "Stage Mode"
         },
         {
           "name": "redeploymentstrategy",
           "doc": "Redeployment Strategy"
         },
         {
-          "name": "deploymentorder",
-          "doc": "Deployment Order"
-        },
-        {
           "name": "versionidentifier",
           "doc": "Version Identifier"
         },
         {
-          "name": "stagingdirectory",
-          "doc": "Staging Directory"
+          "name": "block",
+          "doc": "Block"
         },
         {
           "name": "tags"
@@ -5874,12 +6072,20 @@
       ],
       "properties": [
         {
-          "name": "versionidentifier",
-          "doc": "Version Identifier"
-        },
-        {
           "name": "stagingdirectory",
           "doc": "Staging Directory"
+        },
+        {
+          "name": "stagemode",
+          "doc": "Stage Mode"
+        },
+        {
+          "name": "redeploymentstrategy",
+          "doc": "Redeployment Strategy"
+        },
+        {
+          "name": "versionidentifier",
+          "doc": "Version Identifier"
         },
         {
           "name": "placeholders",
@@ -5922,20 +6128,24 @@
       ],
       "properties": [
         {
-          "name": "targetdirectory",
-          "doc": "Target Directory"
-        },
-        {
-          "name": "targetfile",
-          "doc": "Target File"
+          "name": "targetdirectoryshared",
+          "doc": "Target Directory Shared"
         },
         {
           "name": "restarttarget",
           "doc": "Restart Target"
         },
         {
+          "name": "targetfile",
+          "doc": "Target File"
+        },
+        {
           "name": "createtargetdirectory",
           "doc": "Create Target Directory"
+        },
+        {
+          "name": "targetdirectory",
+          "doc": "Target Directory"
         },
         {
           "name": "excludefilenamesregex",
@@ -5944,10 +6154,6 @@
         {
           "name": "targetrestartpolicy",
           "doc": "Target Restart Policy"
-        },
-        {
-          "name": "targetdirectoryshared",
-          "doc": "Target Directory Shared"
         },
         {
           "name": "tags"
@@ -5996,6 +6202,10 @@
           "doc": "Directory"
         },
         {
+          "name": "targetrestartpolicy",
+          "doc": "Target Restart Policy"
+        },
+        {
           "name": "synchronouswritepolicy",
           "doc": "Synchronous Write Policy"
         }
@@ -6036,12 +6246,12 @@
       ],
       "properties": [
         {
-          "name": "directory",
-          "doc": "Directory"
-        },
-        {
           "name": "restarttarget",
           "doc": "Restart Target"
+        },
+        {
+          "name": "directory",
+          "doc": "Directory"
         },
         {
           "name": "targetrestartpolicy",
@@ -6091,20 +6301,24 @@
       ],
       "properties": [
         {
-          "name": "targetdirectory",
-          "doc": "Target Directory"
-        },
-        {
-          "name": "targetfile",
-          "doc": "Target File"
+          "name": "targetdirectoryshared",
+          "doc": "Target Directory Shared"
         },
         {
           "name": "restarttarget",
           "doc": "Restart Target"
         },
         {
+          "name": "targetfile",
+          "doc": "Target File"
+        },
+        {
           "name": "createtargetdirectory",
           "doc": "Create Target Directory"
+        },
+        {
+          "name": "targetdirectory",
+          "doc": "Target Directory"
         },
         {
           "name": "excludefilenamesregex",
@@ -6113,10 +6327,6 @@
         {
           "name": "targetrestartpolicy",
           "doc": "Target Restart Policy"
-        },
-        {
-          "name": "targetdirectoryshared",
-          "doc": "Target Directory Shared"
         },
         {
           "name": "tags"
@@ -6165,6 +6375,10 @@
           "doc": "Directory"
         },
         {
+          "name": "targetrestartpolicy",
+          "doc": "Target Restart Policy"
+        },
+        {
           "name": "synchronouswritepolicy",
           "doc": "Synchronous Write Policy"
         }
@@ -6205,12 +6419,12 @@
       ],
       "properties": [
         {
-          "name": "directory",
-          "doc": "Directory"
-        },
-        {
           "name": "restarttarget",
           "doc": "Restart Target"
+        },
+        {
+          "name": "directory",
+          "doc": "Directory"
         },
         {
           "name": "targetrestartpolicy",
@@ -6262,6 +6476,10 @@
         {
           "name": "prefixname",
           "doc": "Prefix Name"
+        },
+        {
+          "name": "targetrestartpolicy",
+          "doc": "Target Restart Policy"
         }
       ],
       "providers": [
@@ -6441,6 +6659,10 @@
           "doc": "Jndi Name"
         },
         {
+          "name": "targetrestartpolicy",
+          "doc": "Target Restart Policy"
+        },
+        {
           "name": "javamailproperties",
           "doc": "a hash of valid propertys to be sent to deployit"
         }
@@ -6485,12 +6707,12 @@
           "doc": "Restart Target"
         },
         {
-          "name": "targetrestartpolicy",
-          "doc": "Target Restart Policy"
-        },
-        {
           "name": "jndiname",
           "doc": "Jndi Name"
+        },
+        {
+          "name": "targetrestartpolicy",
+          "doc": "Target Restart Policy"
         },
         {
           "name": "tags"
@@ -6583,16 +6805,16 @@
       ],
       "properties": [
         {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
         }
       ],
       "providers": [
@@ -6631,20 +6853,20 @@
       ],
       "properties": [
         {
-          "name": "deliveryfailureparams_redeliverylimit",
-          "doc": "Delivery Failure Params_ Redelivery Limit"
-        },
-        {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
+        },
+        {
+          "name": "deliveryfailureparams_redeliverylimit",
+          "doc": "Delivery Failure Params_ Redelivery Limit"
         },
         {
           "name": "tags"
@@ -6737,8 +6959,12 @@
       ],
       "properties": [
         {
-          "name": "stagemode",
-          "doc": "Stage Mode"
+          "name": "stagingdirectory",
+          "doc": "Staging Directory"
+        },
+        {
+          "name": "automaticversioning",
+          "doc": "Automatic Versioning"
         },
         {
           "name": "versioned",
@@ -6749,32 +6975,28 @@
           "doc": "Retire Timeout"
         },
         {
+          "name": "deploymentorder",
+          "doc": "Deployment Order"
+        },
+        {
           "name": "excludefilenamesregex",
           "doc": "Exclude File Names Regex"
         },
         {
-          "name": "block",
-          "doc": "Block"
-        },
-        {
-          "name": "automaticversioning",
-          "doc": "Automatic Versioning"
+          "name": "stagemode",
+          "doc": "Stage Mode"
         },
         {
           "name": "redeploymentstrategy",
           "doc": "Redeployment Strategy"
         },
         {
-          "name": "deploymentorder",
-          "doc": "Deployment Order"
-        },
-        {
           "name": "versionidentifier",
           "doc": "Version Identifier"
         },
         {
-          "name": "stagingdirectory",
-          "doc": "Staging Directory"
+          "name": "block",
+          "doc": "Block"
         },
         {
           "name": "tags"
@@ -6819,12 +7041,20 @@
       ],
       "properties": [
         {
-          "name": "versionidentifier",
-          "doc": "Version Identifier"
-        },
-        {
           "name": "stagingdirectory",
           "doc": "Staging Directory"
+        },
+        {
+          "name": "stagemode",
+          "doc": "Stage Mode"
+        },
+        {
+          "name": "redeploymentstrategy",
+          "doc": "Redeployment Strategy"
+        },
+        {
+          "name": "versionidentifier",
+          "doc": "Version Identifier"
         },
         {
           "name": "placeholders",
@@ -6867,16 +7097,16 @@
       ],
       "properties": [
         {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
         }
       ],
       "providers": [
@@ -6915,20 +7145,20 @@
       ],
       "properties": [
         {
-          "name": "deliveryfailureparams_redeliverylimit",
-          "doc": "Delivery Failure Params_ Redelivery Limit"
-        },
-        {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
+        },
+        {
+          "name": "deliveryfailureparams_redeliverylimit",
+          "doc": "Delivery Failure Params_ Redelivery Limit"
         },
         {
           "name": "tags"
@@ -6970,16 +7200,16 @@
       ],
       "properties": [
         {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
         }
       ],
       "providers": [
@@ -7018,20 +7248,20 @@
       ],
       "properties": [
         {
-          "name": "deliveryfailureparams_redeliverylimit",
-          "doc": "Delivery Failure Params_ Redelivery Limit"
-        },
-        {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
+        },
+        {
+          "name": "deliveryfailureparams_redeliverylimit",
+          "doc": "Delivery Failure Params_ Redelivery Limit"
         },
         {
           "name": "tags"
@@ -7073,16 +7303,16 @@
       ],
       "properties": [
         {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
         }
       ],
       "providers": [
@@ -7121,16 +7351,16 @@
       ],
       "properties": [
         {
-          "name": "jmsmodulename",
-          "doc": "Jms Module Name"
+          "name": "jndiname",
+          "doc": "Jndi Name"
         },
         {
           "name": "subdeploymentname",
           "doc": "Sub Deployment Name"
         },
         {
-          "name": "jndiname",
-          "doc": "Jndi Name"
+          "name": "jmsmodulename",
+          "doc": "Jms Module Name"
         },
         {
           "name": "tags"
@@ -7172,8 +7402,12 @@
       ],
       "properties": [
         {
-          "name": "stagemode",
-          "doc": "Stage Mode"
+          "name": "stagingdirectory",
+          "doc": "Staging Directory"
+        },
+        {
+          "name": "automaticversioning",
+          "doc": "Automatic Versioning"
         },
         {
           "name": "versioned",
@@ -7184,32 +7418,28 @@
           "doc": "Retire Timeout"
         },
         {
+          "name": "deploymentorder",
+          "doc": "Deployment Order"
+        },
+        {
           "name": "excludefilenamesregex",
           "doc": "Exclude File Names Regex"
         },
         {
-          "name": "block",
-          "doc": "Block"
-        },
-        {
-          "name": "automaticversioning",
-          "doc": "Automatic Versioning"
+          "name": "stagemode",
+          "doc": "Stage Mode"
         },
         {
           "name": "redeploymentstrategy",
           "doc": "Redeployment Strategy"
         },
         {
-          "name": "deploymentorder",
-          "doc": "Deployment Order"
-        },
-        {
           "name": "versionidentifier",
           "doc": "Version Identifier"
         },
         {
-          "name": "stagingdirectory",
-          "doc": "Staging Directory"
+          "name": "block",
+          "doc": "Block"
         },
         {
           "name": "tags"
@@ -7254,12 +7484,20 @@
       ],
       "properties": [
         {
-          "name": "versionidentifier",
-          "doc": "Version Identifier"
-        },
-        {
           "name": "stagingdirectory",
           "doc": "Staging Directory"
+        },
+        {
+          "name": "stagemode",
+          "doc": "Stage Mode"
+        },
+        {
+          "name": "redeploymentstrategy",
+          "doc": "Redeployment Strategy"
+        },
+        {
+          "name": "versionidentifier",
+          "doc": "Version Identifier"
         },
         {
           "name": "placeholders",
@@ -7429,16 +7667,16 @@
           "doc": "Start Command"
         },
         {
-          "name": "restartcommand",
-          "doc": "Restart Command"
+          "name": "stopcommand",
+          "doc": "Stop Command"
         },
         {
           "name": "defaultdocumentroot",
           "doc": "Default Document Root"
         },
         {
-          "name": "stopcommand",
-          "doc": "Stop Command"
+          "name": "restartcommand",
+          "doc": "Restart Command"
         },
         {
           "name": "tags"
@@ -7484,16 +7722,16 @@
       ],
       "properties": [
         {
-          "name": "documentroot",
-          "doc": "Document Root"
-        },
-        {
           "name": "port",
           "doc": "Port"
         },
         {
           "name": "host",
           "doc": "Host"
+        },
+        {
+          "name": "documentroot",
+          "doc": "Document Root"
         }
       ],
       "providers": [
@@ -7532,16 +7770,16 @@
       ],
       "properties": [
         {
-          "name": "documentroot",
-          "doc": "Document Root"
-        },
-        {
           "name": "port",
           "doc": "Port"
         },
         {
           "name": "host",
           "doc": "Host"
+        },
+        {
+          "name": "documentroot",
+          "doc": "Document Root"
         },
         {
           "name": "tags"

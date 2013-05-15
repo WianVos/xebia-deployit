@@ -61,6 +61,40 @@ Puppet::Type.newtype(:deployit_trigger_tasktrigger ) do
         defaultto('http')
       end
     
+      newproperty(:fromstate) do
+         
+          desc 'From State'
+        
+         
+          defaultto ('ANY') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('fromstate needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:tostate) do
+         
+          desc 'To State'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('tostate needs to be set')
+            end
+          end
+        
+      end
+    
       newproperty(:actions , :array_matching => :all) do
         def insync?(is)
 
@@ -83,6 +117,20 @@ Puppet::Type.newtype(:deployit_trigger_tasktrigger ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

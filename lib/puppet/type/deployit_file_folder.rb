@@ -61,15 +61,6 @@ Puppet::Type.newtype(:deployit_file_folder ) do
         defaultto('http')
       end
     
-      newproperty(:targetpath) do
-         
-          desc 'Target Path'
-        
-        
-           
-        
-      end
-    
       newproperty(:createtargetpath) do
          
           desc 'Create Target Path'
@@ -79,9 +70,9 @@ Puppet::Type.newtype(:deployit_file_folder ) do
         
       end
     
-      newproperty(:targetpathshared) do
+      newproperty(:targetfilename) do
          
-          desc 'Target Path Shared'
+          desc 'Target File Name'
         
         
            
@@ -97,9 +88,18 @@ Puppet::Type.newtype(:deployit_file_folder ) do
         
       end
     
-      newproperty(:targetfilename) do
+      newproperty(:targetpath) do
          
-          desc 'Target File Name'
+          desc 'Target Path'
+        
+        
+           
+        
+      end
+    
+      newproperty(:targetpathshared) do
+         
+          desc 'Target Path Shared'
         
         
            
@@ -149,6 +149,20 @@ Puppet::Type.newtype(:deployit_file_folder ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_overthere_sshjumpstation).provide(:generated_restcli
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_overthere_sshjumpstation).provide(:generated_restcli
 
     def self.properties
     
-      [  "username",  "password",  "address",  "privateKeyFile",  "passphrase",  ]
+      [  "address",  "password",  "passphrase",  "privateKeyFile",  "username",  "os",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

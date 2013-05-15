@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_was_sibtopicconnectionfactoryspec).provide(:generate
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -28,13 +27,13 @@ Puppet::Type.type(:deployit_was_sibtopicconnectionfactoryspec).provide(:generate
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

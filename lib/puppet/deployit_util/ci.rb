@@ -43,6 +43,7 @@ module Puppet
         # create the xml body
         xml = to_deployit_xml(type, props, id)
         # push the xml to the correct xml
+        
         response = RestClient.post "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
         # return our success
         return "succes"

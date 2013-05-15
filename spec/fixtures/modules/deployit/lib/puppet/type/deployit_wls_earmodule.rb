@@ -61,18 +61,46 @@ Puppet::Type.newtype(:deployit_wls_earmodule ) do
         defaultto('http')
       end
     
-      newproperty(:versionidentifier) do
+      newproperty(:stagingdirectory) do
          
-          desc 'Version Identifier'
+          desc 'Staging Directory'
         
         
            
         
       end
     
-      newproperty(:stagingdirectory) do
+      newproperty(:stagemode) do
          
-          desc 'Staging Directory'
+          desc 'Stage Mode'
+        
+         
+          defaultto ('Stage') 
+        
+           
+        
+      end
+    
+      newproperty(:redeploymentstrategy) do
+         
+          desc 'Redeployment Strategy'
+        
+         
+          defaultto ('CLASSIC') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('redeploymentstrategy needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:versionidentifier) do
+         
+          desc 'Version Identifier'
         
         
            
@@ -122,7 +150,7 @@ Puppet::Type.newtype(:deployit_wls_earmodule ) do
         
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_wls_wlscontainer", ].each {|c|
+      [ "deployit_wls_wlscontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

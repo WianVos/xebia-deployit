@@ -1,116 +1,215 @@
-Puppet::Type.newtype(:deployit_overthere_sshhost) do
+Puppet::Type.newtype(:deployit_overthere_sshhost ) do
 
-  desc 'adds a overthere_sshhost to a remote deployit server'
+      # this type is generated with genres.rb
+      # generated for deployit 3.8.5
 
-  ensurable do
+      desc 'adds a deployit_overthere_sshhost ci to a remote deployit server'
 
-    desc 'deployit overthere_sshhost resource state'
+      ensurable do
 
-    defaultto(:present)
+        desc 'deployit deployit_overthere_sshhost resource state'
 
-    newvalue(:present) do
+        defaultto(:present)
 
-      provider.create
+        newvalue(:present) do
 
-    end
+          provider.create
 
-    newvalue(:absent) do
+        end
 
-      provider.destroy
+        newvalue(:absent) do
 
-    end
+          provider.destroy
 
-  end
-
-  # name var
-  newparam(:id, :namevar => true) do
-    desc 'deployit ci id (full path required)'
-  end
-
-  # general properties
-
-  newparam(:deployit_username) do
-    desc 'a valid deployit user'
-    defaultto('admin')
-  end
-
-  newparam(:deployit_password) do
-    desc 'the password for the deployit user'
-    defaultto('admin')
-  end
-
-  newparam(:deployit_host) do
-    desc 'address of the deployit server'
-    defaultto('localhost')
-  end
-
-  newparam(:deployit_port) do
-    desc 'port to reach the deployit server on'
-    defaultto('4516')
-  end
-
-  newparam(:deployit_protocol) do
-    desc 'protocol to use in communication to the deployit host'
-    defaultto('http')
-  end
-  # property's
-
-  newproperty(:connectionType) do
-    defaultto('SUDO')
-  end
-  newproperty(:os) do
-    
-    defaultto('UNIX')
-    
-    newvalue('UNIX')
-    newvalue('WINDOWS')
-  end
-  newproperty(:username) do
-    defaultto('dummy')
-  end
-  newproperty(:password) do
-    defaultto('{b64}ieRQpq8U6N4EymG4biwNOA==')
-  end
-  newproperty(:port) do
-    defaultto('22')
-  end
-  newproperty(:address) do
-    defaultto('localhost')
-  end
-
-  newproperty(:tags, :array_matching => :all) do
-    def insync?(is)
-
-      # Comparison of Array's
-      # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
-      return false unless is.class == Array and should.class == Array
-
-      # now lets compare the two and see is a modify is needed
-      # haven't quite worked out yet what to do with extra values in the is hash
-      @should.each do |k|
-
-        # if is[k] is not equal to should[k] the insync? should return false
-        return false unless is.include?(k)
+        end
 
       end
-      return false unless is.length == @should.length
-      true
-    end
 
-  end
+      # name var
+      newparam(:id, :namevar => true) do
+        desc 'deployit_overthere_sshhost id (full path required)'
+
+        validate do |value|
+              fail("invalid id") unless value =~ /^(Infrastructure|Environments)/
+         end
+      end
+
+      # general properties (default deployit stuff)
+
+      newparam(:deployit_username) do
+        desc 'a valid deployit user'
+        defaultto('admin')
+      end
+
+      newparam(:deployit_password) do
+        desc 'the password for the deployit user'
+        defaultto('admin')
+      end
+
+      newparam(:deployit_host) do
+        desc 'address of the deployit server'
+        defaultto('localhost')
+      end
+
+      newparam(:deployit_port) do
+        desc 'port to reach the deployit server on'
+        defaultto('4516')
+      end
+
+      newparam(:deployit_protocol) do
+        desc 'protocol to use in communication to the deployit host'
+        defaultto('http')
+      end
+    
+      newproperty(:connectiontype) do
+         
+          desc 'Connection Type'
+        
+         
+          defaultto ('SFTP') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('connectiontype needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:address) do
+         
+          desc 'Address'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('address needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:password) do
+         
+          desc 'Password'
+        
+        
+           
+        
+      end
+    
+      newproperty(:temporarydirectorypath) do
+         
+          desc 'Temporary Directory Path'
+        
+        
+           
+        
+      end
+    
+      newproperty(:passphrase) do
+         
+          desc 'Passphrase'
+        
+        
+           
+        
+      end
+    
+      newproperty(:privatekeyfile) do
+         
+          desc 'Private Key File'
+        
+        
+           
+        
+      end
+    
+      newproperty(:sudousername) do
+         
+          desc 'Sudo username'
+        
+        
+           
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Username'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('username needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:os) do
+         
+          desc 'Operating system'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('os needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:tags , :array_matching => :all) do
+        def insync?(is)
+
+          # Comparison of Array's
+          # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
+          return false unless is.class == Array and should.class == Array
+
+          # now lets compare the two and see is a modify is needed
+          # haven't quite worked out yet what to do with extra values in the is hash
+          @should.each do |k|
+
+            # if is[k] is not equal to should[k] the insync? should return false
+            return false unless is.include?(k)
+
+          end
+          return false unless is.length == @should.length
+          true
+        end
+
+      end
   
-  # ad a couple of autorequires (one in this case)
-  ["deployit_core_directory"].each {|c|
-    autorequire(c.to_sym) do
-      requires = []
-      catalog.resources.each {|d|
-        if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
-          requires << d.name
+      
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
         end
       }
+    
       
-      requires
     end
-  }
-
-end
+    

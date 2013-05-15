@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_domain).provide(:generated_restclient, :parent =
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_domain).provide(:generated_restclient, :parent =
 
     def self.properties
     
-      [  "username",  "wlstPath",  "domainHome",  "password",  "adminServerName",  "wlHome",  ]
+      [  "domainHome",  "password",  "protocol",  "version",  "adminServerName",  "startMode",  "wlHome",  "wlstPath",  "username",  ]
     
     end
 
     def self.parent
     
-      [  "overthere.Host",  "overthere.Ssh_Host",  "overthere.Cifs_Host",  ]
+      [  "core.Directory",  "overthere.Host",  "overthere.SshHost",  "overthere.CifsHost",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_overthere_host",  "deployit_overthere_ssh_host",  "deployit_overthere_cifs_host",  ]
+      [  "deployit_core_directory",  "deployit_overthere_host",  "deployit_overthere_sshhost",  "deployit_overthere_cifshost",  ]
     
 
     end
@@ -47,13 +46,13 @@ Puppet::Type.type(:deployit_wls_domain).provide(:generated_restclient, :parent =
 
     def self.array_properties
     
-      [  "tags",  "servers",  "clusters",  ]
+      [  "tags",  "clusters",  "servers",  ]
     
     end
 
     def self.ci_array_properties
     
-       [  "servers",  "clusters",  ]
+       [  "clusters",  "servers",  ]
     
     end
   end

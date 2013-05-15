@@ -95,12 +95,20 @@ Puppet::Type.newtype(:deployit_www_apachehttpdserver ) do
         
       end
     
-      newproperty(:restartcommand) do
+      newproperty(:stopcommand) do
          
-          desc 'Restart Command'
+          desc 'Stop Command'
         
         
+        
+          defaultto('unset')
            
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('stopcommand needs to be set')
+            end
+          end
         
       end
     
@@ -121,20 +129,12 @@ Puppet::Type.newtype(:deployit_www_apachehttpdserver ) do
         
       end
     
-      newproperty(:stopcommand) do
+      newproperty(:restartcommand) do
          
-          desc 'Stop Command'
+          desc 'Restart Command'
         
         
-        
-          defaultto('unset')
            
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('stopcommand needs to be set')
-            end
-          end
         
       end
     
@@ -202,7 +202,7 @@ Puppet::Type.newtype(:deployit_www_apachehttpdserver ) do
         
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_overthere_host",  "deployit_overthere_ssh_host",  "deployit_overthere_cifs_host", ].each {|c|
+      [ "deployit_core_directory",  "deployit_overthere_host",  "deployit_overthere_sshhost",  "deployit_overthere_cifshost", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

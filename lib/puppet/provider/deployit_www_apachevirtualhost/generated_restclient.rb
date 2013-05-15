@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_www_apachevirtualhost).provide(:generated_restclient
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_www_apachevirtualhost).provide(:generated_restclient
 
     def self.properties
     
-      [  "documentRoot",  "port",  "host",  ]
+      [  "port",  "host",  "documentRoot",  ]
     
     end
 
     def self.parent
     
-      [  "www.ApacheHttpdServer",  ]
+      [  "www.ApacheHttpdServer",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_www_apachehttpdserver",  ]
+      [  "deployit_www_apachehttpdserver",  "deployit_core_directory",  ]
     
 
     end

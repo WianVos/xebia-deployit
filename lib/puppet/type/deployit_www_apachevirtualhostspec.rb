@@ -61,15 +61,6 @@ Puppet::Type.newtype(:deployit_www_apachevirtualhostspec ) do
         defaultto('http')
       end
     
-      newproperty(:documentroot) do
-         
-          desc 'Document Root'
-        
-        
-           
-        
-      end
-    
       newproperty(:port) do
          
           desc 'Port'
@@ -82,6 +73,15 @@ Puppet::Type.newtype(:deployit_www_apachevirtualhostspec ) do
       newproperty(:host) do
          
           desc 'Host'
+        
+        
+           
+        
+      end
+    
+      newproperty(:documentroot) do
+         
+          desc 'Document Root'
         
         
            
@@ -110,6 +110,20 @@ Puppet::Type.newtype(:deployit_www_apachevirtualhostspec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

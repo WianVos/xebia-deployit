@@ -61,21 +61,29 @@ Puppet::Type.newtype(:deployit_was_deploymentmanager ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
-         
-          desc 'Administrative username'
-        
-        
-           
-        
-      end
-    
       newproperty(:password) do
          
           desc 'Administrative password'
         
         
            
+        
+      end
+    
+      newproperty(:version) do
+         
+          desc 'WAS version'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('version needs to be set')
+            end
+          end
         
       end
     
@@ -96,28 +104,16 @@ Puppet::Type.newtype(:deployit_was_deploymentmanager ) do
         
       end
     
-      newproperty(:tags , :array_matching => :all) do
-        def insync?(is)
-
-          # Comparison of Array's
-          # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
-          return false unless is.class == Array and should.class == Array
-
-          # now lets compare the two and see is a modify is needed
-          # haven't quite worked out yet what to do with extra values in the is hash
-          @should.each do |k|
-
-            # if is[k] is not equal to should[k] the insync? should return false
-            return false unless is.include?(k)
-
-          end
-          return false unless is.length == @should.length
-          true
-        end
-
+      newproperty(:username) do
+         
+          desc 'Administrative username'
+        
+        
+           
+        
       end
-  
-      newproperty(:nodeagents , :array_matching => :all) do
+    
+      newproperty(:tags , :array_matching => :all) do
         def insync?(is)
 
           # Comparison of Array's
@@ -159,9 +155,30 @@ Puppet::Type.newtype(:deployit_was_deploymentmanager ) do
 
       end
   
+      newproperty(:nodeagents , :array_matching => :all) do
+        def insync?(is)
+
+          # Comparison of Array's
+          # if either the should or the is (which we get from the providers envvars method is not a hash we'll fail
+          return false unless is.class == Array and should.class == Array
+
+          # now lets compare the two and see is a modify is needed
+          # haven't quite worked out yet what to do with extra values in the is hash
+          @should.each do |k|
+
+            # if is[k] is not equal to should[k] the insync? should return false
+            return false unless is.include?(k)
+
+          end
+          return false unless is.length == @should.length
+          true
+        end
+
+      end
+  
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_overthere_host",  "deployit_overthere_ssh_host",  "deployit_overthere_cifs_host", ].each {|c|
+      [ "deployit_core_directory",  "deployit_overthere_host",  "deployit_overthere_sshhost",  "deployit_overthere_cifshost", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

@@ -61,18 +61,9 @@ Puppet::Type.newtype(:deployit_wls_uniformdistributedqueuespec ) do
         defaultto('http')
       end
     
-      newproperty(:deliveryfailureparams_redeliverylimit) do
+      newproperty(:jndiname) do
          
-          desc 'Delivery Failure Params_ Redelivery Limit'
-        
-        
-           
-        
-      end
-    
-      newproperty(:jmsmodulename) do
-         
-          desc 'Jms Module Name'
+          desc 'Jndi Name'
         
         
            
@@ -88,9 +79,18 @@ Puppet::Type.newtype(:deployit_wls_uniformdistributedqueuespec ) do
         
       end
     
-      newproperty(:jndiname) do
+      newproperty(:jmsmodulename) do
          
-          desc 'Jndi Name'
+          desc 'Jms Module Name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:deliveryfailureparams_redeliverylimit) do
+         
+          desc 'Delivery Failure Params_ Redelivery Limit'
         
         
            
@@ -119,6 +119,20 @@ Puppet::Type.newtype(:deployit_wls_uniformdistributedqueuespec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

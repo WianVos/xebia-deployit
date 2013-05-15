@@ -61,9 +61,18 @@ Puppet::Type.newtype(:deployit_wls_ear ) do
         defaultto('http')
       end
     
-      newproperty(:stagemode) do
+      newproperty(:stagingdirectory) do
          
-          desc 'Stage Mode'
+          desc 'Staging Directory'
+        
+        
+           
+        
+      end
+    
+      newproperty(:automaticversioning) do
+         
+          desc 'Automatic Versioning'
         
         
            
@@ -88,6 +97,15 @@ Puppet::Type.newtype(:deployit_wls_ear ) do
         
       end
     
+      newproperty(:deploymentorder) do
+         
+          desc 'Deployment Order'
+        
+        
+           
+        
+      end
+    
       newproperty(:excludefilenamesregex) do
          
           desc 'Exclude File Names Regex'
@@ -97,18 +115,9 @@ Puppet::Type.newtype(:deployit_wls_ear ) do
         
       end
     
-      newproperty(:block) do
+      newproperty(:stagemode) do
          
-          desc 'Block'
-        
-        
-           
-        
-      end
-    
-      newproperty(:automaticversioning) do
-         
-          desc 'Automatic Versioning'
+          desc 'Stage Mode'
         
         
            
@@ -124,15 +133,6 @@ Puppet::Type.newtype(:deployit_wls_ear ) do
         
       end
     
-      newproperty(:deploymentorder) do
-         
-          desc 'Deployment Order'
-        
-        
-           
-        
-      end
-    
       newproperty(:versionidentifier) do
          
           desc 'Version Identifier'
@@ -142,9 +142,9 @@ Puppet::Type.newtype(:deployit_wls_ear ) do
         
       end
     
-      newproperty(:stagingdirectory) do
+      newproperty(:block) do
          
-          desc 'Staging Directory'
+          desc 'Block'
         
         
            
@@ -194,6 +194,20 @@ Puppet::Type.newtype(:deployit_wls_ear ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_jetty_mqqueueconnectionfactoryspec).provide(:generat
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_jetty_mqqueueconnectionfactoryspec).provide(:generat
 
     def self.properties
     
-      [  "port",  "queueManager",  "CCDTURL",  "hostName",  "jndiName",  "channel",  ]
+      [  "jndiName",  "hostName",  "port",  "CCDTURL",  "queueManager",  "channel",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

@@ -61,33 +61,6 @@ Puppet::Type.newtype(:deployit_wls_datasourcespec ) do
         defaultto('http')
       end
     
-      newproperty(:jdbcconnectionpoolparams_initialcapacity) do
-         
-          desc 'Initial Capacity'
-        
-        
-           
-        
-      end
-    
-      newproperty(:username) do
-         
-          desc 'Username'
-        
-        
-           
-        
-      end
-    
-      newproperty(:url) do
-         
-          desc 'Url'
-        
-        
-           
-        
-      end
-    
       newproperty(:restarttarget) do
          
           desc 'Restart Target'
@@ -106,18 +79,9 @@ Puppet::Type.newtype(:deployit_wls_datasourcespec ) do
         
       end
     
-      newproperty(:jdbcconnectionpoolparams_maxcapacity) do
+      newproperty(:jdbcconnectionpoolparams_initialcapacity) do
          
-          desc 'Maximum Capacity'
-        
-        
-           
-        
-      end
-    
-      newproperty(:drivername) do
-         
-          desc 'Driver Name'
+          desc 'Initial Capacity'
         
         
            
@@ -133,9 +97,27 @@ Puppet::Type.newtype(:deployit_wls_datasourcespec ) do
         
       end
     
-      newproperty(:jdbcconnectionpoolparams_capacityincrement) do
+      newproperty(:drivername) do
          
-          desc 'Capacity Increment'
+          desc 'Driver Name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:url) do
+         
+          desc 'Url'
+        
+        
+           
+        
+      end
+    
+      newproperty(:jdbcconnectionpoolparams_maxcapacity) do
+         
+          desc 'Maximum Capacity'
         
         
            
@@ -145,6 +127,24 @@ Puppet::Type.newtype(:deployit_wls_datasourcespec ) do
       newproperty(:targetrestartpolicy) do
          
           desc 'Target Restart Policy'
+        
+        
+           
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Username'
+        
+        
+           
+        
+      end
+    
+      newproperty(:jdbcconnectionpoolparams_capacityincrement) do
+         
+          desc 'Capacity Increment'
         
         
            
@@ -214,6 +214,20 @@ Puppet::Type.newtype(:deployit_wls_datasourcespec ) do
         end
         
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

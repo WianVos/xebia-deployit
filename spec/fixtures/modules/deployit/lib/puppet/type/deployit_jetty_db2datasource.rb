@@ -61,6 +61,74 @@ Puppet::Type.newtype(:deployit_jetty_db2datasource ) do
         defaultto('http')
       end
     
+      newproperty(:password) do
+         
+          desc 'Password'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('password needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:maxidle) do
+         
+          desc 'Max Idle'
+        
+         
+          defaultto ('8') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('maxidle needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:maxwait) do
+         
+          desc 'Max Wait'
+        
+         
+          defaultto ('-1') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('maxwait needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:jndiname) do
+         
+          desc 'Jndi Name'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('jndiname needs to be set')
+            end
+          end
+        
+      end
+    
       newproperty(:maxactive) do
          
           desc 'Max Active'
@@ -78,35 +146,35 @@ Puppet::Type.newtype(:deployit_jetty_db2datasource ) do
         
       end
     
-      newproperty(:defaulttransactionisolation) do
+      newproperty(:portnumber) do
          
-          desc 'Default Transaction Isolation'
+          desc 'Portnumber'
         
-         
-          defaultto ('2') 
         
+        
+          defaultto('unset')
            
          
           validate do |value|
             unless value != 'unset'
-              fail('defaulttransactionisolation needs to be set')
+              fail('portnumber needs to be set')
             end
           end
         
       end
     
-      newproperty(:minidle) do
+      newproperty(:user) do
          
-          desc 'Min Idle'
+          desc 'User'
         
-         
-          defaultto ('0') 
         
+        
+          defaultto('unset')
            
          
           validate do |value|
             unless value != 'unset'
-              fail('minidle needs to be set')
+              fail('user needs to be set')
             end
           end
         
@@ -146,91 +214,6 @@ Puppet::Type.newtype(:deployit_jetty_db2datasource ) do
         
       end
     
-      newproperty(:portnumber) do
-         
-          desc 'Portnumber'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('portnumber needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('password needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:maxwait) do
-         
-          desc 'Max Wait'
-        
-         
-          defaultto ('-1') 
-        
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('maxwait needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:maxidle) do
-         
-          desc 'Max Idle'
-        
-         
-          defaultto ('8') 
-        
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('maxidle needs to be set')
-            end
-          end
-        
-      end
-    
-      newproperty(:user) do
-         
-          desc 'User'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('user needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:databasename) do
          
           desc 'Databasename'
@@ -248,18 +231,35 @@ Puppet::Type.newtype(:deployit_jetty_db2datasource ) do
         
       end
     
-      newproperty(:jndiname) do
+      newproperty(:defaulttransactionisolation) do
          
-          desc 'Jndi Name'
+          desc 'Default Transaction Isolation'
         
+         
+          defaultto ('2') 
         
-        
-          defaultto('unset')
            
          
           validate do |value|
             unless value != 'unset'
-              fail('jndiname needs to be set')
+              fail('defaulttransactionisolation needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:minidle) do
+         
+          desc 'Min Idle'
+        
+         
+          defaultto ('0') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('minidle needs to be set')
             end
           end
         
@@ -267,7 +267,7 @@ Puppet::Type.newtype(:deployit_jetty_db2datasource ) do
     
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_jetty_server", ].each {|c|
+      [ "deployit_jetty_server",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

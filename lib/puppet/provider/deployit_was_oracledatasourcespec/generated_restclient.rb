@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_was_oracledatasourcespec).provide(:generated_restcli
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_was_oracledatasourcespec).provide(:generated_restcli
 
     def self.properties
     
-      [  "datasourceHelperClassname",  "username",  "description",  "ConnectionPool_connectionTimeout",  "password",  "URL",  "ConnectionPool_maxConnections",  "ConnectionPool_minConnections",  "jdbcProvider",  "jndiName",  ]
+      [  "ConnectionPool_connectionTimeout",  "jdbcProvider",  "password",  "jndiName",  "URL",  "ConnectionPool_minConnections",  "datasourceHelperClassname",  "username",  "ConnectionPool_maxConnections",  "description",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

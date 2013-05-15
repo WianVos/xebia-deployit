@@ -61,9 +61,26 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
+      newproperty(:connectiontype) do
          
-          desc 'Username'
+          desc 'Connection Type'
+        
+         
+          defaultto ('WINRM') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('connectiontype needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:address) do
+         
+          desc 'Address'
         
         
         
@@ -72,18 +89,9 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
          
           validate do |value|
             unless value != 'unset'
-              fail('username needs to be set')
+              fail('address needs to be set')
             end
           end
-        
-      end
-    
-      newproperty(:temporarydirectorypath) do
-         
-          desc 'Temporary Directory Path'
-        
-        
-           
         
       end
     
@@ -104,9 +112,18 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
         
       end
     
-      newproperty(:address) do
+      newproperty(:temporarydirectorypath) do
          
-          desc 'Address'
+          desc 'Temporary Directory Path'
+        
+        
+           
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Username'
         
         
         
@@ -115,7 +132,24 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
          
           validate do |value|
             unless value != 'unset'
-              fail('address needs to be set')
+              fail('username needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:os) do
+         
+          desc 'Operating system'
+        
+         
+          defaultto ('WINDOWS') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('os needs to be set')
             end
           end
         
@@ -184,6 +218,20 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
         end
         
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

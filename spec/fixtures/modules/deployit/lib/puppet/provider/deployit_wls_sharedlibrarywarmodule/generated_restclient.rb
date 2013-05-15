@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_sharedlibrarywarmodule).provide(:generated_restc
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_sharedlibrarywarmodule).provide(:generated_restc
 
     def self.properties
     
-      [  "versionIdentifier",  "stagingDirectory",  ]
+      [  "stagingDirectory",  "stageMode",  "redeploymentStrategy",  "versionIdentifier",  ]
     
     end
 
     def self.parent
     
-      [  "wls.WlsContainer",  ]
+      [  "wls.WlsContainer",  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      [  "deployit_wls_wlscontainer",  ]
+      [  "deployit_wls_wlscontainer",  "deployit_core_directory",  ]
     
 
     end

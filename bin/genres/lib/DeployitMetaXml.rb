@@ -50,9 +50,9 @@ module Genres
     def get_parents(type)
       result = []
       result << @res_hash[type]['containerType'] unless @res_hash[type]['containerType'] == nil
-  
+      result.concat ["core.Directory"]
       result.concat get_properties(type,kind="CI")["host"]["referencedType"] unless get_properties(type,kind="CI").has_key?('host') == false
-      result.concat ["overthere.Ssh_Host","overthere.Cifs_Host"] if result.include? "overthere.Host"
+      result.concat ["overthere.SshHost","overthere.CifsHost"] if result.include? "overthere.Host"
       return result
     end
   

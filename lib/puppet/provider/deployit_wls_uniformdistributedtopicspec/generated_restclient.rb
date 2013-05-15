@@ -5,7 +5,6 @@ Puppet::Type.type(:deployit_wls_uniformdistributedtopicspec).provide(:generated_
     #this type is generated with genres
     # generated for deployit 3.8.5
   
-    confine :feature => :restclient
     
     def initialize(value)
       super(value)
@@ -22,19 +21,19 @@ Puppet::Type.type(:deployit_wls_uniformdistributedtopicspec).provide(:generated_
 
     def self.properties
     
-      [  "jmsModuleName",  "subDeploymentName",  "jndiName",  ]
+      [  "jndiName",  "subDeploymentName",  "jmsModuleName",  ]
     
     end
 
     def self.parent
     
-       nil
+      [  "core.Directory",  ]
     
     end
 
     def self.autorequires
     
-      nil
+      [  "deployit_core_directory",  ]
     
 
     end

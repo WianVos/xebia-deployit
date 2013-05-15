@@ -61,23 +61,6 @@ Puppet::Type.newtype(:deployit_was_wmqqueue ) do
         defaultto('http')
       end
     
-      newproperty(:basequeuename) do
-         
-          desc 'Base Queue Name'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('basequeuename needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:jndiname) do
          
           desc 'Jndi Name'
@@ -95,9 +78,26 @@ Puppet::Type.newtype(:deployit_was_wmqqueue ) do
         
       end
     
+      newproperty(:basequeuename) do
+         
+          desc 'Base Queue Name'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('basequeuename needs to be set')
+            end
+          end
+        
+      end
+    
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_wascontainer", ].each {|c|
+      [ "deployit_was_wascontainer",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

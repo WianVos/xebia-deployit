@@ -61,63 +61,9 @@ Puppet::Type.newtype(:deployit_was_db2type2datasourcespec ) do
         defaultto('http')
       end
     
-      newproperty(:username) do
-         
-          desc 'Username'
-        
-        
-           
-        
-      end
-    
-      newproperty(:datasourcehelperclassname) do
-         
-          desc 'Datasource Helper Classname'
-        
-        
-           
-        
-      end
-    
-      newproperty(:description) do
-         
-          desc 'Description'
-        
-        
-           
-        
-      end
-    
       newproperty(:connectionpool_connectiontimeout) do
          
           desc 'Connection pool: timeout'
-        
-        
-           
-        
-      end
-    
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-           
-        
-      end
-    
-      newproperty(:connectionpool_maxconnections) do
-         
-          desc 'Connection pool: maximum connections'
-        
-        
-           
-        
-      end
-    
-      newproperty(:connectionpool_minconnections) do
-         
-          desc 'Connection pool: minimum connections'
         
         
            
@@ -133,9 +79,9 @@ Puppet::Type.newtype(:deployit_was_db2type2datasourcespec ) do
         
       end
     
-      newproperty(:databasename) do
+      newproperty(:password) do
          
-          desc 'Database Name'
+          desc 'Password'
         
         
            
@@ -145,6 +91,60 @@ Puppet::Type.newtype(:deployit_was_db2type2datasourcespec ) do
       newproperty(:jndiname) do
          
           desc 'Jndi Name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:datasourcehelperclassname) do
+         
+          desc 'Datasource Helper Classname'
+        
+        
+           
+        
+      end
+    
+      newproperty(:connectionpool_minconnections) do
+         
+          desc 'Connection pool: minimum connections'
+        
+        
+           
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Username'
+        
+        
+           
+        
+      end
+    
+      newproperty(:connectionpool_maxconnections) do
+         
+          desc 'Connection pool: maximum connections'
+        
+        
+           
+        
+      end
+    
+      newproperty(:description) do
+         
+          desc 'Description'
+        
+        
+           
+        
+      end
+    
+      newproperty(:databasename) do
+         
+          desc 'Database Name'
         
         
            
@@ -173,6 +173,20 @@ Puppet::Type.newtype(:deployit_was_db2type2datasourcespec ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

@@ -84,7 +84,7 @@ Puppet::Type.newtype(:deployit_was_virtualhost ) do
   
       
       # autorequire all the deployit_core_directory resources
-      [ "deployit_was_cell", ].each {|c|
+      [ "deployit_was_cell",  "deployit_core_directory", ].each {|c|
         autorequire(c.to_sym) do
           requires = []
           catalog.resources.each {|d|

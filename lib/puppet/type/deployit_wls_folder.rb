@@ -61,18 +61,9 @@ Puppet::Type.newtype(:deployit_wls_folder ) do
         defaultto('http')
       end
     
-      newproperty(:targetdirectory) do
+      newproperty(:targetdirectoryshared) do
          
-          desc 'Target Directory'
-        
-        
-           
-        
-      end
-    
-      newproperty(:targetfile) do
-         
-          desc 'Target File'
+          desc 'Target Directory Shared'
         
         
            
@@ -88,9 +79,27 @@ Puppet::Type.newtype(:deployit_wls_folder ) do
         
       end
     
+      newproperty(:targetfile) do
+         
+          desc 'Target File'
+        
+        
+           
+        
+      end
+    
       newproperty(:createtargetdirectory) do
          
           desc 'Create Target Directory'
+        
+        
+           
+        
+      end
+    
+      newproperty(:targetdirectory) do
+         
+          desc 'Target Directory'
         
         
            
@@ -109,15 +118,6 @@ Puppet::Type.newtype(:deployit_wls_folder ) do
       newproperty(:targetrestartpolicy) do
          
           desc 'Target Restart Policy'
-        
-        
-           
-        
-      end
-    
-      newproperty(:targetdirectoryshared) do
-         
-          desc 'Target Directory Shared'
         
         
            
@@ -167,6 +167,20 @@ Puppet::Type.newtype(:deployit_wls_folder ) do
       end
   
       
+      # autorequire all the deployit_core_directory resources
+      [ "deployit_core_directory", ].each {|c|
+        autorequire(c.to_sym) do
+          requires = []
+          catalog.resources.each {|d|
+            if (d.class.to_s == "Puppet::Type::#{c.capitalize}")
+              requires << d.name
+            end
+          }
+
+          requires
+        end
+      }
+    
       
     end
     

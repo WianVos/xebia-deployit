@@ -15,6 +15,7 @@ module Genres
 
         lparents = x.get_parents(r)
         lstrings = x.get_property_names(r,"STRING")
+        lstrings.concat x.get_property_names(r,"ENUM")
         larrays = x.get_property_names(r,"SET_OF_STRING")
         lhashes = x.get_property_names(r,"MAP_STRING_STRING")
         lcia = x.get_property_names(r, "LIST_OF_CI").concat x.get_property_names(r, "SET_OF_CI")
@@ -31,6 +32,8 @@ module Genres
 
         lparents = x.get_parents(r)
         lstrings = x.get_properties(r,"STRING")
+        
+        lstrings = lstrings.merge(x.get_properties(r,"ENUM"))
         larrays = x.get_property_names(r,"SET_OF_STRING")
         lhashes = x.get_property_names(r,"MAP_STRING_STRING")
         lcia = x.get_property_names(r, "LIST_OF_CI").concat x.get_property_names(r, "SET_OF_CI")
