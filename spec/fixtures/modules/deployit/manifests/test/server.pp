@@ -1,8 +1,8 @@
 class deployit::test::server (
-  $deployit_admin               = "admin",
-  $deployit_password            = "admin",
-  $deployit_http_port           = "4516",
-  $deployit_http_server_address = '192.168.111.20',) {
+  $deployit_admin               = $deployit::deployit_admin,
+  $deployit_password            = $deployit::deployit_password,
+  $deployit_http_port           = $deployit::deployit_http_port,
+  $deployit_http_server_address = $deployit::deployit_http_server_address,) {
   # resource defaults
   Deployit_core_directory {
     deployit_host => $deployit_http_server_address }

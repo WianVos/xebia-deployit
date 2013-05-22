@@ -1,3 +1,6 @@
+#Class deployit::config
+#
+# This class handles the configuration of the deployit server
 class deployit::config (
   $deployit_homedir     = $deployit::deployit_homedir,
   $deployit_user        = $deployit::deployit_user,
@@ -5,10 +8,10 @@ class deployit::config (
   $deployit_admin       = $deployit::deployit_admin,
   $deployit_password    = $deployit::deployit_password,
   $deployit_http_port   = $deployit::deployit_http_port,
-  $deployit_jcr_repository_path      = $deployit::deployit_jcr_repository_path,
+  $deployit_jcr_repository_path = $deployit::deployit_jcr_repository_path,
   $deployit_ssl         = $deployit::deployit_ssl,
-  $deployit_http_bind_address        = $deployit::deployit_http_bind_address,
-  $deployit_http_context_root        = $deployit::deployit_http_context_root,
+  $deployit_http_bind_address = $deployit::deployit_http_bind_address,
+  $deployit_http_context_root = $deployit::deployit_http_context_root,
   $deployit_threads_max = $deployit::deployit_threads_max,
   $deployit_threads_min = $deployit::deployit_threads_min,
   $deployit_importable_packages_path = $deployit::deployit_importable_packages_path) {
@@ -16,8 +19,16 @@ class deployit::config (
   $deployit_password_b64 = encode_b64("${deployit_password}")
 
   # flow control
-  File["${deployit_homedir}/server/conf/deployit.conf", "install plugins"] -> Ini_setting['deployit http port', 'deployit jcr repository path', 'deployit threads min', 'deployit ssl', 'deployit http bind address', 'deployit http context root', 'deployit threads max', 'deployit importable packages path'
-    ] -> Exec["init deployit"]
+  File["${deployit_homedir}/server/conf/deployit.conf", 'install plugins']
+  -> Ini_setting['deployit http port',
+  'deployit jcr repository path',
+  'deployit threads min',
+  'deployit ssl',
+  'deployit http bind address',
+  'deployit http context root',
+  'deployit threads max',
+  'deployit importable packages path'
+    ] -> Exec['init deployit']
 
   # resource default settings
   File {

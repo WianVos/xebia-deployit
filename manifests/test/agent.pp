@@ -1,10 +1,11 @@
 class deployit::test::agent (
-  $deployit_admin               = "admin",
-  $deployit_password            = "admin",
-  $deployit_http_port           = "4516",
-  $deployit_http_server_address = '192.168.111.20',
+  $deployit_admin               = $deployit::deployit_admin,
+  $deployit_password            = $deployit::deployit_password,
+  $deployit_http_port           = $deployit::deployit_http_port,
+  $deployit_http_server_address = $deployit::deployit_http_server_address,
   $ensure                       = "present") {
     
+  
   # resource defaults
   
   Deployit_core_directory {
@@ -32,8 +33,16 @@ class deployit::test::agent (
  
   # actual resources
   # no flow controll needed they will autorequire there needed parents
+  group {"deployit":}
+  user {"deployit":
+    managehome => true,
+    home => "/home/deployit"
+  }
+  
+  
+  
   deployit_check_connection{"deployit central":
-    host => "192.168.111.20",
+    host => "$deployit_http_server_address",
     port => 4516
   } ->
   
@@ -42,9 +51,12 @@ class deployit::test::agent (
   deployit_core_directory { "Environments/test": }
 
   deployit_overthere_sshhost { "Infrastructure/test/${::operatingsystem}_${::hostname}":
-    address => $::hostname,
-    username => "root",
-    os => "UNIX"
+    address => $::ipaddress_eth1,
+    username => "deployit",
+    password => "test123",
+    os => "UNIX",
+    connectiontype => "SUDO",
+    sudousername => root
   }
 
   deployit_jetty_server { "Infrastructure/test/${::operatingsystem}_${::hostname}/server1":
