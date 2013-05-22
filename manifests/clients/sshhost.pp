@@ -47,7 +47,8 @@ class deployit::clients::sshhost (
     ensure     => $ensure,
     managehome => true,
     home       => "/home/${deployment_user}",
-    gid        => $deployment_group
+    gid        => $deployment_group,
+   # password   => str2saltedsha512($deployment_password)
   }
 
   file { '/etc/sudoers.d/deployit':
