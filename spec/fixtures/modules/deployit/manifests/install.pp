@@ -1,3 +1,6 @@
+# Class deployit::install
+#
+# Install the deployit server
 class deployit::install (
   $deployit_homedir = $deployit::deployit_homedir,
   $deployit_basedir = $deployit::deployit_basedir,
@@ -9,10 +12,12 @@ class deployit::install (
   $cli_zipfile      = $deployit::cli_zipfile) {
   # # flow control
 
-  Exec["unpack server file", "unpack cli file"] -> File["/etc/deployit", "/var/log/deployit"] -> File["init script"]
+  Exec['unpack server file', 'unpack cli file']
+  -> File['/etc/deployit', '/var/log/deployit']
+  -> File['init script']
 
   # # resource defaults
-  
+
   File {
     owner  => $deployit_user,
     group  => $deployit_group,
@@ -20,29 +25,34 @@ class deployit::install (
   }
 
   Exec {
-    cwd       => "${tmpdir}",
-    user      => "${deployit_user}",
+    cwd       => $tmpdir,
+    user      => $deployit_user,
     logoutput => true
   }
 
   # # resources
 
   # # exec
-  # unzip server file 
-  exec { "unpack server file":
-    command => "/usr/bin/unzip ${tmpdir}/${server_zipfile}; /bin/cp -rp ${tmpdir}/deployit-${deployit_version}-server/* ${deployit_basedir}/server/",
+  # unzip server file
+  exec { 'unpack server file':
+    command => "/usr/bin/unzip ${tmpdir}/${server_zipfile};
+                /bin/cp -rp ${tmpdir}/deployit-${deployit_version}-server/* \
+                ${deployit_basedir}/server/",
     creates => "${deployit_basedir}/server/bin"
   }
 
   # ... and cli packages
-  exec { "unpack cli file":
-    command => "/usr/bin/unzip ${tmpdir}/${cli_zipfile}; /bin/cp -rp ${tmpdir}/deployit-${deployit_version}-cli/* ${deployit_basedir}/cli/",
+  exec { 'unpack cli file':
+    command => "/usr/bin/unzip ${tmpdir}/${cli_zipfile};
+                /bin/cp -rp ${tmpdir}/deployit-${deployit_version}-cli/* \
+                ${deployit_basedir}/cli/",
     creates => "${deployit_basedir}/cli/bin"
   }
 
   # # files
   # convenience links
-  # link the config file to a for unix admins understandable path in the filesystem
+  # link the config file to a for unix admins
+  # understandable path in the filesystem
   file { '/etc/deployit':
     ensure => link,
     target => "${deployit_homedir}/server/conf";
@@ -59,11 +69,11 @@ class deployit::install (
   # deployit::deployit_user
   # deployit::deployit_homedir
   # deployit::deployit_password
-  file { "init script":
-    content => template("deployit/deployit_initd.erb"),
-    path    => "/etc/init.d/deployit",
+  file { 'init script':
+    content => template('deployit/deployit_initd.erb'),
+    path    => '/etc/init.d/deployit',
     owner   => root,
     group   => root,
-    mode    => 700;
+    mode    => '0700'
   }
 }

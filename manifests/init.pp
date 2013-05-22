@@ -2,7 +2,8 @@
 # This puppet module can do one of two things
 # it installs Xebialabs deployit for you
 # on top of that has a number of resources that will enable you
-# to add configuration items to deployit from anywhere in your infrastructure by using the deployit rest interface
+# to add configuration items to deployit from anywhere in your
+# infrastructure by using the deployit rest interface.
 #
 # Versioning
 # this module is tested for
@@ -43,7 +44,7 @@ class deployit (
   $server               = false,
   $ensure               = present,
   $deployit_client_profile           = 'sshhost') {
-  
+
   # variables
   # the version dependant stuff is set here
   $server_zipfile = "deployit-${deployit_version}-server.zip"
@@ -53,38 +54,42 @@ class deployit (
   # #flow control
 
   # normal flow
-  class { deployit::provider_prereq:
+  class { 'deployit::provider_prereq':
   } -> Class['deployit']
 
-  # parameter dependant flow 
-  
+  # parameter dependant flow
+
   # handle the install_source parameter
   case $install_source {
     'puppetfiles' : { }
-    default       : { fail("${install_source} not a valid installation source") }
+    default       : {
+                      fail("${install_source} not a valid installation source")
+                    }
   }
 
   # client flows
   if $server == false {
     case $deployit_client_profile {
-      'sshhost' : { Class['Deployit::Provider_prereq'] 
-                    -> class { deployit::clients::sshhost: } 
+      'sshhost' : { Class['Deployit::Provider_prereq']
+                    -> class { 'deployit::clients::sshhost': }
                     -> Class['deployit']
       }
-      default   : { fail("${deployit_client_profile} is not a valid deployit client profile") }
+      default   : {
+                    fail("${deployit_client_profile} is not a valid deployit client profile")
+                  }
     }
   }
 
   # if server == true we do a lot of stuff .
   if $server == true {
     Class['Deployit::Provider_prereq']
-    -> class { deployit::users: }
-    -> class { deployit::prereq: }
-    -> class { deployit::download: }
-    -> class { deployit::install: }
-    -> class { deployit::config: }
-    ~> class { deployit::service: }
+    -> class { 'deployit::users': }
+    -> class { 'deployit::prereq': }
+    -> class { 'deployit::download': }
+    -> class { 'deployit::install': }
+    -> class { 'deployit::config': }
+    ~> class { 'deployit::service': }
     -> Class['deployit']
   }
-  
+
 }

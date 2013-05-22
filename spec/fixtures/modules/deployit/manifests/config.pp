@@ -16,7 +16,7 @@ class deployit::config (
   $deployit_threads_min = $deployit::deployit_threads_min,
   $deployit_importable_packages_path = $deployit::deployit_importable_packages_path) {
   # variable setting
-  $deployit_password_b64 = encode_b64("${deployit_password}")
+  $deployit_password_b64 = encode_b64($deployit_password)
 
   # flow control
   File["${deployit_homedir}/server/conf/deployit.conf", 'install plugins']
@@ -49,14 +49,14 @@ class deployit::config (
   # this touches the file so that the later ini_settings resources have something to chew on
   file { "${deployit_homedir}/server/conf/deployit.conf": }
 
-  file { "install plugins":
-    source       => ["puppet:///modules/deployit/plugins/","${deployit_homedir}/server/available-plugins"],
+  file { 'install plugins':
+    source       => ['puppet:///modules/deployit/plugins/',"${deployit_homedir}/server/available-plugins"],
     sourceselect => all,
     recurse      => remote,
     path         => "${deployit_homedir}/server/plugins"
   }
 
-  
+
   # ini setting sets a specific variable in a stanza file .
   # this type and providers is stolen
   # but is incorporated in this package
@@ -64,36 +64,36 @@ class deployit::config (
 
   ini_setting { 'deployit http port':
     setting => 'http.port',
-    value   => "${deployit_http_port}"
+    value   => $deployit_http_port
   }
 
   ini_setting { 'deployit jcr repository path':
     setting => 'jcr.repository.path',
-    value   => "${deployit_jcr_repository_path}"
+    value   => $deployit_jcr_repository_path
   }
 
   ini_setting { 'deployit threads min':
-    setting => "threads.min",
-    value   => "${deployit_threads_min}"
+    setting => 'threads.min',
+    value   => $deployit_threads_min
   }
 
   ini_setting { 'deployit ssl':
     setting => 'ssl',
-    value   => "${deployit_ssl}"
+    value   => $deployit_ssl
   }
 
   ini_setting { 'deployit http bind address':
     setting => 'http.bind.address',
-    value   => "${deployit_http_bind_address}"
+    value   => $deployit_http_bind_address
   }
 
   ini_setting { 'deployit http context root':
     setting => 'http.context.root',
-    value   => "${deployit_http_context_root}"
+    value   => $deployit_http_context_root
   }
 
   ini_setting { 'deployit threads max':
-    setting => "threads.max",
+    setting => 'threads.max',
     value   => $deployit_threads_max
   }
 
@@ -108,7 +108,7 @@ class deployit::config (
 
   # this exec .. o how i hate exec's .. is needed for deployit to initialize it's jcr repository
   # further more i'd like to state that the way it's configuration files are handled by deployit is absolute crap
-  exec { "init deployit":
+  exec { 'init deployit':
     creates   => "${deployit_homedir}/server/repository",
     command   => "${deployit_homedir}/server/bin/server.sh -setup -reinitialize -force -setup-defaults ${deployit_homedir}/server/conf/deployit.conf",
     logoutput => true,

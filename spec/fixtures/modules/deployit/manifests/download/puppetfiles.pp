@@ -1,10 +1,14 @@
+# class deployit::download::puppetfiles
+#
+# This class handles the download of deployit
+# installation archives from puppetfiles fileserving.
 class deployit::download::puppetfiles (
-  $deployit_version       = $deployit::deployit_version,
-  $deployit_user          = $deployit::deployit_user,
-  $deployit_group         = $deployit::deployit_group,
-  $tmpdir                 = $deployit::tmpdir,
-  $server_zipfile = $deployit::server_zipfile,
-  $cli_zipfile    = $deployit::cli_zipfile) {
+  $deployit_version = $deployit::deployit_version,
+  $deployit_user    = $deployit::deployit_user,
+  $deployit_group   = $deployit::deployit_group,
+  $tmpdir           = $deployit::tmpdir,
+  $server_zipfile   = $deployit::server_zipfile,
+  $cli_zipfile      = $deployit::cli_zipfile) {
   # resource defaults
   File {
     ensure => present,
