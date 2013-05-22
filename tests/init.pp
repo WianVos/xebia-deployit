@@ -1,1 +1,1 @@
-include xebia-deployit
+include deployit

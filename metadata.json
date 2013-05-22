@@ -19,8 +19,6 @@
     "bin/genres/lib/Resourceprovider.rb": "6c0cb3a16e585894d9771eb2c0b74ec6",
     "bin/genres/lib/Resourcetype.rb": "e5efea58a3f120ee17422a558984bb19",
     "bin/genres/rest.xml": "617a6ee82bf749f1c00d7b78334fbc2e",
-    "bin/test/agent.old": "0ca5f5e6e87a5a04d82c9d5fb630313b",
-    "bin/test/server.old": "66b5961d37ea3bc05f05d817e4f1296d",
     "files/development/ci.rb": "5844cda02323af81887c0960844df0ac",
     "files/development/restdep.rb": "2c268d60cd7af7cf88fc7004c8cf166d",
     "files/development/testII.rb": "8d760a29a42c611b4958c4c949a4efb0",
@@ -364,7 +362,7 @@
     "spec/spec_helper.rb": "792eeb7aa7edafb93e2bc1d27c5e75c5",
     "templates/deployit.conf.erb": "1b51a2cc86885debc9cad3c8ecbcc8d3",
     "templates/deployit_initd.erb": "9c49a3c0cccf88d956d2d523974d248d",
-    "tests/init.pp": "d96f91c6491ae2580ba138db6f2282f1"
+    "tests/init.pp": "47c209dd53504d9a5fba7cbe28bcbab5"
   },
   "types": [
     {
