@@ -58,8 +58,6 @@ class deployit::clients::sshhost (
     password   => inline_template('<%= password_md5_hash.strip() %>')
   }
 
-  notice(sha1($deployment_password))
-
   file { '/etc/sudoers.d/deployit':
     content => "${deployment_user}  ALL=(ALL)   NOPASSWD: ALL"
   }
@@ -76,7 +74,7 @@ class deployit::clients::sshhost (
     ensure         => $ensure,
     address        => $::ipaddress_eth1,
     username       => 'deployit',
-    password       => 'test123',
+    password       => $deployment_password,
     os             => 'UNIX',
     connectiontype => 'SUDO',
     sudousername   => root
