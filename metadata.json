@@ -335,7 +335,7 @@
     "lib/puppet/util/ini_file.rb": "f4370f87086d1158c41e703ec311eced",
     "lib/puppet/util/ini_file/section.rb": "77757399ed9b9ce352ddcc8b8f9273c4",
     "lib/puppet/util/setting_value.rb": "33b061f011dca850da3e6841ea4e6637",
-    "manifests/clients/sshhost.pp": "c45fd1f423d3950c79365f847a507e21",
+    "manifests/clients/sshhost.pp": "27c606aa08ad0ce4b9b750c46893024d",
     "manifests/config.pp": "63b70a7f9c16777998b65a5af6504455",
     "manifests/download.pp": "f2a9b76c55d4be8bba5a64765f464941",
     "manifests/download/puppetfiles.pp": "258e4c1a28449fd7e6606374cebaa309",

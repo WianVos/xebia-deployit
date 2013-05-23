@@ -11,6 +11,11 @@ class deployit::clients::sshhost (
   $deployment_group    = $deployit::deployit_deployment_group,
   $deployment_password = $deployit::deployit_deployment_password) {
 
+  # password hash value
+  # translating a string password to somethin usable by centos is a bit of an efford
+  # TODO: See if ubuntu needs this as well
+  $password_md5_hash = generate('/usr/bin/openssl', 'passwd', '-1', $deployment_password)
+
   # validity check
   if ! defined(Class['Deployit']) {
     fail('do not include this class directly')
@@ -43,13 +48,17 @@ class deployit::clients::sshhost (
   # actual resources
   group { $deployment_group: ensure => $ensure }
 
+  # The inline template used here is needed to ensure that there
+  # are no newline characters at the end of the string screwing us over
   user{ $deployment_user :
     ensure     => $ensure,
     managehome => true,
     home       => "/home/${deployment_user}",
     gid        => $deployment_group,
-   # password   => str2saltedsha512($deployment_password)
+    password   => inline_template('<%= password_md5_hash.strip() %>')
   }
+
+  notice(sha1($deployment_password))
 
   file { '/etc/sudoers.d/deployit':
     content => "${deployment_user}  ALL=(ALL)   NOPASSWD: ALL"
