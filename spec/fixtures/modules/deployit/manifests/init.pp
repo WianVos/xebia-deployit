@@ -43,7 +43,7 @@ class deployit (
   $load_ci              = true,
   $server               = false,
   $ensure               = present,
-  $deployit_client_profile           = 'sshhost') {
+  ) {
 
   # variables
   # the version dependant stuff is set here
@@ -65,19 +65,6 @@ class deployit (
     default       : {
                       fail("${install_source} not a valid installation source")
                     }
-  }
-
-  # client flows
-  if $server == false {
-    case $deployit_client_profile {
-      'sshhost' : { Class['Deployit::Provider_prereq']
-                    -> class { 'deployit::clients::sshhost': }
-                    -> Class['deployit']
-      }
-      default   : {
-                    fail("${deployit_client_profile} is not a valid deployit client profile")
-                  }
-    }
   }
 
   # if server == true we do a lot of stuff .
