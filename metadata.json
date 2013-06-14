@@ -337,6 +337,7 @@
     "lib/puppet/util/ini_file.rb": "f4370f87086d1158c41e703ec311eced",
     "lib/puppet/util/ini_file/section.rb": "77757399ed9b9ce352ddcc8b8f9273c4",
     "lib/puppet/util/setting_value.rb": "33b061f011dca850da3e6841ea4e6637",
+    "manifests/clients/deployment_environment.pp": "b36bfb4438ea648fbfa067a052a82e86",
     "manifests/clients/jetty_instance.pp": "fda6791fa2c01fb0c8d2265a57f1c006",
     "manifests/clients/sshhost.pp": "b84648a5bba704f7cc4280fd7b90318f",
     "manifests/config.pp": "63b70a7f9c16777998b65a5af6504455",
