@@ -22,10 +22,10 @@ define deployit::clients::jetty_instance (
       deployit_admin      => $deployit_admin,
       deployit_password   => $deployit_password,
       deployit_http_port  => $deployit_http_port,
-      deployit_http_server_address => deployit_http_server_address,
-      deployment_user     => deployment_user,
-      deployment_group    => deployment_group,
-      deployment_password => deployment_password,
+      deployit_http_server_address => $deployit_http_server_address,
+      deployment_user     => $deployment_user,
+      deployment_group    => $deployment_group,
+      deployment_password => $deployment_password,
       deployit_directory  => $deployit_directory
     }
   }
@@ -39,6 +39,14 @@ define deployit::clients::jetty_instance (
   # flow controll
   Class['Deployit::Clients::Sshhost'] -> Deployit_jetty_server[$deployit_instance_path]
 
+  # resource defaults
+
+  Deployit_jetty_server {
+    deployit_username => $deployit_admin,
+    deployit_password => $deployit_password,
+    deployit_host => $deployit_http_server_address,
+    ensure        => present
+  }
   # resources
   deployit_jetty_server { $deployit_instance_path:
     tags    => $tags ? {
@@ -49,6 +57,6 @@ define deployit::clients::jetty_instance (
       undef   => undef,
       default => $envvars,
     },
-    home    => '/opt/jetty2',
+    home    => $jetty_home,
   }
 }

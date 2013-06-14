@@ -46,7 +46,9 @@ module Puppet
         
         # if where adding a directory .. just add it without looking at the parents
         if type == "core.Directory"
-          add_directory(Pathname.new(id).dirname) unless parent_exists?(id)
+#          add_directory(Pathname.new(id).dirname) unless parent_exists?(id)
+          add_directory(Pathname.new(id).dirname)
+
         else
 
           # if where adding something else do the valid parent check

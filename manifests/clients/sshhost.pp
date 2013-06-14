@@ -56,7 +56,10 @@ class deployit::clients::sshhost (
 
 
   # actual resources
-  group { $deployment_group: ensure => $ensure }
+  if ! defined(Group[$deployment_group]) {
+    group { $deployment_group: ensure => $ensure }
+
+  }
 
   # The inline template used here is needed to ensure that there
   # are no newline characters at the end of the string screwing us over
