@@ -146,19 +146,23 @@ module Puppet
           result.each {|key, value| props['envVars'].first['entry'] << { "content" => value,  "@key" => key } }
         end
 
-        if props.has_key?('members') == true and props['members'].first['ci'].first.has_key?('ref')
+        if props.has_key?('members') == true and props['members'].first['ci'].first.class == Array    
+          if props['members'].first['ci'].first.has_key?('ref')   
           result = []
           props["members"].first["ci"].each {|ci| result << ci['ref'] }
           p result
           props["members"] = [{'ci' => [] }]
           result.each {|v| props['members'].first['ci'] << { "@ref" => v } }
+          end
         end
-        if props.has_key?('dictionaries') == true and props['dictionaries'].first['ci'].first.has_key?('ref')
+        if props.has_key?('dictionaries') == true and  props['dictionaries'].first['ci'].first.class == Array       
+          if props['dictionaries'].first['ci'].first.has_key?('ref')
           result = []
           props["dictionaries"].first["ci"].each {|ci| result << ci['ref'] }
           p result
           props["dictionaries"] = [{'ci' => [] }]
           result.each {|v| props['dictionaries'].first['ci'] << { "@ref" => v } }
+          end
         end
 
         props.delete('id') if props.has_key?('id')
