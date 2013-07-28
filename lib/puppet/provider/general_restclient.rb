@@ -134,8 +134,13 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
         end
         def #{downcase_hprop}=(value)
-         @property_hash['#{hprop}'] = [{ 'entry' => []}]
-         value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
+        
+          if enforce_mode == true or @property_hash["#{hprop}"].empty?
+            @property_hash['#{hprop}'] = [{ 'entry' => []}]
+            value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
+          else
+            @property_hash['#{hprop}'] = @property_hash['#{hprop}'].first['entry'].merge(value.first)
+          end
         end
 
         }
