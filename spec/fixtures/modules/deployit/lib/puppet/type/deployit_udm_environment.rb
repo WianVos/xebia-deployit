@@ -74,7 +74,6 @@ Puppet::Type.newtype(:deployit_udm_environment) do
           return false unless is.include?(k)
   
         end
-        return false unless is.length == @should.length
         true
       end
   
@@ -103,7 +102,6 @@ Puppet::Type.newtype(:deployit_udm_environment) do
             return false unless is.include?(k)
     
           end
-          return false unless is.length == @should.length
           true
         end
     
