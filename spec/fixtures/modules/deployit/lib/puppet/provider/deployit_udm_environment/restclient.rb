@@ -16,7 +16,8 @@ Puppet::Type.type(:deployit_udm_environment).provide(:restclient, :parent => Pup
 
   def self.enforce 
       false
-    end
+  end
+  
   def self.deployit_type
     "udm.Environment"
   end

@@ -19,8 +19,8 @@ class Puppet::Provider::General_restclient < Puppet::Provider
     super(value)
 
     # enforce parameter
-    @enforce_mode = true
-    @enforce_mode = self.class.enforce if self.class.enforce.defined? 
+    @enforce = true
+    @enforce = self.class.enforce if self.class.enforce.defined? 
     
     # to make life a little easier and make it easier to add new provider/type constructions i've used a little meta programming
     # the following varialbes are derived from class methods of the inheriting providers
@@ -104,7 +104,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
 
         def #{downcase_aprop}=(value)
-          if enforce_mode == true or @property_hash["#{aprop}"].empty?
+          if enforce == true or @property_hash["#{aprop}"].empty?
             @property_hash["#{aprop}"] = {'values' => value }
           else
             @property_hash["#{aprop}"] = @property_hash["#{aprop}"].merge{'values' => value } 
@@ -135,7 +135,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
         def #{downcase_hprop}=(value)
         
-          if enforce_mode == true or @property_hash["#{hprop}"].empty?
+          if enforce == true or @property_hash["#{hprop}"].empty?
             @property_hash['#{hprop}'] = [{ 'entry' => []}]
             value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
           else
