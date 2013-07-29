@@ -18,8 +18,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
     super(value)
 
-    # enforce parameter
-    @enforce ||= @enforce = true
+    
     
     # to make life a little easier and make it easier to add new provider/type constructions i've used a little meta programming
     # the following varialbes are derived from class methods of the inheriting providers
@@ -103,10 +102,9 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
 
         def #{downcase_aprop}=(value)
-          if enforce == true or @property_hash["#{aprop}"].empty?
+          
             @property_hash["#{aprop}"] = {'values' => value }
-          else
-            @property_hash["#{aprop}"] = @property_hash["#{aprop}"].merge({'values' => value }) 
+          
           end
         end
        }
@@ -134,11 +132,9 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
         def #{downcase_hprop}=(value)
         
-          if enforce == true or @property_hash["#{hprop}"].empty?
+         
             @property_hash['#{hprop}'] = [{ 'entry' => []}]
-            value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
-          else
-            @property_hash['#{hprop}'] = @property_hash['#{hprop}'].first['entry'].merge(value.first)
+            
           end
         end
 
@@ -164,8 +160,11 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
 
         def #{downcase_ciprop}=(value)
+        if @property_hash['#{ciprop}']  == undef
           @property_hash['#{ciprop}'] = [{ 'ci' => []}]
           value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "@ref" => v } }
+        else 
+        value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].merge({ "@ref" => v })
         end
        }
       end
