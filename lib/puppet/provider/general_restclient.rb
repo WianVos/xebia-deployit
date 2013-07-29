@@ -163,6 +163,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
              p "test 2"
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"].first['ci'] == nil
              p "test3" 
+             @property_hash['#{ciprop}'].first['ci'].each {|k,v| @property_hash['#{ciprop}'].first['ci'] << {"@ref" => v } }
             value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "@ref" => v } }
         
         end
