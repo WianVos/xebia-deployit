@@ -155,6 +155,8 @@ module Puppet
           p result
           props["members"] = [{'ci' => [] }]
           result.each {|v| props['members'].first['ci'] << { "@ref" => v } }
+          p "to xml"
+          p   props['members'].first['ci'] 
           end
         end
         if props.has_key?('dictionaries') == true and  props['dictionaries'].first['ci'].first.class == Array       
