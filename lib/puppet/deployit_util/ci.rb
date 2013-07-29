@@ -83,8 +83,9 @@ module Puppet
       def modify_ci(id,type,props)
 
         new_props = get_ci(id).merge(props)
-
+        p new_props
         xml = to_deployit_xml(type, new_props, id)
+        p xml
         response = RestClient.put "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
 
       end
