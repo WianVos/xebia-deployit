@@ -106,7 +106,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
           if enforce == true or @property_hash["#{aprop}"].empty?
             @property_hash["#{aprop}"] = {'values' => value }
           else
-            @property_hash["#{aprop}"] = @property_hash["#{aprop}"].merge{'values' => value } 
+            @property_hash["#{aprop}"] = @property_hash["#{aprop}"].merge({'values' => value }) 
           end
         end
        }
