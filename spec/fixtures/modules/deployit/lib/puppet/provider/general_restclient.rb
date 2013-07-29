@@ -158,9 +158,9 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
 
         def #{downcase_ciprop}=(value)
-          
+             p "test1"
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] unless @property_hash["#{ciprop}"].first["ci"] != nil
-           
+             p "test2" 
             value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].concat({ "@ref" => v })}
         
         end
