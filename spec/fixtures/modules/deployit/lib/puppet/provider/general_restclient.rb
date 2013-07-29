@@ -19,8 +19,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
     super(value)
 
     # enforce parameter
-    @enforce = true
-    @enforce = self.class.enforce if self.class.enforce.defined? 
+    @enforce = true unless @enforce.defined?
     
     # to make life a little easier and make it easier to add new provider/type constructions i've used a little meta programming
     # the following varialbes are derived from class methods of the inheriting providers
