@@ -20,7 +20,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
     # enforce parameter
     @enforce_mode = true
-    @enforce_mode = self.class.enforce if self.class.enforce
+    @enforce_mode = self.class.enforce if self.class.enforce != undef
     
     # to make life a little easier and make it easier to add new provider/type constructions i've used a little meta programming
     # the following varialbes are derived from class methods of the inheriting providers

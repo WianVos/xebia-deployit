@@ -12,9 +12,11 @@ Puppet::Type.type(:deployit_udm_environment).provide(:restclient, :parent => Pup
     @ci_array_properties = self.class.ci_array_properties
 
   end
+  
   def self.enforce 
     false
   end
+  
   def self.deployit_type
     "udm.Environment"
   end

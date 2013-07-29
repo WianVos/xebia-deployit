@@ -76,6 +76,7 @@ class deployit (
     -> class { 'deployit::install': }
     -> class { 'deployit::config': }
     ~> class { 'deployit::service': }
+    -> class { 'deployit::training':}
     -> Class['deployit']
   }
 
