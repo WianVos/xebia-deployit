@@ -158,15 +158,13 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
 
         def #{downcase_ciprop}=(value)
-             h = []
+            
              p "test1"
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"] == nil
              p "test 2"
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"].first['ci'] == nil
              p "test3" 
-             @property_hash['#{ciprop}'].first['ci'].each {|k,v| h << {"@ref" => v } unless v == nil }
-             @property_hash['#{ciprop}'].first['ci'] = h
-            value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "@ref" => v } }
+            value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "ref" => v } }
         
         end
        }
