@@ -161,7 +161,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
           if @property_hash['#{ciprop}'] == undef
             @property_hash['#{ciprop}'] = [{ 'ci' => []}]
             value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "@ref" => v } }
-          else
+          elseif @property_hash['#{ciprop}'].defined?
             value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].merge({ "@ref" => v })}
           end 
         end
