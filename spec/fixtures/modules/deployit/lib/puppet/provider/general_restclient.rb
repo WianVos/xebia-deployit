@@ -105,7 +105,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
           
             @property_hash["#{aprop}"] = {'values' => value }
           
-          end
+         
         end
        }
       end
@@ -135,7 +135,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
          
             @property_hash['#{hprop}'] = [{ 'entry' => []}]
             
-          end
+          
         end
 
         }
