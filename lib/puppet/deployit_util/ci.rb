@@ -144,8 +144,12 @@ module Puppet
           result.each {|key, value| props['envVars'].first['entry'] << { "content" => value,  "@key" => key } }
         end
         p "before "
+        p props
+        p props['members'].first['ci'].first.class 
         if props.has_key?('members') == true and props['members'].first['ci'].first.class == Array    
+          p "loop1"
           if props['members'].first['ci'].first.has_key?('ref')   
+          p 'loop 2'
           result = []
           props["members"].first["ci"].each {|ci| result << ci['ref'] }
           p result
