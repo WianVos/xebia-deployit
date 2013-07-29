@@ -275,6 +275,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
   # the flush method will actualize the settings to deployit
   def flush
+    p @property_hash
     # remove the confilicting fields from the hash and get the values to seperate variables we can use the determine the flow of the flush
     ensure_prop = @property_hash.delete('ensure')
     exists = @property_hash.delete('exists')
