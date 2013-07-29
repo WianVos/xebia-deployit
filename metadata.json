@@ -183,7 +183,7 @@
     "lib/puppet/provider/deployit_www_deployedapacheconffile/generated_restclient.rb": "d69aa84d8f05a0dcd52be9182ac81515",
     "lib/puppet/provider/deployit_www_publishedwebcontent/generated_restclient.rb": "402caf1be14b5c0694220934f7eee9e3",
     "lib/puppet/provider/deployit_www_webcontent/generated_restclient.rb": "dca681358ec00ae82d32a57472a5b68e",
-    "lib/puppet/provider/general_restclient.rb": "e5e8496921f165e783d25089e1d6862d",
+    "lib/puppet/provider/general_restclient.rb": "10a52b7483fc59ec6a49460faf61bd51",
     "lib/puppet/provider/ini_setting/ruby.rb": "6f528a4f961da1a6dbf352be1a062df6",
     "lib/puppet/provider/ini_subsetting/ruby.rb": "99991c9d3ccf54c2aa1fcacf491d0cfc",
     "lib/puppet/type/deployit_check_connection.rb": "c3e13cde085d2001a3244b8857c46f47",

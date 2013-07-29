@@ -105,7 +105,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
           
             @property_hash["#{aprop}"] = {'values' => value }
           
-         
+          
         end
        }
       end
@@ -132,10 +132,8 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
         def #{downcase_hprop}=(value)
         
-         
             @property_hash['#{hprop}'] = [{ 'entry' => []}]
-            
-          
+            value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
         end
 
         }
@@ -160,11 +158,12 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         end
 
         def #{downcase_ciprop}=(value)
-        if @property_hash['#{ciprop}']  == undef
-          @property_hash['#{ciprop}'] = [{ 'ci' => []}]
-          value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "@ref" => v } }
-        else 
-        value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].merge({ "@ref" => v })
+          if @property_hash['#{ciprop}'] == undef
+            @property_hash['#{ciprop}'] = [{ 'ci' => []}]
+            value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "@ref" => v } }
+          else
+            value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].merge({ "@ref" => v })
+          end 
         end
        }
       end
