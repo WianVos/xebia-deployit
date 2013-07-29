@@ -143,27 +143,18 @@ module Puppet
           props['envVars'] = [{ 'entry' => []}]
           result.each {|key, value| props['envVars'].first['entry'] << { "content" => value,  "@key" => key } }
         end
-        p "before "
-        p props
-        p props['members'].first['ci'].first.class 
-        if props.has_key?('members') == true and props['members'].first['ci'].first.class == Array    
-          p "loop1"
+        if props.has_key?('members') == true 
           if props['members'].first['ci'].first.has_key?('ref')   
-          p 'loop 2'
           result = []
           props["members"].first["ci"].each {|ci| result << ci['ref'] }
-          p result
           props["members"] = [{'ci' => [] }]
           result.each {|v| props['members'].first['ci'] << { "@ref" => v } }
-          p "to xml"
-          p   props['members'].first['ci'] 
           end
         end
-        if props.has_key?('dictionaries') == true and  props['dictionaries'].first['ci'].first.class == Array       
+        if props.has_key?('dictionaries') == true 
           if props['dictionaries'].first['ci'].first.has_key?('ref')
           result = []
           props["dictionaries"].first["ci"].each {|ci| result << ci['ref'] }
-          p result
           props["dictionaries"] = [{'ci' => [] }]
           result.each {|v| props['dictionaries'].first['ci'] << { "@ref" => v } }
           end
