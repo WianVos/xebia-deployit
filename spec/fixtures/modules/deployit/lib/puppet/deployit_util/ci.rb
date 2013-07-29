@@ -41,9 +41,10 @@ module Puppet
         if type == "core.Directory"
           add_parent_directory(id) unless parent_exists?(id)
           # create the xml body
+          p props
           xml = to_deployit_xml(type, props, id)
           # push the xml to the correct xml
-
+          p xml
           response = RestClient.post "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
           # return our success
           return "succes"
