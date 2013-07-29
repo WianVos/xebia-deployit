@@ -33,7 +33,7 @@
     "files/sources/deployit-3.8.5-server.zip": "19f6a9e574465ecda3ff2904d8bd9931",
     "files/sources/deployit-3.9.0-cli.zip": "cf843d18e2a503052e92ac9a892e2984",
     "files/sources/deployit-3.9.0-server.zip": "4acca6598d627a480cd865b068b527e4",
-    "lib/puppet/deployit_util/ci.rb": "4a3c13bd0204559ede531182344dd974",
+    "lib/puppet/deployit_util/ci.rb": "3c2794549c15faea800a3346b7100e6c",
     "lib/puppet/deployit_util/role.rb": "696ea1237d4b5a021ec27e96967c19b0",
     "lib/puppet/feature/restclient.rb": "9f097ad93c392b06e43e99120e897708",
     "lib/puppet/parser/functions/encode_b64.rb": "1b5608dc7b16df54089a77dda6d0ebc9",

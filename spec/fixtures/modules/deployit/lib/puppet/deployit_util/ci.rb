@@ -41,10 +41,8 @@ module Puppet
         if type == "core.Directory"
           add_parent_directory(id) unless parent_exists?(id)
           # create the xml body
-          p props
           xml = to_deployit_xml(type, props, id)
           # push the xml to the correct xml
-          p xml
           response = RestClient.post "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
           # return our success
           return "succes"
@@ -83,9 +81,7 @@ module Puppet
       def modify_ci(id,type,props)
 
         new_props = get_ci(id).merge(props)
-        p new_props
         xml = to_deployit_xml(type, new_props, id)
-        p xml
         response = RestClient.put "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
 
       end
@@ -147,7 +143,7 @@ module Puppet
           props['envVars'] = [{ 'entry' => []}]
           result.each {|key, value| props['envVars'].first['entry'] << { "content" => value,  "@key" => key } }
         end
-
+        p "before "
         if props.has_key?('members') == true and props['members'].first['ci'].first.class == Array    
           if props['members'].first['ci'].first.has_key?('ref')   
           result = []
