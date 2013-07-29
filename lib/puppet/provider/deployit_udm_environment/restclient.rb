@@ -10,9 +10,13 @@ Puppet::Type.type(:deployit_udm_environment).provide(:restclient, :parent => Pup
     @hash_properties = self.class.hash_properties
     @array_properties = self.class.array_properties
     @ci_array_properties = self.class.ci_array_properties
+    @enforce = self.class.enforce
 
   end
 
+  def self.enforce 
+      false
+    end
   def self.deployit_type
     "udm.Environment"
   end

@@ -77,8 +77,7 @@
     "lib/puppet/provider/deployit_trigger_steptrigger/generated_restclient.rb": "1ce6f750c9ad59ca1bbd8e9d09d6eaab",
     "lib/puppet/provider/deployit_trigger_tasktrigger/generated_restclient.rb": "dd9028c7dd3e4008c74063952ad76d57",
     "lib/puppet/provider/deployit_udm_dictionary/restclient.rb": "04aa85f335cc2687df7ca5a541008892",
-    "lib/puppet/provider/deployit_udm_environment/custom_restclient.rb": "8a720359f8d3fdeb4a02cbcd6520b39d",
-    "lib/puppet/provider/deployit_udm_environment/restclient.rb": "5cb4eab3704e5ecaef69da82bae001e4",
+    "lib/puppet/provider/deployit_udm_environment/restclient.rb": "6bddddb9e3e188e0d264fabaf7a46edd",
     "lib/puppet/provider/deployit_was_cluster/generated_restclient.rb": "53e7a615f625f6dc9242729e394ab3a5",
     "lib/puppet/provider/deployit_was_db2type2datasource/generated_restclient.rb": "7020ab830de7ac1601d4dad36c881f35",
     "lib/puppet/provider/deployit_was_db2type2datasourcespec/generated_restclient.rb": "28ec977abec6391d41cf6b1b2fd62dab",
@@ -2387,9 +2386,6 @@
         }
       ],
       "providers": [
-        {
-          "name": "restclient"
-        },
         {
           "name": "restclient"
         }
