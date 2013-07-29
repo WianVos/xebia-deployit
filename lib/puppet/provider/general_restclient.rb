@@ -161,7 +161,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
           
             @property_hash['#{ciprop}'] ||= @property_hash['#{ciprop}'] = [{ 'ci' => []}] unless @property_hash['#{ciprop}']
             
-            value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].merge({ "@ref" => v })}
+            value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].concat({ "@ref" => v })}
         
         end
        }
