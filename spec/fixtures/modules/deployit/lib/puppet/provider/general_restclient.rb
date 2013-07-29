@@ -99,7 +99,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
          end
          # check if the result is not nil
          return result
-        end
+         end
 
         def #{downcase_aprop}=(value)
           
@@ -107,7 +107,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
           
           
         end
-       }
+        }
       end
     end
 
@@ -162,7 +162,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
             @property_hash['#{ciprop}'] = [{ 'ci' => []}]
             value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "@ref" => v } }
           else
-            value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].merge({ "@ref" => v })
+            value.each {|v| @property_hash['#{ciprop}'].first['ci'] = @property_hash['#{ciprop}'].first['ci'].merge({ "@ref" => v })}
           end 
         end
        }
