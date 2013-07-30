@@ -159,11 +159,8 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
         def #{downcase_ciprop}=(value)
             
-             p "test1"
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"] == nil
-             p "test 2"
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"].first['ci'] == nil
-             p "test3" 
             value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "ref" => v } }
         
         end
@@ -276,7 +273,6 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
   # the flush method will actualize the settings to deployit
   def flush
-    p @property_hash
     # remove the confilicting fields from the hash and get the values to seperate variables we can use the determine the flow of the flush
     ensure_prop = @property_hash.delete('ensure')
     exists = @property_hash.delete('exists')
