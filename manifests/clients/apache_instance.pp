@@ -58,7 +58,8 @@ define deployit::clients::apache_instance (
     },
     configurationfragmentdirectory  => '/etc/httpd/conf.d',
     defaultdocumentroot		    => '/var/tmp',
-    startcommand                    => 'service httpd start',
-    stopcommand   		    => 'service httpd stop',
+    startcommand                    => '/etc/init.d/httpd start',
+    stopcommand   		    => '/etc/init.d/httpd stop',
+    restartcommand   		    => '/etc/init.d/httpd restart',
   }
 }
