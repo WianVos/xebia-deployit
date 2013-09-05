@@ -37,6 +37,12 @@ module Genres
       @res_hash.keys
   
     end
+
+    def get_container_types(selector=@selector)
+       
+        result = @res_array.select{ |t| unless t.has_key?("deployableType") }
+
+    end
   
     def get_properties(type,kind="")
       result = {}

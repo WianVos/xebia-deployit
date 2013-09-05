@@ -137,6 +137,15 @@ Puppet::Type.newtype(:deployit_www_apachehttpdserver ) do
            
         
       end
+
+      newproperty(:sitesenableddirectory) do
+         
+          desc 'Restart Command'
+          defaultto('unset')
+        
+           
+        
+      end
     
       newproperty(:tags , :array_matching => :all) do
         def insync?(is)

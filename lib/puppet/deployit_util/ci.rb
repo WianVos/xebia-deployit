@@ -38,7 +38,7 @@ module Puppet
       def add_ci(id, type, props={}, parent = ["core.Directory", "internal.Root"])
 
         # if type is a directory lets create te full path for it
-        if type == "core.Directory"
+        #if type == "core.Directory"
           add_parent_directory(id) unless parent_exists?(id)
           # create the xml body
           xml = to_deployit_xml(type, props, id)
@@ -46,18 +46,18 @@ module Puppet
           response = RestClient.post "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
           # return our success
           return "succes"
-        else
+        #else
 
           # if the ci is created on top of an illegal parent type .. let's go bonckers
-          return "invalid parent type for #{id}" unless parent_correct?(id,parent)
+        #  return "invalid parent type for #{id}" unless parent_correct?(id,parent)
           # create the xml body
-          xml = to_deployit_xml(type, props, id)
+        #  xml = to_deployit_xml(type, props, id)
           # push the xml to the correct xml
 
-          response = RestClient.post "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
+         # response = RestClient.post "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
           # return our success
-          return "succes"
-        end
+          #return "succes"
+        #end
       end
 
       # delete the ci
@@ -83,7 +83,6 @@ module Puppet
         new_props = get_ci(id).merge(props)
         xml = to_deployit_xml(type, new_props, id)
         response = RestClient.put "#{@base_url}/ci/#{id}", xml, {:content_type => :xml}
-
       end
 
       def get_ci_property_hash(id)

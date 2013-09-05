@@ -31,7 +31,8 @@ class deployit::clients::sshhost (
   $deployit_host_path = "${deployit_directory_path}/${::hostname}"
 
   # flowcontroll
-  Class[Deployit::Provider_prereq]
+  anchor{'deployit::clients::sshhost::begin':}
+  -> Class[Deployit::Provider_prereq]
   -> Group[$deployment_group]
   -> User[$deployment_user]
   -> File['/etc/sudoers.d/deployit']

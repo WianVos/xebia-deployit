@@ -8,7 +8,7 @@ module Genres
       @file = file
       @selector = selector
     end
-
+    
     def do
       x = Genres::DeployitMetaXml.new(file=@file,selector=@selector)
       x.get_types_list.each do |r|

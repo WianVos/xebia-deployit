@@ -23,7 +23,7 @@ class deployit (
   $deployit_user        = 'deployit',
   $deployit_group       = 'deployit',
   $deployit_homedir     = '/opt/deployit',
-  $deployit_version     = '3.9.0',
+  $deployit_version     = '3.9.2',
   $deployit_admin       = 'admin',
   $deployit_password    = 'admin',
   $deployit_http_port   = '4516',

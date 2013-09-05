@@ -32,18 +32,19 @@ define deployit::clients::deployment_environment (
   $deployit_env_name = "${deployit_directory_path}/${name}"
 
   # flowcontroll
+  
   Class[Deployit::Provider_prereq]
   -> File['/etc/sudoers.d/deployit']
   -> Deployit_check_connection['deployit central']
-  -> Deployit_core_directory[$deployit_directory_path]
+  #-> Deployit_core_directory[$deployit_directory_path]
   -> Deployit_udm_environment[$deployit_env_name]
 
   # resource defaults
 
-  Deployit_core_directory {
-    deployit_host => $deployit_http_server_address,
-    ensure        => present
-  }
+  #Deployit_core_directory {
+  #  deployit_host => $deployit_http_server_address,
+  #  ensure        => present
+  #}
 
   Deployit_udm_environment {
     deployit_host => $deployit_http_server_address,
@@ -60,7 +61,7 @@ define deployit::clients::deployment_environment (
     port => $deployit_http_port
   }
 }
-  deployit_core_directory { $deployit_directory_path: }
+  #deployit_core_directory { $deployit_directory_path: }
 
   deployit_udm_environment {
     $deployit_env_name:
