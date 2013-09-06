@@ -46,7 +46,7 @@ Puppet::Type.type(:deployit_www_apacheconffile).provide(:generated_restclient, :
 
     def self.array_properties
     
-      [  "tags",  "placeholders",  ]
+      [  "placeholders",  "tags",  ]
     
     end
 

@@ -61,23 +61,6 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
         defaultto('http')
       end
     
-      newproperty(:connectiontype) do
-         
-          desc 'Connection Type'
-        
-         
-          defaultto ('WINRM') 
-        
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('connectiontype needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:address) do
          
           desc 'Address'
@@ -90,6 +73,23 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
           validate do |value|
             unless value != 'unset'
               fail('address needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:username) do
+         
+          desc 'Username'
+        
+        
+        
+          defaultto('unset')
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('username needs to be set')
             end
           end
         
@@ -112,27 +112,18 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
         
       end
     
-      newproperty(:temporarydirectorypath) do
+      newproperty(:connectiontype) do
          
-          desc 'Temporary Directory Path'
+          desc 'Connection Type'
         
-        
-           
-        
-      end
-    
-      newproperty(:username) do
          
-          desc 'Username'
+          defaultto ('WINRM') 
         
-        
-        
-          defaultto('unset')
            
          
           validate do |value|
             unless value != 'unset'
-              fail('username needs to be set')
+              fail('connectiontype needs to be set')
             end
           end
         
@@ -152,6 +143,15 @@ Puppet::Type.newtype(:deployit_overthere_cifshost ) do
               fail('os needs to be set')
             end
           end
+        
+      end
+    
+      newproperty(:temporarydirectorypath) do
+         
+          desc 'Temporary Directory Path'
+        
+        
+           
         
       end
     

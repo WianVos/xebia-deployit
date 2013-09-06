@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_www_apachehttpdserver).provide(:generated_restclient
 
     def self.properties
     
-      [  "configurationFragmentDirectory",  "startCommand",  "stopCommand",  "defaultDocumentRoot",  "restartCommand", "sitesEnabledDirectory" ]
+      [  "startCommand",  "restartCommand",  "configurationFragmentDirectory",  "defaultDocumentRoot",  "stopCommand",  ]
     
     end
 

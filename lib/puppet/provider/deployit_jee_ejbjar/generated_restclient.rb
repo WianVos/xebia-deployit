@@ -46,7 +46,7 @@ Puppet::Type.type(:deployit_jee_ejbjar).provide(:generated_restclient, :parent =
 
     def self.array_properties
     
-      [  "tags",  "placeholders",  ]
+      [  "placeholders",  "tags",  ]
     
     end
 

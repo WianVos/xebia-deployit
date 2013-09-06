@@ -61,15 +61,6 @@ Puppet::Type.newtype(:deployit_overthere_localhost ) do
         defaultto('http')
       end
     
-      newproperty(:temporarydirectorypath) do
-         
-          desc 'Temporary Directory Path'
-        
-        
-           
-        
-      end
-    
       newproperty(:os) do
          
           desc 'Operating system'
@@ -84,6 +75,15 @@ Puppet::Type.newtype(:deployit_overthere_localhost ) do
               fail('os needs to be set')
             end
           end
+        
+      end
+    
+      newproperty(:temporarydirectorypath) do
+         
+          desc 'Temporary Directory Path'
+        
+        
+           
         
       end
     

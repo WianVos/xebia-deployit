@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_file_archive).provide(:generated_restclient, :parent
 
     def self.properties
     
-      [  "createTargetPath",  "targetFileName",  "excludeFileNamesRegex",  "targetPath",  "targetPathShared",  ]
+      [  "targetPath",  "targetPathShared",  "targetFileName",  "excludeFileNamesRegex",  "createTargetPath",  ]
     
     end
 
@@ -46,7 +46,7 @@ Puppet::Type.type(:deployit_file_archive).provide(:generated_restclient, :parent
 
     def self.array_properties
     
-      [  "tags",  "placeholders",  ]
+      [  "placeholders",  "tags",  ]
     
     end
 

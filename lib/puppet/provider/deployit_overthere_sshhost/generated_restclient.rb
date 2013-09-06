@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_overthere_sshhost).provide(:generated_restclient, :p
 
     def self.properties
     
-      [  "connectionType",  "address",  "password",  "temporaryDirectoryPath",  "passphrase",  "privateKeyFile",  "sudoUsername",  "username",  "os",  ]
+      [  "address",  "username",  "password",  "privateKeyFile",  "connectionType",  "sudoUsername",  "os",  "passphrase",  "temporaryDirectoryPath",  ]
     
     end
 

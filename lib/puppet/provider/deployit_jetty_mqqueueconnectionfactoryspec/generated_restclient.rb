@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_jetty_mqqueueconnectionfactoryspec).provide(:generat
 
     def self.properties
     
-      [  "jndiName",  "hostName",  "port",  "CCDTURL",  "queueManager",  "channel",  ]
+      [  "CCDTURL",  "port",  "channel",  "queueManager",  "hostName",  "jndiName",  ]
     
     end
 

@@ -61,23 +61,6 @@ Puppet::Type.newtype(:deployit_overthere_sshhost ) do
         defaultto('http')
       end
     
-      newproperty(:connectiontype) do
-         
-          desc 'Connection Type'
-        
-         
-          defaultto ('SFTP') 
-        
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('connectiontype needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:address) do
          
           desc 'Address'
@@ -92,51 +75,6 @@ Puppet::Type.newtype(:deployit_overthere_sshhost ) do
               fail('address needs to be set')
             end
           end
-        
-      end
-    
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-           
-        
-      end
-    
-      newproperty(:temporarydirectorypath) do
-         
-          desc 'Temporary Directory Path'
-        
-        
-           
-        
-      end
-    
-      newproperty(:passphrase) do
-         
-          desc 'Passphrase'
-        
-        
-           
-        
-      end
-    
-      newproperty(:privatekeyfile) do
-         
-          desc 'Private Key File'
-        
-        
-           
-        
-      end
-    
-      newproperty(:sudousername) do
-         
-          desc 'Sudo username'
-        
-        
-           
         
       end
     
@@ -157,6 +95,50 @@ Puppet::Type.newtype(:deployit_overthere_sshhost ) do
         
       end
     
+      newproperty(:password) do
+         
+          desc 'Password'
+        
+        
+           
+        
+      end
+    
+      newproperty(:privatekeyfile) do
+         
+          desc 'Private Key File'
+        
+        
+           
+        
+      end
+    
+      newproperty(:connectiontype) do
+         
+          desc 'Connection Type'
+        
+         
+          defaultto ('SFTP') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('connectiontype needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:sudousername) do
+         
+          desc 'Sudo username'
+        
+        
+           
+        
+      end
+    
       newproperty(:os) do
          
           desc 'Operating system'
@@ -171,6 +153,24 @@ Puppet::Type.newtype(:deployit_overthere_sshhost ) do
               fail('os needs to be set')
             end
           end
+        
+      end
+    
+      newproperty(:passphrase) do
+         
+          desc 'Passphrase'
+        
+        
+           
+        
+      end
+    
+      newproperty(:temporarydirectorypath) do
+         
+          desc 'Temporary Directory Path'
+        
+        
+           
         
       end
     

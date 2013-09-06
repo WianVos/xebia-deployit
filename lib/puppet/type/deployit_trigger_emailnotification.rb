@@ -61,9 +61,18 @@ Puppet::Type.newtype(:deployit_trigger_emailnotification ) do
         defaultto('http')
       end
     
-      newproperty(:bodytemplatepath) do
+      newproperty(:fromaddress) do
          
-          desc 'Body Template Path'
+          desc 'From Address'
+        
+        
+           
+        
+      end
+    
+      newproperty(:body) do
+         
+          desc 'Body'
         
         
            
@@ -87,18 +96,9 @@ Puppet::Type.newtype(:deployit_trigger_emailnotification ) do
         
       end
     
-      newproperty(:fromaddress) do
+      newproperty(:bodytemplatepath) do
          
-          desc 'From Address'
-        
-        
-           
-        
-      end
-    
-      newproperty(:body) do
-         
-          desc 'Body'
+          desc 'Body Template Path'
         
         
            

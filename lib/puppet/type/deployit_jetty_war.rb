@@ -61,6 +61,15 @@ Puppet::Type.newtype(:deployit_jetty_war ) do
         defaultto('http')
       end
     
+      newproperty(:contextroot) do
+         
+          desc 'Context Root'
+        
+        
+           
+        
+      end
+    
       newproperty(:startingweight) do
          
           desc 'Starting Weight'
@@ -79,16 +88,7 @@ Puppet::Type.newtype(:deployit_jetty_war ) do
         
       end
     
-      newproperty(:contextroot) do
-         
-          desc 'Context Root'
-        
-        
-           
-        
-      end
-    
-      newproperty(:tags , :array_matching => :all) do
+      newproperty(:placeholders , :array_matching => :all) do
         def insync?(is)
 
           # Comparison of Array's
@@ -109,7 +109,7 @@ Puppet::Type.newtype(:deployit_jetty_war ) do
 
       end
   
-      newproperty(:placeholders , :array_matching => :all) do
+      newproperty(:tags , :array_matching => :all) do
         def insync?(is)
 
           # Comparison of Array's

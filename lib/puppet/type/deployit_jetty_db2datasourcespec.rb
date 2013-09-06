@@ -70,6 +70,15 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
         
       end
     
+      newproperty(:databasename) do
+         
+          desc 'Databasename'
+        
+        
+           
+        
+      end
+    
       newproperty(:maxidle) do
          
           desc 'Max Idle'
@@ -88,33 +97,6 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
         
       end
     
-      newproperty(:jndiname) do
-         
-          desc 'Jndi Name'
-        
-        
-           
-        
-      end
-    
-      newproperty(:maxactive) do
-         
-          desc 'Max Active'
-        
-        
-           
-        
-      end
-    
-      newproperty(:portnumber) do
-         
-          desc 'Portnumber'
-        
-        
-           
-        
-      end
-    
       newproperty(:user) do
          
           desc 'User'
@@ -124,9 +106,9 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
         
       end
     
-      newproperty(:servername) do
+      newproperty(:maxactive) do
          
-          desc 'Servername'
+          desc 'Max Active'
         
         
            
@@ -151,15 +133,6 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
         
       end
     
-      newproperty(:databasename) do
-         
-          desc 'Databasename'
-        
-        
-           
-        
-      end
-    
       newproperty(:defaulttransactionisolation) do
          
           desc 'Default Transaction Isolation'
@@ -169,9 +142,36 @@ Puppet::Type.newtype(:deployit_jetty_db2datasourcespec ) do
         
       end
     
+      newproperty(:portnumber) do
+         
+          desc 'Portnumber'
+        
+        
+           
+        
+      end
+    
+      newproperty(:servername) do
+         
+          desc 'Servername'
+        
+        
+           
+        
+      end
+    
       newproperty(:minidle) do
          
           desc 'Min Idle'
+        
+        
+           
+        
+      end
+    
+      newproperty(:jndiname) do
+         
+          desc 'Jndi Name'
         
         
            

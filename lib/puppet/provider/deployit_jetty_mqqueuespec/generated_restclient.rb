@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_jetty_mqqueuespec).provide(:generated_restclient, :p
 
     def self.properties
     
-      [  "jndiName",  "baseQueueName",  "baseQueueManagerName",  ]
+      [  "baseQueueName",  "jndiName",  "baseQueueManagerName",  ]
     
     end
 

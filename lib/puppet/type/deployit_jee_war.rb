@@ -70,7 +70,7 @@ Puppet::Type.newtype(:deployit_jee_war ) do
         
       end
     
-      newproperty(:tags , :array_matching => :all) do
+      newproperty(:placeholders , :array_matching => :all) do
         def insync?(is)
 
           # Comparison of Array's
@@ -91,7 +91,7 @@ Puppet::Type.newtype(:deployit_jee_war ) do
 
       end
   
-      newproperty(:placeholders , :array_matching => :all) do
+      newproperty(:tags , :array_matching => :all) do
         def insync?(is)
 
           # Comparison of Array's

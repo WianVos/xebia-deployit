@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_overthere_localhost).provide(:generated_restclient, 
 
     def self.properties
     
-      [  "temporaryDirectoryPath",  "os",  ]
+      [  "os",  "temporaryDirectoryPath",  ]
     
     end
 

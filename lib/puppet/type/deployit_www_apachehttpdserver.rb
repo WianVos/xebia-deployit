@@ -61,23 +61,6 @@ Puppet::Type.newtype(:deployit_www_apachehttpdserver ) do
         defaultto('http')
       end
     
-      newproperty(:configurationfragmentdirectory) do
-         
-          desc 'Configuration Fragment Directory'
-        
-        
-        
-          defaultto('unset')
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('configurationfragmentdirectory needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:startcommand) do
          
           desc 'Start Command'
@@ -95,9 +78,18 @@ Puppet::Type.newtype(:deployit_www_apachehttpdserver ) do
         
       end
     
-      newproperty(:stopcommand) do
+      newproperty(:restartcommand) do
          
-          desc 'Stop Command'
+          desc 'Restart Command'
+        
+        
+           
+        
+      end
+    
+      newproperty(:configurationfragmentdirectory) do
+         
+          desc 'Configuration Fragment Directory'
         
         
         
@@ -106,7 +98,7 @@ Puppet::Type.newtype(:deployit_www_apachehttpdserver ) do
          
           validate do |value|
             unless value != 'unset'
-              fail('stopcommand needs to be set')
+              fail('configurationfragmentdirectory needs to be set')
             end
           end
         
@@ -129,21 +121,20 @@ Puppet::Type.newtype(:deployit_www_apachehttpdserver ) do
         
       end
     
-      newproperty(:restartcommand) do
+      newproperty(:stopcommand) do
          
-          desc 'Restart Command'
+          desc 'Stop Command'
         
         
-           
         
-      end
-
-      newproperty(:sitesenableddirectory) do
-         
-          desc 'Restart Command'
           defaultto('unset')
-        
            
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('stopcommand needs to be set')
+            end
+          end
         
       end
     

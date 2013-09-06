@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_jetty_db2datasourcespec).provide(:generated_restclie
 
     def self.properties
     
-      [  "password",  "maxIdle",  "maxWait",  "jndiName",  "maxActive",  "portnumber",  "user",  "servername",  "defaultAutoCommit",  "initialSize",  "databasename",  "defaultTransactionIsolation",  "minIdle",  ]
+      [  "password",  "databasename",  "maxIdle",  "maxWait",  "user",  "maxActive",  "defaultAutoCommit",  "initialSize",  "defaultTransactionIsolation",  "portnumber",  "servername",  "minIdle",  "jndiName",  ]
     
     end
 

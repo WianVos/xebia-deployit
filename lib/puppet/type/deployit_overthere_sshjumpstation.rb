@@ -78,33 +78,6 @@ Puppet::Type.newtype(:deployit_overthere_sshjumpstation ) do
         
       end
     
-      newproperty(:password) do
-         
-          desc 'Password'
-        
-        
-           
-        
-      end
-    
-      newproperty(:passphrase) do
-         
-          desc 'Passphrase'
-        
-        
-           
-        
-      end
-    
-      newproperty(:privatekeyfile) do
-         
-          desc 'Private Key File'
-        
-        
-           
-        
-      end
-    
       newproperty(:username) do
          
           desc 'Username'
@@ -122,6 +95,24 @@ Puppet::Type.newtype(:deployit_overthere_sshjumpstation ) do
         
       end
     
+      newproperty(:password) do
+         
+          desc 'Password'
+        
+        
+           
+        
+      end
+    
+      newproperty(:privatekeyfile) do
+         
+          desc 'Private Key File'
+        
+        
+           
+        
+      end
+    
       newproperty(:os) do
          
           desc 'Os'
@@ -136,6 +127,15 @@ Puppet::Type.newtype(:deployit_overthere_sshjumpstation ) do
               fail('os needs to be set')
             end
           end
+        
+      end
+    
+      newproperty(:passphrase) do
+         
+          desc 'Passphrase'
+        
+        
+           
         
       end
     

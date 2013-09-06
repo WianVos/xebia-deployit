@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_jetty_war).provide(:generated_restclient, :parent =>
 
     def self.properties
     
-      [  "startingWeight",  "excludeFileNamesRegex",  "contextRoot",  ]
+      [  "contextRoot",  "startingWeight",  "excludeFileNamesRegex",  ]
     
     end
 
@@ -46,7 +46,7 @@ Puppet::Type.type(:deployit_jetty_war).provide(:generated_restclient, :parent =>
 
     def self.array_properties
     
-      [  "tags",  "placeholders",  ]
+      [  "placeholders",  "tags",  ]
     
     end
 

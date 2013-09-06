@@ -46,7 +46,7 @@ Puppet::Type.type(:deployit_www_webcontent).provide(:generated_restclient, :pare
 
     def self.array_properties
     
-      [  "tags",  "placeholders",  ]
+      [  "placeholders",  "tags",  ]
     
     end
 

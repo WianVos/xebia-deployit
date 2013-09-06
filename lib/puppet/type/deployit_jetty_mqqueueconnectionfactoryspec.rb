@@ -61,18 +61,9 @@ Puppet::Type.newtype(:deployit_jetty_mqqueueconnectionfactoryspec ) do
         defaultto('http')
       end
     
-      newproperty(:jndiname) do
+      newproperty(:ccdturl) do
          
-          desc 'Jndi Name'
-        
-        
-           
-        
-      end
-    
-      newproperty(:hostname) do
-         
-          desc 'Host Name'
+          desc 'C C D T U R L'
         
         
            
@@ -88,9 +79,9 @@ Puppet::Type.newtype(:deployit_jetty_mqqueueconnectionfactoryspec ) do
         
       end
     
-      newproperty(:ccdturl) do
+      newproperty(:channel) do
          
-          desc 'C C D T U R L'
+          desc 'Channel'
         
         
            
@@ -106,9 +97,18 @@ Puppet::Type.newtype(:deployit_jetty_mqqueueconnectionfactoryspec ) do
         
       end
     
-      newproperty(:channel) do
+      newproperty(:hostname) do
          
-          desc 'Channel'
+          desc 'Host Name'
+        
+        
+           
+        
+      end
+    
+      newproperty(:jndiname) do
+         
+          desc 'Jndi Name'
         
         
            

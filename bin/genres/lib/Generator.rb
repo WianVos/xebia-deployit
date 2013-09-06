@@ -11,7 +11,7 @@ module Genres
     
     def do
       x = Genres::DeployitMetaXml.new(file=@file,selector=@selector)
-      x.get_types_list.each do |r|
+      x.get_container_types.each do |r|
 
         lparents = x.get_parents(r)
         lstrings = x.get_property_names(r,"STRING")
@@ -28,7 +28,7 @@ module Genres
 
     def do2
       x = Genres::DeployitMetaXml.new(file=@file,selector=@selector)
-      x.get_types_list.each do |r|
+      x.get_container_types.each do |r|
 
         lparents = x.get_parents(r)
         lstrings = x.get_properties(r,"STRING")

@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_overthere_cifshost).provide(:generated_restclient, :
 
     def self.properties
     
-      [  "connectionType",  "address",  "password",  "temporaryDirectoryPath",  "username",  "os",  ]
+      [  "address",  "username",  "password",  "connectionType",  "os",  "temporaryDirectoryPath",  ]
     
     end
 

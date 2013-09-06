@@ -61,23 +61,6 @@ Puppet::Type.newtype(:deployit_trigger_tasktrigger ) do
         defaultto('http')
       end
     
-      newproperty(:fromstate) do
-         
-          desc 'From State'
-        
-         
-          defaultto ('ANY') 
-        
-           
-         
-          validate do |value|
-            unless value != 'unset'
-              fail('fromstate needs to be set')
-            end
-          end
-        
-      end
-    
       newproperty(:tostate) do
          
           desc 'To State'
@@ -90,6 +73,23 @@ Puppet::Type.newtype(:deployit_trigger_tasktrigger ) do
           validate do |value|
             unless value != 'unset'
               fail('tostate needs to be set')
+            end
+          end
+        
+      end
+    
+      newproperty(:fromstate) do
+         
+          desc 'From State'
+        
+         
+          defaultto ('ANY') 
+        
+           
+         
+          validate do |value|
+            unless value != 'unset'
+              fail('fromstate needs to be set')
             end
           end
         

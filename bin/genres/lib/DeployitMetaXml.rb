@@ -39,9 +39,11 @@ module Genres
     end
 
     def get_container_types(selector=@selector)
-       
-        result = @res_array.select{ |t| unless t.has_key?("deployableType") }
-
+        th_hash = {}
+        th = @res_array.select{ |t| not t.has_key?("deployableType")  }
+        th.each {|x|th_hash["#{x['type']}"] = x if x["type"] =~ /#{selector}/}
+        
+        th_hash.keys
     end
   
     def get_properties(type,kind="")

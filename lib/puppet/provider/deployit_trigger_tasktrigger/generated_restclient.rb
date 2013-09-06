@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_trigger_tasktrigger).provide(:generated_restclient, 
 
     def self.properties
     
-      [  "fromState",  "toState",  ]
+      [  "toState",  "fromState",  ]
     
     end
 

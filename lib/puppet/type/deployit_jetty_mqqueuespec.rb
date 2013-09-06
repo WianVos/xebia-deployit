@@ -61,18 +61,18 @@ Puppet::Type.newtype(:deployit_jetty_mqqueuespec ) do
         defaultto('http')
       end
     
-      newproperty(:jndiname) do
+      newproperty(:basequeuename) do
          
-          desc 'Jndi Name'
+          desc 'Base Queue Name'
         
         
            
         
       end
     
-      newproperty(:basequeuename) do
+      newproperty(:jndiname) do
          
-          desc 'Base Queue Name'
+          desc 'Jndi Name'
         
         
            

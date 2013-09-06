@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_trigger_emailnotification).provide(:generated_restcl
 
     def self.properties
     
-      [  "bodyTemplatePath",  "subject",  "fromAddress",  "body",  ]
+      [  "fromAddress",  "body",  "subject",  "bodyTemplatePath",  ]
     
     end
 

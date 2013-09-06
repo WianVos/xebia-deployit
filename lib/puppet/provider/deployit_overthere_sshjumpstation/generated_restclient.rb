@@ -21,7 +21,7 @@ Puppet::Type.type(:deployit_overthere_sshjumpstation).provide(:generated_restcli
 
     def self.properties
     
-      [  "address",  "password",  "passphrase",  "privateKeyFile",  "username",  "os",  ]
+      [  "address",  "username",  "password",  "privateKeyFile",  "os",  "passphrase",  ]
     
     end
 

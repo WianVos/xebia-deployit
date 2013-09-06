@@ -61,9 +61,18 @@ Puppet::Type.newtype(:deployit_file_file ) do
         defaultto('http')
       end
     
-      newproperty(:createtargetpath) do
+      newproperty(:targetpath) do
          
-          desc 'Create Target Path'
+          desc 'Target Path'
+        
+        
+           
+        
+      end
+    
+      newproperty(:targetpathshared) do
+         
+          desc 'Target Path Shared'
         
         
            
@@ -88,25 +97,16 @@ Puppet::Type.newtype(:deployit_file_file ) do
         
       end
     
-      newproperty(:targetpath) do
+      newproperty(:createtargetpath) do
          
-          desc 'Target Path'
+          desc 'Create Target Path'
         
         
            
         
       end
     
-      newproperty(:targetpathshared) do
-         
-          desc 'Target Path Shared'
-        
-        
-           
-        
-      end
-    
-      newproperty(:tags , :array_matching => :all) do
+      newproperty(:placeholders , :array_matching => :all) do
         def insync?(is)
 
           # Comparison of Array's
@@ -127,7 +127,7 @@ Puppet::Type.newtype(:deployit_file_file ) do
 
       end
   
-      newproperty(:placeholders , :array_matching => :all) do
+      newproperty(:tags , :array_matching => :all) do
         def insync?(is)
 
           # Comparison of Array's
