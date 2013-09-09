@@ -156,10 +156,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         instance_eval %Q{def #{downcase_ciprop}
          p __method__ if @debug == true
 
-          p "test ci_array" 
           result = []
-          p @property_hash
-          p @property_hash["#{ciprop}"]
           unless @property_hash["#{ciprop}"] == nil
            unless @property_hash["#{ciprop}"].first["ci"] == nil 
             @property_hash["#{ciprop}"].first["ci"].each do |ci|
@@ -208,7 +205,6 @@ class Puppet::Provider::General_restclient < Puppet::Provider
     if @properties != nil
 
       @properties.each do |p|
-        p "create"
         
         # fill the property hash with the values from the resource hash
         # it is important to note that the keys are in the resource hash in symbol form
