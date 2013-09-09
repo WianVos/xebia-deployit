@@ -13,7 +13,7 @@ module Puppet
         @protocol = protocol
         @host = host
         @port = port
-        @debug = true
+        @debug = false
 
         @url_prefix = url_prefix
         @base_url="#{@protocol}://#{@username}:#{@password}@#{@host}:#{@port}#{@url_prefix}"

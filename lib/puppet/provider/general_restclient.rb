@@ -18,7 +18,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
     super(value)
 
-    @debug = true
+    @debug = false
     
     
     # to make life a little easier and make it easier to add new provider/type constructions i've used a little meta programming
