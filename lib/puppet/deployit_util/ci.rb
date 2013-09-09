@@ -13,6 +13,7 @@ module Puppet
         @protocol = protocol
         @host = host
         @port = port
+        @debug = true
 
         @url_prefix = url_prefix
         @base_url="#{@protocol}://#{@username}:#{@password}@#{@host}:#{@port}#{@url_prefix}"
@@ -28,6 +29,7 @@ module Puppet
 
       # does the ci exits ? True if it does .. false if it doesn't
       def ci_exists?(id)
+        p __method__ if @debug == true
         xml = RestClient.get "#{@base_url}/exists/#{id}", {:accept => :xml, :content_type => :xml }
         return true if XmlSimple.xml_in(xml) == "true"
         return false
@@ -36,6 +38,7 @@ module Puppet
       # add_ci creates a ci in the deployit inventory. We will take care of creating the undelying directory's but not other types because the get more complicated
       # these can be added from puppet itself by using the normal resource classes
       def add_ci(id, type, props={}, parent = ["core.Directory", "internal.Root"])
+          p __method__ if @debug == true
 
         # if type is a directory lets create te full path for it
         #if type == "core.Directory"
@@ -62,10 +65,13 @@ module Puppet
 
       # delete the ci
       def delete_ci(id)
+       p __method__ if @debug == true
+
         response = RestClient.delete "#{@base_url}/ci/#{id}"
       end
 
       def match_property_hash(id, fields=[])
+       p __method__ if @debug == true
 
         @output_props = {}
 
@@ -79,6 +85,7 @@ module Puppet
       end
 
       def modify_ci(id,type,props)
+       p __method__ if @debug == true
 
         new_props = get_ci(id).merge(props)
         xml = to_deployit_xml(type, new_props, id)
@@ -86,33 +93,44 @@ module Puppet
       end
 
       def get_ci_property_hash(id)
+       p __method__ if @debug == true
+
         new_props = get_ci(id)
         return clean_property_hash(new_props)
       end
 
       def get_ci_hash(id)
+       p __method__ if @debug == true
+
         new_props = get_ci(id)
         return new_props
       end
 
       def modify_ci_prop(id,key,value)
+       p __method__ if @debug == true
+
         props[key] = value
         xml
       end
       private
 
       def add_directory(id)
+       p __method__ if @debug == true
+
         props = { '@id' => id}
         add_ci("#{id}","core.Directory", props)
       end
 
       def parent_exists?(id)
+       p __method__ if @debug == true
+
         path = Pathname.new(id).dirname
         ci_exists?(path)
       end
 
       # check if the parent type of the suggested ci is correct
       def parent_correct?(id,parent)
+       p __method__ if @debug == true
 
         # get the suggested pathname .. using the pathname library here.
         path = Pathname.new(id).dirname
@@ -129,6 +147,8 @@ module Puppet
       end
 
       def to_deployit_xml( type, props , id)
+       p __method__ if @debug == true
+
         props = {} unless props != nil
         props['id'] = id unless id == nil
         props['@id'] = props['id'] if props.has_key?('id')
@@ -166,23 +186,31 @@ module Puppet
       end
 
       def clean_property_hash(props)
+       p __method__ if @debug == true
+
         props.delete('id') if props.has_key?('id')
         props.delete('token') if props.has_key?('token')
         return props
       end
 
       def add_directory(id)
+       p __method__ if @debug == true
+
         props = { '@id' => id}
         add_ci("#{id}","core.Directory", props)
       end
 
       def add_parent_directory(id)
+       p __method__ if @debug == true
+
         path = Pathname.new(id).dirname
         props = { '@id' => path }
         add_ci("#{path}","core.Directory", props)
       end
 
       def parent_exists?(id)
+       p __method__ if @debug == true
+
         path = Pathname.new(id).dirname
         ci_exists?(path)
       end

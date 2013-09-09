@@ -18,6 +18,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
     super(value)
 
+    @debug = true
     
     
     # to make life a little easier and make it easier to add new provider/type constructions i've used a little meta programming
@@ -51,6 +52,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
         # add a method with the name #{prop}
         def #{downcase_prop}
+        p __method__ if @debug == true
 
          # get the property from the property hash
 
@@ -75,6 +77,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
        # add setter method
        def #{downcase_prop}=(value)
+        p __method__ if @debug == true
 
        # add the value to the hash in the correct place
         @property_hash["#{prop}"] = value
@@ -90,6 +93,8 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
         instance_eval %Q{
         def #{downcase_aprop}
+         p __method__ if @debug == true
+
          result = nil
          if @property_hash.has_key?("#{aprop}")
           result = @property_hash["#{aprop}"].first['value']
@@ -102,7 +107,8 @@ class Puppet::Provider::General_restclient < Puppet::Provider
          end
 
         def #{downcase_aprop}=(value)
-          
+         p __method__ if @debug == true
+         
             @property_hash["#{aprop}"] = {'values' => value }
           
           
@@ -119,6 +125,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
         instance_eval %Q{
         def #{downcase_hprop}
+         p __method__ if @debug == true
 
          result = {}
 
@@ -131,11 +138,11 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
         end
         def #{downcase_hprop}=(value)
-        
+         p __method__ if @debug == true
+
             @property_hash['#{hprop}'] = [{ 'entry' => []}]
             value.first.each {|key, value| @property_hash['#{hprop}'].first['entry'] << { "content" => value,  "@key" => key } }
         end
-
         }
       end
     end
@@ -147,22 +154,30 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         downcase_ciprop = ciprop.downcase
 
         instance_eval %Q{def #{downcase_ciprop}
+         p __method__ if @debug == true
 
+          p "test ci_array" 
           result = []
-          unless @property_hash["#{ciprop}"].first["ci"] == nil
+          p @property_hash
+          p @property_hash["#{ciprop}"]
+          unless @property_hash["#{ciprop}"] == nil
+           unless @property_hash["#{ciprop}"].first["ci"] == nil 
             @property_hash["#{ciprop}"].first["ci"].each do |ci|
               result << ci["ref"]
             end
+           end
           end
+          p "ending #{__method__}" if @debug == true
           return result
         end
 
         def #{downcase_ciprop}=(value)
-            
+         p __method__ if @debug == true
+
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"] == nil
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"].first['ci'] == nil
             value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "ref" => v } }
-        
+
         end
        }
       end
@@ -174,7 +189,7 @@ class Puppet::Provider::General_restclient < Puppet::Provider
   # because fo the fact that not all type values are available (only the name)  during initialization of the provider i'm forced to get the property hash here
   #
   def exists?
-
+    p __method__ if @debug == true
     # get the property hash here
     get_props_hash
 
@@ -186,12 +201,14 @@ class Puppet::Provider::General_restclient < Puppet::Provider
   # the create method gets called when a type has ensure set to present but the resource is not available on the remote system
 
   def create
+    p __method__ if @debug == true
 
     # we have three catagories of properties that need to be added to the properties hash
     # loop over the regular properties and add the values to the property hash ready for flushing
     if @properties != nil
 
       @properties.each do |p|
+        p "create"
         
         # fill the property hash with the values from the resource hash
         # it is important to note that the keys are in the resource hash in symbol form
@@ -237,11 +254,14 @@ class Puppet::Provider::General_restclient < Puppet::Provider
   end
 
   def destroy
+   p __method__ if @debug == true
+
     # hoeray for flushing .. the only thing we need to do here is set ensure to absent
     @property_hash["ensure"] = "absent"
   end
 
   def get_props_hash
+    p __method__ if @debug == true
 
     # initialize the global property_hash
     @property_hash = {}
@@ -273,6 +293,8 @@ class Puppet::Provider::General_restclient < Puppet::Provider
 
   # the flush method will actualize the settings to deployit
   def flush
+    p __method__ if @debug == true
+
     # remove the confilicting fields from the hash and get the values to seperate variables we can use the determine the flow of the flush
     ensure_prop = @property_hash.delete('ensure')
     exists = @property_hash.delete('exists')
