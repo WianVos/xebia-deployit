@@ -13,7 +13,7 @@ module Puppet
         @protocol = protocol
         @host = host
         @port = port
-        @debug = true
+        @debug = false
 
         @url_prefix = url_prefix
         @base_url="#{@protocol}://#{@username}:#{@password}@#{@host}:#{@port}#{@url_prefix}"
@@ -156,10 +156,10 @@ module Puppet
 
         # if the hash contains envvars than we should mangle the hash a little bit
         # to properly translate to a valid xml that deployit understands the key should be named @key and not key
-        p "envvars"
+        p "envvars" if @debug == true
         if props.has_key?('envVars') == true 
           if  props['envVars'].first.has_key?('entry') == true 
-            if props['envVars'].first['entry'].has_key?('key') == true
+            if props['envVars'].first['entry'].first.has_key?('key') == true
            result = {}
            props['envVars'].first['entry'].each {|d| result[d['key']] = d['content']} if props['envVars'].first.has_key?('entry')
            props['envVars'] = [{ 'entry' => []}]
@@ -167,7 +167,7 @@ module Puppet
           end
         end
       end
-        p "members"
+      p "members" if @debug == true
         if props.has_key?('members') == true 
          if props['members'].first.has_key?("ci") == true 
           if props['members'].first['ci'].first.has_key?('ref')   
@@ -178,7 +178,7 @@ module Puppet
           end
          end
         end
-        p "dictionaries"
+        p "dicts" if @debug == true
         if props.has_key?('dictionaries') == true  
           if props['dictionaries'].first.has_key?('ci') == true
             if props['dictionaries'].first['ci'].first.has_key?('ref')
