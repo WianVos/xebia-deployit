@@ -1,8 +1,8 @@
-require 'rubygems'
-require 'pathname'
-require 'restclient' if Puppet.features.restclient?
+require 'rubygems' if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
+require 'pathname' if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
+require 'restclient' if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
 
-require 'xmlsimple'  if Puppet.features.restclient?
+require 'xmlsimple'  if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
 
 module Puppet
   module Deployit_util
@@ -13,7 +13,7 @@ module Puppet
         @protocol = protocol
         @host = host
         @port = port
-        @debug = false
+        @debug = true
 
         @url_prefix = url_prefix
         @base_url="#{@protocol}://#{@username}:#{@password}@#{@host}:#{@port}#{@url_prefix}"
@@ -156,26 +156,37 @@ module Puppet
 
         # if the hash contains envvars than we should mangle the hash a little bit
         # to properly translate to a valid xml that deployit understands the key should be named @key and not key
-        if props.has_key?('envVars') == true and props['envVars'].first['entry'].first.has_key?('key')
-          result = {}
-          props['envVars'].first['entry'].each {|d| result[d['key']] = d['content']} if props['envVars'].first.has_key?('entry')
-          props['envVars'] = [{ 'entry' => []}]
-          result.each {|key, value| props['envVars'].first['entry'] << { "content" => value,  "@key" => key } }
+        p "envvars"
+        if props.has_key?('envVars') == true 
+          if  props['envVars'].first.has_key?('entry') == true 
+            if props['envVars'].first['entry'].has_key?('key') == true
+           result = {}
+           props['envVars'].first['entry'].each {|d| result[d['key']] = d['content']} if props['envVars'].first.has_key?('entry')
+           props['envVars'] = [{ 'entry' => []}]
+           result.each {|key, value| props['envVars'].first['entry'] << { "content" => value,  "@key" => key } }
+          end
         end
+      end
+        p "members"
         if props.has_key?('members') == true 
+         if props['members'].first.has_key?("ci") == true 
           if props['members'].first['ci'].first.has_key?('ref')   
           result = []
           props["members"].first["ci"].each {|ci| result << ci['ref'] }
           props["members"] = [{'ci' => [] }]
           result.each {|v| props['members'].first['ci'] << { "@ref" => v } }
           end
+         end
         end
-        if props.has_key?('dictionaries') == true 
-          if props['dictionaries'].first['ci'].first.has_key?('ref')
-          result = []
-          props["dictionaries"].first["ci"].each {|ci| result << ci['ref'] }
-          props["dictionaries"] = [{'ci' => [] }]
-          result.each {|v| props['dictionaries'].first['ci'] << { "@ref" => v } }
+        p "dictionaries"
+        if props.has_key?('dictionaries') == true  
+          if props['dictionaries'].first.has_key?('ci') == true
+            if props['dictionaries'].first['ci'].first.has_key?('ref')
+             result = []
+             props["dictionaries"].first["ci"].each {|ci| result << ci['ref'] }
+             props["dictionaries"] = [{'ci' => [] }]
+             result.each {|v| props['dictionaries'].first['ci'] << { "@ref" => v } }
+           end
           end
         end
 

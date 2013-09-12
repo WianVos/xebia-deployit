@@ -1,4 +1,4 @@
-require File.expand_path('../../deployit_util/ci.rb', __FILE__) 
+require File.expand_path('../../deployit_util/ci.rb', __FILE__) if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
 
 #This is the parent provider for all other deployit providers
 #Most of the work that needs to be done for a provider is repetative so a parent provider that holds most of the code made sense
@@ -171,7 +171,8 @@ class Puppet::Provider::General_restclient < Puppet::Provider
         def #{downcase_ciprop}=(value)
          p __method__ if @debug == true
 
-             @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"] == nil
+            
+             @property_hash['#{ciprop}'] = [{ 'ci' => []}] unless @property_hash.has_key?("#{ciprop}") 
              @property_hash['#{ciprop}'] = [{ 'ci' => []}] if @property_hash["#{ciprop}"].first['ci'] == nil
             value.each {|v| @property_hash['#{ciprop}'].first['ci'] << { "ref" => v } }
 

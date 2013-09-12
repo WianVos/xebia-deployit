@@ -1,4 +1,4 @@
-require File.expand_path('../../../deployit_util/ci.rb', __FILE__)
+require File.expand_path('../../../deployit_util/ci.rb', __FILE__) if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
 
 
 
