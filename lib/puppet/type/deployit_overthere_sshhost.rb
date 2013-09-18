@@ -1,5 +1,6 @@
 Puppet::Type.newtype(:deployit_overthere_sshhost ) do
 
+        
       # this type is generated with genres.rb
       # generated for deployit 3.8.5
 
