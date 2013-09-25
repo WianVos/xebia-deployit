@@ -193,6 +193,7 @@ module Puppet
         props.delete('id') if props.has_key?('id')
         props.delete('token') if props.has_key?('token')
         props.delete('host') if props.has_key?('host')
+        props.delete('parent') if props.has_key?('parent')
         xml = XmlSimple.xml_out(props, :RootName => type ,:AttrPrefix => true )
       end
 
