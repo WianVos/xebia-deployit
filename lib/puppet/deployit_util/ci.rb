@@ -1,8 +1,8 @@
-require 'rubygems' if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
-require 'pathname' if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
-require 'restclient' if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
+require 'rubygems' if  Puppet.features.restclient?
+require 'pathname' if  Puppet.features.restclient?
+require 'restclient' if  Puppet.features.restclient?
 
-require 'xmlsimple'  if RUBY_VERSION < '1.9.0' && Puppet.features.restclient?
+require 'xmlsimple'  if  Puppet.features.restclient?
 
 module Puppet
   module Deployit_util

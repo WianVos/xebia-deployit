@@ -37,16 +37,12 @@ class deployit::clients::sshhost (
   -> User[$deployment_user]
   -> File['/etc/sudoers.d/deployit']
   -> Deployit_check_connection['deployit central']
-  -> Deployit_core_directory[$deployit_directory_path]
   -> Deployit_overthere_sshhost[
     $deployit_host_path]
 
   # resource defaults
 
-  Deployit_core_directory {
-    deployit_host => $deployit_http_server_address,
-    ensure        => present
-  }
+  
 
   Deployit_overthere_sshhost {
     deployit_host => $deployit_http_server_address,
@@ -82,7 +78,7 @@ class deployit::clients::sshhost (
     port => $deployit_http_port
   }
 
-  deployit_core_directory { $deployit_directory_path: }
+  
 
   deployit_overthere_sshhost {
     $deployit_host_path:
