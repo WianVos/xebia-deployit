@@ -1,1 +1,7 @@
 spec/fixtures/*
+*.rpm
+*.zip
+*.tar.gz
+*.lock
+*.log
+
