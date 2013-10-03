@@ -23,7 +23,7 @@ class deployit (
   $deployit_user        = 'deployit',
   $deployit_group       = 'deployit',
   $deployit_homedir     = '/opt/deployit',
-  $deployit_version     = '3.9.2',
+  $deployit_version     = '3.9.3',
   $deployit_admin       = 'admin',
   $deployit_password    = 'admin',
   $deployit_http_port   = '4516',
@@ -45,6 +45,7 @@ class deployit (
   $ensure               = present,
   ) {
 
+  
   # variables
   # the version dependant stuff is set here
   $server_zipfile = "deployit-${deployit_version}-server.zip"
@@ -53,10 +54,11 @@ class deployit (
 
   # #flow control
 
-  # normal flow
-  class { 'deployit::provider_prereq':
-  } -> Class['deployit']
+  #anchors
+  anchor{'deployit::begin':}
+  anchor{'deployit::end':}
 
+  
   # parameter dependant flow
 
   # handle the install_source parameter
@@ -69,15 +71,20 @@ class deployit (
 
   # if server == true we do a lot of stuff .
   if $server == true {
-    Class['Deployit::Provider_prereq']
+    Anchor['deployit::begin']
+    -> class {'deployit::provider_prereq': }
     -> class { 'deployit::users': }
     -> class { 'deployit::prereq': }
     -> class { 'deployit::download': }
     -> class { 'deployit::install': }
     -> class { 'deployit::config': }
     ~> class { 'deployit::service': }
-    -> class { 'deployit::training':}
-    -> Class['deployit']
+    -> Anchor['deployit::end']
+  }
+  if $server == false {
+    Anchor['deployit::begin']
+    -> class {'deployit::provider_prereq': }
+    -> Anchor['deployit::end']
   }
 
 }

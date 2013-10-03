@@ -1,4 +1,4 @@
-name 'xebia-deployit'
+name 'deployit'
 version '0.0.1'
 
 author 'wianvos'
